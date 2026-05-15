@@ -4,18 +4,14 @@ using System;
 /// <summary>
 /// SpaceJam - Player Health
 ///
-/// Mengelola HP player, menerima damage dari projectile/obstacle musuh,
-/// dan memancarkan events yang didengarkan oleh HPBar.cs.
-///
-/// Setup:
-///   Attach ke GameObject player.
-///   Pastikan player punya Collider2D dengan Is Trigger = TRUE.
-///   Tag player = "Player".
+/// FIX: OnTriggerEnter2D tidak lagi bergantung pada tag "EnemyBullet"
+/// karena Bullet.cs kini memanggil TakeDamage() secara langsung.
+/// OnTriggerEnter2D di sini hanya sebagai fallback untuk obstacle/hazard.
 /// </summary>
 public class PlayerHealth : MonoBehaviour
 {
     [Header("Health Settings")]
-    public int maxHP    = 100;
+    public int maxHP = 100;
     public int currentHP { get; private set; }
 
     [Header("Invincibility Frames")]
@@ -23,17 +19,12 @@ public class PlayerHealth : MonoBehaviour
     public float invincibleDuration = 0.8f;
 
     // ── Events ────────────────────────────────────────────────────────────────
-    /// <summary>Dipancarkan saat HP berubah. int = currentHP.</summary>
     public event Action<int> OnHealthChanged;
-
-    /// <summary>Dipancarkan saat player mati.</summary>
     public event Action OnDeath;
 
     // ── Private ──────────────────────────────────────────────────────────────
     private float _invincibleTimer = 0f;
     private bool  _isDead          = false;
-
-    // ── Unity Lifecycle ───────────────────────────────────────────────────────
 
     void Awake()
     {
@@ -48,9 +39,6 @@ public class PlayerHealth : MonoBehaviour
 
     // ── Public API ────────────────────────────────────────────────────────────
 
-    /// <summary>
-    /// Dipanggil oleh projectile musuh atau obstacle.
-    /// </summary>
     public void TakeDamage(int amount)
     {
         if (_isDead || _invincibleTimer > 0f) return;
@@ -58,6 +46,7 @@ public class PlayerHealth : MonoBehaviour
         currentHP        = Mathf.Max(0, currentHP - amount);
         _invincibleTimer = invincibleDuration;
 
+        // Ini yang memicu HPBar untuk muncul
         OnHealthChanged?.Invoke(currentHP);
 
         if (currentHP <= 0)
@@ -71,30 +60,22 @@ public class PlayerHealth : MonoBehaviour
         OnHealthChanged?.Invoke(currentHP);
     }
 
-    // ── Private ──────────────────────────────────────────────────────────────
-
     void Die()
     {
         _isDead = true;
         OnDeath?.Invoke();
-        Debug.Log("[PlayerHealth] Player mati — implementasi respawn di sini.");
-        // TODO: Trigger respawn sesuai premise game (Extraterrestrial being menghidupkan kembali)
+        Debug.Log("[PlayerHealth] Player mati.");
+        // TODO: trigger respawn / game over
     }
 
-    // ── Collision Detection ───────────────────────────────────────────────────
+    // ── Collision (fallback untuk Obstacle/Hazard) ────────────────────────────
 
-    /// <summary>
-    /// Player terkena projectile musuh (tag "EnemyBullet") 
-    /// atau obstacle (tag "Obstacle").
-    /// </summary>
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("EnemyBullet") || other.CompareTag("Obstacle"))
+        // Hanya untuk hazard lingkungan (bukan bullet — sudah dihandle di Bullet.cs)
+        if (other.CompareTag("Obstacle"))
         {
-            // Ambil damage value dari projectile jika ada
-            EnemyBullet eb = other.GetComponent<EnemyBullet>();
-            int dmg = eb != null ? eb.damage : 10;
-            TakeDamage(dmg);
+            TakeDamage(10);
         }
     }
 }

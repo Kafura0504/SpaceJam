@@ -2,39 +2,48 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// SpaceJam - HP Bar (World Space, di bawah player)
+///
+/// FIX: posisi bar dihitung dari playerTransform.position + offset
+/// di LateUpdate — TIDAK parented ke player sehingga tidak ikut rotate.
+///
+/// Setup Unity:
+///   1. Buat empty GameObject bernama "HPBar" di scene root (bukan child player).
+///   2. Attach script ini ke HPBar.
+///   3. Assign playerTransform = Player transform.
+///   4. Assign playerHealth    = PlayerHealth component milik player.
+/// </summary>
 public class HPBar : MonoBehaviour
 {
     [Header("References")]
-    [Tooltip("Transform player — bar mengikuti posisi ini")]
-    public Transform playerTransform;
-
-    [Tooltip("Komponen PlayerHealth milik player")]
+    public Transform    playerTransform;
     public PlayerHealth playerHealth;
 
     [Header("Position")]
-    [Tooltip("Offset posisi bar di bawah player")]
+    [Tooltip("Offset di bawah player (world units)")]
     public Vector3 offset = new Vector3(0f, -0.7f, 0f);
 
     [Header("Appearance")]
-    public Color bgColor = new Color(0.1f, 0.1f, 0.15f, 0.85f);
-    public Color fillColor = new Color(0f, 0.83f, 1f, 1f);      // cyan
-    public Color lowHPColor = new Color(1f, 0.25f, 0.25f, 1f);  // merah saat HP < 30%
+    public Color bgColor   = new Color(0.1f,  0.1f,  0.15f, 0.85f);
+    public Color fillColor = new Color(0f,    0.83f, 1f,    1f);
+    public Color lowHPColor= new Color(1f,    0.25f, 0.25f, 1f);
 
     [Header("Size (World Units)")]
-    public float barWidth = 1.2f;
+    public float barWidth  = 1.2f;
     public float barHeight = 0.13f;
 
-    [Header("Fade Settings")]
-    public float fadeSpeed = 4f;
+    [Header("Fade")]
+    public float fadeSpeed    = 4f;
     public float fadeOutDelay = 3f;
 
-    // ── Generated UI refs ─────────────────────────────────────────────────────
+    // ── UI refs ───────────────────────────────────────────────────────────────
     private CanvasGroup _canvasGroup;
-    private Image _fillImage;
+    private Image       _fillImage;
 
     // ── State ─────────────────────────────────────────────────────────────────
-    private float _fadeOutTimer;
-    private bool _shouldShow;
+    private float     _fadeOutTimer;
+    private bool      _shouldShow;
     private Coroutine _fadeCoroutine;
 
     // ── Unity Lifecycle ───────────────────────────────────────────────────────
@@ -59,11 +68,13 @@ public class HPBar : MonoBehaviour
 
     void LateUpdate()
     {
-        // Ikuti player
+        // FIX: ikuti posisi player tapi TIDAK ikuti rotasi
         if (playerTransform != null)
+        {
             transform.position = playerTransform.position + offset;
+            transform.rotation = Quaternion.identity; // selalu tegak
+        }
 
-        // Countdown fade-out timer
         if (_shouldShow && _fadeOutTimer > 0f)
         {
             _fadeOutTimer -= Time.deltaTime;
@@ -76,48 +87,44 @@ public class HPBar : MonoBehaviour
 
     void BuildUI()
     {
-        // ── Canvas (World Space) ──────────────────────────────────────────────
         GameObject canvasGO = new GameObject("Canvas_HPBar");
         canvasGO.transform.SetParent(transform, false);
 
-        Canvas canvas = canvasGO.AddComponent<Canvas>();
-        canvas.renderMode = RenderMode.WorldSpace;
+        Canvas canvas       = canvasGO.AddComponent<Canvas>();
+        canvas.renderMode   = RenderMode.WorldSpace;
         canvas.sortingOrder = 10;
 
-        _canvasGroup = canvasGO.AddComponent<CanvasGroup>();
-        _canvasGroup.blocksRaycasts = false;
-        _canvasGroup.interactable = false;
+        _canvasGroup                   = canvasGO.AddComponent<CanvasGroup>();
+        _canvasGroup.blocksRaycasts    = false;
+        _canvasGroup.interactable      = false;
 
         RectTransform canvasRect = canvasGO.GetComponent<RectTransform>();
-        canvasRect.sizeDelta = new Vector2(barWidth, barHeight);
+        canvasRect.sizeDelta     = new Vector2(barWidth, barHeight);
         canvasRect.localPosition = Vector3.zero;
-        canvasRect.localScale = Vector3.one;
+        canvasRect.localScale    = Vector3.one;
 
-        // ── Background ────────────────────────────────────────────────────────
+        // Background
         GameObject bgGO = new GameObject("BG");
         bgGO.transform.SetParent(canvasGO.transform, false);
-
         Image bgImage = bgGO.AddComponent<Image>();
         bgImage.color = bgColor;
-
         RectTransform bgRect = bgGO.GetComponent<RectTransform>();
         bgRect.anchorMin = Vector2.zero;
         bgRect.anchorMax = Vector2.one;
         bgRect.offsetMin = Vector2.zero;
         bgRect.offsetMax = Vector2.zero;
 
-        // ── Fill (padding 2px dari BG) ────────────────────────────────────────
+        // Fill
         GameObject fillGO = new GameObject("Fill");
         fillGO.transform.SetParent(canvasGO.transform, false);
+        _fillImage             = fillGO.AddComponent<Image>();
+        _fillImage.color       = fillColor;
+        _fillImage.type        = Image.Type.Filled;
+        _fillImage.fillMethod  = Image.FillMethod.Horizontal;
+        _fillImage.fillOrigin  = (int)Image.OriginHorizontal.Left;
+        _fillImage.fillAmount  = 1f;
 
-        _fillImage = fillGO.AddComponent<Image>();
-        _fillImage.color = fillColor;
-        _fillImage.type = Image.Type.Filled;
-        _fillImage.fillMethod = Image.FillMethod.Horizontal;
-        _fillImage.fillOrigin = (int)Image.OriginHorizontal.Left;
-        _fillImage.fillAmount = 1f;
-
-        float pad = 0.01f;   // padding dalam world units
+        float pad = 0.01f;
         RectTransform fillRect = fillGO.GetComponent<RectTransform>();
         fillRect.anchorMin = Vector2.zero;
         fillRect.anchorMax = Vector2.one;
@@ -131,15 +138,12 @@ public class HPBar : MonoBehaviour
     {
         if (playerHealth == null) return;
 
-        float ratio = (float)currentHP / playerHealth.maxHP;
+        float ratio        = (float)currentHP / playerHealth.maxHP;
         _fillImage.fillAmount = ratio;
+        _fillImage.color   = ratio < 0.3f ? lowHPColor : fillColor;
 
-        // Ganti warna jika HP kritis (< 30%)
-        _fillImage.color = ratio < 0.3f ? lowHPColor : fillColor;
-
-        // Tampilkan bar & reset timer
         _fadeOutTimer = fadeOutDelay;
-        _shouldShow = true;
+        _shouldShow   = true;
         StartFade(true);
     }
 
