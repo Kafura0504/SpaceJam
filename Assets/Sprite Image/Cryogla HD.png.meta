@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a2e42cb3af3e2cd42b972aa0fd9eb155
+guid: db17a639d65d3334eabd20ebd61a23d8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7588789576596807693
-    second: Noir331_0
+      213: -3512230282143274055
+    second: Cryogla HD_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,9 +40,9 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
-    wrapW: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Noir331_0
+      name: Cryogla HD_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 703
-        height: 1550
+        width: 2812
+        height: 6200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3ff92c356143fa690800000000000000
-      internalID: -7588789576596807693
+      spriteID: 9bbea7fba2d024fc0800000000000000
+      internalID: -3512230282143274055
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Noir331_0: -7588789576596807693
+      Cryogla HD_0: -3512230282143274055
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

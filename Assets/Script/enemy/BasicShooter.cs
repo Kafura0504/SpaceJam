@@ -48,4 +48,6 @@ public class BasicShooter : MonoBehaviour
         }
         Debug.DrawRay(transform.position, playerDir * 5, Color.red);
     }
+
+    
 }
