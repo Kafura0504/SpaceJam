@@ -8,9 +8,8 @@ public class BasicShooter : MonoBehaviour
     public float delayShot;
     private float delay;
     Vector2 playerDir;
-    public EnemyScriptable type;
-    private int HP;
-    private int dmg;
+    private Rigidbody2D rb;
+    private EnemyStat Mystat;
     void Shoot()
 {
     GameObject bulletObj =
@@ -23,11 +22,11 @@ public class BasicShooter : MonoBehaviour
     Bullet bullet =
         bulletObj.GetComponent<Bullet>();
 
+    
+    bullet.damage = Mystat.dmg;
     playerDir =
         player.transform.position - firePoint.position;
-
-    playerDir = playerDir.normalized;
-    bullet.damage = dmg;
+        playerDir = playerDir.normalized;
 
     bullet.SetDirection(playerDir);
 }
@@ -35,8 +34,8 @@ public class BasicShooter : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         delay = delayShot;
-        HP = type.health;
-        dmg = type.attack;
+        rb = GetComponent<Rigidbody2D>();
+        Mystat = GetComponent<EnemyStat>();
     }
     void Update()
     {
