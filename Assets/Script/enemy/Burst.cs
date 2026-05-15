@@ -47,7 +47,7 @@ public class Burst : MonoBehaviour
         playerDir =
             player.transform.position - firePoint.position;
         playerDir = playerDir.normalized;
-        while (shotcount <= repeatshot)
+        while (shotcount < repeatshot)
         {
             GameObject bulletObj =
         Instantiate(
