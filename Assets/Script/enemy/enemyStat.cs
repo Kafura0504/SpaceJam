@@ -29,10 +29,23 @@ public class EnemyStat : MonoBehaviour, IDamageable
     void OnTriggerEnter2D(Collider2D other)
     {
         PlayerHealth ph = other.GetComponent<PlayerHealth>();
-        if (ph != null)
+        if (other.CompareTag("Player"))
         {
             ph.TakeDamage(dmg); // kurangi HP player sebesar dmg enemy
             Destroy(gameObject); // enemy hancur setelah tabrak player
         }
+        if (other.CompareTag("PlayerBullet"))
+        {
+            this.HP -= other.gameObject.GetComponent<BulletP>().damage;
+        }
     }
+    void Update()
+    {
+        if (HP<=0)
+        {
+            Destroy(gameObject);
+            //nanti kasih EXP ama score
+        }
+    }
+
 }
