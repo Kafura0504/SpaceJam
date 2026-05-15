@@ -8,7 +8,6 @@ public class BasicShooter : MonoBehaviour
     public float delayShot;
     private float delay;
     Vector2 playerDir;
-    private Rigidbody2D rb;
     private EnemyStat Mystat;
     void Shoot()
 {
@@ -34,7 +33,6 @@ public class BasicShooter : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         delay = delayShot;
-        rb = GetComponent<Rigidbody2D>();
         Mystat = GetComponent<EnemyStat>();
     }
     void Update()
