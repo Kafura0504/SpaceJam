@@ -1,17 +1,10 @@
 using UnityEngine;
 
-/// <summary>
-/// SpaceJam - Enemy Stats
-///
-/// FIX 1: Implementasi IDamageable agar BulletP.cs bisa melukai enemy.
-/// FIX 2: HP dikurangi dulu sebelum cek kematian.
-/// FIX 3: Player terkena kontak body → panggil TakeDamage milik player.
-/// </summary>
 public class EnemyStat : MonoBehaviour, IDamageable
 {
     public EnemyScriptable type;
 
-    [Header("DO NOT CHANGE IT HERE!")]
+    [Header("DO NOT CHANGE HERE")]
     public int HP;
     public int dmg;
     public int exp;
@@ -23,40 +16,23 @@ public class EnemyStat : MonoBehaviour, IDamageable
         exp = type.exp;
     }
 
-    // ── IDamageable ──────────────────────────────────────────────────────────
-
-    /// <summary>
-    /// Dipanggil oleh BulletP.cs (peluru player) via IDamageable.
-    /// </summary>
+    // Dipanggil oleh BulletP saat peluru player mengenai enemy
     public void TakeDamage(int amount)
     {
         HP -= amount;
 
         if (HP <= 0)
-        {
-            // TODO: spawn exp orb, death effect, dll.
             Destroy(gameObject);
-        }
     }
 
-    // ── Collision ────────────────────────────────────────────────────────────
-
-    void OnTriggerEnter2D(Collider2D collision)
+    // Collision body enemy dengan player
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.CompareTag("Player"))
+        PlayerHealth ph = other.GetComponent<PlayerHealth>();
+        if (ph != null)
         {
-            // Enemy menyentuh player → coba lukai player
-            PlayerHealth ph = collision.GetComponent<PlayerHealth>();
-            if (ph != null)
-                ph.TakeDamage(dmg);
-
-            // FIX: jangan langsung Destroy(gameObject) di sini kecuali
-            // enemy memang tipe "suicide" (Swarm/Chaser).
-            // Untuk enemy shooter biarkan hidup.
-            // Uncomment baris di bawah hanya untuk tipe suicide:
-            // Destroy(gameObject);
+            ph.TakeDamage(dmg); // kurangi HP player sebesar dmg enemy
+            Destroy(gameObject); // enemy hancur setelah tabrak player
         }
-        // Catatan: tabrakan dengan PlayerBullet ditangani di BulletP.cs
-        // via IDamageable.TakeDamage — tidak perlu case khusus di sini.
     }
 }

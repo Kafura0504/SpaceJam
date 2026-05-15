@@ -1,12 +1,5 @@
 using UnityEngine;
 
-/// <summary>
-/// SpaceJam - Enemy Bullet (digunakan oleh semua enemy shooter)
-/// Bergerak ke arah yang di-set via SetDirection().
-///
-/// FIX: memanggil PlayerHealth.TakeDamage() saat mengenai Player
-/// agar HPBar dapat merespon.
-/// </summary>
 public class Bullet : MonoBehaviour
 {
     public float speed    = 10f;
@@ -30,20 +23,16 @@ public class Bullet : MonoBehaviour
         rb.linearVelocity = dir.normalized * speed;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.CompareTag("Player"))
-        {
-            // FIX: panggil TakeDamage agar OnHealthChanged terpicu → HPBar muncul
-            PlayerHealth ph = collision.GetComponent<PlayerHealth>();
-            if (ph != null)
-                ph.TakeDamage(damage);
+        // Abaikan sesama peluru player agar tidak saling destroy
+        if (other.CompareTag("PlayerBullet")) return;
 
-            Destroy(gameObject);
-        }
-        else if (collision.CompareTag("PlayerBullet"))
+        PlayerHealth ph = other.GetComponent<PlayerHealth>();
+        if (ph != null)
         {
-            // Jangan hancur ketika kena peluru player — biarkan EnemyStat yang handle
+            ph.TakeDamage(damage); // damage sudah di-assign dari Mystat.dmg oleh shooter
+            Destroy(gameObject);   // bullet hancur setelah kena player
         }
     }
 }

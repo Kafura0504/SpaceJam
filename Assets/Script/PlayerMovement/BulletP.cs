@@ -1,39 +1,32 @@
 using UnityEngine;
 
 /// <summary>
-/// SpaceJam - Bullet Controller
+/// SpaceJam - Player Bullet Controller
+/// Bergerak menggunakan transform.up (sesuai rotasi yang di-set PlayerShooter).
 ///
-/// Gerakan bullet pakai transform.position langsung di Update —
-/// tidak pakai Rigidbody2D velocity agar tidak ada timing/physics issue.
+/// FIX: Tambahkan tag "EnemyBullet" ke ignore list.
+///      Gunakan IDamageable interface untuk melukai enemy.
 ///
-/// Arah gerak diambil dari transform.up karena PlayerShooter sudah
-/// merotasi bullet prefab menghadap mouse sebelum di-spawn.
-/// Tidak perlu SetDirection sama sekali.
-///
-/// Requirement Prefab Bullet:
-///   - Rigidbody2D  → Body Type: KINEMATIC, Gravity Scale: 0
-///   - Collider2D   → Is Trigger: TRUE
-///   - Tag          → "PlayerBullet"
+/// Requirement Prefab BulletP:
+///   - Rigidbody2D → Body Type: KINEMATIC, Gravity Scale: 0
+///   - Collider2D  → Is Trigger: TRUE
+///   - Tag         → "PlayerBullet"
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
 public class BulletP : MonoBehaviour
 {
     [Header("Bullet Settings")]
-    public float speed  = 18f;
-    public int   damage = 10;
+    public float speed    = 18f;
+    public int   damage   = 10;
     public float lifetime = 2.5f;
 
     [Header("Visual (Opsional)")]
     public GameObject hitEffectPrefab;
 
-    // ── Unity Lifecycle ───────────────────────────────────────────────────────
-
     void Awake()
     {
-        // Kinematic agar physics engine tidak ganggu posisi,
-        // tapi OnTriggerEnter2D tetap jalan.
-        var rb         = GetComponent<Rigidbody2D>();
-        rb.bodyType    = RigidbodyType2D.Kinematic;
+        var rb          = GetComponent<Rigidbody2D>();
+        rb.bodyType     = RigidbodyType2D.Kinematic;
         rb.gravityScale = 0f;
 
         Destroy(gameObject, lifetime);
@@ -41,20 +34,28 @@ public class BulletP : MonoBehaviour
 
     void Update()
     {
-        // transform.up = arah "atas" sprite setelah PlayerShooter merotasinya.
-        // Ini selalu benar tanpa perlu direction dikirim dari luar.
+        // transform.up = arah tembak (di-set via rotasi saat Instantiate)
         transform.position += transform.up * speed * Time.deltaTime;
     }
 
-    // ── Collision ─────────────────────────────────────────────────────────────
-
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("PlayerBullet") || other.CompareTag("Player"))
-            return;
+        // ── Abaikan sesama peluru player, peluru enemy, dan player sendiri ──
+        if (other.CompareTag("PlayerBullet")) return;
+        if (other.CompareTag("EnemyBullet"))  return;
+        if (other.CompareTag("Player"))        return;
 
-        other.GetComponent<IDamageable>()?.TakeDamage(damage);
+        // Juga abaikan jika ada PlayerHealth (jaga-jaga tag "Player" tidak di-set)
+        if (other.GetComponent<PlayerHealth>() != null) return;
 
+        // ── Lukai enemy via IDamageable ─────────────────────────────────────
+        IDamageable damageable = other.GetComponent<IDamageable>();
+        if (damageable != null)
+        {
+            damageable.TakeDamage(damage);
+        }
+
+        // ── Spawn efek hit (opsional) ───────────────────────────────────────
         if (hitEffectPrefab != null)
             Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
 

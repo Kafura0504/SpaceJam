@@ -4,27 +4,36 @@ using System;
 /// <summary>
 /// SpaceJam - Player Health
 ///
-/// FIX: OnTriggerEnter2D tidak lagi bergantung pada tag "EnemyBullet"
-/// karena Bullet.cs kini memanggil TakeDamage() secara langsung.
-/// OnTriggerEnter2D di sini hanya sebagai fallback untuk obstacle/hazard.
+/// FIX 1: OnTriggerEnter2D kini langsung cek GetComponent<EnemyStat>
+///         agar tidak bergantung tag "Enemy" yang bisa lupa di-set.
+/// FIX 2: Tambahkan null check pada event invoke.
+/// FIX 3: Tambahkan public getter untuk MaxHP agar HPBar bisa akses.
 /// </summary>
 public class PlayerHealth : MonoBehaviour
 {
     [Header("Health Settings")]
-    public int maxHP = 100;
-    public int currentHP { get; private set; }
+    public int maxHP      = 100;
+    public int currentHP  { get; private set; }
 
     [Header("Invincibility Frames")]
     [Tooltip("Durasi tidak bisa kena damage setelah terkena hit (detik)")]
     public float invincibleDuration = 0.8f;
 
     // ── Events ────────────────────────────────────────────────────────────────
+    /// <summary>Dipanggil setiap kali HP berubah. Parameter = currentHP.</summary>
     public event Action<int> OnHealthChanged;
-    public event Action OnDeath;
+    public event Action       OnDeath;
 
     // ── Private ──────────────────────────────────────────────────────────────
     private float _invincibleTimer = 0f;
     private bool  _isDead          = false;
+
+    // ── Properties ───────────────────────────────────────────────────────────
+    public bool  IsDead        => _isDead;
+    public bool  IsInvincible  => _invincibleTimer > 0f;
+    public float HPRatio       => (float)currentHP / maxHP;
+
+    // ── Unity Lifecycle ───────────────────────────────────────────────────────
 
     void Awake()
     {
@@ -46,8 +55,10 @@ public class PlayerHealth : MonoBehaviour
         currentHP        = Mathf.Max(0, currentHP - amount);
         _invincibleTimer = invincibleDuration;
 
-        // Ini yang memicu HPBar untuk muncul
+        // Trigger HPBar muncul
         OnHealthChanged?.Invoke(currentHP);
+
+        Debug.Log($"[PlayerHealth] Terkena {amount} damage. HP: {currentHP}/{maxHP}");
 
         if (currentHP <= 0)
             Die();
@@ -65,14 +76,23 @@ public class PlayerHealth : MonoBehaviour
         _isDead = true;
         OnDeath?.Invoke();
         Debug.Log("[PlayerHealth] Player mati.");
-        // TODO: trigger respawn / game over
+        // TODO: trigger respawn / game over screen
     }
 
-    // ── Collision (fallback untuk Obstacle/Hazard) ────────────────────────────
+    // ── Collision (fallback untuk body contact dengan enemy) ──────────────────
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // Hanya untuk hazard lingkungan (bukan bullet — sudah dihandle di Bullet.cs)
+        // FIX: Jangan cek tag, langsung cek komponen — lebih robust
+        // Ini handle: Swarm, Chaser, dan enemy lain yang body-nya menyentuh player
+        EnemyStat enemy = other.GetComponent<EnemyStat>();
+        if (enemy != null)
+        {
+            TakeDamage(enemy.dmg);
+            return;
+        }
+
+        // Fallback untuk obstacle/hazard lingkungan
         if (other.CompareTag("Obstacle"))
         {
             TakeDamage(10);
