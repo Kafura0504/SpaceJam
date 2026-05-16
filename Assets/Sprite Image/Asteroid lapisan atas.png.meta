@@ -1,0 +1,1547 @@
+fileFormatVersion: 2
+guid: e3d839aa64b96214ab24e7cf50a85296
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6128092999746251281
+    second: Asteroid lapisan atas_0
+  - first:
+      213: 1173014186937207283
+    second: Asteroid lapisan atas_1
+  - first:
+      213: -4478012502317868283
+    second: Asteroid lapisan atas_2
+  - first:
+      213: 356308785914184652
+    second: Asteroid lapisan atas_3
+  - first:
+      213: 2728577303836869764
+    second: Asteroid lapisan atas_4
+  - first:
+      213: 5395508385084469333
+    second: Asteroid lapisan atas_5
+  - first:
+      213: -7343133999071957454
+    second: Asteroid lapisan atas_6
+  - first:
+      213: -5469478656060673359
+    second: Asteroid lapisan atas_7
+  - first:
+      213: 4704878117540392761
+    second: Asteroid lapisan atas_8
+  - first:
+      213: 2738487005434095536
+    second: Asteroid lapisan atas_9
+  - first:
+      213: 6338863254856682350
+    second: Asteroid lapisan atas_10
+  - first:
+      213: -6843788665971120349
+    second: Asteroid lapisan atas_11
+  - first:
+      213: 975477364551240582
+    second: Asteroid lapisan atas_12
+  - first:
+      213: -5742514984734626275
+    second: Asteroid lapisan atas_13
+  - first:
+      213: -3416493882073611866
+    second: Asteroid lapisan atas_14
+  - first:
+      213: 5538309825423578539
+    second: Asteroid lapisan atas_15
+  - first:
+      213: -7678311181553623837
+    second: Asteroid lapisan atas_16
+  - first:
+      213: 6506439285720099400
+    second: Asteroid lapisan atas_17
+  - first:
+      213: -2566301129702043477
+    second: Asteroid lapisan atas_18
+  - first:
+      213: -843925412779175714
+    second: Asteroid lapisan atas_19
+  - first:
+      213: -7544206217040474309
+    second: Asteroid lapisan atas_20
+  - first:
+      213: -4284709237331352777
+    second: Asteroid lapisan atas_21
+  - first:
+      213: 1259618115599281032
+    second: Asteroid lapisan atas_22
+  - first:
+      213: -2450401825555519669
+    second: Asteroid lapisan atas_23
+  - first:
+      213: -4950884452333403986
+    second: Asteroid lapisan atas_24
+  - first:
+      213: -6780765296664208676
+    second: Asteroid lapisan atas_25
+  - first:
+      213: -3061483014827330354
+    second: Asteroid lapisan atas_26
+  - first:
+      213: 6425404211604478926
+    second: Asteroid lapisan atas_27
+  - first:
+      213: -7892147213381598256
+    second: Asteroid lapisan atas_28
+  - first:
+      213: -5289823472172294943
+    second: Asteroid lapisan atas_29
+  - first:
+      213: -5593967840181731591
+    second: Asteroid lapisan atas_30
+  - first:
+      213: 9117885581264415686
+    second: Asteroid lapisan atas_31
+  - first:
+      213: -7814879743026776162
+    second: Asteroid lapisan atas_32
+  - first:
+      213: 3675978740652917009
+    second: Asteroid lapisan atas_33
+  - first:
+      213: -3600626732664745618
+    second: Asteroid lapisan atas_34
+  - first:
+      213: 1319291100986959241
+    second: Asteroid lapisan atas_35
+  - first:
+      213: 7421312881649708090
+    second: Asteroid lapisan atas_36
+  - first:
+      213: 4074056492814235408
+    second: Asteroid lapisan atas_37
+  - first:
+      213: 2010192291000121765
+    second: Asteroid lapisan atas_38
+  - first:
+      213: -6562537430197845701
+    second: Asteroid lapisan atas_39
+  - first:
+      213: 7386397504243278035
+    second: Asteroid lapisan atas_40
+  - first:
+      213: -2543275567956293874
+    second: Asteroid lapisan atas_41
+  - first:
+      213: 310408668922450060
+    second: Asteroid lapisan atas_42
+  - first:
+      213: -2628403009463391146
+    second: Asteroid lapisan atas_43
+  - first:
+      213: 8663648305956876337
+    second: Asteroid lapisan atas_44
+  - first:
+      213: -4793985898705484603
+    second: Asteroid lapisan atas_45
+  - first:
+      213: -4023718105679807927
+    second: Asteroid lapisan atas_46
+  - first:
+      213: -2992429721265775785
+    second: Asteroid lapisan atas_47
+  - first:
+      213: 8782926422721735681
+    second: Asteroid lapisan atas_48
+  - first:
+      213: 9084640938459526971
+    second: Asteroid lapisan atas_49
+  - first:
+      213: -6689083788603461035
+    second: Asteroid lapisan atas_50
+  - first:
+      213: 122427265877912364
+    second: Asteroid lapisan atas_51
+  - first:
+      213: 7965884125529027251
+    second: Asteroid lapisan atas_52
+  - first:
+      213: -7786220234574472002
+    second: Asteroid lapisan atas_53
+  - first:
+      213: 8411750730903835410
+    second: Asteroid lapisan atas_54
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 2048
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_0
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 5359
+        width: 98
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe5119f72e3a4faa0800000000000000
+      internalID: -6128092999746251281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_1
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 5381
+        width: 143
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f9c2e82032674010800000000000000
+      internalID: 1173014186937207283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_2
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 5201
+        width: 264
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50bd59bca57ead1c0800000000000000
+      internalID: -4478012502317868283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_3
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 5432
+        width: 80
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc304c6f3fcd1f400800000000000000
+      internalID: 356308785914184652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_4
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 5159
+        width: 218
+        height: 299
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 484c369e99addd520800000000000000
+      internalID: 2728577303836869764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_5
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 5199
+        width: 98
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 550f9932a42b0ea40800000000000000
+      internalID: 5395508385084469333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_6
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 4220
+        width: 487
+        height: 967
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23ee83f8882f71a90800000000000000
+      internalID: -7343133999071957454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_7
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 4952
+        width: 196
+        height: 196
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b23cee04228814b0800000000000000
+      internalID: -5469478656060673359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_8
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 4662
+        width: 331
+        height: 329
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93fe08b68b51b4140800000000000000
+      internalID: 4704878117540392761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_9
+      rect:
+        serializedVersion: 2
+        x: 887
+        y: 4732
+        width: 193
+        height: 307
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b72cec1c6f010620800000000000000
+      internalID: 2738487005434095536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_10
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 4505
+        width: 102
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6b4289ab8a28f750800000000000000
+      internalID: 6338863254856682350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_11
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 4489
+        width: 151
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32762fed77af501a0800000000000000
+      internalID: -6843788665971120349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_12
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 4174
+        width: 111
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68bc288ae77998d00800000000000000
+      internalID: 975477364551240582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_13
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 4253
+        width: 204
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1ee889eb0d7e40b0800000000000000
+      internalID: -5742514984734626275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_14
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 4134
+        width: 151
+        height: 191
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a105b56aec2690d0800000000000000
+      internalID: -3416493882073611866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_15
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 4034
+        width: 191
+        height: 218
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba59d6861770cdc40800000000000000
+      internalID: 5538309825423578539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_16
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 4110
+        width: 120
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ec169c69a8217590800000000000000
+      internalID: -7678311181553623837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_17
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 3841
+        width: 363
+        height: 334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84a2ef9ce048b4a50800000000000000
+      internalID: 6506439285720099400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_18
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 3330
+        width: 410
+        height: 689
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba01d6928baa26cd0800000000000000
+      internalID: -2566301129702043477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_19
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 3433
+        width: 239
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed05f52fe46c944f0800000000000000
+      internalID: -843925412779175714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_20
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 2988
+        width: 604
+        height: 896
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3f4201aa689d4790800000000000000
+      internalID: -7544206217040474309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_21
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 3055
+        width: 193
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 733a70766a7a984c0800000000000000
+      internalID: -4284709237331352777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_22
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 3134
+        width: 187
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88b21fc90001b7110800000000000000
+      internalID: 1259618115599281032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_23
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 2872
+        width: 100
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b476bceb58c6efdd0800000000000000
+      internalID: -2450401825555519669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_24
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 2863
+        width: 173
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea0c9ae42dcea4bb0800000000000000
+      internalID: -4950884452333403986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_25
+      rect:
+        serializedVersion: 2
+        x: 774
+        y: 2845
+        width: 245
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cda980383e1e5e1a0800000000000000
+      internalID: -6780765296664208676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_26
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 2704
+        width: 245
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec4335f1b6d6385d0800000000000000
+      internalID: -3061483014827330354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_27
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 2697
+        width: 173
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecbdbf2561f9b2950800000000000000
+      internalID: 6425404211604478926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_28
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 2743
+        width: 100
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d30d4f7ce5797290800000000000000
+      internalID: -7892147213381598256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_29
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 1816
+        width: 604
+        height: 896
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ec95a82495c696b0800000000000000
+      internalID: -5289823472172294943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_30
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 2415
+        width: 187
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fe320133eb3e52b0800000000000000
+      internalID: -5593967840181731591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_31
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 1714
+        width: 493
+        height: 828
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cbebe5a0ac398e70800000000000000
+      internalID: 9117885581264415686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_32
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 2430
+        width: 193
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e973e7a5748fb8390800000000000000
+      internalID: -7814879743026776162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_33
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 2070
+        width: 239
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 111418e3033b30330800000000000000
+      internalID: 3675978740652917009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_34
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1375
+        width: 151
+        height: 191
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e611eb64011080ec0800000000000000
+      internalID: -3600626732664745618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_35
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 1525
+        width: 363
+        height: 334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98569a534401f4210800000000000000
+      internalID: 1319291100986959241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_36
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 1483
+        width: 120
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3ce2cdfebccdf660800000000000000
+      internalID: 7421312881649708090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_37
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 1448
+        width: 191
+        height: 218
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 017f0118bc4f98830800000000000000
+      internalID: 4074056492814235408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_38
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 1369
+        width: 111
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a97a4bfc33a5eb10800000000000000
+      internalID: 2010192291000121765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_39
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 977
+        width: 199
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b314adf1afe2de4a0800000000000000
+      internalID: -6562537430197845701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_40
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 1068
+        width: 148
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d0a0423561c18660800000000000000
+      internalID: 7386397504243278035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_41
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 1200
+        width: 204
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e070906885874bcd0800000000000000
+      internalID: -2543275567956293874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_42
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 513
+        width: 479
+        height: 967
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c80135e2a0bce4400800000000000000
+      internalID: 310408668922450060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_43
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 1104
+        width: 102
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65ced568369068bd0800000000000000
+      internalID: -2628403009463391146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_44
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 196
+        width: 428
+        height: 854
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13079777b367b3870800000000000000
+      internalID: 8663648305956876337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_45
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 709
+        width: 340
+        height: 329
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c48d698937587db0800000000000000
+      internalID: -4793985898705484603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_46
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 552
+        width: 196
+        height: 196
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94ab5a293b1e828c0800000000000000
+      internalID: -4023718105679807927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_47
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 501
+        width: 125
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75bd1a8e501c876d0800000000000000
+      internalID: -2992429721265775785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_48
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 401
+        width: 98
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10ca8ba2c0933e970800000000000000
+      internalID: 8782926422721735681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_49
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 242
+        width: 264
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b37f9d01dc0231e70800000000000000
+      internalID: 9084640938459526971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_50
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 210
+        width: 143
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 552777b0cb99b23a0800000000000000
+      internalID: -6689083788603461035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_51
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 236
+        width: 98
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2ba97d13f2f2b100800000000000000
+      internalID: 122427265877912364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_52
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 319
+        width: 187
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b2b41838618c8e60800000000000000
+      internalID: 7965884125529027251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_53
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 29
+        width: 200
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebcda3723f9c1f390800000000000000
+      internalID: -7786220234574472002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asteroid lapisan atas_54
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 32
+        width: 179
+        height: 204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 213d7aee8ba8cb470800000000000000
+      internalID: 8411750730903835410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Asteroid lapisan atas_0: -6128092999746251281
+      Asteroid lapisan atas_1: 1173014186937207283
+      Asteroid lapisan atas_10: 6338863254856682350
+      Asteroid lapisan atas_11: -6843788665971120349
+      Asteroid lapisan atas_12: 975477364551240582
+      Asteroid lapisan atas_13: -5742514984734626275
+      Asteroid lapisan atas_14: -3416493882073611866
+      Asteroid lapisan atas_15: 5538309825423578539
+      Asteroid lapisan atas_16: -7678311181553623837
+      Asteroid lapisan atas_17: 6506439285720099400
+      Asteroid lapisan atas_18: -2566301129702043477
+      Asteroid lapisan atas_19: -843925412779175714
+      Asteroid lapisan atas_2: -4478012502317868283
+      Asteroid lapisan atas_20: -7544206217040474309
+      Asteroid lapisan atas_21: -4284709237331352777
+      Asteroid lapisan atas_22: 1259618115599281032
+      Asteroid lapisan atas_23: -2450401825555519669
+      Asteroid lapisan atas_24: -4950884452333403986
+      Asteroid lapisan atas_25: -6780765296664208676
+      Asteroid lapisan atas_26: -3061483014827330354
+      Asteroid lapisan atas_27: 6425404211604478926
+      Asteroid lapisan atas_28: -7892147213381598256
+      Asteroid lapisan atas_29: -5289823472172294943
+      Asteroid lapisan atas_3: 356308785914184652
+      Asteroid lapisan atas_30: -5593967840181731591
+      Asteroid lapisan atas_31: 9117885581264415686
+      Asteroid lapisan atas_32: -7814879743026776162
+      Asteroid lapisan atas_33: 3675978740652917009
+      Asteroid lapisan atas_34: -3600626732664745618
+      Asteroid lapisan atas_35: 1319291100986959241
+      Asteroid lapisan atas_36: 7421312881649708090
+      Asteroid lapisan atas_37: 4074056492814235408
+      Asteroid lapisan atas_38: 2010192291000121765
+      Asteroid lapisan atas_39: -6562537430197845701
+      Asteroid lapisan atas_4: 2728577303836869764
+      Asteroid lapisan atas_40: 7386397504243278035
+      Asteroid lapisan atas_41: -2543275567956293874
+      Asteroid lapisan atas_42: 310408668922450060
+      Asteroid lapisan atas_43: -2628403009463391146
+      Asteroid lapisan atas_44: 8663648305956876337
+      Asteroid lapisan atas_45: -4793985898705484603
+      Asteroid lapisan atas_46: -4023718105679807927
+      Asteroid lapisan atas_47: -2992429721265775785
+      Asteroid lapisan atas_48: 8782926422721735681
+      Asteroid lapisan atas_49: 9084640938459526971
+      Asteroid lapisan atas_5: 5395508385084469333
+      Asteroid lapisan atas_50: -6689083788603461035
+      Asteroid lapisan atas_51: 122427265877912364
+      Asteroid lapisan atas_52: 7965884125529027251
+      Asteroid lapisan atas_53: -7786220234574472002
+      Asteroid lapisan atas_54: 8411750730903835410
+      Asteroid lapisan atas_6: -7343133999071957454
+      Asteroid lapisan atas_7: -5469478656060673359
+      Asteroid lapisan atas_8: 4704878117540392761
+      Asteroid lapisan atas_9: 2738487005434095536
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

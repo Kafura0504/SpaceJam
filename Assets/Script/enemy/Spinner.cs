@@ -13,6 +13,7 @@ public class Spinner : MonoBehaviour
     private float delay;
     private EnemyStat Mystat;
     private bool isdoneShot = true;
+    private moveCenter move;
     Vector2 faceleft;
     Vector2 faceright;
     Vector2 facebot;
@@ -22,11 +23,15 @@ public class Spinner : MonoBehaviour
     {
         delay = delayShot;
         Mystat = GetComponent<EnemyStat>();
+        move = GetComponent<moveCenter>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (move.iscenter)
+        {
+            
         if (isdoneShot)
         {    
         if (delay <= 0)
@@ -37,6 +42,7 @@ public class Spinner : MonoBehaviour
         else
         {
             delay -= Time.deltaTime;
+        }
         }
         }
         faceleft = firePointleft.right*-1;
