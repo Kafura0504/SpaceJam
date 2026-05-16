@@ -22,8 +22,6 @@ public class PlayerShooter : MonoBehaviour
     [Header("Fire Rate")]
     [Tooltip("Jumlah tembakan per detik")]
     public float fireRate = 8f;
-
-    // ── Private ──────────────────────────────────────────────────────────────
     private float _fireCooldown = 0f;
     private Camera _cam;
 
@@ -40,7 +38,6 @@ public class PlayerShooter : MonoBehaviour
         if (_fireCooldown > 0f)
             _fireCooldown -= Time.deltaTime;
 
-        // Tembak saat Mouse Button 1 ditekan dan cooldown habis
         if (Input.GetMouseButton(0) && _fireCooldown <= 0f)
         {
             Shoot();

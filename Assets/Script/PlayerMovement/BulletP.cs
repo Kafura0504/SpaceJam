@@ -10,26 +10,18 @@ public class BulletP : MonoBehaviour
 
     [Header("Visual (Opsional)")]
     public GameObject hitEffectPrefab;
-
-    private PlayerStat stat;
+    public Rigidbody2D rb;
 
     void Awake()
     {
-        var rb          = GetComponent<Rigidbody2D>();
-        rb.bodyType     = RigidbodyType2D.Kinematic;
-        rb.gravityScale = 0f;
-
-        stat = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStat>();
-        damage = stat.damage;
-        speed = stat.bulletVelocity;
+        rb= GetComponent<Rigidbody2D>();
 
         Destroy(gameObject, lifetime);
     }
 
-    void Update()
+    public void SetDirection(Vector2 dir)
     {
-        // transform.up = arah tembak (di-set via rotasi saat Instantiate)
-        transform.position += transform.up * speed * Time.deltaTime;
+        rb.linearVelocity = dir.normalized * speed;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -41,7 +33,7 @@ public class BulletP : MonoBehaviour
         {
             Destroy(gameObject);
             Destroy(other.gameObject);
-            
+
             if (hitEffectPrefab != null)
             Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
         }

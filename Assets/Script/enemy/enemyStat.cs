@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyStat : MonoBehaviour
@@ -32,9 +33,14 @@ public class EnemyStat : MonoBehaviour
         }
     }
     void Die()
-    {
-        // give EXP
-        // play effect
-        Destroy(gameObject);
-    }
+{
+    Exp playerEXP =
+        GameObject.FindGameObjectWithTag("Player")
+        .GetComponent<Exp>();
+
+    playerEXP.AddEXP(exp);
+
+    Destroy(gameObject);
+}
+
 }
