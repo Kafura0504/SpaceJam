@@ -1,0 +1,2197 @@
+fileFormatVersion: 2
+guid: fdb1d4306076b644c95af78f0fa19ac1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6877178848564508354
+    second: T_smoke41_flipbook_0
+  - first:
+      213: -2772796529497820973
+    second: T_smoke41_flipbook_1
+  - first:
+      213: -905475151344309030
+    second: T_smoke41_flipbook_2
+  - first:
+      213: -3065589991674545824
+    second: T_smoke41_flipbook_3
+  - first:
+      213: -6533922129731633235
+    second: T_smoke41_flipbook_4
+  - first:
+      213: -3205819322852226858
+    second: T_smoke41_flipbook_5
+  - first:
+      213: -8707002131093923851
+    second: T_smoke41_flipbook_6
+  - first:
+      213: -8448112839776175563
+    second: T_smoke41_flipbook_7
+  - first:
+      213: 8695089446577534314
+    second: T_smoke41_flipbook_8
+  - first:
+      213: -3769651854056489389
+    second: T_smoke41_flipbook_9
+  - first:
+      213: 5698686621392070212
+    second: T_smoke41_flipbook_10
+  - first:
+      213: -4826784982858529231
+    second: T_smoke41_flipbook_11
+  - first:
+      213: 6117119707368470194
+    second: T_smoke41_flipbook_12
+  - first:
+      213: -278762452630119901
+    second: T_smoke41_flipbook_13
+  - first:
+      213: 8417411881206679747
+    second: T_smoke41_flipbook_14
+  - first:
+      213: -5172371181312694278
+    second: T_smoke41_flipbook_15
+  - first:
+      213: -8256614940399828871
+    second: T_smoke41_flipbook_16
+  - first:
+      213: -5089461485021467859
+    second: T_smoke41_flipbook_17
+  - first:
+      213: 1545796947466383244
+    second: T_smoke41_flipbook_18
+  - first:
+      213: -9208096429315836394
+    second: T_smoke41_flipbook_19
+  - first:
+      213: 2290235129355624963
+    second: T_smoke41_flipbook_20
+  - first:
+      213: -3616875557418854785
+    second: T_smoke41_flipbook_21
+  - first:
+      213: 3668125833627285766
+    second: T_smoke41_flipbook_22
+  - first:
+      213: 7909865633819592808
+    second: T_smoke41_flipbook_23
+  - first:
+      213: 460407462157199183
+    second: T_smoke41_flipbook_24
+  - first:
+      213: 1446280980902427945
+    second: T_smoke41_flipbook_25
+  - first:
+      213: -5496001542916210606
+    second: T_smoke41_flipbook_26
+  - first:
+      213: -8914979144259858415
+    second: T_smoke41_flipbook_27
+  - first:
+      213: 4784516791040205840
+    second: T_smoke41_flipbook_28
+  - first:
+      213: 6649101375374748605
+    second: T_smoke41_flipbook_29
+  - first:
+      213: -6819900399949930363
+    second: T_smoke41_flipbook_30
+  - first:
+      213: 1096526543259568538
+    second: T_smoke41_flipbook_31
+  - first:
+      213: -8542242375808792537
+    second: T_smoke41_flipbook_32
+  - first:
+      213: 4873739329693658296
+    second: T_smoke41_flipbook_33
+  - first:
+      213: 5066703264648393044
+    second: T_smoke41_flipbook_34
+  - first:
+      213: 2989488036026240248
+    second: T_smoke41_flipbook_35
+  - first:
+      213: 4675284146854757397
+    second: T_smoke41_flipbook_36
+  - first:
+      213: 5347169000548936058
+    second: T_smoke41_flipbook_37
+  - first:
+      213: -1854902255616694785
+    second: T_smoke41_flipbook_38
+  - first:
+      213: 7377795270267636769
+    second: T_smoke41_flipbook_39
+  - first:
+      213: 3792702880818693591
+    second: T_smoke41_flipbook_40
+  - first:
+      213: 4290155444995268118
+    second: T_smoke41_flipbook_41
+  - first:
+      213: -5784011305007455235
+    second: T_smoke41_flipbook_42
+  - first:
+      213: -6211540492105656290
+    second: T_smoke41_flipbook_43
+  - first:
+      213: 1766458428643927676
+    second: T_smoke41_flipbook_44
+  - first:
+      213: -3590705234070820000
+    second: T_smoke41_flipbook_45
+  - first:
+      213: 1270298457576174438
+    second: T_smoke41_flipbook_46
+  - first:
+      213: 2258732223861458662
+    second: T_smoke41_flipbook_47
+  - first:
+      213: -8339264271035103539
+    second: T_smoke41_flipbook_48
+  - first:
+      213: -1760746962168733233
+    second: T_smoke41_flipbook_49
+  - first:
+      213: -6806274882159821514
+    second: T_smoke41_flipbook_50
+  - first:
+      213: 4453085500633508300
+    second: T_smoke41_flipbook_51
+  - first:
+      213: 2356063160133022932
+    second: T_smoke41_flipbook_52
+  - first:
+      213: 909351068600163042
+    second: T_smoke41_flipbook_53
+  - first:
+      213: 8810317865506739237
+    second: T_smoke41_flipbook_54
+  - first:
+      213: -2287417125394353985
+    second: T_smoke41_flipbook_55
+  - first:
+      213: -5953465663578583179
+    second: T_smoke41_flipbook_56
+  - first:
+      213: -518860463956981771
+    second: T_smoke41_flipbook_57
+  - first:
+      213: 877869082270214690
+    second: T_smoke41_flipbook_58
+  - first:
+      213: 3967307625379907162
+    second: T_smoke41_flipbook_59
+  - first:
+      213: 9036593984594826358
+    second: T_smoke41_flipbook_60
+  - first:
+      213: -1292818300212081008
+    second: T_smoke41_flipbook_61
+  - first:
+      213: 6027095807947845697
+    second: T_smoke41_flipbook_62
+  - first:
+      213: -8671728867815910634
+    second: T_smoke41_flipbook_63
+  - first:
+      213: 8535702851813343707
+    second: T_smoke41_flipbook_64
+  - first:
+      213: 8794584610860668375
+    second: T_smoke41_flipbook_65
+  - first:
+      213: 2734162830211265897
+    second: T_smoke41_flipbook_66
+  - first:
+      213: 9031352223141713192
+    second: T_smoke41_flipbook_67
+  - first:
+      213: -1123557281429134587
+    second: T_smoke41_flipbook_68
+  - first:
+      213: -8496481167132341959
+    second: T_smoke41_flipbook_69
+  - first:
+      213: 3488443097050980262
+    second: T_smoke41_flipbook_70
+  - first:
+      213: 820822043867005936
+    second: T_smoke41_flipbook_71
+  - first:
+      213: -2883216378383745442
+    second: T_smoke41_flipbook_72
+  - first:
+      213: -2762763368650728199
+    second: T_smoke41_flipbook_73
+  - first:
+      213: 7608148147917156620
+    second: T_smoke41_flipbook_74
+  - first:
+      213: 322831533787900867
+    second: T_smoke41_flipbook_75
+  - first:
+      213: 413565737993190637
+    second: T_smoke41_flipbook_76
+  - first:
+      213: 8390959058915447986
+    second: T_smoke41_flipbook_77
+  - first:
+      213: -1452780901419448831
+    second: T_smoke41_flipbook_78
+  - first:
+      213: 3483386441354474386
+    second: T_smoke41_flipbook_79
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_0
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 1868
+        width: 124
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e398b7a264a5f80a0800000000000000
+      internalID: -6877178848564508354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_1
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 1868
+        width: 125
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d0b8d05f3c0589d0800000000000000
+      internalID: -2772796529497820973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_2
+      rect:
+        serializedVersion: 2
+        x: 829
+        y: 1868
+        width: 112
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adced23b52b1f63f0800000000000000
+      internalID: -905475151344309030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_3
+      rect:
+        serializedVersion: 2
+        x: 878
+        y: 1985
+        width: 16
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 069fe3f0526d475d0800000000000000
+      internalID: -3065589991674545824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_4
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 1870
+        width: 124
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: daf3843f078d255a0800000000000000
+      internalID: -6533922129731633235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_5
+      rect:
+        serializedVersion: 2
+        x: 1109
+        y: 1984
+        width: 15
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d84f4f9f44a283d0800000000000000
+      internalID: -3205819322852226858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_6
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 1985
+        width: 17
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f7d39581b38a2780800000000000000
+      internalID: -8707002131093923851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_7
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 1870
+        width: 123
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53a79bad12642ca80800000000000000
+      internalID: -8448112839776175563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_8
+      rect:
+        serializedVersion: 2
+        x: 1389
+        y: 1981
+        width: 21
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a65708978c92ba870800000000000000
+      internalID: 8695089446577534314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_9
+      rect:
+        serializedVersion: 2
+        x: 1583
+        y: 1867
+        width: 128
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35ef1187c918fabc0800000000000000
+      internalID: -3769651854056489389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_10
+      rect:
+        serializedVersion: 2
+        x: 1837
+        y: 1867
+        width: 131
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 446685a0a4dc51f40800000000000000
+      internalID: 5698686621392070212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_11
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 1872
+        width: 122
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1360789a1a0d30db0800000000000000
+      internalID: -4826784982858529231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_12
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 1955
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b63d36c6ff54e450800000000000000
+      internalID: 6117119707368470194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_13
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 1924
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32ad34ab603a12cf0800000000000000
+      internalID: -278762452630119901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_14
+      rect:
+        serializedVersion: 2
+        x: 937
+        y: 1920
+        width: 6
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c80a733287a0d470800000000000000
+      internalID: 8417411881206679747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_15
+      rect:
+        serializedVersion: 2
+        x: 1193
+        y: 1919
+        width: 6
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af7a363a0db0838b0800000000000000
+      internalID: -5172371181312694278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_16
+      rect:
+        serializedVersion: 2
+        x: 1448
+        y: 1912
+        width: 7
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9700946057c9a6d80800000000000000
+      internalID: -8256614940399828871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_17
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 1901
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2b63479eb99e59b0800000000000000
+      internalID: -5089461485021467859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_18
+      rect:
+        serializedVersion: 2
+        x: 1108
+        y: 1869
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8fed9c3226c37510800000000000000
+      internalID: 1545796947466383244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_19
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 1869
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61636198515463080800000000000000
+      internalID: -9208096429315836394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_20
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 1869
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 302ec5947bc88cf10800000000000000
+      internalID: 2290235129355624963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_21
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 1607
+        width: 134
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f769143f7d64ecdc0800000000000000
+      internalID: -3616875557418854785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_22
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 1605
+        width: 138
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 609b9c8d20dc7e230800000000000000
+      internalID: 3668125833627285766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_23
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 1604
+        width: 141
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86803ecb2ec75cd60800000000000000
+      internalID: 7909865633819592808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_24
+      rect:
+        serializedVersion: 2
+        x: 1061
+        y: 1601
+        width: 145
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f47a1d1c522b36600800000000000000
+      internalID: 460407462157199183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_25
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 1599
+        width: 147
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92db710b3e8321410800000000000000
+      internalID: 1446280980902427945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_26
+      rect:
+        serializedVersion: 2
+        x: 1396
+        y: 1742
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2500b7d37b74ab3b0800000000000000
+      internalID: -5496001542916210606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_27
+      rect:
+        serializedVersion: 2
+        x: 1570
+        y: 1598
+        width: 150
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 110106ea3b1a74480800000000000000
+      internalID: -8914979144259858415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_28
+      rect:
+        serializedVersion: 2
+        x: 1654
+        y: 1744
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 014e7d70ca4066240800000000000000
+      internalID: 4784516791040205840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_29
+      rect:
+        serializedVersion: 2
+        x: 1825
+        y: 1596
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbbe5c2f87a564c50800000000000000
+      internalID: 6649101375374748605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_30
+      rect:
+        serializedVersion: 2
+        x: 1911
+        y: 1745
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 580a07938b8da51a0800000000000000
+      internalID: -6819900399949930363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_31
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 1609
+        width: 133
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9906c9d415a73f00800000000000000
+      internalID: 1096526543259568538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_32
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 1339
+        width: 156
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 728c0a461dbd37980800000000000000
+      internalID: -8542242375808792537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_33
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 1337
+        width: 159
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bcad32291003a340800000000000000
+      internalID: 4873739329693658296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_34
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 1336
+        width: 161
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 451fdaf46cb805640800000000000000
+      internalID: 5066703264648393044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_35
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 1336
+        width: 163
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fccf9f978bcc7920800000000000000
+      internalID: 2989488036026240248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_36
+      rect:
+        serializedVersion: 2
+        x: 1052
+        y: 1334
+        width: 166
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5140b4d2922f1e040800000000000000
+      internalID: 4675284146854757397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_37
+      rect:
+        serializedVersion: 2
+        x: 1307
+        y: 1333
+        width: 168
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7923bf10e5f43a40800000000000000
+      internalID: 5347169000548936058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_38
+      rect:
+        serializedVersion: 2
+        x: 1562
+        y: 1331
+        width: 171
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff565e8e9301246e0800000000000000
+      internalID: -1854902255616694785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_39
+      rect:
+        serializedVersion: 2
+        x: 1818
+        y: 1331
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12c0cd585b1336660800000000000000
+      internalID: 7377795270267636769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_40
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 1073
+        width: 175
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d58ccdec2362a430800000000000000
+      internalID: 3792702880818693591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_41
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 1072
+        width: 177
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61e9622a5a1b98b30800000000000000
+      internalID: 4290155444995268118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_42
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 1071
+        width: 180
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df3ef24fc501bbfa0800000000000000
+      internalID: -5784011305007455235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_43
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 1069
+        width: 182
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e18561425dc2cc9a0800000000000000
+      internalID: -6211540492105656290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_44
+      rect:
+        serializedVersion: 2
+        x: 1046
+        y: 1068
+        width: 184
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c76e0dde498b38810800000000000000
+      internalID: 1766458428643927676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_45
+      rect:
+        serializedVersion: 2
+        x: 1301
+        y: 1068
+        width: 187
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06ba21e2d904b2ec0800000000000000
+      internalID: -3590705234070820000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_46
+      rect:
+        serializedVersion: 2
+        x: 1557
+        y: 1066
+        width: 188
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 663fd8287b101a110800000000000000
+      internalID: 1270298457576174438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_47
+      rect:
+        serializedVersion: 2
+        x: 1811
+        y: 1065
+        width: 192
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e68df58df0a85f10800000000000000
+      internalID: 2258732223861458662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_48
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 808
+        width: 194
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc688dc245bf44c80800000000000000
+      internalID: -8339264271035103539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_49
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 807
+        width: 196
+        height: 191
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc1a59c77f19097e0800000000000000
+      internalID: -1760746962168733233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_50
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 806
+        width: 198
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63d333d4e014b81a0800000000000000
+      internalID: -6806274882159821514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_51
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 805
+        width: 199
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc9e3bb5ba98ccd30800000000000000
+      internalID: 4453085500633508300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_52
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 804
+        width: 202
+        height: 195
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d4fc1016fa62b020800000000000000
+      internalID: 2356063160133022932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_53
+      rect:
+        serializedVersion: 2
+        x: 1296
+        y: 803
+        width: 204
+        height: 196
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ead80c9af9ae9c00800000000000000
+      internalID: 909351068600163042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_54
+      rect:
+        serializedVersion: 2
+        x: 1552
+        y: 801
+        width: 206
+        height: 199
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5249ecb6b69844a70800000000000000
+      internalID: 8810317865506739237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_55
+      rect:
+        serializedVersion: 2
+        x: 1808
+        y: 800
+        width: 207
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb079b36e367140e0800000000000000
+      internalID: -2287417125394353985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_56
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 543
+        width: 209
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57fc9e3958a016da0800000000000000
+      internalID: -5953465663578583179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_57
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 542
+        width: 210
+        height: 203
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f789d53823acc8f0800000000000000
+      internalID: -518860463956981771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_58
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 540
+        width: 212
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22aa3087741de2c00800000000000000
+      internalID: 877869082270214690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_59
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 539
+        width: 212
+        height: 207
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a56c77df345be0730800000000000000
+      internalID: 3967307625379907162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_60
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 538
+        width: 213
+        height: 208
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 674d43fd95e686d70800000000000000
+      internalID: 9036593984594826358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_61
+      rect:
+        serializedVersion: 2
+        x: 1296
+        y: 537
+        width: 214
+        height: 209
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09e0cb80b9cfe0ee0800000000000000
+      internalID: -1292818300212081008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_62
+      rect:
+        serializedVersion: 2
+        x: 1552
+        y: 536
+        width: 215
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1403af354bb84a350800000000000000
+      internalID: 6027095807947845697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_63
+      rect:
+        serializedVersion: 2
+        x: 1808
+        y: 535
+        width: 216
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 613155d1a84d7a780800000000000000
+      internalID: -8671728867815910634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_64
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 277
+        width: 216
+        height: 212
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd18f960588e47670800000000000000
+      internalID: 8535702851813343707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_65
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 277
+        width: 216
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d5977d9b14ac0a70800000000000000
+      internalID: 8794584610860668375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_66
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 275
+        width: 217
+        height: 212
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 965b1dc9b92b1f520800000000000000
+      internalID: 2734162830211265897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_67
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 275
+        width: 219
+        height: 212
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 825dbcd2ffec55d70800000000000000
+      internalID: 9031352223141713192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_68
+      rect:
+        serializedVersion: 2
+        x: 1042
+        y: 274
+        width: 220
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 503ec9bfa925860f0800000000000000
+      internalID: -1123557281429134587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_69
+      rect:
+        serializedVersion: 2
+        x: 1297
+        y: 272
+        width: 222
+        height: 217
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 939c740156f661a80800000000000000
+      internalID: -8496481167132341959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_70
+      rect:
+        serializedVersion: 2
+        x: 1553
+        y: 271
+        width: 224
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6af13e2a380796030800000000000000
+      internalID: 3488443097050980262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_71
+      rect:
+        serializedVersion: 2
+        x: 1809
+        y: 270
+        width: 224
+        height: 223
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f3c08ccc45246b00800000000000000
+      internalID: 820822043867005936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_72
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 13
+        width: 226
+        height: 226
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5e39d3daf1ccf7d0800000000000000
+      internalID: -2883216378383745442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_73
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 12
+        width: 227
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fc9c1d9a51b8a9d0800000000000000
+      internalID: -2762763368650728199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_74
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 10
+        width: 229
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c01f52b4e62959960800000000000000
+      internalID: 7608148147917156620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_75
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 9
+        width: 230
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cbe8bdc19dea7400800000000000000
+      internalID: 322831533787900867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_76
+      rect:
+        serializedVersion: 2
+        x: 1036
+        y: 7
+        width: 232
+        height: 241
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dec3b58f8d74db500800000000000000
+      internalID: 413565737993190637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_77
+      rect:
+        serializedVersion: 2
+        x: 1290
+        y: 6
+        width: 235
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b4508f8ecca27470800000000000000
+      internalID: 8390959058915447986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_78
+      rect:
+        serializedVersion: 2
+        x: 1545
+        y: 5
+        width: 236
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1060c62a77fa6dbe0800000000000000
+      internalID: -1452780901419448831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_smoke41_flipbook_79
+      rect:
+        serializedVersion: 2
+        x: 1799
+        y: 4
+        width: 240
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 293785c3389775030800000000000000
+      internalID: 3483386441354474386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      T_smoke41_flipbook_0: -6877178848564508354
+      T_smoke41_flipbook_1: -2772796529497820973
+      T_smoke41_flipbook_10: 5698686621392070212
+      T_smoke41_flipbook_11: -4826784982858529231
+      T_smoke41_flipbook_12: 6117119707368470194
+      T_smoke41_flipbook_13: -278762452630119901
+      T_smoke41_flipbook_14: 8417411881206679747
+      T_smoke41_flipbook_15: -5172371181312694278
+      T_smoke41_flipbook_16: -8256614940399828871
+      T_smoke41_flipbook_17: -5089461485021467859
+      T_smoke41_flipbook_18: 1545796947466383244
+      T_smoke41_flipbook_19: -9208096429315836394
+      T_smoke41_flipbook_2: -905475151344309030
+      T_smoke41_flipbook_20: 2290235129355624963
+      T_smoke41_flipbook_21: -3616875557418854785
+      T_smoke41_flipbook_22: 3668125833627285766
+      T_smoke41_flipbook_23: 7909865633819592808
+      T_smoke41_flipbook_24: 460407462157199183
+      T_smoke41_flipbook_25: 1446280980902427945
+      T_smoke41_flipbook_26: -5496001542916210606
+      T_smoke41_flipbook_27: -8914979144259858415
+      T_smoke41_flipbook_28: 4784516791040205840
+      T_smoke41_flipbook_29: 6649101375374748605
+      T_smoke41_flipbook_3: -3065589991674545824
+      T_smoke41_flipbook_30: -6819900399949930363
+      T_smoke41_flipbook_31: 1096526543259568538
+      T_smoke41_flipbook_32: -8542242375808792537
+      T_smoke41_flipbook_33: 4873739329693658296
+      T_smoke41_flipbook_34: 5066703264648393044
+      T_smoke41_flipbook_35: 2989488036026240248
+      T_smoke41_flipbook_36: 4675284146854757397
+      T_smoke41_flipbook_37: 5347169000548936058
+      T_smoke41_flipbook_38: -1854902255616694785
+      T_smoke41_flipbook_39: 7377795270267636769
+      T_smoke41_flipbook_4: -6533922129731633235
+      T_smoke41_flipbook_40: 3792702880818693591
+      T_smoke41_flipbook_41: 4290155444995268118
+      T_smoke41_flipbook_42: -5784011305007455235
+      T_smoke41_flipbook_43: -6211540492105656290
+      T_smoke41_flipbook_44: 1766458428643927676
+      T_smoke41_flipbook_45: -3590705234070820000
+      T_smoke41_flipbook_46: 1270298457576174438
+      T_smoke41_flipbook_47: 2258732223861458662
+      T_smoke41_flipbook_48: -8339264271035103539
+      T_smoke41_flipbook_49: -1760746962168733233
+      T_smoke41_flipbook_5: -3205819322852226858
+      T_smoke41_flipbook_50: -6806274882159821514
+      T_smoke41_flipbook_51: 4453085500633508300
+      T_smoke41_flipbook_52: 2356063160133022932
+      T_smoke41_flipbook_53: 909351068600163042
+      T_smoke41_flipbook_54: 8810317865506739237
+      T_smoke41_flipbook_55: -2287417125394353985
+      T_smoke41_flipbook_56: -5953465663578583179
+      T_smoke41_flipbook_57: -518860463956981771
+      T_smoke41_flipbook_58: 877869082270214690
+      T_smoke41_flipbook_59: 3967307625379907162
+      T_smoke41_flipbook_6: -8707002131093923851
+      T_smoke41_flipbook_60: 9036593984594826358
+      T_smoke41_flipbook_61: -1292818300212081008
+      T_smoke41_flipbook_62: 6027095807947845697
+      T_smoke41_flipbook_63: -8671728867815910634
+      T_smoke41_flipbook_64: 8535702851813343707
+      T_smoke41_flipbook_65: 8794584610860668375
+      T_smoke41_flipbook_66: 2734162830211265897
+      T_smoke41_flipbook_67: 9031352223141713192
+      T_smoke41_flipbook_68: -1123557281429134587
+      T_smoke41_flipbook_69: -8496481167132341959
+      T_smoke41_flipbook_7: -8448112839776175563
+      T_smoke41_flipbook_70: 3488443097050980262
+      T_smoke41_flipbook_71: 820822043867005936
+      T_smoke41_flipbook_72: -2883216378383745442
+      T_smoke41_flipbook_73: -2762763368650728199
+      T_smoke41_flipbook_74: 7608148147917156620
+      T_smoke41_flipbook_75: 322831533787900867
+      T_smoke41_flipbook_76: 413565737993190637
+      T_smoke41_flipbook_77: 8390959058915447986
+      T_smoke41_flipbook_78: -1452780901419448831
+      T_smoke41_flipbook_79: 3483386441354474386
+      T_smoke41_flipbook_8: 8695089446577534314
+      T_smoke41_flipbook_9: -3769651854056489389
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

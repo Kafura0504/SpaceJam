@@ -1,0 +1,741 @@
+fileFormatVersion: 2
+guid: 703d8cfe96d50ac438969ed89508d884
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 179210009132489139
+    second: T_fire_flipbook4_sm_0
+  - first:
+      213: -8606890779531716208
+    second: T_fire_flipbook4_sm_1
+  - first:
+      213: -1068481969792186910
+    second: T_fire_flipbook4_sm_2
+  - first:
+      213: 2764285490510238779
+    second: T_fire_flipbook4_sm_3
+  - first:
+      213: 6734035709822917891
+    second: T_fire_flipbook4_sm_4
+  - first:
+      213: -7637952061741382172
+    second: T_fire_flipbook4_sm_5
+  - first:
+      213: 7113576296224644934
+    second: T_fire_flipbook4_sm_6
+  - first:
+      213: 2810951794998549389
+    second: T_fire_flipbook4_sm_7
+  - first:
+      213: -7267823626059358160
+    second: T_fire_flipbook4_sm_8
+  - first:
+      213: -8548071755556488166
+    second: T_fire_flipbook4_sm_9
+  - first:
+      213: 7463406531695894214
+    second: T_fire_flipbook4_sm_10
+  - first:
+      213: 536116794165390530
+    second: T_fire_flipbook4_sm_11
+  - first:
+      213: -8221471323847763827
+    second: T_fire_flipbook4_sm_12
+  - first:
+      213: -602999113379782857
+    second: T_fire_flipbook4_sm_13
+  - first:
+      213: -2354948492510161652
+    second: T_fire_flipbook4_sm_14
+  - first:
+      213: -1795335718485916015
+    second: T_fire_flipbook4_sm_15
+  - first:
+      213: -3801188378052043253
+    second: T_fire_flipbook4_sm_16
+  - first:
+      213: 4752100507832900073
+    second: T_fire_flipbook4_sm_17
+  - first:
+      213: -3991321429939202949
+    second: T_fire_flipbook4_sm_18
+  - first:
+      213: -9012913668111812136
+    second: T_fire_flipbook4_sm_19
+  - first:
+      213: -5626620664096759279
+    second: T_fire_flipbook4_sm_20
+  - first:
+      213: -6060730354066639489
+    second: T_fire_flipbook4_sm_21
+  - first:
+      213: -5291171319632524122
+    second: T_fire_flipbook4_sm_22
+  - first:
+      213: 5778995372811983670
+    second: T_fire_flipbook4_sm_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: T_fire_flipbook4_sm_0
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 881
+        width: 117
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b95986cd8eac7200800000000000000
+      internalID: 179210009132489139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_fire_flipbook4_sm_1
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 879
+        width: 127
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0995d61ff6e2e8880800000000000000
+      internalID: -8606890779531716208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_fire_flipbook4_sm_2
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 872
+        width: 133
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e580ad3f4dfb21f0800000000000000
+      internalID: -1068481969792186910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_fire_flipbook4_sm_3
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 871
+        width: 138
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3411aff107bc5620800000000000000
+      internalID: 2764285490510238779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_fire_flipbook4_sm_4
+      rect:
+        serializedVersion: 2
+        x: 903
+        y: 871
+        width: 139
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30d5ac4bcc9147d50800000000000000
+      internalID: 6734035709822917891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_fire_flipbook4_sm_5
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 655
+        width: 144
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e54174411b800690800000000000000
+      internalID: -7637952061741382172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_fire_flipbook4_sm_6
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 655
+        width: 146
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64fdb1bb3ff78b260800000000000000
+      internalID: 7113576296224644934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_fire_flipbook4_sm_7
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 655
+        width: 148
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8b92a5b3c1820720800000000000000
+      internalID: 2810951794998549389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_fire_flipbook4_sm_8
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 655
+        width: 150
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0306a8e2be0832b90800000000000000
+      internalID: -7267823626059358160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_fire_flipbook4_sm_9
+      rect:
+        serializedVersion: 2
+        x: 898
+        y: 653
+        width: 154
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1c718727062f5980800000000000000
+      internalID: -8548071755556488166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_fire_flipbook4_sm_10
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 435
+        width: 156
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ce5010a2b8539760800000000000000
+      internalID: 7463406531695894214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_fire_flipbook4_sm_11
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 432
+        width: 163
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cc6952426ba07700800000000000000
+      internalID: 536116794165390530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_fire_flipbook4_sm_12
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 431
+        width: 171
+        height: 193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d885ef2e36777ed80800000000000000
+      internalID: -8221471323847763827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_fire_flipbook4_sm_13
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 431
+        width: 180
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73f5f1f4087b1a7f0800000000000000
+      internalID: -602999113379782857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_fire_flipbook4_sm_14
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 432
+        width: 188
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c051797b2da815fd0800000000000000
+      internalID: -2354948492510161652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_fire_flipbook4_sm_15
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 218
+        width: 194
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19683171dafa517e0800000000000000
+      internalID: -1795335718485916015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_fire_flipbook4_sm_16
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 3
+        width: 219
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0e5dd94f477f3bc0800000000000000
+      internalID: -3801188378052043253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_fire_flipbook4_sm_17
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 218
+        width: 198
+        height: 204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e95552fb3ad2f140800000000000000
+      internalID: 4752100507832900073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_fire_flipbook4_sm_18
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 3
+        width: 219
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b74d1107e4afb98c0800000000000000
+      internalID: -3991321429939202949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_fire_flipbook4_sm_19
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 218
+        width: 204
+        height: 207
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d9bee475c2bbe280800000000000000
+      internalID: -9012913668111812136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_fire_flipbook4_sm_20
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 2
+        width: 433
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 112e3ae215a3ae1b0800000000000000
+      internalID: -5626620664096759279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_fire_flipbook4_sm_21
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 218
+        width: 210
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f753e66aad5f3eba0800000000000000
+      internalID: -6060730354066639489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_fire_flipbook4_sm_22
+      rect:
+        serializedVersion: 2
+        x: 867
+        y: 218
+        width: 213
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ac8197f7bbf196b0800000000000000
+      internalID: -5291171319632524122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_fire_flipbook4_sm_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3
+        width: 218
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63b95135cad133050800000000000000
+      internalID: 5778995372811983670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      T_fire_flipbook4_sm_0: 179210009132489139
+      T_fire_flipbook4_sm_1: -8606890779531716208
+      T_fire_flipbook4_sm_10: 7463406531695894214
+      T_fire_flipbook4_sm_11: 536116794165390530
+      T_fire_flipbook4_sm_12: -8221471323847763827
+      T_fire_flipbook4_sm_13: -602999113379782857
+      T_fire_flipbook4_sm_14: -2354948492510161652
+      T_fire_flipbook4_sm_15: -1795335718485916015
+      T_fire_flipbook4_sm_16: -3801188378052043253
+      T_fire_flipbook4_sm_17: 4752100507832900073
+      T_fire_flipbook4_sm_18: -3991321429939202949
+      T_fire_flipbook4_sm_19: -9012913668111812136
+      T_fire_flipbook4_sm_2: -1068481969792186910
+      T_fire_flipbook4_sm_20: -5626620664096759279
+      T_fire_flipbook4_sm_21: -6060730354066639489
+      T_fire_flipbook4_sm_22: -5291171319632524122
+      T_fire_flipbook4_sm_23: 5778995372811983670
+      T_fire_flipbook4_sm_3: 2764285490510238779
+      T_fire_flipbook4_sm_4: 6734035709822917891
+      T_fire_flipbook4_sm_5: -7637952061741382172
+      T_fire_flipbook4_sm_6: 7113576296224644934
+      T_fire_flipbook4_sm_7: 2810951794998549389
+      T_fire_flipbook4_sm_8: -7267823626059358160
+      T_fire_flipbook4_sm_9: -8548071755556488166
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
