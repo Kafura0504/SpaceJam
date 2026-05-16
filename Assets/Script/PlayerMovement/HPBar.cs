@@ -183,7 +183,7 @@ public class HPBar : MonoBehaviour
 
     // ── Event Handler ─────────────────────────────────────────────────────────
 
-    void HandleHealthChanged(int currentHP)
+    void HandleHealthChanged(float currentHP)
     {
         if (playerHealth == null) return;
 

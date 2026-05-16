@@ -1,0 +1,4641 @@
+fileFormatVersion: 2
+guid: d83b756276d7d404e99e0b0a69fb4dc4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4456457402126274257
+    second: meteor diatas ring_0
+  - first:
+      213: -1553906255552406346
+    second: meteor diatas ring_1
+  - first:
+      213: -1959715305149978045
+    second: meteor diatas ring_2
+  - first:
+      213: 2977712396498548388
+    second: meteor diatas ring_3
+  - first:
+      213: 4037894846120090281
+    second: meteor diatas ring_4
+  - first:
+      213: -1397401587473159
+    second: meteor diatas ring_5
+  - first:
+      213: 6319068026949483511
+    second: meteor diatas ring_6
+  - first:
+      213: -2479661525257201240
+    second: meteor diatas ring_7
+  - first:
+      213: 4007830069075848487
+    second: meteor diatas ring_8
+  - first:
+      213: -5995687101920743585
+    second: meteor diatas ring_9
+  - first:
+      213: -7953154915136540170
+    second: meteor diatas ring_10
+  - first:
+      213: 8791714857208616786
+    second: meteor diatas ring_11
+  - first:
+      213: 1422457803735754622
+    second: meteor diatas ring_12
+  - first:
+      213: 2146106210388797240
+    second: meteor diatas ring_13
+  - first:
+      213: 1885101954091691391
+    second: meteor diatas ring_14
+  - first:
+      213: 737512121885088484
+    second: meteor diatas ring_15
+  - first:
+      213: -7049467946392535290
+    second: meteor diatas ring_16
+  - first:
+      213: 7107052611574003347
+    second: meteor diatas ring_17
+  - first:
+      213: -7918946165202346726
+    second: meteor diatas ring_18
+  - first:
+      213: -3354263605733998856
+    second: meteor diatas ring_19
+  - first:
+      213: 8719622914980948270
+    second: meteor diatas ring_20
+  - first:
+      213: 1982690201422936885
+    second: meteor diatas ring_21
+  - first:
+      213: -2016228611109962656
+    second: meteor diatas ring_22
+  - first:
+      213: -1625063300684410700
+    second: meteor diatas ring_23
+  - first:
+      213: 136527115504464976
+    second: meteor diatas ring_24
+  - first:
+      213: -5278168954893582514
+    second: meteor diatas ring_25
+  - first:
+      213: 1419770507788640568
+    second: meteor diatas ring_26
+  - first:
+      213: -8089677058450846347
+    second: meteor diatas ring_27
+  - first:
+      213: 92455667148088073
+    second: meteor diatas ring_28
+  - first:
+      213: 1242549068688505071
+    second: meteor diatas ring_29
+  - first:
+      213: -9206487740816354271
+    second: meteor diatas ring_30
+  - first:
+      213: 6002719786731908482
+    second: meteor diatas ring_31
+  - first:
+      213: 4453515021346688826
+    second: meteor diatas ring_32
+  - first:
+      213: 5923769170459120210
+    second: meteor diatas ring_33
+  - first:
+      213: 3711494934267477574
+    second: meteor diatas ring_34
+  - first:
+      213: -5008263393236480497
+    second: meteor diatas ring_35
+  - first:
+      213: -4273873338532162770
+    second: meteor diatas ring_36
+  - first:
+      213: -8075413965713049696
+    second: meteor diatas ring_37
+  - first:
+      213: -1638630950222814520
+    second: meteor diatas ring_38
+  - first:
+      213: 4323704071954003900
+    second: meteor diatas ring_39
+  - first:
+      213: 2266671578518916080
+    second: meteor diatas ring_40
+  - first:
+      213: -1651111414888927900
+    second: meteor diatas ring_41
+  - first:
+      213: -3865065338688320000
+    second: meteor diatas ring_42
+  - first:
+      213: 2011259198807869110
+    second: meteor diatas ring_43
+  - first:
+      213: 4171100968179874608
+    second: meteor diatas ring_44
+  - first:
+      213: 297422091260933932
+    second: meteor diatas ring_45
+  - first:
+      213: 3238855103907778246
+    second: meteor diatas ring_46
+  - first:
+      213: -3925532827450870383
+    second: meteor diatas ring_47
+  - first:
+      213: 5569572958473274530
+    second: meteor diatas ring_48
+  - first:
+      213: -1674346191746605282
+    second: meteor diatas ring_49
+  - first:
+      213: 5848582959804640062
+    second: meteor diatas ring_50
+  - first:
+      213: -3799784137140104216
+    second: meteor diatas ring_51
+  - first:
+      213: -4888355702685705392
+    second: meteor diatas ring_52
+  - first:
+      213: 3899338985690419462
+    second: meteor diatas ring_53
+  - first:
+      213: -3334257597965381303
+    second: meteor diatas ring_54
+  - first:
+      213: 2031155910105809101
+    second: meteor diatas ring_55
+  - first:
+      213: 8580040057518683983
+    second: meteor diatas ring_56
+  - first:
+      213: 6810374092398079570
+    second: meteor diatas ring_57
+  - first:
+      213: -7503854738895273407
+    second: meteor diatas ring_58
+  - first:
+      213: 4698013802426421446
+    second: meteor diatas ring_59
+  - first:
+      213: 1538554816725697187
+    second: meteor diatas ring_60
+  - first:
+      213: 3492521432586771839
+    second: meteor diatas ring_61
+  - first:
+      213: 3187798918759968375
+    second: meteor diatas ring_62
+  - first:
+      213: 2367797996051296533
+    second: meteor diatas ring_63
+  - first:
+      213: 4675405771519151531
+    second: meteor diatas ring_64
+  - first:
+      213: -4586357159895514248
+    second: meteor diatas ring_65
+  - first:
+      213: 2098521155376805623
+    second: meteor diatas ring_66
+  - first:
+      213: 6322577030144135056
+    second: meteor diatas ring_67
+  - first:
+      213: -2595080879596235568
+    second: meteor diatas ring_68
+  - first:
+      213: 2109051044653714906
+    second: meteor diatas ring_69
+  - first:
+      213: 5386019285408574183
+    second: meteor diatas ring_70
+  - first:
+      213: 7886567955615094277
+    second: meteor diatas ring_71
+  - first:
+      213: 1668051556973547086
+    second: meteor diatas ring_72
+  - first:
+      213: 2388337126395834201
+    second: meteor diatas ring_73
+  - first:
+      213: -6503948802932923210
+    second: meteor diatas ring_74
+  - first:
+      213: -2708857741438323870
+    second: meteor diatas ring_75
+  - first:
+      213: -2992794587503987450
+    second: meteor diatas ring_76
+  - first:
+      213: -7658271553412035751
+    second: meteor diatas ring_77
+  - first:
+      213: 4883937722236999266
+    second: meteor diatas ring_78
+  - first:
+      213: 1784716622385360158
+    second: meteor diatas ring_79
+  - first:
+      213: -2929379500485194739
+    second: meteor diatas ring_80
+  - first:
+      213: -7460625603853113090
+    second: meteor diatas ring_81
+  - first:
+      213: 3688816713860368665
+    second: meteor diatas ring_82
+  - first:
+      213: 6032265006972797263
+    second: meteor diatas ring_83
+  - first:
+      213: 8674610380193934929
+    second: meteor diatas ring_84
+  - first:
+      213: -3058411245474265725
+    second: meteor diatas ring_85
+  - first:
+      213: -8021909307008270841
+    second: meteor diatas ring_86
+  - first:
+      213: -4651082964015237011
+    second: meteor diatas ring_87
+  - first:
+      213: 8951928414070490056
+    second: meteor diatas ring_88
+  - first:
+      213: -2137559542160653413
+    second: meteor diatas ring_89
+  - first:
+      213: 5324833118423746534
+    second: meteor diatas ring_90
+  - first:
+      213: 2618626794034402955
+    second: meteor diatas ring_91
+  - first:
+      213: -3181896381473999672
+    second: meteor diatas ring_92
+  - first:
+      213: -3202563964189557761
+    second: meteor diatas ring_93
+  - first:
+      213: 6386507801368822105
+    second: meteor diatas ring_94
+  - first:
+      213: -3194654100098989387
+    second: meteor diatas ring_95
+  - first:
+      213: 489758778298775901
+    second: meteor diatas ring_96
+  - first:
+      213: -8178322590032752688
+    second: meteor diatas ring_97
+  - first:
+      213: 2920043801732631792
+    second: meteor diatas ring_98
+  - first:
+      213: 2863327947424336173
+    second: meteor diatas ring_99
+  - first:
+      213: 8645438150207388421
+    second: meteor diatas ring_100
+  - first:
+      213: -1978768832473274689
+    second: meteor diatas ring_101
+  - first:
+      213: -8433406587508688913
+    second: meteor diatas ring_102
+  - first:
+      213: 2379953276472303608
+    second: meteor diatas ring_103
+  - first:
+      213: 1353943809508242779
+    second: meteor diatas ring_104
+  - first:
+      213: 7533362551622457859
+    second: meteor diatas ring_105
+  - first:
+      213: 6008810963081784682
+    second: meteor diatas ring_106
+  - first:
+      213: 1117488671545511672
+    second: meteor diatas ring_107
+  - first:
+      213: -7781377848010239671
+    second: meteor diatas ring_108
+  - first:
+      213: -1834880118282484503
+    second: meteor diatas ring_109
+  - first:
+      213: 5559240291994433664
+    second: meteor diatas ring_110
+  - first:
+      213: 3386079962314938636
+    second: meteor diatas ring_111
+  - first:
+      213: -8050168559009028176
+    second: meteor diatas ring_112
+  - first:
+      213: 8506310202264230567
+    second: meteor diatas ring_113
+  - first:
+      213: 6983319185657031947
+    second: meteor diatas ring_114
+  - first:
+      213: -5373664028796667770
+    second: meteor diatas ring_115
+  - first:
+      213: -4193970489912909221
+    second: meteor diatas ring_116
+  - first:
+      213: 2680379916785132804
+    second: meteor diatas ring_117
+  - first:
+      213: -3474349249874586412
+    second: meteor diatas ring_118
+  - first:
+      213: -7042216535031689204
+    second: meteor diatas ring_119
+  - first:
+      213: 4092653088474979454
+    second: meteor diatas ring_120
+  - first:
+      213: -7371154926999888878
+    second: meteor diatas ring_121
+  - first:
+      213: -1344195801865022370
+    second: meteor diatas ring_122
+  - first:
+      213: 3987336279568559725
+    second: meteor diatas ring_123
+  - first:
+      213: 149581173051711440
+    second: meteor diatas ring_124
+  - first:
+      213: -441511895366722984
+    second: meteor diatas ring_125
+  - first:
+      213: -1806289659567571689
+    second: meteor diatas ring_126
+  - first:
+      213: -8073367082371855880
+    second: meteor diatas ring_127
+  - first:
+      213: 7945709019569270561
+    second: meteor diatas ring_128
+  - first:
+      213: -5715206891608939070
+    second: meteor diatas ring_129
+  - first:
+      213: -6180715311363171698
+    second: meteor diatas ring_130
+  - first:
+      213: 4721193113355396784
+    second: meteor diatas ring_131
+  - first:
+      213: -7374953068025495189
+    second: meteor diatas ring_132
+  - first:
+      213: -4719443404750362606
+    second: meteor diatas ring_133
+  - first:
+      213: -8101062385865966617
+    second: meteor diatas ring_134
+  - first:
+      213: -3971514220390097568
+    second: meteor diatas ring_135
+  - first:
+      213: 605539798344202699
+    second: meteor diatas ring_136
+  - first:
+      213: -7380610764242597639
+    second: meteor diatas ring_137
+  - first:
+      213: -2876592711705410284
+    second: meteor diatas ring_138
+  - first:
+      213: 6449156763980990763
+    second: meteor diatas ring_139
+  - first:
+      213: -1808014859938365049
+    second: meteor diatas ring_140
+  - first:
+      213: -1113447253759960544
+    second: meteor diatas ring_141
+  - first:
+      213: -4740415234797961780
+    second: meteor diatas ring_142
+  - first:
+      213: 4122665999264715730
+    second: meteor diatas ring_143
+  - first:
+      213: -4871177371980490561
+    second: meteor diatas ring_144
+  - first:
+      213: 6153112814643331632
+    second: meteor diatas ring_145
+  - first:
+      213: -4576766133565616207
+    second: meteor diatas ring_146
+  - first:
+      213: -6196838034080657461
+    second: meteor diatas ring_147
+  - first:
+      213: 3516629030196724632
+    second: meteor diatas ring_148
+  - first:
+      213: -8065331426808251721
+    second: meteor diatas ring_149
+  - first:
+      213: -7045785201064203225
+    second: meteor diatas ring_150
+  - first:
+      213: -833347309978950653
+    second: meteor diatas ring_151
+  - first:
+      213: -4085610079481600982
+    second: meteor diatas ring_152
+  - first:
+      213: 5655121694310781818
+    second: meteor diatas ring_153
+  - first:
+      213: -2326107496376436382
+    second: meteor diatas ring_154
+  - first:
+      213: 4428359501310322992
+    second: meteor diatas ring_155
+  - first:
+      213: 7182900585462144857
+    second: meteor diatas ring_156
+  - first:
+      213: 8686269757351062363
+    second: meteor diatas ring_157
+  - first:
+      213: 7444442875717958141
+    second: meteor diatas ring_158
+  - first:
+      213: 6232687874333004253
+    second: meteor diatas ring_159
+  - first:
+      213: -1919127680859421210
+    second: meteor diatas ring_160
+  - first:
+      213: -6649839982017744281
+    second: meteor diatas ring_161
+  - first:
+      213: -1045805198118915168
+    second: meteor diatas ring_162
+  - first:
+      213: 5265260438155413190
+    second: meteor diatas ring_163
+  - first:
+      213: 7711701727388229146
+    second: meteor diatas ring_164
+  - first:
+      213: -8760765435044995157
+    second: meteor diatas ring_165
+  - first:
+      213: -1751434533398448476
+    second: meteor diatas ring_166
+  - first:
+      213: -4539845923242755380
+    second: meteor diatas ring_167
+  - first:
+      213: -997842980264647918
+    second: meteor diatas ring_168
+  - first:
+      213: 3480356761442883072
+    second: meteor diatas ring_169
+  - first:
+      213: 565391734391525236
+    second: meteor diatas ring_170
+  - first:
+      213: -8711093513504027468
+    second: meteor diatas ring_171
+  - first:
+      213: 8446126101412713160
+    second: meteor diatas ring_172
+  - first:
+      213: 1960751165508766099
+    second: meteor diatas ring_173
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 2048
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: meteor diatas ring_0
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 5329
+        width: 152
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f217a95aa9b7722c0800000000000000
+      internalID: -4456457402126274257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_1
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 5461
+        width: 47
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bc9a875e7a6f6ae0800000000000000
+      internalID: -1553906255552406346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_2
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 5305
+        width: 126
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34aa3af1051bdc4e0800000000000000
+      internalID: -1959715305149978045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_3
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 5397
+        width: 107
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a6b294e5a5f25920800000000000000
+      internalID: 2977712396498548388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_4
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 5258
+        width: 95
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9aa5e5708fb790830800000000000000
+      internalID: 4037894846120090281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_5
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 5329
+        width: 55
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f425c612190bfff0800000000000000
+      internalID: -1397401587473159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_6
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 4768
+        width: 279
+        height: 554
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fb3ad104e6d1b750800000000000000
+      internalID: 6319068026949483511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_7
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 5186
+        width: 113
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a957d70bf8769dd0800000000000000
+      internalID: -2479661525257201240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_8
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 5020
+        width: 191
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72d2563a63cae9730800000000000000
+      internalID: 4007830069075848487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_9
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 5060
+        width: 113
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5f6f99e85a0bcca0800000000000000
+      internalID: -5995687101920743585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_10
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 4931
+        width: 60
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f172a70eb7b0a190800000000000000
+      internalID: -7953154915136540170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_11
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 4922
+        width: 88
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25791760512720a70800000000000000
+      internalID: 8791714857208616786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_12
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 4742
+        width: 65
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e77e6a306d59db310800000000000000
+      internalID: 1422457803735754622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_13
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 4787
+        width: 118
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 837eb705a3088cd10800000000000000
+      internalID: 2146106210388797240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_14
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 4719
+        width: 88
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7da7035d3a392a10800000000000000
+      internalID: 1885101954091691391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_15
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 4814
+        width: 138
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ea518a0e5b2c3a00800000000000000
+      internalID: 737512121885088484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_16
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 4662
+        width: 111
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60f35cf90424b2e90800000000000000
+      internalID: -7049467946392535290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_17
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 4706
+        width: 69
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39671e802b251a260800000000000000
+      internalID: 7107052611574003347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_18
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 4616
+        width: 164
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1d1cab4b604a1290800000000000000
+      internalID: -7918946165202346726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_19
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 4735
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fe3431b5034371d0800000000000000
+      internalID: -3354263605733998856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_20
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 4544
+        width: 116
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e29abc6b7d2520970800000000000000
+      internalID: 8719622914980948270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_21
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 4660
+        width: 62
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53b3673cb3ee38b10800000000000000
+      internalID: 1982690201422936885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_22
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 4259
+        width: 236
+        height: 396
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06cbfc8b2cae404e0800000000000000
+      internalID: -2016228611109962656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_23
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 4443
+        width: 59
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b09e29b98d9279e0800000000000000
+      internalID: -1625063300684410700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_24
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 3986
+        width: 347
+        height: 514
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0543add20ba05e100800000000000000
+      internalID: 136527115504464976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_25
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 4348
+        width: 141
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4fb21bec4d20c6b0800000000000000
+      internalID: -5278168954893582514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_26
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 4329
+        width: 107
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 831615b21c904b310800000000000000
+      internalID: 1419770507788640568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_27
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 4163
+        width: 114
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57d09678391bbbf80800000000000000
+      internalID: -8089677058450846347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_28
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 4075
+        width: 89
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90365dd70f7784100800000000000000
+      internalID: 92455667148088073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_29
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 4154
+        width: 60
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe8bb2f6bcb6e3110800000000000000
+      internalID: 1242549068688505071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_30
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 3954
+        width: 141
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12417a38d2cfb3080800000000000000
+      internalID: -9206487740816354271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_31
+      rect:
+        serializedVersion: 2
+        x: 758
+        y: 4042
+        width: 80
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28d2d5e97d1fd4350800000000000000
+      internalID: 6002719786731908482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_32
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 4001
+        width: 54
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3f4c31f0501ecd30800000000000000
+      internalID: 4453515021346688826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_33
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 3883
+        width: 68
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25250a0dca4753250800000000000000
+      internalID: 5923769170459120210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_34
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 3911
+        width: 105
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64ebca67af0e18330800000000000000
+      internalID: 3711494934267477574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_35
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 3841
+        width: 116
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0e0c809af21f7ab0800000000000000
+      internalID: -5008263393236480497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_36
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 3759
+        width: 104
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2317c1b7d620b4c0800000000000000
+      internalID: -4273873338532162770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_37
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 3871
+        width: 7
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a7f17798cd5eef80800000000000000
+      internalID: -8075413965713049696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_38
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 3839
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c2220625d96249e0800000000000000
+      internalID: -1638630950222814520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_39
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 3763
+        width: 56
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb77aba02f1e00c30800000000000000
+      internalID: 4323704071954003900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_40
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 3716
+        width: 109
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fb08149ac5d47f10800000000000000
+      internalID: 2266671578518916080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_41
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 3614
+        width: 88
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46de3f68ae21619e0800000000000000
+      internalID: -1651111414888927900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_42
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 3654
+        width: 83
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00ececd6d878c5ac0800000000000000
+      internalID: -3865065338688320000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_43
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 3669
+        width: 57
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b60e20d59d69eb10800000000000000
+      internalID: 2011259198807869110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_44
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 3516
+        width: 62
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03b36aa2b3ab2e930800000000000000
+      internalID: 4171100968179874608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_45
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 3545
+        width: 85
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2736f1f0d7a02400800000000000000
+      internalID: 297422091260933932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_46
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 3532
+        width: 34
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ce426b8e89b2fc20800000000000000
+      internalID: 3238855103907778246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_47
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 3549
+        width: 105
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 195f7a911b4b589c0800000000000000
+      internalID: -3925532827450870383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_48
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 3402
+        width: 87
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a4cb6cc8191b4d40800000000000000
+      internalID: 5569572958473274530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_49
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 3103
+        width: 334
+        height: 434
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1f5ae9720783c8e0800000000000000
+      internalID: -1674346191746605282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_50
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 3464
+        width: 82
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3bee8ef6375a2150800000000000000
+      internalID: 5848582959804640062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_51
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 3391
+        width: 60
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e3999a9574744bc0800000000000000
+      internalID: -3799784137140104216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_52
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 3295
+        width: 59
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05bd9a55362192cb0800000000000000
+      internalID: -4888355702685705392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_53
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 3120
+        width: 113
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 601d8ecd52c3d1630800000000000000
+      internalID: 3899338985690419462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_54
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 3156
+        width: 72
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94150ab51665ab1d0800000000000000
+      internalID: -3334257597965381303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_55
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 3220
+        width: 17
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc0ca49e98d103c10800000000000000
+      internalID: 2031155910105809101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_56
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 3152
+        width: 122
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f47f50b29fc621770800000000000000
+      internalID: 8580040057518683983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_57
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 2690
+        width: 308
+        height: 447
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25e29e4772f438e50800000000000000
+      internalID: 6810374092398079570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_58
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 2475
+        width: 347
+        height: 513
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14204024fd3fcd790800000000000000
+      internalID: -7503854738895273407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_59
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 2926
+        width: 126
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c0528389a2b23140800000000000000
+      internalID: 4698013802426421446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_60
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 2988
+        width: 141
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a2c666447b0a5510800000000000000
+      internalID: 1538554816725697187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_61
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 2588
+        width: 97
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7dd5cf1dbde77030800000000000000
+      internalID: 3492521432586771839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_62
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 2675
+        width: 41
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77eef081a365d3c20800000000000000
+      internalID: 3187798918759968375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_63
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 2550
+        width: 17
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 511f4867bbb1cd020800000000000000
+      internalID: 2367797996051296533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_64
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 2527
+        width: 58
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: badc53027c062e040800000000000000
+      internalID: 4675405771519151531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_65
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 2544
+        width: 61
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 873cb5f667cf950c0800000000000000
+      internalID: -4586357159895514248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_66
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 2402
+        width: 116
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f670e35fd17f1d10800000000000000
+      internalID: 2098521155376805623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_67
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 2421
+        width: 57
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09f09ca7f4e4eb750800000000000000
+      internalID: 6322577030144135056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_68
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 2428
+        width: 43
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d4124870bb6cfbd0800000000000000
+      internalID: -2595080879596235568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_69
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 2456
+        width: 63
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: add40c930cad44d10800000000000000
+      internalID: 2109051044653714906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_70
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 2422
+        width: 60
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ea6e24f00cfeba40800000000000000
+      internalID: 5386019285408574183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_71
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 2324
+        width: 46
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5069a6355c7b27d60800000000000000
+      internalID: 7886567955615094277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_72
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 2278
+        width: 83
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4e0278ad0c162710800000000000000
+      internalID: 1668051556973547086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_73
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 2355
+        width: 57
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95f63b666f3152120800000000000000
+      internalID: 2388337126395834201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_74
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 2304
+        width: 60
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b42bdbe5055db5a0800000000000000
+      internalID: -6503948802932923210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_75
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 2345
+        width: 89
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 263708e7c34386ad0800000000000000
+      internalID: -2708857741438323870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_76
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 2256
+        width: 79
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 605fc1edd257776d0800000000000000
+      internalID: -2992794587503987450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_77
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 2314
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95b8561f89a58b590800000000000000
+      internalID: -7658271553412035751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_78
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 2261
+        width: 81
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 266111f6b7b37c340800000000000000
+      internalID: 4883937722236999266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_79
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 2216
+        width: 90
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1da30eef4694c810800000000000000
+      internalID: 1784716622385360158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_80
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 2213
+        width: 77
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0cc4456dd0c857d0800000000000000
+      internalID: -2929379500485194739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_81
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 2234
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef8a6289a88867890800000000000000
+      internalID: -7460625603853113090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_82
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 2171
+        width: 53
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 919cb2fc14f413330800000000000000
+      internalID: 3688816713860368665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_83
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 2149
+        width: 53
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4102a34019e6b350800000000000000
+      internalID: 6032265006972797263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_84
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 2082
+        width: 97
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15e20644e28626870800000000000000
+      internalID: 8674610380193934929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_85
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 2079
+        width: 120
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38542782d275e85d0800000000000000
+      internalID: -3058411245474265725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_86
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 2161
+        width: 19
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70e3f57bcf37ca090800000000000000
+      internalID: -8021909307008270841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_87
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 2099
+        width: 107
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d68300dcfa8047fb0800000000000000
+      internalID: -4651082964015237011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_88
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 2086
+        width: 39
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c3c5679673ab3c70800000000000000
+      internalID: 8951928414070490056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_89
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 2011
+        width: 85
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b938443fbecd552e0800000000000000
+      internalID: -2137559542160653413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_90
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 1979
+        width: 102
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e702ef428b95e940800000000000000
+      internalID: 5324833118423746534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_91
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 2029
+        width: 112
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b869db1f13b375420800000000000000
+      internalID: 2618626794034402955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_92
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 2002
+        width: 60
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c434267912a7d3d0800000000000000
+      internalID: -3181896381473999672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_93
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 1997
+        width: 54
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffbb300ea053e83d0800000000000000
+      internalID: -3202563964189557761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_94
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 1920
+        width: 111
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95189d7120f61a850800000000000000
+      internalID: 6386507801368822105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_95
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 1942
+        width: 57
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b2ca5f950f4aa3d0800000000000000
+      internalID: -3194654100098989387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_96
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 1874
+        width: 89
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d59b0269309fbc600800000000000000
+      internalID: 489758778298775901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_97
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 1876
+        width: 106
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0df8b8a5fe2c08e80800000000000000
+      internalID: -8178322590032752688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_98
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 1758
+        width: 79
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fccadadd54168820800000000000000
+      internalID: 2920043801732631792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_99
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 1816
+        width: 43
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d290dadf8959cb720800000000000000
+      internalID: 2863327947424336173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_100
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 1317
+        width: 415
+        height: 623
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50bb8be2134caf770800000000000000
+      internalID: 8645438150207388421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_101
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 1705
+        width: 115
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb6e0d71b300a84e0800000000000000
+      internalID: -1978768832473274689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_102
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 1688
+        width: 107
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe7fa19046586fa80800000000000000
+      internalID: -8433406587508688913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_103
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 1584
+        width: 107
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ff982a35ea470120800000000000000
+      internalID: 2379953276472303608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_104
+      rect:
+        serializedVersion: 2
+        x: 856
+        y: 1531
+        width: 61
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b55f393a8bc2ac210800000000000000
+      internalID: 1353943809508242779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_105
+      rect:
+        serializedVersion: 2
+        x: 972
+        y: 1495
+        width: 53
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30adfa5c351eb8860800000000000000
+      internalID: 7533362551622457859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_106
+      rect:
+        serializedVersion: 2
+        x: 962
+        y: 1516
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6d66f02cb5936350800000000000000
+      internalID: 6008810963081784682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_107
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 1463
+        width: 12
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fe4efba60e128f00800000000000000
+      internalID: 1117488671545511672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_108
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 1408
+        width: 50
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9419142231ef20490800000000000000
+      internalID: -7781377848010239671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_109
+      rect:
+        serializedVersion: 2
+        x: 875
+        y: 1410
+        width: 49
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e4885801423986e0800000000000000
+      internalID: -1834880118282484503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_110
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 1432
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 088fd596793662d40800000000000000
+      internalID: 5559240291994433664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_111
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 1401
+        width: 31
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0999d619c5cdfe20800000000000000
+      internalID: 3386079962314938636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_112
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 1020
+        width: 281
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b7af32e85e084090800000000000000
+      internalID: -8050168559009028176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_113
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 1348
+        width: 41
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7aa9d338f0c7c0670800000000000000
+      internalID: 8506310202264230567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_114
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 1248
+        width: 50
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0de146dccbb9e060800000000000000
+      internalID: 6983319185657031947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_115
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 1140
+        width: 91
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 688b7456909ec65b0800000000000000
+      internalID: -5373664028796667770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_116
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 1200
+        width: 35
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b52254e5f060cc5c0800000000000000
+      internalID: -4193970489912909221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_117
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 1093
+        width: 43
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 405a113455f923520800000000000000
+      internalID: 2680379916785132804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_118
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 983
+        width: 13
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d4949fd3c1a8cfc0800000000000000
+      internalID: -3474349249874586412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_119
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 936
+        width: 99
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c00dd066f55054e90800000000000000
+      internalID: -7042216535031689204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_120
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 938
+        width: 157
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7cd477dc460cc830800000000000000
+      internalID: 4092653088474979454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_121
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 965
+        width: 64
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21c1dcfd5a564b990800000000000000
+      internalID: -7371154926999888878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_122
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 911
+        width: 53
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5493414a05785de0800000000000000
+      internalID: -1344195801865022370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_123
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 884
+        width: 38
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6e26bf683dd55730800000000000000
+      internalID: 3987336279568559725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_124
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 841
+        width: 70
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0df55dcc84b631200800000000000000
+      internalID: 149581173051711440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_125
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 857
+        width: 93
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85a9e88354f6fd9f0800000000000000
+      internalID: -441511895366722984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_126
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 338
+        width: 204
+        height: 575
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71d7300ff15cee6e0800000000000000
+      internalID: -1806289659567571689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_127
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 779
+        width: 80
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f9c4e1c963a5ff80800000000000000
+      internalID: -8073367082371855880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_128
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 830
+        width: 71
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12f2b005144d44e60800000000000000
+      internalID: 7945709019569270561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_129
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 834
+        width: 43
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c5e8cfcc918fa0b0800000000000000
+      internalID: -5715206891608939070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_130
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 750
+        width: 94
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8a5160db20b93aa0800000000000000
+      internalID: -6180715311363171698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_131
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 720
+        width: 96
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b6a1956f1c058140800000000000000
+      internalID: 4721193113355396784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_132
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 762
+        width: 81
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b61c9214247e6a990800000000000000
+      internalID: -7374953068025495189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_133
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 728
+        width: 115
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2186b426a3b218eb0800000000000000
+      internalID: -4719443404750362606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_134
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 607
+        width: 168
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7eb3e2b6eae339f80800000000000000
+      internalID: -8101062385865966617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_135
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 720
+        width: 38
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06d5c39cbd852e8c0800000000000000
+      internalID: -3971514220390097568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_136
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 654
+        width: 52
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc9faa10d3f476800800000000000000
+      internalID: 605539798344202699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_137
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 589
+        width: 95
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f845e33d9dc29990800000000000000
+      internalID: -7380610764242597639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_138
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 632
+        width: 76
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41542576b2a4418d0800000000000000
+      internalID: -2876592711705410284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_139
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 625
+        width: 50
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2905e168e1008950800000000000000
+      internalID: 6449156763980990763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_140
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 592
+        width: 38
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7810fbc6014a8e6e0800000000000000
+      internalID: -1808014859938365049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_141
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 520
+        width: 83
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02ad08b3f9d3c80f0800000000000000
+      internalID: -1113447253759960544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_142
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 495
+        width: 94
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccd7402b579a63eb0800000000000000
+      internalID: -4740415234797961780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_143
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 534
+        width: 66
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d311cd22e6a63930800000000000000
+      internalID: 4122665999264715730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_144
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 510
+        width: 59
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb89e212df9166cb0800000000000000
+      internalID: -4871177371980490561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_145
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 545
+        width: 32
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03248bb118f346550800000000000000
+      internalID: 6153112814643331632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_146
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 511
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bf88c4437f0c70c0800000000000000
+      internalID: -4576766133565616207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_147
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 461
+        width: 69
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcf0ef7e3a8600aa0800000000000000
+      internalID: -6196838034080657461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_148
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 419
+        width: 136
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 893c3b798739dc030800000000000000
+      internalID: 3516629030196724632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_149
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 452
+        width: 55
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7babc4d9ccf221090800000000000000
+      internalID: -8065331426808251721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_150
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 468
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72c2dd690b7583e90800000000000000
+      internalID: -7045785201064203225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_151
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 437
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3046d2e690b5f64f0800000000000000
+      internalID: -833347309978950653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_152
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 382
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a246eb9774ffc47c0800000000000000
+      internalID: -4085610079481600982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_153
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 396
+        width: 62
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a73dff608370b7e40800000000000000
+      internalID: 5655121694310781818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_154
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 393
+        width: 62
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 269fb196e8108bfd0800000000000000
+      internalID: -2326107496376436382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_155
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 379
+        width: 46
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 039e3550181b47d30800000000000000
+      internalID: 4428359501310322992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_156
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 182
+        width: 138
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95f9a6d960acea360800000000000000
+      internalID: 7182900585462144857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_157
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 289
+        width: 48
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5be02e8254db8870800000000000000
+      internalID: 8686269757351062363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_158
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 247
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df93bd56a59ff4760800000000000000
+      internalID: 7444442875717958141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_159
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 292
+        width: 63
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd1d0897994fe7650800000000000000
+      internalID: 6232687874333004253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_160
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 288
+        width: 60
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e541cfca83ed55e0800000000000000
+      internalID: -1919127680859421210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_161
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 250
+        width: 54
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76274aac4c507b3a0800000000000000
+      internalID: -6649839982017744281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_162
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 206
+        width: 73
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a37dd596bd8c71f0800000000000000
+      internalID: -1045805198118915168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_163
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 276
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c6cb22d876f11940800000000000000
+      internalID: 5265260438155413190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_164
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 124
+        width: 98
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1eddbadcd7750b60800000000000000
+      internalID: 7711701727388229146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_165
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 227
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: baf5f9bd0428b6680800000000000000
+      internalID: -8760765435044995157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_166
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 173
+        width: 61
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a6fe654297a1b7e0800000000000000
+      internalID: -1751434533398448476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_167
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 172
+        width: 85
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cca3c1a9f2a3ff0c0800000000000000
+      internalID: -4539845923242755380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_168
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 119
+        width: 67
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21365b3a813f622f0800000000000000
+      internalID: -997842980264647918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_169
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 163
+        width: 32
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0069e69e806bc4030800000000000000
+      internalID: 3480356761442883072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_170
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 90
+        width: 92
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47f495f69cca8d700800000000000000
+      internalID: 565391734391525236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_171
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 60
+        width: 51
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bc02625a9afb1780800000000000000
+      internalID: -8711093513504027468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_172
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 23
+        width: 73
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c21cd290faa63570800000000000000
+      internalID: 8446126101412713160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteor diatas ring_173
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 11
+        width: 172
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3994519ebccf53b10800000000000000
+      internalID: 1960751165508766099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      meteor diatas ring_0: -4456457402126274257
+      meteor diatas ring_1: -1553906255552406346
+      meteor diatas ring_10: -7953154915136540170
+      meteor diatas ring_100: 8645438150207388421
+      meteor diatas ring_101: -1978768832473274689
+      meteor diatas ring_102: -8433406587508688913
+      meteor diatas ring_103: 2379953276472303608
+      meteor diatas ring_104: 1353943809508242779
+      meteor diatas ring_105: 7533362551622457859
+      meteor diatas ring_106: 6008810963081784682
+      meteor diatas ring_107: 1117488671545511672
+      meteor diatas ring_108: -7781377848010239671
+      meteor diatas ring_109: -1834880118282484503
+      meteor diatas ring_11: 8791714857208616786
+      meteor diatas ring_110: 5559240291994433664
+      meteor diatas ring_111: 3386079962314938636
+      meteor diatas ring_112: -8050168559009028176
+      meteor diatas ring_113: 8506310202264230567
+      meteor diatas ring_114: 6983319185657031947
+      meteor diatas ring_115: -5373664028796667770
+      meteor diatas ring_116: -4193970489912909221
+      meteor diatas ring_117: 2680379916785132804
+      meteor diatas ring_118: -3474349249874586412
+      meteor diatas ring_119: -7042216535031689204
+      meteor diatas ring_12: 1422457803735754622
+      meteor diatas ring_120: 4092653088474979454
+      meteor diatas ring_121: -7371154926999888878
+      meteor diatas ring_122: -1344195801865022370
+      meteor diatas ring_123: 3987336279568559725
+      meteor diatas ring_124: 149581173051711440
+      meteor diatas ring_125: -441511895366722984
+      meteor diatas ring_126: -1806289659567571689
+      meteor diatas ring_127: -8073367082371855880
+      meteor diatas ring_128: 7945709019569270561
+      meteor diatas ring_129: -5715206891608939070
+      meteor diatas ring_13: 2146106210388797240
+      meteor diatas ring_130: -6180715311363171698
+      meteor diatas ring_131: 4721193113355396784
+      meteor diatas ring_132: -7374953068025495189
+      meteor diatas ring_133: -4719443404750362606
+      meteor diatas ring_134: -8101062385865966617
+      meteor diatas ring_135: -3971514220390097568
+      meteor diatas ring_136: 605539798344202699
+      meteor diatas ring_137: -7380610764242597639
+      meteor diatas ring_138: -2876592711705410284
+      meteor diatas ring_139: 6449156763980990763
+      meteor diatas ring_14: 1885101954091691391
+      meteor diatas ring_140: -1808014859938365049
+      meteor diatas ring_141: -1113447253759960544
+      meteor diatas ring_142: -4740415234797961780
+      meteor diatas ring_143: 4122665999264715730
+      meteor diatas ring_144: -4871177371980490561
+      meteor diatas ring_145: 6153112814643331632
+      meteor diatas ring_146: -4576766133565616207
+      meteor diatas ring_147: -6196838034080657461
+      meteor diatas ring_148: 3516629030196724632
+      meteor diatas ring_149: -8065331426808251721
+      meteor diatas ring_15: 737512121885088484
+      meteor diatas ring_150: -7045785201064203225
+      meteor diatas ring_151: -833347309978950653
+      meteor diatas ring_152: -4085610079481600982
+      meteor diatas ring_153: 5655121694310781818
+      meteor diatas ring_154: -2326107496376436382
+      meteor diatas ring_155: 4428359501310322992
+      meteor diatas ring_156: 7182900585462144857
+      meteor diatas ring_157: 8686269757351062363
+      meteor diatas ring_158: 7444442875717958141
+      meteor diatas ring_159: 6232687874333004253
+      meteor diatas ring_16: -7049467946392535290
+      meteor diatas ring_160: -1919127680859421210
+      meteor diatas ring_161: -6649839982017744281
+      meteor diatas ring_162: -1045805198118915168
+      meteor diatas ring_163: 5265260438155413190
+      meteor diatas ring_164: 7711701727388229146
+      meteor diatas ring_165: -8760765435044995157
+      meteor diatas ring_166: -1751434533398448476
+      meteor diatas ring_167: -4539845923242755380
+      meteor diatas ring_168: -997842980264647918
+      meteor diatas ring_169: 3480356761442883072
+      meteor diatas ring_17: 7107052611574003347
+      meteor diatas ring_170: 565391734391525236
+      meteor diatas ring_171: -8711093513504027468
+      meteor diatas ring_172: 8446126101412713160
+      meteor diatas ring_173: 1960751165508766099
+      meteor diatas ring_18: -7918946165202346726
+      meteor diatas ring_19: -3354263605733998856
+      meteor diatas ring_2: -1959715305149978045
+      meteor diatas ring_20: 8719622914980948270
+      meteor diatas ring_21: 1982690201422936885
+      meteor diatas ring_22: -2016228611109962656
+      meteor diatas ring_23: -1625063300684410700
+      meteor diatas ring_24: 136527115504464976
+      meteor diatas ring_25: -5278168954893582514
+      meteor diatas ring_26: 1419770507788640568
+      meteor diatas ring_27: -8089677058450846347
+      meteor diatas ring_28: 92455667148088073
+      meteor diatas ring_29: 1242549068688505071
+      meteor diatas ring_3: 2977712396498548388
+      meteor diatas ring_30: -9206487740816354271
+      meteor diatas ring_31: 6002719786731908482
+      meteor diatas ring_32: 4453515021346688826
+      meteor diatas ring_33: 5923769170459120210
+      meteor diatas ring_34: 3711494934267477574
+      meteor diatas ring_35: -5008263393236480497
+      meteor diatas ring_36: -4273873338532162770
+      meteor diatas ring_37: -8075413965713049696
+      meteor diatas ring_38: -1638630950222814520
+      meteor diatas ring_39: 4323704071954003900
+      meteor diatas ring_4: 4037894846120090281
+      meteor diatas ring_40: 2266671578518916080
+      meteor diatas ring_41: -1651111414888927900
+      meteor diatas ring_42: -3865065338688320000
+      meteor diatas ring_43: 2011259198807869110
+      meteor diatas ring_44: 4171100968179874608
+      meteor diatas ring_45: 297422091260933932
+      meteor diatas ring_46: 3238855103907778246
+      meteor diatas ring_47: -3925532827450870383
+      meteor diatas ring_48: 5569572958473274530
+      meteor diatas ring_49: -1674346191746605282
+      meteor diatas ring_5: -1397401587473159
+      meteor diatas ring_50: 5848582959804640062
+      meteor diatas ring_51: -3799784137140104216
+      meteor diatas ring_52: -4888355702685705392
+      meteor diatas ring_53: 3899338985690419462
+      meteor diatas ring_54: -3334257597965381303
+      meteor diatas ring_55: 2031155910105809101
+      meteor diatas ring_56: 8580040057518683983
+      meteor diatas ring_57: 6810374092398079570
+      meteor diatas ring_58: -7503854738895273407
+      meteor diatas ring_59: 4698013802426421446
+      meteor diatas ring_6: 6319068026949483511
+      meteor diatas ring_60: 1538554816725697187
+      meteor diatas ring_61: 3492521432586771839
+      meteor diatas ring_62: 3187798918759968375
+      meteor diatas ring_63: 2367797996051296533
+      meteor diatas ring_64: 4675405771519151531
+      meteor diatas ring_65: -4586357159895514248
+      meteor diatas ring_66: 2098521155376805623
+      meteor diatas ring_67: 6322577030144135056
+      meteor diatas ring_68: -2595080879596235568
+      meteor diatas ring_69: 2109051044653714906
+      meteor diatas ring_7: -2479661525257201240
+      meteor diatas ring_70: 5386019285408574183
+      meteor diatas ring_71: 7886567955615094277
+      meteor diatas ring_72: 1668051556973547086
+      meteor diatas ring_73: 2388337126395834201
+      meteor diatas ring_74: -6503948802932923210
+      meteor diatas ring_75: -2708857741438323870
+      meteor diatas ring_76: -2992794587503987450
+      meteor diatas ring_77: -7658271553412035751
+      meteor diatas ring_78: 4883937722236999266
+      meteor diatas ring_79: 1784716622385360158
+      meteor diatas ring_8: 4007830069075848487
+      meteor diatas ring_80: -2929379500485194739
+      meteor diatas ring_81: -7460625603853113090
+      meteor diatas ring_82: 3688816713860368665
+      meteor diatas ring_83: 6032265006972797263
+      meteor diatas ring_84: 8674610380193934929
+      meteor diatas ring_85: -3058411245474265725
+      meteor diatas ring_86: -8021909307008270841
+      meteor diatas ring_87: -4651082964015237011
+      meteor diatas ring_88: 8951928414070490056
+      meteor diatas ring_89: -2137559542160653413
+      meteor diatas ring_9: -5995687101920743585
+      meteor diatas ring_90: 5324833118423746534
+      meteor diatas ring_91: 2618626794034402955
+      meteor diatas ring_92: -3181896381473999672
+      meteor diatas ring_93: -3202563964189557761
+      meteor diatas ring_94: 6386507801368822105
+      meteor diatas ring_95: -3194654100098989387
+      meteor diatas ring_96: 489758778298775901
+      meteor diatas ring_97: -8178322590032752688
+      meteor diatas ring_98: 2920043801732631792
+      meteor diatas ring_99: 2863327947424336173
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

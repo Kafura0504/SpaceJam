@@ -12,8 +12,8 @@ using System;
 public class PlayerHealth : MonoBehaviour
 {
     [Header("Health Settings")]
-    public int maxHP      = 100;
-    public int currentHP  { get; private set; }
+    public float maxHP      = 100;
+    public float currentHP  { get; private set; }
 
     [Header("Invincibility Frames")]
     [Tooltip("Durasi tidak bisa kena damage setelah terkena hit (detik)")]
@@ -21,7 +21,7 @@ public class PlayerHealth : MonoBehaviour
 
     // ── Events ────────────────────────────────────────────────────────────────
     /// <summary>Dipanggil setiap kali HP berubah. Parameter = currentHP.</summary>
-    public event Action<int> OnHealthChanged;
+    public event Action<float> OnHealthChanged;
     public event Action       OnDeath;
 
     // ── Private ──────────────────────────────────────────────────────────────
@@ -48,7 +48,7 @@ public class PlayerHealth : MonoBehaviour
 
     // ── Public API ────────────────────────────────────────────────────────────
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         if (_isDead || _invincibleTimer > 0f) return;
 
