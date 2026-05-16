@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: dummy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyScriptable
   name: 
-  health: 0
+  health: 5
   attack: 0
   exp: 0

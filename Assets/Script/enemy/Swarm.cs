@@ -9,4 +9,9 @@ public class Swarm : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = UnityEngine.Random.Range(0f,1f);
     }
+
+    void Start()
+    {
+        Destroy(gameObject,5f);
+    }
 }

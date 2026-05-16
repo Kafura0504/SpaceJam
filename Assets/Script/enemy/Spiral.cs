@@ -14,33 +14,38 @@ public class Spiral : MonoBehaviour
     private bool isdoneShot = true;
     Vector2 faceleft;
     Vector2 faceright;
+    private moveCenter move;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         delay = delayShot;
         rb = GetComponent<Rigidbody2D>();
         Mystat = GetComponent<EnemyStat>();
+        move = GetComponent<moveCenter>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isdoneShot)
-        {    
-        if (delay <= 0)
+        if (move.iscenter)
         {
-            StartCoroutine(shot());
-            delay = delayShot;
+            if (isdoneShot)
+            {
+                if (delay <= 0)
+                {
+                    StartCoroutine(shot());
+                    delay = delayShot;
+                }
+                else
+                {
+                    delay -= Time.deltaTime;
+                }
+            }
         }
-        else
-        {
-            delay -= Time.deltaTime;
-        }
-        }
-        faceleft = firePointleft.right*-1;
+        faceleft = firePointleft.right * -1;
         faceright = firePointright.right;
-        Debug.DrawRay(transform.position, faceleft*2, Color.red);
-        Debug.DrawRay(transform.position, faceright*2, Color.red);
+        Debug.DrawRay(transform.position, faceleft * 2, Color.red);
+        Debug.DrawRay(transform.position, faceright * 2, Color.red);
     }
     IEnumerator shot()
     {
@@ -48,12 +53,12 @@ public class Spiral : MonoBehaviour
         int shotcount = 0;
 
 
-            GameObject bulletObjLeft =
-        Instantiate(
-            bulletPrefab,
-            firePointleft.position,
-            firePointleft.rotation
-        );
+        GameObject bulletObjLeft =
+    Instantiate(
+        bulletPrefab,
+        firePointleft.position,
+        firePointleft.rotation
+    );
         GameObject bulletObjRight =
         Instantiate(
             bulletPrefab,
@@ -61,17 +66,17 @@ public class Spiral : MonoBehaviour
             firePointright.rotation
         );
 
-            Bullet bulletleft =
-                bulletObjLeft.GetComponent<Bullet>();
-            bulletleft.damage = Mystat.dmg;
-            bulletleft.SetDirection(faceleft);
+        Bullet bulletleft =
+            bulletObjLeft.GetComponent<Bullet>();
+        bulletleft.damage = Mystat.dmg;
+        bulletleft.SetDirection(faceleft);
 
-            Bullet bulletright =
-                bulletObjRight.GetComponent<Bullet>();
-            bulletright.damage = Mystat.dmg;
-            bulletright.SetDirection(faceright);
-            shotcount ++;
-            yield return new WaitForSeconds(0.1f);
+        Bullet bulletright =
+            bulletObjRight.GetComponent<Bullet>();
+        bulletright.damage = Mystat.dmg;
+        bulletright.SetDirection(faceright);
+        shotcount++;
+        yield return new WaitForSeconds(0.1f);
         isdoneShot = true;
 
     }

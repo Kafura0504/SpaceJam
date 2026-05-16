@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8672519277751277740}
   - component: {fileID: 5058880092455654064}
   - component: {fileID: 3773459847809537464}
+  - component: {fileID: 4458937444690709242}
   m_Layer: 0
   m_Name: MeteorBullet
   m_TagString: Untagged
@@ -172,3 +173,19 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: -0.009614468, y: 0}
   m_Radius: 0.20915747
+--- !u!114 &4458937444690709242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7635980804126257272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 822f4cd30584cba458c31c5afeb36248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyStat
+  type: {fileID: 11400000, guid: 2055c8b85ccca304b9fb90694389a855, type: 2}
+  HP: 0
+  dmg: 0
+  exp: 0

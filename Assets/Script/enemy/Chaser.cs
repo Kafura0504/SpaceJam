@@ -11,6 +11,7 @@ public class Chaser : MonoBehaviour
     Vector2 dir;
     public float chargingSPD;
     private AudioSource aud;
+    private Kejar move;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class Chaser : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         aud = GetComponent<AudioSource>();
         Destroy(gameObject, 5f);
+        move = GetComponent<Kejar>();
     }
 
 
@@ -49,9 +51,9 @@ public class Chaser : MonoBehaviour
 
     rb.linearVelocity = Vector2.zero;
     rb.angularVelocity = 0f;
+    move.enabled = false;
 
-    rb.gravityScale = 0f;
-    rb.bodyType = RigidbodyType2D.Kinematic;
+
 
     dir =
         player.transform.position - transform.position;

@@ -33,6 +33,7 @@ public class EnemyStat : MonoBehaviour, IDamageable
         {
             ph.TakeDamage(dmg); // kurangi HP player sebesar dmg enemy
             Destroy(gameObject); // enemy hancur setelah tabrak player
+            
         }
         if (other.CompareTag("PlayerBullet"))
         {
