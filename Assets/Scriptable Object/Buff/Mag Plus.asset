@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 493959dfedf50094bb32f9a2f357c0d5, type: 3}
   m_Name: Mag Plus
   m_EditorClassIdentifier: Assembly-CSharp::BuffData
-  buffName: 
-  description: 
-  type: 0
-  value: 0
+  buffName: Magazine Up 1
+  description: Increase Your Magazine Capacity By 3
+  type: 3
+  value: 3
