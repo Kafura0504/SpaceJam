@@ -1,10 +1,11 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour
 {
     public float speed    = 10f;
     public float lifetime = 3f;
-    public int   damage   = 0;
+    public float   damage   = 0;
 
     private Rigidbody2D rb;
 
@@ -25,14 +26,9 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // Abaikan sesama peluru player agar tidak saling destroy
-        if (other.CompareTag("PlayerBullet")) return;
-
-        PlayerHealth ph = other.GetComponent<PlayerHealth>();
-        if (ph != null)
+        if(other.CompareTag("Player"))
         {
-            ph.TakeDamage(damage); // damage sudah di-assign dari Mystat.dmg oleh shooter
-            Destroy(gameObject);   // bullet hancur setelah kena player
+            Destroy(gameObject);
         }
     }
 }

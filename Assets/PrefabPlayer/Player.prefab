@@ -43,10 +43,12 @@ GameObject:
   - component: {fileID: 2779048940174328806}
   - component: {fileID: 8032238439194732395}
   - component: {fileID: 7501904812885801784}
-  - component: {fileID: 1800632778727130739}
-  - component: {fileID: 5950692090725542844}
   - component: {fileID: 409155905879734336}
   - component: {fileID: 8853495760746230940}
+  - component: {fileID: 8604311978451133758}
+  - component: {fileID: 7162475426521053785}
+  - component: {fileID: 314035162971027185}
+  - component: {fileID: 5557927756677157015}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -173,35 +175,6 @@ MonoBehaviour:
   slowSpeed: 2.5
   acceleration: 0.15
   rotationOffset: 90
---- !u!114 &1800632778727130739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4319359955902519903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89faa583f741519439297b2ed8016f16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerShooter
-  bulletPrefab: {fileID: 519055302956375299, guid: 83aa403def2f0244a94fea244b154c34, type: 3}
-  firePoint: {fileID: 4103835620400870595}
-  fireRate: 8
---- !u!114 &5950692090725542844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4319359955902519903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f33fc99cb26f9504695bafbd8930f0c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  maxHP: 100
-  invincibleDuration: 0.8
 --- !u!61 &409155905879734336
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -261,6 +234,74 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Turnofflight
   light: {fileID: 0}
+--- !u!114 &8604311978451133758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4319359955902519903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edbb959f524ad464c8e71bc3369b25fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStat
+  maxHP: 100
+  damage: 10
+  fireRate: 1
+  magazine: 10
+  iframeDuration: 0
+  bulletVelocity: 5
+--- !u!114 &7162475426521053785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4319359955902519903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 140fb3393fb80a04da9cbb36b30c6787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthManager
+  currenthealth: 0
+  IframeDuration: 0
+--- !u!114 &314035162971027185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4319359955902519903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d2a43bd453f37547ac5ae8ccff187d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerShooting
+  mousePos: {fileID: 3596717970878627328, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  reload: {fileID: 7240258662068156461, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  firepoint: {fileID: 4103835620400870595}
+  bullet: {fileID: 519055302956375299, guid: 83aa403def2f0244a94fea244b154c34, type: 3}
+  mouseWorldPos: {x: 0, y: 0}
+  fireRate: 8
+  maxMagazine: 0
+  currentMag: 0
+  ReloadSpd: 1
+--- !u!114 &5557927756677157015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4319359955902519903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 478cb742443e90c48a4e5f1f10a2c897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Exp
+  level: 1
+  exp: 0
+  expNeeded: 10
 --- !u!1 &6552506322621231096
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,13 +1,13 @@
+using System;
 using UnityEngine;
 
-public class EnemyStat : MonoBehaviour, IDamageable
+public class EnemyStat : MonoBehaviour
 {
     public EnemyScriptable type;
 
-    [Header("DO NOT CHANGE HERE")]
-    public int HP;
-    public int dmg;
-    public int exp;
+    public float HP;
+    public float dmg;
+    public float exp;
 
     void Start()
     {
@@ -16,37 +16,31 @@ public class EnemyStat : MonoBehaviour, IDamageable
         exp = type.exp;
     }
 
-    // Dipanggil oleh BulletP saat peluru player mengenai enemy
-    public void TakeDamage(int amount)
-    {
-        HP -= amount;
-
-        if (HP <= 0)
-            Destroy(gameObject);
-    }
-
     // Collision body enemy dengan player
     void OnTriggerEnter2D(Collider2D other)
     {
-        PlayerHealth ph = other.GetComponent<PlayerHealth>();
-        if (other.CompareTag("Player"))
-        {
-            ph.TakeDamage(dmg); // kurangi HP player sebesar dmg enemy
-            Destroy(gameObject); // enemy hancur setelah tabrak player
-            
-        }
+        //misal ada player bullet masuk kurangin HP dari game object
         if (other.CompareTag("PlayerBullet"))
         {
-            this.HP -= other.gameObject.GetComponent<BulletP>().damage;
+            BulletP bullet = other.GetComponent<BulletP>();
+            HP -= bullet.damage;
+            Destroy(other.gameObject);
+
+            if (HP<= 0)
+            {
+                Die();
+            }
         }
     }
-    void Update()
-    {
-        if (HP<=0)
-        {
-            Destroy(gameObject);
-            //nanti kasih EXP ama score
-        }
-    }
+    void Die()
+{
+    Exp playerEXP =
+        GameObject.FindGameObjectWithTag("Player")
+        .GetComponent<Exp>();
+
+    playerEXP.AddEXP(exp);
+
+    Destroy(gameObject);
+}
 
 }
