@@ -10,7 +10,7 @@ public class Shotgun : MonoBehaviour
     Vector2 centerDir;
     Vector2 leftDir;
     Vector2 rightDir;
-    private GameObject player;
+    private Transform player;
     public float delayShot;
     private float delay;
     Vector2 playerDir;
@@ -20,15 +20,7 @@ public class Shotgun : MonoBehaviour
 
     void Update()
     {
-        // down direction
-        centerDir = -transform.up;
-
-        // rotate direction
-        leftDir =
-            Quaternion.Euler(0, 0, spreadAngle) * centerDir;
-
-        rightDir =
-            Quaternion.Euler(0, 0, -spreadAngle) * centerDir;
+        
 
         Debug.DrawRay(transform.position, centerDir * 3, Color.red);
 
@@ -53,12 +45,22 @@ public class Shotgun : MonoBehaviour
     void Start()
     {
         Mystat = GetComponent<EnemyStat>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     IEnumerator shot()
     {
         isdoneShot = false;
         int shotcount = 0;
+        // down direction
+         centerDir = (player.position - transform.position).normalized;
+
+        // rotate direction
+        leftDir =
+            Quaternion.Euler(0, 0, spreadAngle) * centerDir;
+
+        rightDir =
+            Quaternion.Euler(0, 0, -spreadAngle) * centerDir;
         while (shotcount < repeatshot)
         {
             GameObject bulletCenter =

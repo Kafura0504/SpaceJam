@@ -59,7 +59,7 @@ Material:
     - _scrollspd: 0.04
     m_Colors:
     - White: {r: 1, g: 1, b: 1, a: 1}
-    - _CloudCOlor: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
+    - _CloudCOlor: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 1}
     - _Color: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
     - _GradientTIling: {r: 0.43, g: 0.63, b: 0, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}

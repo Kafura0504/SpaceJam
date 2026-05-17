@@ -363,7 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c1177c6655dee47b197227b2e7680b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::blinder
-  chargingSPD: 30
+  chargingSPD: 10
   light: {fileID: 0}
 --- !u!114 &4779519661703658817
 MonoBehaviour:

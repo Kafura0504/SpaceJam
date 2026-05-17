@@ -104,7 +104,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 3
+  m_PointLightOuterRadius: 1.7
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -129,10 +129,9 @@ GameObject:
   - component: {fileID: 5554009341487802815}
   - component: {fileID: 4832373887243848873}
   - component: {fileID: 6393766352222681894}
-  - component: {fileID: 7643496890258817091}
   m_Layer: 0
   m_Name: Shotgun 1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,9 +167,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shotgun
   spreadAngle: 25
-  bulletPrefab: {fileID: 995805495833851401, guid: aacb680301bde054da97536096ce47e0, type: 3}
+  bulletPrefab: {fileID: 995805495833851401, guid: 03cd9218f15008d4aba7cfdf4319dbb0, type: 3}
   firePoint: {fileID: 5826344574930153650}
-  delayShot: 1
+  delayShot: 5
   repeatshot: 5
 --- !u!114 &4166030712917894254
 MonoBehaviour:
@@ -264,20 +263,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Kejar
   speed: 1
---- !u!114 &7643496890258817091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6509603568724572218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5940757007dce0549a8883eeed1f1c7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FaceToward
-  angleDir: 90
-  rotateSpeed: 5
 --- !u!1 &8941869157542362417
 GameObject:
   m_ObjectHideFlags: 0
