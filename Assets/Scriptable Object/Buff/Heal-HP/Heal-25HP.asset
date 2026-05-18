@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 493959dfedf50094bb32f9a2f357c0d5, type: 3}
-  m_Name: Dmg Up
+  m_Name: Heal-25HP
   m_EditorClassIdentifier: Assembly-CSharp::BuffData
-  buffName: Damage Up 1
-  description: Increase Your Damage By 3
-  type: 1
-  value: 3
+  buffName: heal25hp
+  description: Healing Your HP By 25
+  type: 0
+  value: 25
