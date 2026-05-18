@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -11,6 +12,7 @@ public class BulletP : MonoBehaviour
     [Header("Visual (Opsional)")]
     public GameObject hitEffectPrefab;
     public Rigidbody2D rb;
+    public AudioClip aud;
 
     void Awake()
     {
@@ -31,14 +33,21 @@ public class BulletP : MonoBehaviour
         //Destroy bullet kalo collide ama bullet Musuh
         if (other.CompareTag("EnemyBullet"))
         {
-            Destroy(gameObject);
-            Destroy(other.gameObject);
-
+            AudioSource.PlayClipAtPoint(aud, transform.position);
             if (hitEffectPrefab != null)
             Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+            Destroy(other.gameObject);
         }
 
         // ── Spawn efek hit (opsional) ───────────────────────────────────────
+
+        if (other.CompareTag("Enemy"))
+        {
+            AudioSource.PlayClipAtPoint(aud, transform.position);
+            if (hitEffectPrefab != null)
+            Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
+        }
         
     }
 }

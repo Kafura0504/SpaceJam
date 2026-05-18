@@ -172,4 +172,6 @@ MonoBehaviour:
   speed: 18
   damage: 10
   lifetime: 2.5
-  hitEffectPrefab: {fileID: 0}
+  hitEffectPrefab: {fileID: 9147639731610641126, guid: 656c10f0d1a3808428b19f5b94f880cb, type: 3}
+  rb: {fileID: 0}
+  aud: {fileID: 8300000, guid: 9d64c6cc36570d240a7c9ccc80271178, type: 3}
