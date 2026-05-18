@@ -8,9 +8,11 @@ public class HealthManager : MonoBehaviour
     [SerializeField] float currenthealth;
     [SerializeField] float IframeDuration;
     private bool isInvincible;
+    private PlayerRewind rewind;
     void Awake()
     {
         stat = GetComponent<PlayerStat>();
+        rewind = GetComponent<PlayerRewind>();
 
         stat.OnStatChanged += refreshStat;
 
@@ -54,7 +56,7 @@ public class HealthManager : MonoBehaviour
 
     void Die()
     {
-        Destroy(gameObject);
+      rewind.StartRewind();
     }
 
     void TakeDamage(float amount)

@@ -264,7 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Burst
   bulletPrefab: {fileID: 995805495833851401, guid: aacb680301bde054da97536096ce47e0, type: 3}
   firePoint: {fileID: 2713163955691811938}
-  delayShot: 1.5
+  delayShot: 5
   repeatshot: 5
 --- !u!50 &887915354838964717
 Rigidbody2D:

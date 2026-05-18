@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72bbbfa9108ba604cb22c45eca9612c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Chaser
-  chargingSPD: 30
+  chargingSPD: 10
 --- !u!82 &485215059424181255
 AudioSource:
   m_ObjectHideFlags: 0

@@ -175,7 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 995805495833851401, guid: aacb680301bde054da97536096ce47e0, type: 3}
   firePoint: {fileID: 1884209382084689720}
-  delayShot: 1
+  delayShot: 3
 --- !u!50 &3745534269369991430
 Rigidbody2D:
   serializedVersion: 5
@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822f4cd30584cba458c31c5afeb36248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStat
-  type: {fileID: 11400000, guid: 79ef5196bcc844b40994b8ebbe43a60e, type: 2}
+  type: {fileID: 11400000, guid: 39f9825fa6a9b2f4289551573407c827, type: 2}
   HP: 0
   dmg: 0
   exp: 0
