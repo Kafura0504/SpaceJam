@@ -11,6 +11,7 @@ public class Turnofflight : MonoBehaviour
         if (collision.CompareTag("Blinder"))
         {
             StartCoroutine(Turnoff());
+            Destroy(collision);
         }
     }
     IEnumerator Turnoff()

@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 493959dfedf50094bb32f9a2f357c0d5, type: 3}
   m_Name: Heal-20HP
   m_EditorClassIdentifier: Assembly-CSharp::BuffData
+
   buffName: heal20hp
   description: Healing Your HP By 20
   type: 0
   value: 20
+
+  buffName: Magazine Up 1
+  description: Increase Your Magazine Capacity By 3
+  type: 3
+  value: 3
+

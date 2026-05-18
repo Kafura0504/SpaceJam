@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 493959dfedf50094bb32f9a2f357c0d5, type: 3}
   m_Name: Fast Bullet
   m_EditorClassIdentifier: Assembly-CSharp::BuffData
-  buffName: 
-  description: 
-  type: 0
-  value: 0
+  buffName: Fast Bullet
+  description: Increase the Velocity Of your Bullet
+  type: 4
+  value: 0.5

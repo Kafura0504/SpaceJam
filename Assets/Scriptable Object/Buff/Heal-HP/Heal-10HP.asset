@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 493959dfedf50094bb32f9a2f357c0d5, type: 3}
   m_Name: Heal-10HP
   m_EditorClassIdentifier: Assembly-CSharp::BuffData
+
   buffName: heal10hp
   description: Healing Your HP By 10
+
+  buffName: Health Up 1
+  description: Incrrease your Health By 10
+
   type: 0
   value: 10

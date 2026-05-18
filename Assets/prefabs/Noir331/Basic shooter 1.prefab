@@ -73,7 +73,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 3
+  m_PointLightOuterRadius: 1.39
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -257,9 +257,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d2a665aa40447947b07d2f5a5ddc6f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 995805495833851401, guid: aacb680301bde054da97536096ce47e0, type: 3}
+  bulletPrefab: {fileID: 995805495833851401, guid: 03cd9218f15008d4aba7cfdf4319dbb0, type: 3}
   firePoint: {fileID: 1884209382084689720}
-  delayShot: 1
+  delayShot: 3
 --- !u!50 &3745534269369991430
 Rigidbody2D:
   serializedVersion: 5

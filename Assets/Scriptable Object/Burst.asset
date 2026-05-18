@@ -15,4 +15,4 @@ MonoBehaviour:
   name: Burst
   health: 20
   attack: 1
-  exp: 10
+  exp: 2

@@ -44,6 +44,12 @@ public class HealthManager : MonoBehaviour
             TakeDamage(bullet.damage);
             Destroy(collision.gameObject);
         }
+        else if (collision.CompareTag("Enemy"))
+        {
+            EnemyStat stat = collision.GetComponent<EnemyStat>();
+            TakeDamage(stat.dmg);
+            Destroy(collision.gameObject);
+        }
     }
 
     void Die()

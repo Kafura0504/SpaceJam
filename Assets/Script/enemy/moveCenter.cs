@@ -14,7 +14,7 @@ public class moveCenter : MonoBehaviour
             transform.position = Vector2.Lerp(
                 transform.position,
                 Vector2.zero,
-                0.5f * Time.deltaTime
+                4f * Time.deltaTime
             );
         }
         else
