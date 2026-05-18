@@ -5,8 +5,9 @@ using UnityEngine.VFX;
 public class HealthManager : MonoBehaviour
 {
     private PlayerStat stat;
-    private float maxHP;
-    [SerializeField] float currenthealth;
+    [Header("dont change it in the inspector this is for another script reference")]
+    public float maxHP;
+    public float currenthealth;
     [SerializeField] float IframeDuration;
     private bool isInvincible;
     public VisualEffect explode;

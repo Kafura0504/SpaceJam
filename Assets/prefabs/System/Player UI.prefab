@@ -1121,14 +1121,14 @@ RectTransform:
   m_GameObject: {fileID: 7613575501866807743}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5793547901717075657}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -16.159878, y: 0}
+  m_AnchoredPosition: {x: 6, y: 0}
   m_SizeDelta: {x: -32.320244, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &888944063837507350
@@ -1357,9 +1357,10 @@ GameObject:
   - component: {fileID: 251090435760326439}
   - component: {fileID: 560660888407613695}
   - component: {fileID: 7424731947630003879}
+  - component: {fileID: 3277232397930892170}
   m_Layer: 5
   m_Name: Player UI
-  m_TagString: Untagged
+  m_TagString: SystemUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1462,6 +1463,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InGameFunction
   pausemenu: {fileID: 844340486050316568}
   GameMenu: {fileID: 7743163190286385708}
+--- !u!114 &3277232397930892170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8589270565100405907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e58c7013cccdddb47b8219c0e620fd11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  score: 0
+  scoreUI: {fileID: 5506112806526511246}
+  healthBar: {fileID: 3875332200102253405}
 --- !u!1 &8906309004708635136
 GameObject:
   m_ObjectHideFlags: 0

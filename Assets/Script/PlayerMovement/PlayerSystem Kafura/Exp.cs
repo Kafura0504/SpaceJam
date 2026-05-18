@@ -13,11 +13,16 @@ public class Exp : MonoBehaviour
     private float expmult = 1f;
 
     public event Action OnLevelUp;
+    private HealthAndScore score;
 
+    void Awake()
+    {
+        score = GameObject.FindGameObjectWithTag("SystemUI").GetComponent<HealthAndScore>();
+    }
     public void AddEXP(float amount)
     {
         exp += amount * expmult;
-
+        score.score += Mathf.RoundToInt(exp);
         while (exp >= expNeeded)
         {
             LevelUp();
