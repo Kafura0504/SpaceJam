@@ -710,29 +710,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 894741508867463556, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 906581001884276297, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1135638229368861987, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4319359955902519903, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4319359955902519903, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6552506322621231096, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
-      propertyPath: m_Layer
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -769,9 +749,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossPatternTester
   miniGunnerSpawner: {fileID: 287780166564798063, guid: d7d200df382660449a2b1b21ac507b25, type: 3}
-  rightHand: {fileID: 345186764}
-  leftHand: {fileID: 486092536}
-  bossHead: {fileID: 1172112864}
+  rightHand: {fileID: 0}
+  leftHand: {fileID: 0}
+  bossHead: {fileID: 0}
   playerTransform: {fileID: 1561857918}
   bulletPrefab: {fileID: 995805495833851401, guid: 03cd9218f15008d4aba7cfdf4319dbb0, type: 3}
   bulletDamage: 10
@@ -812,7 +792,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1172112864}
   - component: {fileID: 1172112863}
-  - component: {fileID: 1172112865}
   m_Layer: 0
   m_Name: BossHeadNoir
   m_TagString: Untagged
@@ -897,37 +876,6 @@ Transform:
   - {fileID: 486092536}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1172112865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1172112862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec4608f3a7a02dc40917a6a1c3fca0ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BossPattern_Slam3x
-  rightHand: {fileID: 345186764}
-  alertPrefab: {fileID: 6285452671056990479, guid: 8a1ea84659e497d4590ed28c8c5269f6, type: 3}
-  playerTransform: {fileID: 1561857918}
-  slamCount: 3
-  slamDamage: 30
-  damageRadius: 1.5
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  telegraphDuration: 2
-  alertFadeDuration: 0.5
-  delayBetweenSlams: 1
-  endDelay: 0.8
-  raiseHeight: 3
-  slamDownSpeed: 22
-  retractSpeed: 6
-  alertColor: {r: 1, g: 0.15, b: 0.15, a: 0.9}
-  alertSize: 2.5
-  alertSortingOrder: 10
 --- !u!4 &1561857918 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 469128242197421309, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
@@ -941,22 +889,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 287780166564798063, guid: d7d200df382660449a2b1b21ac507b25, type: 3}
-      propertyPath: targetPositionLeft.x
-      value: -7
-      objectReference: {fileID: 0}
-    - target: {fileID: 287780166564798063, guid: d7d200df382660449a2b1b21ac507b25, type: 3}
-      propertyPath: targetPositionLeft.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 287780166564798063, guid: d7d200df382660449a2b1b21ac507b25, type: 3}
-      propertyPath: targetPositionRight.x
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 287780166564798063, guid: d7d200df382660449a2b1b21ac507b25, type: 3}
-      propertyPath: targetPositionRight.y
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 3536886418187326426, guid: d7d200df382660449a2b1b21ac507b25, type: 3}
       propertyPath: m_Name
       value: MiniGunnerSpawner
