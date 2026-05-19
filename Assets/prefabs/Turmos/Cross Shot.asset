@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Cross Shot
   m_EditorClassIdentifier: Assembly-CSharp::EnemyScriptable
   name: Cross Shooter
-  health: 50
-  attack: 10
+  health: 10
+  attack: 1
   exp: 10

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Meteor Spawner
   m_EditorClassIdentifier: Assembly-CSharp::EnemyScriptable
   name: Meteor Caller
-  health: 50
-  attack: 25
+  health: 10
+  attack: 1
   exp: 20

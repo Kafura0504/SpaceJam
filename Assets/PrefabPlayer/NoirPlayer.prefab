@@ -115,8 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71bcf5e6825d521498a9e1098736fba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movement
-  moveSpeed: 6
-  slowSpeed: 2.5
+  moveSpeed: 3
+  slowSpeed: 1.5
   acceleration: 0.15
   rotationOffset: 90
   minX: -8.91
@@ -194,9 +194,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edbb959f524ad464c8e71bc3369b25fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStat
-  maxHP: 100
-  damage: 10
-  fireRate: 1
+  maxHP: 20
+  damage: 1
+  fireRate: 5
   magazine: 10
   iframeDuration: 0
   bulletVelocity: 5
@@ -212,6 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 140fb3393fb80a04da9cbb36b30c6787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthManager
+  maxHP: 0
   currenthealth: 0
   IframeDuration: 0
   explode: {fileID: 865711846178638487, guid: 004832319b0239747b52f210e659fa2c, type: 3}

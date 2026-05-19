@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Spiral
   m_EditorClassIdentifier: Assembly-CSharp::EnemyScriptable
   name: Spiral
-  health: 50
+  health: 15
   attack: 1
   exp: 20
