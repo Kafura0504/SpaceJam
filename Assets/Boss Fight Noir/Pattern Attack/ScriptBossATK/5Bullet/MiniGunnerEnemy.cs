@@ -27,7 +27,7 @@ public class MiniGunnerEnemy : MonoBehaviour
     [Tooltip("Jumlah bullet yang ditembakkan")]
     public int bulletCount = 5;
 
-    [Tooltip("Jeda antar bullet")]
+    [Tooltip("Jeda antar bullet (bullet ditembak berurutan)")]
     public float timeBetweenBullets = 0.15f;
 
     [Tooltip("Jeda sebelum mulai menembak setelah tiba")]
@@ -35,6 +35,15 @@ public class MiniGunnerEnemy : MonoBehaviour
 
     [Tooltip("Arah tembakan: true = tembak ke kanan, false = tembak ke kiri")]
     public bool shootRight = true;
+
+    [Tooltip("Sudut tembakan pusat (0 = kanan, 90 = atas, -90 = bawah, 180 = kiri)")]
+    public float shootAngle = 0f;
+
+    [Tooltip("Sudut spread antar bullet")]
+    public float spreadAngle = 15f;
+
+    [Tooltip("Offset posisi firePoint dari center sprite (untuk flip sprite)")]
+    public Vector2 firePointOffset = new Vector2(0.5f, 0f);
 
     // ── Exit Settings ─────────────────────────────────────────────────────────
     [Header("Exit")]
@@ -109,36 +118,73 @@ public class MiniGunnerEnemy : MonoBehaviour
 
     IEnumerator ShootSideways()
     {
-        // Arah tembakan horizontal
-        // shootRight = true  → tembak ke kanan (+X)
-        // shootRight = false → tembak ke kiri  (-X)
-        Vector2 shootDirection = shootRight ? Vector2.right : Vector2.left;
+        // Rotasi sprite mengikuti arah tembakan
+        RotateSprite(shootRight);
 
         for (int i = 0; i < bulletCount; i++)
         {
-            SpawnBullet(shootDirection);
+            // Hitung sudut untuk setiap bullet dengan spread pattern
+            float offsetAngle = (i - bulletCount / 2f) * spreadAngle;
+            float bulletAngle = shootAngle + offsetAngle;
+            
+            // Sesuaikan untuk arah tembakan (180° jika tembak ke kiri)
+            if (!shootRight)
+            {
+                bulletAngle = 180f - bulletAngle;
+            }
+            
+            SpawnBullet(bulletAngle);
             yield return new WaitForSeconds(timeBetweenBullets);
         }
     }
 
-    void SpawnBullet(Vector2 direction)
+    void RotateSprite(bool facingRight)
     {
-        if (bulletPrefab == null || firePoint == null)
+        // Rotasi sprite dan sesuaikan firePoint offset
+        Vector3 scale = transform.localScale;
+        scale.x = facingRight ? 1f : -1f;
+        transform.localScale = scale;
+    }
+
+    void SpawnBullet(float angleInDegrees)
+    {
+        if (bulletPrefab == null)
         {
-            Debug.LogWarning("[MiniGunnerEnemy] bulletPrefab atau firePoint belum di-assign!");
+            Debug.LogWarning("[MiniGunnerEnemy] bulletPrefab belum di-assign!");
             return;
         }
 
+        // Hitung posisi spawn dengan offset berdasarkan arah
+        Vector2 spawnPos = (Vector2)transform.position;
+        
+        // Sesuaikan offset position berdasarkan arah tembakan
+        Vector2 adjustedOffset = firePointOffset;
+        if (!shootRight)
+        {
+            adjustedOffset.x *= -1f; // Flip X offset ketika tembak ke kiri
+        }
+        
+        spawnPos += adjustedOffset;
+
+        // Spawn bullet
         GameObject bulletObj = Instantiate(
             bulletPrefab,
-            firePoint.position,
-            firePoint.rotation
+            spawnPos,
+            Quaternion.identity
         );
 
         Bullet bullet = bulletObj.GetComponent<Bullet>();
         if (bullet != null)
         {
             bullet.damage = _bulletDamage;
+            
+            // Konversi sudut menjadi direction vector (0° = kanan, 90° = atas)
+            float angleInRadians = angleInDegrees * Mathf.Deg2Rad;
+            Vector2 direction = new Vector2(
+                Mathf.Cos(angleInRadians),
+                Mathf.Sin(angleInRadians)
+            );
+            
             bullet.SetDirection(direction);
         }
     }
