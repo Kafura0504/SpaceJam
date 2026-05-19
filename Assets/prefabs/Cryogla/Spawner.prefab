@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5886132731214174317}
   m_Layer: 0
   m_Name: Spawner
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c78b150471aecc42a905a88cdfdc71f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NormalSpawner
-  spawnCD: 3
   enemylist:
   - {fileID: 8007538751270539304, guid: 057b3b44f3e785b40a04cf8b64ea755b, type: 3}
   - {fileID: 7434960867008255473, guid: 20f686937a2b7ef4790d2bc3c211850b, type: 3}

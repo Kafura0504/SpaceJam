@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &108223214 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1227161267988594167, guid: 2e3c26196d4e2fb44b4bbabe481deb23, type: 3}
+  m_PrefabInstance: {fileID: 740648888}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &206949714
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -176,6 +181,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 951af824198166b4e8cbe3c687e1bce5, type: 3}
+--- !u!1001 &312138664
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6152359724383223945, guid: ba2ee8fd65bd2eb4e84345b9619cfbf0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 924.57477
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152359724383223945, guid: ba2ee8fd65bd2eb4e84345b9619cfbf0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 473.88983
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152359724383223945, guid: ba2ee8fd65bd2eb4e84345b9619cfbf0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152359724383223945, guid: ba2ee8fd65bd2eb4e84345b9619cfbf0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152359724383223945, guid: ba2ee8fd65bd2eb4e84345b9619cfbf0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152359724383223945, guid: ba2ee8fd65bd2eb4e84345b9619cfbf0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152359724383223945, guid: ba2ee8fd65bd2eb4e84345b9619cfbf0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152359724383223945, guid: ba2ee8fd65bd2eb4e84345b9619cfbf0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152359724383223945, guid: ba2ee8fd65bd2eb4e84345b9619cfbf0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152359724383223945, guid: ba2ee8fd65bd2eb4e84345b9619cfbf0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295599920691442764, guid: ba2ee8fd65bd2eb4e84345b9619cfbf0, type: 3}
+      propertyPath: m_Name
+      value: SuaraDewa
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ba2ee8fd65bd2eb4e84345b9619cfbf0, type: 3}
 --- !u!1001 &431922296
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1087,6 +1149,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NoirPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 7162475426521053785, guid: 8555ad7483dcd4c40ba11ea318e9ff84, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 108223214}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1166,3 +1232,4 @@ SceneRoots:
   - {fileID: 740648888}
   - {fileID: 5163398590563105858}
   - {fileID: 1837140764}
+  - {fileID: 312138664}

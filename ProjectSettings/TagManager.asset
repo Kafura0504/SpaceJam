@@ -10,6 +10,8 @@ TagManager:
   - EnemyBullet
   - Blinder
   - SystemUI
+  - GameOver
+  - Spawner
   layers:
   - Default
   - TransparentFX

@@ -215,7 +215,11 @@ MonoBehaviour:
   maxHP: 0
   currenthealth: 0
   IframeDuration: 0
-  explode: {fileID: 865711846178638487, guid: 004832319b0239747b52f210e659fa2c, type: 3}
+  explode: {fileID: 3634585824502324623}
+  Explosion: {fileID: 8300000, guid: 925e14cfd1aea8d4f87aa0581e6c5473, type: 3}
+  shooting: {fileID: 0}
+  UI: {fileID: 0}
+  Reverse: {fileID: 8300000, guid: 023aeb0c3eac1f84d8aa8e2b237624f0, type: 3}
 --- !u!114 &314035162971027185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,7 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034fde14f3685ce459fabe8d7726a547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerRewind
-  rewindDuration: 5
+  rewindDuration: 15
   canrecord: 0
   rewindSpeed: 3
 --- !u!1 &6552506322621231096
@@ -521,6 +525,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 004832319b0239747b52f210e659fa2c, type: 3}
+--- !u!2083052967 &3634585824502324623 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 865711846178638487, guid: 004832319b0239747b52f210e659fa2c, type: 3}
+  m_PrefabInstance: {fileID: 4499945790016509720}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6929373679912281502 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6798483240231252614, guid: 004832319b0239747b52f210e659fa2c, type: 3}

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,6 +7,7 @@ public class InGameFunction : MonoBehaviour
     bool ispause = false;
     public GameObject pausemenu;
     public GameObject GameMenu;
+    public event Action onPause;
     // Update is called once per frame
     void Update()
     {
@@ -22,6 +24,8 @@ public class InGameFunction : MonoBehaviour
     public void paused()
     {
         Time.timeScale = 0f;
+        ispause = true;
+        onPause?.Invoke();
         pausemenu.SetActive(true);
         GameMenu.SetActive(false);
 
@@ -29,6 +33,7 @@ public class InGameFunction : MonoBehaviour
     public void unpause()
     {
         Time.timeScale = 1f;
+        ispause = false;
         pausemenu.SetActive(false);
         GameMenu.SetActive(true);
     }

@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.VFX;
+using UnityEngine.SceneManagement;
+using UnityEngine.Timeline;
 
 public class HealthManager : MonoBehaviour
 {
@@ -12,11 +15,17 @@ public class HealthManager : MonoBehaviour
     private bool isInvincible;
     public VisualEffect explode;
     private PlayerRewind rewind;
+    public event Action OnDie;
+    private bool running;
+    public AudioClip Explosion;
+    public PlayerShooting shooting;
+    public GameObject UI;
+    public AudioClip Reverse;
     void Awake()
     {
         stat = GetComponent<PlayerStat>();
-        // rewind = GetComponent<PlayerRewind>();
-
+        rewind = GetComponent<PlayerRewind>();
+        shooting = GetComponent<PlayerShooting>();
         stat.OnStatChanged += refreshStat;
 
         maxHP = stat.maxHP;
@@ -59,14 +68,33 @@ public class HealthManager : MonoBehaviour
 
     IEnumerator Die()
     {
+        GameObject[] spawner = GameObject.FindGameObjectsWithTag("Spawner");
+        for (int i = 0; i < spawner.Length; i++)
+        {
+            Destroy(spawner[i].gameObject);
+        }
+        running = true;
+        rewind.canrecord=false;
+        shooting.enabled = false;
+        AudioSource.PlayClipAtPoint(Explosion, transform.position);
         explode.Play();
         SpriteRenderer sprite = GetComponentInChildren<SpriteRenderer>();
         sprite.enabled = false; //ilangin sprite
-        //dewo Yapping
+        yield return new WaitForSeconds(1f);
 
-        yield return new WaitForSeconds(1f); ///tungguin yapping kelar
+        //dewo Yapping
+        OnDie?.Invoke();
+
+        yield return new WaitForSeconds(2f); ///tungguin yapping kelar
+        sprite.enabled = true;
+        AudioSource.PlayClipAtPoint(Reverse,transform.position, 5f);
         rewind.StartRewind(); // rewind time
+
         //game over
+        yield return new WaitForSeconds(5f);
+        
+        UI.SetActive(true);
+
     }
 
     void TakeDamage(float amount)
@@ -77,9 +105,9 @@ public class HealthManager : MonoBehaviour
 
         currenthealth -= amount;
 
-        if (currenthealth <= 0)
+        if (currenthealth <= 0 && !running)
         {
-            Die();
+            StartCoroutine(Die());
         }
 
         StartCoroutine(IFrame());
