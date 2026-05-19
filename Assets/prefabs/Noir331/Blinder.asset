@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Blinder
   m_EditorClassIdentifier: Assembly-CSharp::EnemyScriptable
   name: Blinder
-  health: 10
+  health: 4
   attack: 0
   exp: 10

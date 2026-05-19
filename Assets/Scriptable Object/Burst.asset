@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Burst
   m_EditorClassIdentifier: Assembly-CSharp::EnemyScriptable
   name: Burst
-  health: 20
+  health: 10
   attack: 1
   exp: 2

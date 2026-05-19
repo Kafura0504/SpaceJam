@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 314035162971027185}
   - component: {fileID: 5557927756677157015}
   - component: {fileID: 8667887108952835121}
+  - component: {fileID: 7062740353200365349}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -114,8 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71bcf5e6825d521498a9e1098736fba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movement
-  moveSpeed: 6
-  slowSpeed: 2.5
+  moveSpeed: 3
+  slowSpeed: 1.5
   acceleration: 0.15
   rotationOffset: 90
   minX: -8.91
@@ -193,9 +194,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edbb959f524ad464c8e71bc3369b25fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStat
-  maxHP: 100
-  damage: 10
-  fireRate: 1
+  maxHP: 20
+  damage: 1
+  fireRate: 5
   magazine: 10
   iframeDuration: 0
   bulletVelocity: 5
@@ -211,6 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 140fb3393fb80a04da9cbb36b30c6787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthManager
+  maxHP: 0
   currenthealth: 0
   IframeDuration: 0
   explode: {fileID: 865711846178638487, guid: 004832319b0239747b52f210e659fa2c, type: 3}
@@ -348,6 +350,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7062740353200365349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4319359955902519903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034fde14f3685ce459fabe8d7726a547, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerRewind
+  rewindDuration: 5
+  canrecord: 0
+  rewindSpeed: 3
 --- !u!1 &6552506322621231096
 GameObject:
   m_ObjectHideFlags: 0

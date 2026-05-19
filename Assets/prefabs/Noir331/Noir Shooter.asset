@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Noir Shooter
   m_EditorClassIdentifier: Assembly-CSharp::EnemyScriptable
   name: 
-  health: 30
-  attack: 3
+  health: 5
+  attack: 1
   exp: 5

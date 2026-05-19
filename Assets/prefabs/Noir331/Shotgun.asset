@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: Assembly-CSharp::EnemyScriptable
   name: Shotgun
-  health: 30
-  attack: 2
+  health: 10
+  attack: 1
   exp: 10

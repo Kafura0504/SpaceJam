@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Chaser
   m_EditorClassIdentifier: Assembly-CSharp::EnemyScriptable
   name: Chaser
-  health: 5
+  health: 2
   attack: 5
   exp: 6
