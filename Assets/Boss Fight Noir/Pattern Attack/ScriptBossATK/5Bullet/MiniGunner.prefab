@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.95371693, w: 0.30070582}
   m_LocalPosition: {x: -7.33, y: 1.89, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4980576767491156228}
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: 6111083716014883338, guid: dd346096c8811d84b84d285dfc2dfdee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -171,14 +171,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1681cd61a95528d408bba3606863f41a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MiniGunnerEnemy
-  bulletPrefab: {fileID: 995805495833851401, guid: 03cd9218f15008d4aba7cfdf4319dbb0, type: 3}
+  bulletPrefab: {fileID: 3412826518243401563, guid: 90befd9d5b4f3af488b01f44b715e953, type: 3}
   firePoint: {fileID: 4980576767491156228}
   targetInsidePosition: {x: 0, y: 0}
-  moveSpeed: 4
+  moveSpeed: 5
   bulletCount: 5
   timeBetweenBullets: 0.15
+  rotateRatio: 0.9
   waitBeforeShoot: 1
   shootRight: 1
+  sweepAngleStart: -30
+  sweepAngleEnd: -80
+  sweepAngleLeftStart: -150
+  sweepAngleLeftEnd: -100
   exitPosition: {x: 0, y: 0}
   waitAfterShoot: 0.5
 --- !u!114 &2483194646880558886
