@@ -1,16 +1,21 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class HealthManager : MonoBehaviour
 {
     private PlayerStat stat;
-    private float maxHP;
-    [SerializeField] float currenthealth;
+    [Header("dont change it in the inspector this is for another script reference")]
+    public float maxHP;
+    public float currenthealth;
     [SerializeField] float IframeDuration;
     private bool isInvincible;
+    public VisualEffect explode;
+    private PlayerRewind rewind;
     void Awake()
     {
         stat = GetComponent<PlayerStat>();
+        // rewind = GetComponent<PlayerRewind>();
 
         stat.OnStatChanged += refreshStat;
 
@@ -52,9 +57,16 @@ public class HealthManager : MonoBehaviour
         }
     }
 
-    void Die()
+    IEnumerator Die()
     {
-        Destroy(gameObject);
+        explode.Play();
+        SpriteRenderer sprite = GetComponentInChildren<SpriteRenderer>();
+        sprite.enabled = false; //ilangin sprite
+        //dewo Yapping
+
+        yield return new WaitForSeconds(1f); ///tungguin yapping kelar
+        rewind.StartRewind(); // rewind time
+        //game over
     }
 
     void TakeDamage(float amount)

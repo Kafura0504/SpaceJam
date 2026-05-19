@@ -10,13 +10,19 @@ public class Exp : MonoBehaviour
     public float expNeeded = 10;
 
     private float lastEXPNeed = 10;
+    private float expmult = 1f;
 
     public event Action OnLevelUp;
+    private HealthAndScore score;
 
+    void Awake()
+    {
+        score = GameObject.FindGameObjectWithTag("SystemUI").GetComponent<HealthAndScore>();
+    }
     public void AddEXP(float amount)
     {
-        exp += amount;
-
+        exp += amount * expmult;
+        score.score += Mathf.RoundToInt(exp);
         while (exp >= expNeeded)
         {
             LevelUp();
@@ -28,6 +34,10 @@ public class Exp : MonoBehaviour
         exp -= expNeeded;
 
         level++;
+        if (level % 10 == 0)
+        {
+            expmult += 0.5f;
+        }
 
         UpdateEXPReq();
 
@@ -38,10 +48,6 @@ public class Exp : MonoBehaviour
 
     void UpdateEXPReq()
     {
-        float previous = expNeeded;
-
-        expNeeded += lastEXPNeed;
-
-        lastEXPNeed = previous;
+        expNeeded += 10;
     }
 }

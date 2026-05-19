@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822f4cd30584cba458c31c5afeb36248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStat
-  type: {fileID: 11400000, guid: 79ef5196bcc844b40994b8ebbe43a60e, type: 2}
+  type: {fileID: 11400000, guid: 39f9825fa6a9b2f4289551573407c827, type: 2}
   HP: 0
   dmg: 0
   exp: 0

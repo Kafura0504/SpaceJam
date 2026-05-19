@@ -266,7 +266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 995805495833851401, guid: aacb680301bde054da97536096ce47e0, type: 3}
   firePoint: {fileID: 1884209382084689720}
-  delayShot: 1
+  delayShot: 3
 --- !u!50 &3745534269369991430
 Rigidbody2D:
   serializedVersion: 5

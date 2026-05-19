@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c78b150471aecc42a905a88cdfdc71f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NormalSpawner
-  spawnCD: 3
   enemylist:
-  - {fileID: 8007538751270539304, guid: 057b3b44f3e785b40a04cf8b64ea755b, type: 3}
-  - {fileID: 7434960867008255473, guid: 20f686937a2b7ef4790d2bc3c211850b, type: 3}
-  - {fileID: 8985877580589720291, guid: db274cb331670f54eaebd579e14faa2f, type: 3}
+  - {fileID: 6509603568724572218, guid: e3be6abf0f93ab0409db27313c22194f, type: 3}
+  - {fileID: 3863829275063193974, guid: b768d9add07948d49ae8f73ebd2dd0ef, type: 3}
+  - {fileID: 8985877580589720291, guid: d2307f5b13bdd484b9a427e48eaf8aa5, type: 3}
+  - {fileID: 4946343055371173869, guid: f2dc7a3a855998544a266f06360e14b5, type: 3}

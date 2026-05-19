@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822f4cd30584cba458c31c5afeb36248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStat
-  type: {fileID: 11400000, guid: 2055c8b85ccca304b9fb90694389a855, type: 2}
+  type: {fileID: 11400000, guid: 4405851b5c8fb49419da91c2a625c67a, type: 2}
   HP: 0
   dmg: 0
   exp: 0
@@ -301,7 +301,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 995805495833851401, guid: aacb680301bde054da97536096ce47e0, type: 3}
   rightFire: {fileID: 8154777667055640845}
   leftFire: {fileID: 705218523415931439}
-  delayShot: 0.5
+  delayShot: 3
 --- !u!114 &4722227188273028397
 MonoBehaviour:
   m_ObjectHideFlags: 0

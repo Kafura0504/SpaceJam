@@ -74,7 +74,7 @@ MonoBehaviour:
   - {fileID: 0}
   dir: []
   meteorPrefab: {fileID: 7635980804126257272, guid: 1f803814d63f7f04599acf07d34c30c5, type: 3}
-  spawnDelay: 2
+  spawnDelay: 5
   mystat: {fileID: 0}
 --- !u!50 &5322888502295654549
 Rigidbody2D:
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822f4cd30584cba458c31c5afeb36248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStat
-  type: {fileID: 11400000, guid: 2055c8b85ccca304b9fb90694389a855, type: 2}
+  type: {fileID: 11400000, guid: 9f8a3e8fc69840b4795b45a5c669b31c, type: 2}
   HP: 0
   dmg: 0
   exp: 0

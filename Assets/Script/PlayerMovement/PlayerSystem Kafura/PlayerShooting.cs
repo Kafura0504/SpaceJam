@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.VFX;
 
 public class PlayerShooting : MonoBehaviour
 {
@@ -25,10 +26,13 @@ public class PlayerShooting : MonoBehaviour
     private PlayerStat stat;
     private bool reloading = false;
     public float ReloadSpd;
+    public VisualEffect vfx;
+    private AudioSource aud;
 
     void Start()
     {
         stat = GetComponent<PlayerStat>();
+        aud = GetComponent<AudioSource>();
 
         stat.OnStatChanged += RefreshStat;
 
@@ -113,6 +117,8 @@ public class PlayerShooting : MonoBehaviour
             fireCooldown <= 0f &&
             currentMag > 0 && !reloading)
         {
+            vfx.Play();
+            aud.Play();
             Shoot();
 
             currentMag--;

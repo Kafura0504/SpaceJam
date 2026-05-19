@@ -208,7 +208,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb2802f4681079499d37c9e355cecf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwarmSpawner
-  Swarm: {fileID: 2273766405787751113, guid: 8656cf7ac0ac02b4d811765bdd3f5b15, type: 3}
+  CDRange: {x: 10, y: 20}
+  Swarm: {fileID: 2273766405787751113, guid: 4c3ed22a9afaaa641a8e4301a70bc921, type: 3}
   spawnpoint:
   - {fileID: 301115261124043684}
   - {fileID: 8102480663244387541}

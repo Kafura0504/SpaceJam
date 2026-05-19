@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5072149061170800644}
   - component: {fileID: 8646847540251524045}
   - component: {fileID: 448604039670198452}
+  - component: {fileID: -2009799259087770283}
   m_Layer: 0
   m_Name: VFXBURST
   m_TagString: Untagged
@@ -118,3 +119,16 @@ VFXRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
+--- !u!114 &-2009799259087770283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9147639731610641126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f68e9f7dd4c718438fbaf67af8bf6bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::destroyafter
+  time: 1

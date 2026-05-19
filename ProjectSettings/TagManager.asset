@@ -9,6 +9,7 @@ TagManager:
   - MeteorPoint
   - EnemyBullet
   - Blinder
+  - SystemUI
   layers:
   - Default
   - TransparentFX
