@@ -1012,7 +1012,7 @@ MonoBehaviour:
   patternSlam: {fileID: 1172112865}
   patternMiniGunner: {fileID: 287780166564798063, guid: d7d200df382660449a2b1b21ac507b25, type: 3}
   patternSweep: {fileID: 1684465563}
-  patternChase: {fileID: 0}
+  patternChase: {fileID: 1684465567}
   patternNormal: {fileID: 0}
   miniGunnerSpawner: {fileID: 287780166564798063, guid: d7d200df382660449a2b1b21ac507b25, type: 3}
   rightHand: {fileID: 345186764}
@@ -1345,7 +1345,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684465560}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48db85922acc2f94db7c55eefc1da53b, type: 3}
   m_Name: 
@@ -1372,12 +1372,18 @@ MonoBehaviour:
   playerTransform: {fileID: 1561857918}
   bossHP: {fileID: 1172112866}
   extraHandPrefab: {fileID: 7208403080623805311, guid: c303eae268fabcc43817903203bfe060, type: 3}
-  extraHandSpawnX: -14
-  extraHandTargetX: -8
+  extraHandSpawnX: -13
+  extraHandSpawnY: -2
+  extraHandMoveTargetX: -8
   extraHandMaxHP: 60
-  extraHandMoveSpeed: 10
-  leftHandExitX: -16
+  extraHandMoveRightSpeed: 8
+  extraHandExitSpeed: 8
+  leftHandExitY: 12
   leftHandMoveSpeed: 8
+  alertPrefab: {fileID: 776410252353668593, guid: 0da2ce050ef4bec45b06039d62036bf6, type: 3}
+  alertSize: 1
+  alertSortingOrder: 10
+  alertColor: {r: 1, g: 0.15, b: 0.15, a: 0.9}
   laserVFX: {fileID: 0}
   laserDamage: 20
   dangerZoneDamage: 8
@@ -1393,6 +1399,8 @@ MonoBehaviour:
   fireSound: {fileID: 0}
   humSound: {fileID: 0}
   extraHandDestroySound: {fileID: 0}
+  handExitSound: {fileID: 0}
+  handReturnSound: {fileID: 0}
   telegraphColor: {r: 0.2, g: 0.85, b: 1, a: 0.3}
   laserZoneColor: {r: 0.2, g: 0.95, b: 1, a: 0.55}
   dangerColor: {r: 1, g: 0.5, b: 0.2, a: 0.3}
