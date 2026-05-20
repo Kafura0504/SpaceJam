@@ -85,7 +85,7 @@ public class HealthManager : MonoBehaviour
         //dewo Yapping
         OnDie?.Invoke();
 
-        yield return new WaitForSeconds(2f); ///tungguin yapping kelar
+        yield return new WaitForSeconds(10.5f); ///tungguin yapping kelar
         sprite.enabled = true;
         AudioSource.PlayClipAtPoint(Reverse,transform.position, 5f);
         rewind.StartRewind(); // rewind time
