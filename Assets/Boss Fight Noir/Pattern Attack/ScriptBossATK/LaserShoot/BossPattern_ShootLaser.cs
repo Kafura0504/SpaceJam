@@ -695,8 +695,6 @@ public class BossPattern_ShootLaser : MonoBehaviour
     // CONTINUOUS LASER DAMAGE
     // ─────────────────────────────────────────────────────────
 
-    private float _lastLaserDamageTime = -999f;
-
     void ApplyContinuousLaserDamage()
     {
         // Cek apakah player dalam area laser (area horizontal di _lockedY)
