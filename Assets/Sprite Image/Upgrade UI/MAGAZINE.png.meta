@@ -1,0 +1,1443 @@
+fileFormatVersion: 2
+guid: 3cefa98b29100d649b6a6bac91f1ec85
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2855928030252501346
+    second: MAGAZINE_0
+  - first:
+      213: 2981207122955570426
+    second: MAGAZINE_1
+  - first:
+      213: 8727200191453519348
+    second: MAGAZINE_2
+  - first:
+      213: 1979784325732475135
+    second: MAGAZINE_3
+  - first:
+      213: 7322263919551739412
+    second: MAGAZINE_4
+  - first:
+      213: 5520983088702071074
+    second: MAGAZINE_5
+  - first:
+      213: -1142327703274607093
+    second: MAGAZINE_6
+  - first:
+      213: 4430531157535012629
+    second: MAGAZINE_7
+  - first:
+      213: -5201509508684953444
+    second: MAGAZINE_8
+  - first:
+      213: 2233249845328146567
+    second: MAGAZINE_9
+  - first:
+      213: -3626485027618805051
+    second: MAGAZINE_10
+  - first:
+      213: 435100567304199979
+    second: MAGAZINE_11
+  - first:
+      213: -3507254391504392975
+    second: MAGAZINE_12
+  - first:
+      213: 3057372972733727833
+    second: MAGAZINE_13
+  - first:
+      213: 5871808155009922263
+    second: MAGAZINE_14
+  - first:
+      213: 8948197944327483604
+    second: MAGAZINE_15
+  - first:
+      213: -1151657253584253746
+    second: MAGAZINE_16
+  - first:
+      213: -2828672570272587918
+    second: MAGAZINE_17
+  - first:
+      213: -5029518914173210302
+    second: MAGAZINE_18
+  - first:
+      213: -8107320866507055133
+    second: MAGAZINE_19
+  - first:
+      213: -1459122742681874870
+    second: MAGAZINE_20
+  - first:
+      213: -4676474298017909671
+    second: MAGAZINE_21
+  - first:
+      213: -5318911697570226163
+    second: MAGAZINE_22
+  - first:
+      213: -6762987090953945031
+    second: MAGAZINE_23
+  - first:
+      213: 6308883513554384017
+    second: MAGAZINE_24
+  - first:
+      213: -2146505963607625265
+    second: MAGAZINE_25
+  - first:
+      213: 1127783984719883575
+    second: MAGAZINE_26
+  - first:
+      213: -2344777608180058563
+    second: MAGAZINE_27
+  - first:
+      213: 4415891627910158602
+    second: MAGAZINE_28
+  - first:
+      213: -386282679154778604
+    second: MAGAZINE_29
+  - first:
+      213: 3024891751329578726
+    second: MAGAZINE_30
+  - first:
+      213: -6904204415162810267
+    second: MAGAZINE_31
+  - first:
+      213: -5896974818102148040
+    second: MAGAZINE_32
+  - first:
+      213: 5141728436741298604
+    second: MAGAZINE_33
+  - first:
+      213: 7566911537244804539
+    second: MAGAZINE_34
+  - first:
+      213: -2189447826438355560
+    second: MAGAZINE_35
+  - first:
+      213: 6452327383634246145
+    second: MAGAZINE_36
+  - first:
+      213: 1273812025734805930
+    second: MAGAZINE_37
+  - first:
+      213: -60222197353004016
+    second: MAGAZINE_38
+  - first:
+      213: -8135775314230957941
+    second: MAGAZINE_39
+  - first:
+      213: 384462544702622927
+    second: MAGAZINE_40
+  - first:
+      213: 3915820275931163962
+    second: MAGAZINE_41
+  - first:
+      213: 5236414967734460454
+    second: MAGAZINE_42
+  - first:
+      213: 6535808921244358954
+    second: MAGAZINE_43
+  - first:
+      213: -9064949438926754909
+    second: MAGAZINE_44
+  - first:
+      213: -375151023595460341
+    second: MAGAZINE_45
+  - first:
+      213: -1443191020773057722
+    second: MAGAZINE_46
+  - first:
+      213: 2211853600581512396
+    second: MAGAZINE_47
+  - first:
+      213: 8213376206917883677
+    second: MAGAZINE_48
+  - first:
+      213: 4244082901116519002
+    second: MAGAZINE_49
+  - first:
+      213: -8094854730526291740
+    second: MAGAZINE_50
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MAGAZINE_0
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 302
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2690843896b42a720800000000000000
+      internalID: 2855928030252501346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_1
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 295
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afc81ad45106f5920800000000000000
+      internalID: 2981207122955570426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_2
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 304
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fdde4fd55e3d1970800000000000000
+      internalID: 8727200191453519348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_3
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 307
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff0ab2bda5b997b10800000000000000
+      internalID: 1979784325732475135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_4
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 304
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4167a846d38ed9560800000000000000
+      internalID: 7322263919551739412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_5
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 304
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 221a6052ed87e9c40800000000000000
+      internalID: 5520983088702071074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_6
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 304
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0eaa359103a520f0800000000000000
+      internalID: -1142327703274607093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_7
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 245
+        width: 14
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 517bc232d986c7d30800000000000000
+      internalID: 4430531157535012629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_8
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 249
+        width: 11
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c98440f19a680d7b0800000000000000
+      internalID: -5201509508684953444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_9
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 250
+        width: 11
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 780fa7de6e81efe10800000000000000
+      internalID: 2233249845328146567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_10
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 296
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ca2281d4132cadc0800000000000000
+      internalID: -3626485027618805051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_11
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 293
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2fdcb329a9c90600800000000000000
+      internalID: 435100567304199979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_12
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 251
+        width: 9
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fca37196bab35fc0800000000000000
+      internalID: -3507254391504392975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_13
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 250
+        width: 11
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9548ca12588fd6a20800000000000000
+      internalID: 3057372972733727833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_14
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 296
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d4bb94286adc7150800000000000000
+      internalID: 5871808155009922263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_15
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 293
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d0358bee926e2c70800000000000000
+      internalID: 8948197944327483604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_16
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 251
+        width: 10
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecccb1164dd7400f0800000000000000
+      internalID: -1151657253584253746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_17
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 247
+        width: 16
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27fd207c8498eb8d0800000000000000
+      internalID: -2828672570272587918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_18
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 293
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 241f891f13f833ab0800000000000000
+      internalID: -5029518914173210302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_19
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 247
+        width: 11
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ef1cb750a20d7f80800000000000000
+      internalID: -8107320866507055133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 65
+        width: 13
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4ec0c6a89720cbe0800000000000000
+      internalID: -1459122742681874870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_21
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 214
+        width: 9
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 954f5692763d91fb0800000000000000
+      internalID: -4676474298017909671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_22
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 66
+        width: 15
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0028aaedfd6f26b0800000000000000
+      internalID: -5318911697570226163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_23
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 198
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9304327921b0522a0800000000000000
+      internalID: -6762987090953945031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_24
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 205
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1943ab23128ad8750800000000000000
+      internalID: 6308883513554384017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_25
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 216
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc1f8e2e2341632e0800000000000000
+      internalID: -2146505963607625265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_26
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 209
+        width: 10
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73d6a901f81b6af00800000000000000
+      internalID: 1127783984719883575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_27
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 68
+        width: 9
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d363323403da57fd0800000000000000
+      internalID: -2344777608180058563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_28
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 198
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a09d4380a06684d30800000000000000
+      internalID: 4415891627910158602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_29
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 205
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41ed71e23f5a3aaf0800000000000000
+      internalID: -386282679154778604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_30
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 216
+        width: 9
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ee320275039af920800000000000000
+      internalID: 3024891751329578726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_31
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 205
+        width: 11
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56089891aa65f20a0800000000000000
+      internalID: -6904204415162810267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_32
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 104
+        width: 7
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 834099d75acb92ea0800000000000000
+      internalID: -5896974818102148040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_33
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 107
+        width: 14
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca95d7b65c61b5740800000000000000
+      internalID: 5141728436741298604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_34
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 216
+        width: 9
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb51840b3f1130960800000000000000
+      internalID: 7566911537244804539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_35
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 105
+        width: 15
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89504e25dc48d91e0800000000000000
+      internalID: -2189447826438355560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_36
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 46
+        width: 9
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10a7b0cc1954b8950800000000000000
+      internalID: 6452327383634246145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_37
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 67
+        width: 7
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa93b88d94d7da110800000000000000
+      internalID: 1273812025734805930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_38
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 46
+        width: 8
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0144e270b3c0a2ff0800000000000000
+      internalID: -60222197353004016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_39
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 47
+        width: 9
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b882fd6f47be71f80800000000000000
+      internalID: -8135775314230957941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_40
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 67
+        width: 7
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcc417eb5a2e55500800000000000000
+      internalID: 384462544702622927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_41
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 0
+        width: 165
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3d26274bc9c75630800000000000000
+      internalID: 3915820275931163962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_42
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 46
+        width: 8
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 620e9506bab7ba840800000000000000
+      internalID: 5236414967734460454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_43
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 44
+        width: 7
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a29599ee59bd3ba50800000000000000
+      internalID: 6535808921244358954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 27
+        width: 6
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3abe4e17384d23280800000000000000
+      internalID: -9064949438926754909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_45
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 33
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b09e775b1223bcaf0800000000000000
+      internalID: -375151023595460341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_46
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 25
+        width: 8
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64bd9c7b961c8fbe0800000000000000
+      internalID: -1443191020773057722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_47
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 35
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccc64dd712512be10800000000000000
+      internalID: 2211853600581512396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_48
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 29
+        width: 8
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d175cf3d426cbf170800000000000000
+      internalID: 8213376206917883677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_49
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 23
+        width: 63
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a520c5699e206ea30800000000000000
+      internalID: 4244082901116519002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAGAZINE_50
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 25
+        width: 57
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e8079ec28c49af80800000000000000
+      internalID: -8094854730526291740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      MAGAZINE_0: 2855928030252501346
+      MAGAZINE_1: 2981207122955570426
+      MAGAZINE_10: -3626485027618805051
+      MAGAZINE_11: 435100567304199979
+      MAGAZINE_12: -3507254391504392975
+      MAGAZINE_13: 3057372972733727833
+      MAGAZINE_14: 5871808155009922263
+      MAGAZINE_15: 8948197944327483604
+      MAGAZINE_16: -1151657253584253746
+      MAGAZINE_17: -2828672570272587918
+      MAGAZINE_18: -5029518914173210302
+      MAGAZINE_19: -8107320866507055133
+      MAGAZINE_2: 8727200191453519348
+      MAGAZINE_20: -1459122742681874870
+      MAGAZINE_21: -4676474298017909671
+      MAGAZINE_22: -5318911697570226163
+      MAGAZINE_23: -6762987090953945031
+      MAGAZINE_24: 6308883513554384017
+      MAGAZINE_25: -2146505963607625265
+      MAGAZINE_26: 1127783984719883575
+      MAGAZINE_27: -2344777608180058563
+      MAGAZINE_28: 4415891627910158602
+      MAGAZINE_29: -386282679154778604
+      MAGAZINE_3: 1979784325732475135
+      MAGAZINE_30: 3024891751329578726
+      MAGAZINE_31: -6904204415162810267
+      MAGAZINE_32: -5896974818102148040
+      MAGAZINE_33: 5141728436741298604
+      MAGAZINE_34: 7566911537244804539
+      MAGAZINE_35: -2189447826438355560
+      MAGAZINE_36: 6452327383634246145
+      MAGAZINE_37: 1273812025734805930
+      MAGAZINE_38: -60222197353004016
+      MAGAZINE_39: -8135775314230957941
+      MAGAZINE_4: 7322263919551739412
+      MAGAZINE_40: 384462544702622927
+      MAGAZINE_41: 3915820275931163962
+      MAGAZINE_42: 5236414967734460454
+      MAGAZINE_43: 6535808921244358954
+      MAGAZINE_44: -9064949438926754909
+      MAGAZINE_45: -375151023595460341
+      MAGAZINE_46: -1443191020773057722
+      MAGAZINE_47: 2211853600581512396
+      MAGAZINE_48: 8213376206917883677
+      MAGAZINE_49: 4244082901116519002
+      MAGAZINE_5: 5520983088702071074
+      MAGAZINE_50: -8094854730526291740
+      MAGAZINE_6: -1142327703274607093
+      MAGAZINE_7: 4430531157535012629
+      MAGAZINE_8: -5201509508684953444
+      MAGAZINE_9: 2233249845328146567
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

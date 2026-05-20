@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4458937444690709242}
   m_Layer: 0
   m_Name: MeteorBullet
-  m_TagString: Untagged
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,6 +137,7 @@ MonoBehaviour:
   speed: 10
   lifetime: 2
   damage: 0
+  spriteRotationOffset: -90
 --- !u!58 &3773459847809537464
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -185,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822f4cd30584cba458c31c5afeb36248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStat
-  type: {fileID: 11400000, guid: 2055c8b85ccca304b9fb90694389a855, type: 2}
+  type: {fileID: 11400000, guid: 9f8a3e8fc69840b4795b45a5c669b31c, type: 2}
   HP: 0
   dmg: 0
   exp: 0

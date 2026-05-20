@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 846672886072252488}
   m_Layer: 0
   m_Name: StarBullet
-  m_TagString: Untagged
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,6 +125,7 @@ MonoBehaviour:
   speed: 5
   lifetime: 5
   damage: 0
+  spriteRotationOffset: -90
 --- !u!50 &357949917759885329
 Rigidbody2D:
   serializedVersion: 5
