@@ -1,14 +1,16 @@
     using System;
     using TMPro;
     using UnityEngine;
+using UnityEngine.UI;
 
-    public class LevelUpManager : MonoBehaviour
+public class LevelUpManager : MonoBehaviour
     {   
 
         [System.Serializable]
         public struct MenuContent
         {
             public TextMeshProUGUI Title;
+            public Image img;
             public TextMeshProUGUI Desc;
         }
         public BuffData[] allBuffs;
@@ -54,6 +56,7 @@
             {
                 Menu[i].Title.SetText(currentChoices[i].buffName);
                 Menu[i].Desc.SetText(currentChoices[i].description);
+                Menu[i].img.sprite = currentChoices[i].Image;
             }
             Time.timeScale = 0f;
             buffMenu.SetActive(true);

@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edbb959f524ad464c8e71bc3369b25fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStat
-  maxHP: 20
+  maxHP: 80
   damage: 1
   fireRate: 5
   magazine: 10

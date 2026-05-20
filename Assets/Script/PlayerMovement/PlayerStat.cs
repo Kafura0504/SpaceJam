@@ -10,6 +10,11 @@ public class PlayerStat : MonoBehaviour
     public int magazine = 10; //shoot
     public float iframeDuration = 0.1f; //health
     public float bulletVelocity = 1f; //Bullet
+    private HealthManager HP;
+    void Awake()
+    {
+        HP = GetComponent<HealthManager>();
+    }
 
     public event Action OnStatChanged;
     public void ApplyBuff(BuffData buff)
@@ -17,7 +22,7 @@ public class PlayerStat : MonoBehaviour
     switch(buff.type)
     {
         case BuffType.HP:
-            maxHP += buff.value;
+            HP.currenthealth += buff.value;
             OnStatChanged?.Invoke();
             break;
 
