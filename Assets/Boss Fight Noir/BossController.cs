@@ -1,4 +1,13 @@
 // Assets/Boss Fight Noir/BossController.cs
+// =============================================================
+// UPDATE : patternChase (BossPattern_ChaseEnemy)
+//          diganti dengan patternShootLaser (BossPattern_ShootLaser)
+//          pada case 4.
+//
+// Selain itu tidak ada perubahan dari versi sebelumnya.
+// Assign patternShootLaser di Inspector pada GameObject BossManager.
+// =============================================================
+
 using System.Collections;
 using UnityEngine;
 
@@ -6,17 +15,10 @@ using UnityEngine;
 /// SpaceJam - Boss Controller
 ///
 /// Mengatur urutan pattern boss secara berurutan dan berulang.
-/// Setiap pattern dipanggil sebagai coroutine dan ditunggu sampai selesai
-/// sebelum melanjutkan ke pattern berikutnya.
-///
-/// SETUP:
-///   1. Tambahkan script ini ke GameObject baru "BossManager" di scene.
-///   2. Assign semua pattern references di Inspector.
-///   3. Assign BossHP reference.
 ///
 /// URUTAN PATTERN:
-///   0 → SwingArm   | 1 → Slam3x       | 2 → MiniGunner
-///   3 → HorizSweep | 4 → ChaseEnemy   | 5 → NormalEnemy → loop
+///   0 → SwingArm    | 1 → Slam3x      | 2 → MiniGunner
+///   3 → HorizSweep  | 4 → ShootLaser  | 5 → NormalEnemy → loop
 /// </summary>
 public class BossController : MonoBehaviour
 {
@@ -25,7 +27,12 @@ public class BossController : MonoBehaviour
     public BossPattern_Slam3x      patternSlam;
     public MiniGunnerSpawner       patternMiniGunner;
     public BossPattern_HorizSweep  patternSweep;
-    public BossPattern_ChaseEnemy  patternChase;
+
+    // --- PERUBAHAN : ChaseEnemy diganti ShootLaser ---
+    [Tooltip("Pattern 4 : Laser dari kiri — tangan kiri keluar, ghost hand masuk")]
+    public BossPattern_ShootLaser  patternShootLaser;
+    // -------------------------------------------------
+
     public BossPattern_NormalEnemy patternNormal;
 
     [Header("=== BOSS HP ===")]
@@ -46,9 +53,9 @@ public class BossController : MonoBehaviour
     private int  _currentIndex = 0;
     private bool _isRunning    = false;
 
-    // ─────────────────────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────
     // UNITY LIFECYCLE
-    // ─────────────────────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────
 
     void Start()
     {
@@ -66,37 +73,33 @@ public class BossController : MonoBehaviour
             bossHP.OnDeath -= OnBossDeath;
     }
 
-    // ─────────────────────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────
     // BOSS FIGHT LOOP
-    // ─────────────────────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────
 
     private IEnumerator RunBossFight()
     {
         _isRunning = true;
 
-        // Jeda intro sebelum boss mulai menyerang
         yield return new WaitForSeconds(introDelay);
 
         while (_isRunning)
         {
-            // Cek apakah boss sudah mati sebelum pattern baru
             if (bossHP != null && bossHP.isDead) yield break;
 
             Debug.Log($"[BossController] Menjalankan pattern {_currentIndex + 1}");
 
             yield return StartCoroutine(ExecutePattern(_currentIndex));
 
-            // Jeda setelah pattern selesai
             yield return new WaitForSeconds(delayBetweenPatterns);
 
-            // Maju ke pattern berikutnya, loop setelah pattern ke-6
+            // Loop setelah pattern ke-6 (index 5)
             _currentIndex = (_currentIndex + 1) % 6;
         }
     }
 
     private IEnumerator ExecutePattern(int index)
     {
-        // Setiap case menunggu coroutine selesai sebelum lanjut
         switch (index)
         {
             case 0:
@@ -127,12 +130,14 @@ public class BossController : MonoBehaviour
                     Debug.LogWarning("[BossController] patternSweep belum di-assign, skip.");
                 break;
 
+            // --- PERUBAHAN : case 4 sekarang pakai ShootLaser ---
             case 4:
-                if (patternChase != null)
-                    yield return StartCoroutine(patternChase.ExecutePattern());
+                if (patternShootLaser != null)
+                    yield return StartCoroutine(patternShootLaser.ExecutePattern());
                 else
-                    Debug.LogWarning("[BossController] patternChase belum di-assign, skip.");
+                    Debug.LogWarning("[BossController] patternShootLaser belum di-assign, skip.");
                 break;
+            // -----------------------------------------------------
 
             case 5:
                 if (patternNormal != null)
@@ -143,15 +148,15 @@ public class BossController : MonoBehaviour
         }
     }
 
-    // ─────────────────────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────
     // EVENTS
-    // ─────────────────────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────
 
     private void OnBossDeath()
     {
         _isRunning = false;
         StopAllCoroutines();
         Debug.Log("[BossController] Boss kalah! Fight selesai.");
-        // TODO: Trigger animasi kematian, scene transition, reward, dll
+        // TODO: Trigger animasi kematian, scene transition, reward
     }
 }

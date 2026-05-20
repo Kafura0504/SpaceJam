@@ -32,7 +32,7 @@ public class BossPatternTester : MonoBehaviour
     public BossPattern_Slam3x      patternSlam;
     public MiniGunnerSpawner       patternMiniGunner;
     public BossPattern_HorizSweep  patternSweep;
-    public BossPattern_ChaseEnemy  patternChase;
+    public BossPattern_ShootLaser  patternChase;
     public BossPattern_NormalEnemy patternNormal;
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -108,7 +108,7 @@ public class BossPatternTester : MonoBehaviour
         if (patternSlam       == null) patternSlam       = FindPattern<BossPattern_Slam3x>();
         if (patternMiniGunner == null) patternMiniGunner = miniGunnerSpawner ?? FindPattern<MiniGunnerSpawner>();
         if (patternSweep      == null) patternSweep      = FindPattern<BossPattern_HorizSweep>();
-        if (patternChase      == null) patternChase      = FindPattern<BossPattern_ChaseEnemy>();
+        if (patternChase      == null) patternChase      = FindPattern<BossPattern_ShootLaser>();
         if (patternNormal     == null) patternNormal     = FindPattern<BossPattern_NormalEnemy>();
 
         // Log status setiap pattern
