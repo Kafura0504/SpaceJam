@@ -7,6 +7,7 @@ public class DewaController : MonoBehaviour
     public HealthManager HP;
     public InGameFunction Pause;
     public AudioSource aud;
+    private bool istalking = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -28,12 +29,16 @@ public class DewaController : MonoBehaviour
     }
     public void onPause()
     {
-        aud.PlayOneShot(PauseClip);
+        if (!istalking)
+        {
+        aud.PlayOneShot(PauseClip,1);
+        istalking = true;
+        }
     }
 
     public void onDie()
     {
-        aud.PlayOneShot(DieClip);
+        aud.PlayOneShot(DieClip,1);
     }
 
 }

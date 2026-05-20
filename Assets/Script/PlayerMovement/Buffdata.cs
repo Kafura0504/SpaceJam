@@ -15,6 +15,7 @@ public class BuffData : ScriptableObject
 
     public string buffName;
     public string description;
+    public Sprite Image;
 
     public BuffType type;
 

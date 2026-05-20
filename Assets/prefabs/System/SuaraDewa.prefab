@@ -142,8 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 199b60cdb84d43e46b77a5abd2c20108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  DieClip: {fileID: 8300000, guid: 0622b65ad42934744bfa0a9015f51e51, type: 3}
-  PauseClip: {fileID: 8300000, guid: fa2d505a912c6994e8248956697a4f5d, type: 3}
+  DieClip: {fileID: 8300000, guid: 7531d83b90fca834d8661bc1f03a5fd8, type: 3}
+  PauseClip: {fileID: 8300000, guid: ff989dceebd8c0c4391695f37a4bdc47, type: 3}
   HP: {fileID: 0}
   Pause: {fileID: 0}
   aud: {fileID: 0}
