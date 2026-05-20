@@ -1,12 +1,11 @@
 // =============================================================
-// SpaceJam - MiniGunnerEnemy.cs  (DUAL DIRECTION)
+// SpaceJam - MiniGunnerEnemy.cs  (PORTAL VERSION)
 // -------------------------------------------------------------
-// Enemy kecil yang keluar dari pojok atas layar,
-// masuk scene secara smooth, menembak 5 bullet menyamping
-// dengan sweep arah yang BERLAWANAN untuk setiap side.
-//
-// shootRight = true  → Gunner masuk dari KIRI, sweep bullet ke KANAN
-// shootRight = false → Gunner masuk dari KANAN, sweep bullet ke KIRI
+// ALUR ROTASI:
+//   PortalOpen  → zoom in + rotasi CEPAT
+//   Selama hidup → idle spin TERUS MENERUS (tidak pernah berhenti)
+//   ShootSweep  → portal tetap spin, langsung tembak tanpa aiming
+//   PortalClose → zoom out + rotasi CEPAT berlawanan arah
 // =============================================================
 
 using System.Collections;
@@ -19,23 +18,52 @@ public class MiniGunnerEnemy : MonoBehaviour
     // ─────────────────────────────────────────────────────────
 
     [Header("References")]
-    [Tooltip("Prefab bullet yang akan di-spawn")]
     public GameObject bulletPrefab;
-
-    [Tooltip("Transform titik keluar bullet")]
-    public Transform firePoint;
+    public Transform  firePoint;
 
 
     // ─────────────────────────────────────────────────────────
-    // MOVEMENT
+    // POSITION
+    // Dipertahankan agar MiniGunnerSpawner tidak error
     // ─────────────────────────────────────────────────────────
 
-    [Header("Movement")]
-    [Tooltip("Posisi di dalam scene tempat gunner berhenti")]
+    [Header("Position")]
     public Vector2 targetInsidePosition;
+    public Vector2 exitPosition;
+    public float   moveSpeed = 4f;
 
-    [Tooltip("Kecepatan bergerak masuk dan keluar")]
-    public float moveSpeed = 4f;
+
+    // ─────────────────────────────────────────────────────────
+    // PORTAL ANIMATION
+    // ─────────────────────────────────────────────────────────
+
+    [Header("Portal Animation")]
+    [Tooltip("Scale portal saat penuh terbuka")]
+    public float maxScale = 0.2f;
+
+    [Tooltip("Durasi portal zoom in (detik)")]
+    public float openDuration = 0.5f;
+
+    [Tooltip("Durasi portal zoom out (detik)")]
+    public float closeDuration = 0.4f;
+
+
+    // ─────────────────────────────────────────────────────────
+    // ROTASI PORTAL
+    // ─────────────────────────────────────────────────────────
+
+    [Header("Portal Rotation")]
+    [Tooltip("Aktifkan rotasi sprite portal")]
+    public bool enableRotation = true;
+
+    [Tooltip("Kecepatan rotasi saat zoom in dan zoom out (derajat/detik)")]
+    public float rotationSpeed = 270f;
+
+    [Tooltip("Kecepatan rotasi idle selama portal hidup (derajat/detik)")]
+    public float idleRotationSpeed = 90f;
+
+    [Tooltip("true = berlawanan jarum jam | false = searah jarum jam")]
+    public bool rotateCounterClockwise = true;
 
 
     // ─────────────────────────────────────────────────────────
@@ -43,37 +71,15 @@ public class MiniGunnerEnemy : MonoBehaviour
     // ─────────────────────────────────────────────────────────
 
     [Header("Shooting")]
-    [Tooltip("Jumlah bullet yang ditembakkan")]
-    public int bulletCount = 5;
-
-    [Tooltip("Jeda total per bullet (termasuk rotasi + pause setelah tembak)")]
+    public int   bulletCount       = 5;
     public float timeBetweenBullets = 0.25f;
+    public float waitBeforeShoot   = 0.8f;
+    public bool  shootRight        = true;
 
-    [Tooltip("Berapa persen timeBetweenBullets dipakai untuk rotasi sprite (0..1)")]
-    [Range(0.1f, 0.9f)]
-    public float rotateRatio = 0.6f;
-
-    [Tooltip("Jeda sebelum mulai menembak setelah tiba di posisi")]
-    public float waitBeforeShoot = 1f;
-
-    [Tooltip(
-        "true  = Gunner dari KIRI  → bullet sweep ke KANAN\n" +
-        "false = Gunner dari KANAN → bullet sweep ke KIRI")]
-    public bool shootRight = true;
-
-    // Sudut sweep (konvensi Unity: 0° = kanan, 90° = atas)
-    // Sweep melingkupi area bawah layar (sekitar -90°)
-    [Tooltip("Sudut awal sweep (KANAN) - dari kiri-bawah")]
-    public float sweepAngleStart = -150f;
-
-    [Tooltip("Sudut akhir sweep (KANAN) - ke kanan-bawah")]
-    public float sweepAngleEnd = -30f;
-
-    [Tooltip("Sudut awal sweep (KIRI) - dari kanan-atas")]
-    public float sweepAngleLeftStart = 150f;
-
-    [Tooltip("Sudut akhir sweep (KIRI) - ke kiri-bawah")]
-    public float sweepAngleLeftEnd = 30f;
+    public float sweepAngleStart     = -30f;
+    public float sweepAngleEnd       = -80f;
+    public float sweepAngleLeftStart = -150f;
+    public float sweepAngleLeftEnd   = -100f;
 
 
     // ─────────────────────────────────────────────────────────
@@ -81,27 +87,21 @@ public class MiniGunnerEnemy : MonoBehaviour
     // ─────────────────────────────────────────────────────────
 
     [Header("Exit")]
-    [Tooltip("Posisi tujuan ketika keluar scene")]
-    public Vector2 exitPosition;
-
-    [Tooltip("Jeda setelah selesai menembak sebelum keluar")]
-    public float waitAfterShoot = 0.5f;
+    public float waitAfterShoot = 0.3f;
 
 
     // ─────────────────────────────────────────────────────────
     // PRIVATE
     // ─────────────────────────────────────────────────────────
 
-    private float _bulletDamage = 5f;
+    private float     _bulletDamage     = 5f;
+    private Coroutine _idleRotCoroutine = null;
 
 
     // ─────────────────────────────────────────────────────────
     // PUBLIC API
     // ─────────────────────────────────────────────────────────
 
-    /// <summary>
-    /// Dipanggil oleh MiniGunnerSpawner untuk set damage bullet.
-    /// </summary>
     public void SetDamage(float damage)
     {
         _bulletDamage = damage;
@@ -112,8 +112,14 @@ public class MiniGunnerEnemy : MonoBehaviour
     // UNITY LIFECYCLE
     // ─────────────────────────────────────────────────────────
 
+    void Awake()
+    {
+        transform.localScale = Vector3.zero;
+    }
+
     void Start()
     {
+        transform.position = targetInsidePosition;
         StartCoroutine(RunSequence());
     }
 
@@ -124,137 +130,148 @@ public class MiniGunnerEnemy : MonoBehaviour
 
     IEnumerator RunSequence()
     {
-        // 1. Masuk scene secara smooth
-        yield return StartCoroutine(MoveSmooth(targetInsidePosition));
+        // 1. Portal membuka — zoom in + rotasi cepat
+        yield return StartCoroutine(PortalOpen());
 
-        // 2. Jeda sebelum menembak
+        // 2. Mulai idle rotation — berjalan terus sampai portal menutup
+        StartIdleRotation();
+
+        // 3. Jeda sebelum tembak (portal tetap spin)
         yield return new WaitForSeconds(waitBeforeShoot);
 
-        // 3. Tembak sweep
+        // 4. Tembak (portal tetap spin selama menembak)
         yield return StartCoroutine(ShootSweep());
 
-        // 4. Jeda setelah tembak
+        // 5. Jeda setelah tembak (portal tetap spin)
         yield return new WaitForSeconds(waitAfterShoot);
 
-        // 5. Keluar scene secara smooth
-        yield return StartCoroutine(MoveSmooth(exitPosition));
+        // 6. Stop idle rotation sebelum portal menutup
+        StopIdleRotation();
 
-        // 6. Destroy
+        // 7. Portal menutup — zoom out + rotasi cepat berlawanan
+        yield return StartCoroutine(PortalClose());
+
         Destroy(gameObject);
     }
 
 
     // ─────────────────────────────────────────────────────────
-    // MOVEMENT
+    // IDLE ROTATION
+    // Berjalan terus menerus selama dipanggil StartIdleRotation
     // ─────────────────────────────────────────────────────────
 
-    IEnumerator MoveSmooth(Vector2 destination)
+    void StartIdleRotation()
     {
-        while (Vector2.Distance(transform.position, destination) > 0.05f)
+        if (!enableRotation) return;
+
+        StopIdleRotation();
+        _idleRotCoroutine = StartCoroutine(IdleRotateLoop());
+    }
+
+    void StopIdleRotation()
+    {
+        if (_idleRotCoroutine == null) return;
+
+        StopCoroutine(_idleRotCoroutine);
+        _idleRotCoroutine = null;
+    }
+
+    IEnumerator IdleRotateLoop()
+    {
+        float rotDir = rotateCounterClockwise ? 1f : -1f;
+
+        // Loop tanpa henti — hanya berhenti saat StopIdleRotation dipanggil
+        while (true)
         {
-            transform.position = Vector2.MoveTowards(
-                transform.position,
-                destination,
-                moveSpeed * Time.deltaTime
-            );
+            transform.Rotate(0f, 0f, rotDir * idleRotationSpeed * Time.deltaTime);
             yield return null;
         }
-
-        // Snap agar tepat di posisi tujuan
-        transform.position = destination;
     }
 
 
     // ─────────────────────────────────────────────────────────
-    // SHOOTING
+    // PORTAL OPEN — scale 0 → maxScale + rotasi cepat
     // ─────────────────────────────────────────────────────────
 
-    /// <summary>
-    /// Tembakkan bullet satu per satu dengan sprite yang berputar
-    /// secara smooth mengikuti arah tembak.
-    ///
-    /// shootRight = true  → sweep dari sweepAngleStart → sweepAngleEnd
-    ///                       (kiri-bawah ke kanan-bawah) - TEMBAK KE KANAN
-    /// shootRight = false → sweep dari sweepAngleLeftStart → sweepAngleLeftEnd
-    ///                       (kanan-atas ke kiri-bawah) - TEMBAK KE KIRI
-    /// </summary>
+    IEnumerator PortalOpen()
+    {
+        float   elapsed     = 0f;
+        Vector3 targetScale = Vector3.one * maxScale;
+        float   rotDir      = rotateCounterClockwise ? 1f : -1f;
+
+        while (elapsed < openDuration)
+        {
+            elapsed += Time.deltaTime;
+
+            float smooth         = Mathf.SmoothStep(0f, 1f, elapsed / openDuration);
+            transform.localScale = Vector3.Lerp(Vector3.zero, targetScale, smooth);
+
+            if (enableRotation)
+                transform.Rotate(0f, 0f, rotDir * rotationSpeed * Time.deltaTime);
+
+            yield return null;
+        }
+
+        transform.localScale = targetScale;
+    }
+
+
+    // ─────────────────────────────────────────────────────────
+    // PORTAL CLOSE — scale maxScale → 0 + rotasi cepat berlawanan
+    // ─────────────────────────────────────────────────────────
+
+    IEnumerator PortalClose()
+    {
+        float   elapsed    = 0f;
+        Vector3 startScale = transform.localScale;
+
+        // Arah menutup berlawanan dengan membuka
+        float rotDir = rotateCounterClockwise ? -1f : 1f;
+
+        while (elapsed < closeDuration)
+        {
+            elapsed += Time.deltaTime;
+
+            float smooth         = Mathf.SmoothStep(0f, 1f, elapsed / closeDuration);
+            transform.localScale = Vector3.Lerp(startScale, Vector3.zero, smooth);
+
+            if (enableRotation)
+                transform.Rotate(0f, 0f, rotDir * rotationSpeed * Time.deltaTime);
+
+            yield return null;
+        }
+
+        transform.localScale = Vector3.zero;
+    }
+
+
+    // ─────────────────────────────────────────────────────────
+    // SHOOT SWEEP
+    // Portal terus spin, langsung tembak tanpa aiming
+    // ─────────────────────────────────────────────────────────
+
     IEnumerator ShootSweep()
     {
-        // Tentukan arah sweep berdasarkan sisi masuk
-        float startAngle, endAngle;
-        
-        if (shootRight)
-        {
-            // Gunner dari KIRI → tembak ke KANAN
-            startAngle = sweepAngleStart;    // -150° (kiri-bawah)
-            endAngle   = sweepAngleEnd;      // -30° (kanan-bawah)
-        }
-        else
-        {
-            // Gunner dari KANAN → tembak ke KIRI
-            startAngle = sweepAngleLeftStart;  // 150° (kanan-atas)
-            endAngle   = sweepAngleLeftEnd;    // 30° (kiri-bawah)
-        }
+        float startAngle = shootRight ? sweepAngleStart     : sweepAngleLeftStart;
+        float endAngle   = shootRight ? sweepAngleEnd       : sweepAngleLeftEnd;
 
         for (int i = 0; i < bulletCount; i++)
         {
-            // Hitung sudut untuk bullet ini (lerp dari start ke end)
             float t = (bulletCount > 1)
                 ? (float)i / (bulletCount - 1)
                 : 0.5f;
 
             float targetAngle = Mathf.Lerp(startAngle, endAngle, t);
 
-            // --- Fase 1: Rotasi sprite smooth ke arah tembak ---
-            float rotateDuration = timeBetweenBullets * rotateRatio;
-            yield return StartCoroutine(RotateSmoothTo(targetAngle, rotateDuration));
-
-            // --- Fase 2: Tembak bullet ---
             SpawnBullet(targetAngle);
 
-            // --- Fase 3: Jeda singkat setelah tembak ---
-            float pauseDuration = timeBetweenBullets * (1f - rotateRatio);
-            yield return new WaitForSeconds(pauseDuration);
+            yield return new WaitForSeconds(timeBetweenBullets);
         }
     }
 
 
     // ─────────────────────────────────────────────────────────
-    // ROTATION HELPER
-    // ─────────────────────────────────────────────────────────
-
-    /// <summary>
-    /// Slerp rotasi sprite ke sudut tembak secara smooth.
-    /// Asumsi: sprite default menghadap ke ATAS (sumbu Y = depan).
-    /// Maka rotasi = (angleDeg - 90f) agar sprite menghadap ke arah bullet.
-    /// </summary>
-    IEnumerator RotateSmoothTo(float angleDeg, float duration)
-    {
-        // Sprite menghadap atas → offset -90° agar sinkron dengan arah bullet
-        Quaternion startRot  = transform.rotation;
-        Quaternion targetRot = Quaternion.Euler(0f, 0f, angleDeg - 90f);
-
-        float elapsed = 0f;
-
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            float progress = Mathf.Clamp01(elapsed / duration);
-
-            // Gunakan SmoothStep agar rotasi terasa lebih alami
-            float smooth = Mathf.SmoothStep(0f, 1f, progress);
-            transform.rotation = Quaternion.Slerp(startRot, targetRot, smooth);
-
-            yield return null;
-        }
-
-        // Snap ke posisi akhir
-        transform.rotation = targetRot;
-    }
-
-
-    // ─────────────────────────────────────────────────────────
-    // BULLET SPAWN
+    // BULLET SPAWN — logic tidak diubah
     // ─────────────────────────────────────────────────────────
 
     void SpawnBullet(float angleDeg)
@@ -265,25 +282,22 @@ public class MiniGunnerEnemy : MonoBehaviour
             return;
         }
 
-        // Pilih posisi spawn: gunakan firePoint jika ada, fallback ke transform
         Vector2 spawnPos = firePoint != null
             ? (Vector2)firePoint.position
             : (Vector2)transform.position;
 
-        // Spawn bullet
         GameObject bulletObj = Instantiate(
             bulletPrefab,
             spawnPos,
             Quaternion.identity
         );
 
-        // Set arah dan damage
         Bullet bullet = bulletObj.GetComponent<Bullet>();
         if (bullet != null)
         {
             bullet.damage = _bulletDamage;
 
-            float rad = angleDeg * Mathf.Deg2Rad;
+            float   rad       = angleDeg * Mathf.Deg2Rad;
             Vector2 direction = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
             bullet.SetDirection(direction);
         }
@@ -291,50 +305,26 @@ public class MiniGunnerEnemy : MonoBehaviour
 
 
     // ─────────────────────────────────────────────────────────
-    // GIZMOS (Editor Helper)
+    // GIZMOS
     // ─────────────────────────────────────────────────────────
 
 #if UNITY_EDITOR
     void OnDrawGizmosSelected()
     {
-        // Gambar posisi target di dalam scene
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(targetInsidePosition, 0.3f);
-        Gizmos.DrawLine(transform.position, targetInsidePosition);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(targetInsidePosition, 0.5f);
 
-        // Gambar posisi exit
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(exitPosition, 0.3f);
-
-        // Gambar arc sweep bullet
-        DrawSweepArc();
-    }
-
-    void DrawSweepArc()
-    {
-        float startAngle, endAngle;
-        
-        if (shootRight)
-        {
-            startAngle = sweepAngleStart;
-            endAngle   = sweepAngleEnd;
-        }
-        else
-        {
-            startAngle = sweepAngleLeftStart;
-            endAngle   = sweepAngleLeftEnd;
-        }
+        float startAngle = shootRight ? sweepAngleStart     : sweepAngleLeftStart;
+        float endAngle   = shootRight ? sweepAngleEnd       : sweepAngleLeftEnd;
 
         Gizmos.color = Color.yellow;
-        Vector3 pos = transform.position;
-
         for (int i = 0; i < bulletCount; i++)
         {
             float t     = (bulletCount > 1) ? (float)i / (bulletCount - 1) : 0.5f;
             float angle = Mathf.Lerp(startAngle, endAngle, t);
             float rad   = angle * Mathf.Deg2Rad;
             Vector3 dir = new Vector3(Mathf.Cos(rad), Mathf.Sin(rad), 0f);
-            Gizmos.DrawRay(pos, dir * 1.5f);
+            Gizmos.DrawRay(transform.position, dir * 1.5f);
         }
     }
 #endif

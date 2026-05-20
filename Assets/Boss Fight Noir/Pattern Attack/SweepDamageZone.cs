@@ -1,25 +1,40 @@
-// Assets/Boss Fight Noir/Pattern Attack/ScriptBossATK/SweepDamageZone.cs
+// Assets/Boss Fight Noir/Pattern Attack/SweepDamageZone.cs
 using UnityEngine;
 
 /// <summary>
-/// Komponen helper untuk area bahaya horizontal sweep.
-/// Attach ke GameObject yang dibuat oleh BossPattern_HorizSweep.
+/// Area damage horizontal sweep.
+/// Damage hanya terkena player yang berada di dalam area collider.
+/// Safe zone = di luar area alert (tidak perlu set manual).
 /// </summary>
 public class SweepDamageZone : MonoBehaviour
 {
-    [HideInInspector]
-    public float damage = 25f;
+    [HideInInspector] public float damage = 25f;
 
-    // Damage hanya sekali saat masuk area (player punya chance kabur)
+    private bool _hasDealtDamage = false;
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
+        if (_hasDealtDamage) return;
+
+        _hasDealtDamage = true;
 
         PlayerHealth ph = other.GetComponent<PlayerHealth>();
-        if (ph != null) { ph.TakeDamage(damage); return; }
+        if (ph != null)
+        {
+            ph.TakeDamage(damage);
+            return;
+        }
 
         HealthManager hm = other.GetComponent<HealthManager>();
         if (hm != null)
             hm.SendMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
     }
-}  
+
+    // Reset agar bisa kena damage lagi jika player masuk keluar area
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+            _hasDealtDamage = false;
+    }
+}
