@@ -104,7 +104,7 @@ public class BossPattern_Slam3x : MonoBehaviour
     public Color impactZoneColor     = new Color(1f, 0.3f, 0f, 0.45f);
 
     [Tooltip("Sorting order sprite impact zone")]
-    public int   impactSortingOrder  = alertSortingOrder - 1;
+    public int   impactSortingOrder  = -1;
 
     // ─────────────────────────────────────────────────────────
     // AUDIO (NEW)
