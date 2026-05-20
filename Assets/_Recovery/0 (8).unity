@@ -813,10 +813,7 @@ GameObject:
   - component: {fileID: 1172112864}
   - component: {fileID: 1172112863}
   - component: {fileID: 1172112865}
-  - component: {fileID: 1172112866}
-  - component: {fileID: 1172112868}
-  - component: {fileID: 1172112867}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BossHeadNoir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -912,7 +909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec4608f3a7a02dc40917a6a1c3fca0ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossPattern_Slam3x
-  rightHand: {fileID: 486092536}
+  rightHand: {fileID: 0}
   playerTransform: {fileID: 1561857918}
   alertPrefab: {fileID: 6285452671056990479, guid: 8a1ea84659e497d4590ed28c8c5269f6, type: 3}
   slamCount: 3
@@ -928,202 +925,15 @@ MonoBehaviour:
   raiseHeight: 3
   slamDownSpeed: 22
   retractSpeed: 6
-  chaseSpeed: 8
+  chaseSpeed: 5
   alertColor: {r: 1, g: 0.15, b: 0.15, a: 0.9}
   alertSize: 2.5
   alertSortingOrder: 10
---- !u!114 &1172112866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1172112862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7bdc5a7c0d58e446b917e09d17cab64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BossHP
-  maxHP: 500
-  _currentHP: 0
---- !u!114 &1172112867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1172112862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f96dbf45ae2f4544aab20c5b69b6c58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BossPattern_SwingArm
-  leftHand: {fileID: 486092536}
-  rightHand: {fileID: 345186764}
-  swingDamage: 40
-  damageRadius: 3
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  rightHandSwingTarget: {x: 5, y: -2, z: 0}
-  leftHandSwingTarget: {x: -5, y: -2, z: 0}
-  telegraphDuration: 1.2
-  swingSpeed: 18
-  retractSpeed: 6
-  endDelay: 0.5
---- !u!114 &1172112868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1172112862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17091f07fc2f09a44a668cfe115cc265, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BossPatternTester
-  miniGunnerSpawner: {fileID: 287780166564798063, guid: d7d200df382660449a2b1b21ac507b25, type: 3}
-  rightHand: {fileID: 345186764}
-  leftHand: {fileID: 486092536}
-  bossHead: {fileID: 1172112864}
-  playerTransform: {fileID: 1561857918}
-  bulletPrefab: {fileID: 3412826518243401563, guid: 90befd9d5b4f3af488b01f44b715e953, type: 3}
-  bulletDamage: 10
-  sweepVisualPrefab: {fileID: 0}
-  sweepYPosition: 0
-  sweepDuration: 2
-  chaseEnemyPrefab: {fileID: 2663142145246831603, guid: 61f7eb516b7b1d646ad57e7239896150, type: 3}
-  chaseEnemyCount: 3
-  chaseEnemyInterval: 1
-  chaseFromRight: 1
-  chaseEnemyYPosition: 0
-  normalEnemyPrefabs: []
-  normalEnemyCount: 3
-  spawnRadius: 3
-  debugText: {fileID: 0}
 --- !u!4 &1561857918 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 469128242197421309, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
   m_PrefabInstance: {fileID: 1076330158}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1684465560
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1684465565}
-  - component: {fileID: 1684465564}
-  - component: {fileID: 1684465563}
-  - component: {fileID: 1684465562}
-  - component: {fileID: 1684465561}
-  m_Layer: 0
-  m_Name: BossManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1684465561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1684465560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6faf8ddea1fcf6c4d888a55d50d7eaa2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BossPattern_ChaseEnemy
-  chaseEnemyPrefab: {fileID: 2663142145246831603, guid: 61f7eb516b7b1d646ad57e7239896150, type: 3}
-  enemyCount: 3
-  spawnInterval: 1.5
-  spawnX: 12
-  spawnY: 0
-  maxWaitTime: 10
-  endDelay: 0.5
---- !u!114 &1684465562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1684465560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48db85922acc2f94db7c55eefc1da53b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BossPattern_NormalEnemy
-  enemyPrefabs: []
-  spawnCount: 4
-  spawnDelay: 0.5
-  spawnPoints: []
-  maxWaitTime: 30
-  endDelay: 0.5
---- !u!114 &1684465563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1684465560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10ad08374a59b954d9731fe5adc6741b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BossPattern_HorizSweep
-  safeZoneY: -2.66
-  sweepHeight: 3
-  sweepWidth: 18
-  sweepDamage: 25
-  warningColor: {r: 1, g: 0.4, b: 0, a: 0.25}
-  activeColor: {r: 1, g: 0.2, b: 0, a: 0.5}
-  sortingOrder: -1
-  warningDuration: 2.5
-  activeDuration: 2
-  fadeDuration: 0.4
-  endDelay: 0.5
---- !u!114 &1684465564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1684465560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f975da119430d1a47be71a422e1acd1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BossController
-  patternSwingArm: {fileID: 1172112867}
-  patternSlam: {fileID: 1172112865}
-  patternMiniGunner: {fileID: 287780166564798063, guid: d7d200df382660449a2b1b21ac507b25, type: 3}
-  patternSweep: {fileID: 1684465563}
-  patternChase: {fileID: 1684465561}
-  patternNormal: {fileID: 1684465562}
-  bossHP: {fileID: 1172112866}
-  delayBetweenPatterns: 1.5
-  introDelay: 2
-  startPatternIndex: 0
---- !u!4 &1684465565
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1684465560}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.07086, y: 1.16955, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1324831814069253292
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1208,4 +1018,3 @@ SceneRoots:
   - {fileID: 1324831814069253292}
   - {fileID: 1126335313}
   - {fileID: 1172112864}
-  - {fileID: 1684465565}
