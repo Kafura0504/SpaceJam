@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 345186764}
   - component: {fileID: 345186765}
+  - component: {fileID: 345186766}
   m_Layer: 0
   m_Name: RightHand
   m_TagString: Untagged
@@ -210,6 +211,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &345186766
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345186763}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cd22b344979c8814db3bafdb1783dec7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &486092535
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,6 +243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 486092536}
   - component: {fileID: 486092537}
+  - component: {fileID: 486092538}
   m_Layer: 0
   m_Name: LeftHand
   m_TagString: Untagged
@@ -301,6 +325,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &486092538
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486092535}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 33e59b398bfd65243b536d8a16b2a9cd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &588293658
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,6 +357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 588293659}
   - component: {fileID: 588293660}
+  - component: {fileID: 588293661}
   m_Layer: 0
   m_Name: NeckNoir
   m_TagString: Untagged
@@ -392,6 +439,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &588293661
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588293658}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e5e3a4064c3477a47a8baa5f5e756ba9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &715792535
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,6 +837,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17091f07fc2f09a44a668cfe115cc265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossPatternTester
+  patternSwingArm: {fileID: 1172112867}
+  patternSlam: {fileID: 1172112865}
+  patternMiniGunner: {fileID: 287780166564798063, guid: d7d200df382660449a2b1b21ac507b25, type: 3}
+  patternSweep: {fileID: 1684465563}
+  patternChase: {fileID: 1684465561}
+  patternNormal: {fileID: 1684465562}
   miniGunnerSpawner: {fileID: 287780166564798063, guid: d7d200df382660449a2b1b21ac507b25, type: 3}
   rightHand: {fileID: 345186764}
   leftHand: {fileID: 486092536}
@@ -778,7 +853,7 @@ MonoBehaviour:
   sweepVisualPrefab: {fileID: 0}
   sweepYPosition: 0
   sweepDuration: 2
-  chaseEnemyPrefab: {fileID: 0}
+  chaseEnemyPrefab: {fileID: 2663142145246831603, guid: 61f7eb516b7b1d646ad57e7239896150, type: 3}
   chaseEnemyCount: 3
   chaseEnemyInterval: 1
   chaseFromRight: 1
@@ -814,8 +889,8 @@ GameObject:
   - component: {fileID: 1172112863}
   - component: {fileID: 1172112865}
   - component: {fileID: 1172112866}
-  - component: {fileID: 1172112868}
   - component: {fileID: 1172112867}
+  - component: {fileID: 1172112868}
   m_Layer: 0
   m_Name: BossHeadNoir
   m_TagString: Untagged
@@ -914,7 +989,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossPattern_Slam3x
   rightHand: {fileID: 486092536}
   playerTransform: {fileID: 1561857918}
-  alertPrefab: {fileID: 6285452671056990479, guid: 8a1ea84659e497d4590ed28c8c5269f6, type: 3}
+  alertPrefab: {fileID: 202282095840678204, guid: b4c4c740b0a077f469a75f0c4c195b23, type: 3}
   slamCount: 3
   slamDamage: 30
   damageRadius: 1.5
@@ -971,37 +1046,28 @@ MonoBehaviour:
   swingSpeed: 18
   retractSpeed: 6
   endDelay: 0.5
---- !u!114 &1172112868
-MonoBehaviour:
+--- !u!95 &1172112868
+Animator:
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1172112862}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17091f07fc2f09a44a668cfe115cc265, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BossPatternTester
-  miniGunnerSpawner: {fileID: 287780166564798063, guid: d7d200df382660449a2b1b21ac507b25, type: 3}
-  rightHand: {fileID: 345186764}
-  leftHand: {fileID: 486092536}
-  bossHead: {fileID: 1172112864}
-  playerTransform: {fileID: 1561857918}
-  bulletPrefab: {fileID: 3412826518243401563, guid: 90befd9d5b4f3af488b01f44b715e953, type: 3}
-  bulletDamage: 10
-  sweepVisualPrefab: {fileID: 0}
-  sweepYPosition: 0
-  sweepDuration: 2
-  chaseEnemyPrefab: {fileID: 2663142145246831603, guid: 61f7eb516b7b1d646ad57e7239896150, type: 3}
-  chaseEnemyCount: 3
-  chaseEnemyInterval: 1
-  chaseFromRight: 1
-  chaseEnemyYPosition: 0
-  normalEnemyPrefabs: []
-  normalEnemyCount: 3
-  spawnRadius: 3
-  debugText: {fileID: 0}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 126162e96d947bb468e3230e8b0f3056, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &1561857918 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 469128242197421309, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
