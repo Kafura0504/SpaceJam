@@ -4,48 +4,35 @@ using UnityEngine;
 
 /// <summary>
 /// SpaceJam - Boss Health System
-///
-/// Mengelola HP boss. Gunakan event OnDeath dan OnHPChanged
-/// untuk trigger animasi, phase, dan UI.
-///
-/// Otomatis menerima damage dari peluru player (tag "PlayerBullet").
+/// Mengelola HP boss. Event OnDeath dan OnHPChanged digunakan
+/// oleh BossPhaseController, BossHPBar, dan BossHitFlash.
 /// </summary>
 public class BossHP : MonoBehaviour, IDamageable
 {
     [Header("=== HP SETTINGS ===")]
-    public float maxHP = 500f;
+    public float maxHP = 1000f;   // <-- FIX: diubah dari 500 menjadi 1000
 
-    [Header("=== STATUS (read-only di Inspector) ===")]
+    [Header("=== STATUS (read-only di Inspector saat play) ===")]
     [SerializeField] private float _currentHP;
 
     public bool isDead { get; private set; } = false;
 
-    // Events — subscribe dari BossController atau UI
+    // Events — subscribe dari BossPhaseController, BossHPBar, BossHitFlash
     public event Action        OnDeath;
-    public event Action<float> OnHPChanged;  // Parameter: normalized HP (0..1)
+    public event Action<float> OnHPChanged;   // normalized HP (0..1)
+    public event Action        OnHit;         // dipanggil tiap kali kena damage (untuk flash)
 
-    // Property publik untuk dibaca script lain
+    // Property publik
     public float CurrentHP => _currentHP;
     public float HPRatio   => _currentHP / maxHP;
-
-    // ─────────────────────────────────────────────────────────────────────────
-    // UNITY LIFECYCLE
-    // ─────────────────────────────────────────────────────────────────────────
 
     void Awake()
     {
         _currentHP = maxHP;
     }
 
-    // ─────────────────────────────────────────────────────────────────────────
-    // IDamageable INTERFACE
-    // ─────────────────────────────────────────────────────────────────────────
-
+    // IDamageable interface
     public void TakeDamage(int amount) => TakeDamage((float)amount);
-
-    // ─────────────────────────────────────────────────────────────────────────
-    // PUBLIC API
-    // ─────────────────────────────────────────────────────────────────────────
 
     public void TakeDamage(float amount)
     {
@@ -54,15 +41,13 @@ public class BossHP : MonoBehaviour, IDamageable
         _currentHP -= amount;
         _currentHP  = Mathf.Max(0f, _currentHP);
 
+        OnHit?.Invoke();                    // trigger visual flash
         OnHPChanged?.Invoke(HPRatio);
+
         Debug.Log($"[BossHP] HP: {_currentHP:F0}/{maxHP:F0}");
 
         if (_currentHP <= 0f) Die();
     }
-
-    // ─────────────────────────────────────────────────────────────────────────
-    // COLLISION — terima damage dari peluru player
-    // ─────────────────────────────────────────────────────────────────────────
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -73,10 +58,6 @@ public class BossHP : MonoBehaviour, IDamageable
 
         Destroy(other.gameObject);
     }
-
-    // ─────────────────────────────────────────────────────────────────────────
-    // PRIVATE
-    // ─────────────────────────────────────────────────────────────────────────
 
     private void Die()
     {

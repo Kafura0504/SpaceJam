@@ -1,7 +1,4 @@
-// BossPhaseController.cs
-// Script BARU — tidak memodifikasi BossController.cs lama.
-// Tambahkan ke GameObject BossManager, lalu disable/remove BossController lama.
-
+// Assets/Boss Fight Noir/BossPhaseController.cs
 using System.Collections;
 using UnityEngine;
 
@@ -9,36 +6,37 @@ using UnityEngine;
 /// SpaceJam - Boss Phase Controller
 ///
 /// Phase 1 (HP > 500) : random dari SwingArm, Slam3x, NormalEnemy
-/// Phase 2 (HP ≤ 500) : random dari MiniGunner, ShootLaser, HorizSweep, NormalEnemy
+/// Phase 2 (HP <= 500): random dari ShootLaser, HorizSweep, MiniGunner, NormalEnemy
 ///
 /// SETUP:
 ///   1. Tambahkan script ini ke GameObject "BossManager" di scene
-///   2. Assign semua pattern reference di Inspector
-///   3. Disable atau remove komponen BossController lama
+///   2. Assign semua pattern di Inspector (lihat field di bawah)
+///   3. Assign BossHP dari BossHeadNoir
+///   4. Pastikan BossHP.maxHP = 1000 (sudah diset di script BossHP)
 /// </summary>
 public class BossPhaseController : MonoBehaviour
 {
     // ─────────────────────────────────────────────────────────
-    // PATTERN REFERENCES
+    // PATTERN REFERENCES — assign semua di Inspector
     // ─────────────────────────────────────────────────────────
 
     [Header("=== PATTERN REFERENCES ===")]
-    [Tooltip("Assign BossPattern_SwingArm dari BossHeadNoir")]
+    [Tooltip("BossPattern_SwingArm dari BossHeadNoir")]
     public BossPattern_SwingArm    patternSwingArm;
 
-    [Tooltip("Assign BossPattern_Slam3x dari BossHeadNoir")]
+    [Tooltip("BossPattern_Slam3x dari BossHeadNoir")]
     public BossPattern_Slam3x      patternSlam;
 
-    [Tooltip("Assign MiniGunnerSpawner dari scene")]
+    [Tooltip("MiniGunnerSpawner dari scene")]
     public MiniGunnerSpawner       patternMiniGunner;
 
-    [Tooltip("Assign BossPattern_HorizSweep dari BossManager")]
+    [Tooltip("BossPattern_HorizSweep dari BossManager")]
     public BossPattern_HorizSweep  patternSweep;
 
-    [Tooltip("Assign BossPattern_ShootLaser dari BossManager")]
+    [Tooltip("BossPattern_ShootLaser dari BossManager")]
     public BossPattern_ShootLaser  patternShootLaser;
 
-    [Tooltip("Assign BossPattern_NormalEnemy dari BossManager")]
+    [Tooltip("BossPattern_NormalEnemy dari BossManager")]
     public BossPattern_NormalEnemy patternNormal;
 
     // ─────────────────────────────────────────────────────────
@@ -46,7 +44,7 @@ public class BossPhaseController : MonoBehaviour
     // ─────────────────────────────────────────────────────────
 
     [Header("=== BOSS HP ===")]
-    [Tooltip("Assign BossHP dari BossHeadNoir. maxHP di sana set ke 1000")]
+    [Tooltip("BossHP dari BossHeadNoir")]
     public BossHP bossHP;
 
     // ─────────────────────────────────────────────────────────
@@ -54,24 +52,24 @@ public class BossPhaseController : MonoBehaviour
     // ─────────────────────────────────────────────────────────
 
     [Header("=== PHASE SETTINGS ===")]
-    [Tooltip("Jika HP boss turun ke atau di bawah nilai ini, masuk Phase 2")]
+    [Tooltip("HP threshold untuk masuk Phase 2 (default 500 dari 1000 total)")]
     public float phase2HPThreshold = 500f;
 
-    [Tooltip("Jeda antar pattern (detik) — beri ruang napas untuk player")]
+    [Tooltip("Jeda antar pattern — beri ruang player untuk bernapas")]
     public float delayBetweenPatterns = 1.5f;
 
     [Tooltip("Jeda awal sebelum boss mulai menyerang")]
     public float introDelay = 2f;
 
-    [Tooltip("Jeda saat transisi ke Phase 2 — boss diam sejenak sebagai sinyal")]
+    [Tooltip("Jeda saat transisi ke Phase 2 — boss diam sebagai sinyal")]
     public float phase2TransitionDelay = 3f;
 
     // ─────────────────────────────────────────────────────────
-    // PHASE 2 AUDIO
+    // AUDIO TRANSISI PHASE 2
     // ─────────────────────────────────────────────────────────
 
-    [Header("=== PHASE 2 TRANSITION AUDIO ===")]
-    [Tooltip("Sound effect saat boss masuk Phase 2 (opsional)")]
+    [Header("=== AUDIO ===")]
+    [Tooltip("Sound saat boss masuk Phase 2 (opsional)")]
     public AudioClip phase2TransitionSound;
 
     // ─────────────────────────────────────────────────────────
@@ -84,13 +82,15 @@ public class BossPhaseController : MonoBehaviour
     [SerializeField] private bool   _isRunning          = false;
 
     // ─────────────────────────────────────────────────────────
-    // PRIVATE
+    // INDEKS PATTERN
+    //   0 = SwingArm      (Phase 1)
+    //   1 = Slam3x        (Phase 1)
+    //   2 = NormalEnemy   (Phase 1 & 2)
+    //   3 = MiniGunner    (Phase 2)
+    //   4 = ShootLaser    (Phase 2)
+    //   5 = HorizSweep    (Phase 2)
     // ─────────────────────────────────────────────────────────
-
-    // Phase 1: index 0=SwingArm, 1=Slam, 2=Normal
     private readonly int[] _phase1Pool = { 0, 1, 2 };
-
-    // Phase 2: index 3=MiniGunner, 4=ShootLaser, 5=Sweep, 2=Normal
     private readonly int[] _phase2Pool = { 3, 4, 5, 2 };
 
     private bool        _phase2Announced = false;
@@ -102,15 +102,15 @@ public class BossPhaseController : MonoBehaviour
 
     void Start()
     {
-        _audioSource = GetComponent<AudioSource>();
-        if (_audioSource == null)
-            _audioSource = gameObject.AddComponent<AudioSource>();
-
         if (bossHP == null)
         {
             Debug.LogError("[BossPhaseController] BossHP belum di-assign di Inspector!");
             return;
         }
+
+        _audioSource = GetComponent<AudioSource>();
+        if (_audioSource == null)
+            _audioSource = gameObject.AddComponent<AudioSource>();
 
         bossHP.OnDeath += HandleBossDeath;
 
@@ -124,7 +124,7 @@ public class BossPhaseController : MonoBehaviour
     }
 
     // ─────────────────────────────────────────────────────────
-    // MAIN FIGHT LOOP
+    // MAIN FIGHT LOOP — berjalan terus sampai boss mati
     // ─────────────────────────────────────────────────────────
 
     private IEnumerator RunBossFight()
@@ -133,32 +133,33 @@ public class BossPhaseController : MonoBehaviour
         _currentPhase       = 1;
         _currentPatternName = "Intro...";
 
-        Debug.Log("[BossPhaseController] Boss fight dimulai!");
+        Debug.Log("[BossPhaseController] Boss fight dimulai! HP: " + bossHP.maxHP);
 
         yield return new WaitForSeconds(introDelay);
 
+        // Loop tak terbatas — berhenti saat boss mati (HandleBossDeath akan set _isRunning = false)
         while (_isRunning)
         {
             if (bossHP == null || bossHP.isDead) yield break;
 
-            // Cek apakah perlu transisi ke Phase 2
+            // Cek transisi ke Phase 2
             if (!_phase2Announced && bossHP.CurrentHP <= phase2HPThreshold)
             {
                 yield return StartCoroutine(TransitionToPhase2());
             }
 
-            // Pilih dan jalankan satu pattern secara random
-            int chosenIndex = PickRandomPatternIndex();
-            yield return StartCoroutine(ExecutePattern(chosenIndex));
+            // Pilih satu pattern secara random lalu jalankan
+            int patternIndex = PickRandomPattern();
+            yield return StartCoroutine(ExecutePattern(patternIndex));
 
-            // Jeda antar pattern (beri waktu player bernapas)
-            _currentPatternName = "Jeda antar pattern...";
+            // Jeda antar pattern
+            _currentPatternName = "Jeda...";
             yield return new WaitForSeconds(delayBetweenPatterns);
         }
     }
 
     // ─────────────────────────────────────────────────────────
-    // PHASE 2 TRANSITION
+    // TRANSISI KE PHASE 2
     // ─────────────────────────────────────────────────────────
 
     private IEnumerator TransitionToPhase2()
@@ -167,27 +168,27 @@ public class BossPhaseController : MonoBehaviour
         _currentPhase       = 2;
         _currentPatternName = "Phase 2 Transition!";
 
-        Debug.Log("[BossPhaseController] ===== PHASE 2 DIMULAI! =====");
+        Debug.Log("[BossPhaseController] ===== PHASE 2 DIMULAI! HP = " + bossHP.CurrentHP + " =====");
 
         if (phase2TransitionSound != null && _audioSource != null)
             _audioSource.PlayOneShot(phase2TransitionSound);
 
-        // Boss diam sejenak — sinyal visual bahwa sesuatu berubah
+        // Boss diam sejenak sebagai sinyal visual ke player
         yield return new WaitForSeconds(phase2TransitionDelay);
     }
 
     // ─────────────────────────────────────────────────────────
-    // RANDOM PATTERN PICKER
+    // PILIH PATTERN RANDOM DARI POOL FASE AKTIF
     // ─────────────────────────────────────────────────────────
 
-    private int PickRandomPatternIndex()
+    private int PickRandomPattern()
     {
         int[] pool = (_currentPhase == 2) ? _phase2Pool : _phase1Pool;
         return pool[Random.Range(0, pool.Length)];
     }
 
     // ─────────────────────────────────────────────────────────
-    // EXECUTE PATTERN
+    // EKSEKUSI PATTERN
     // ─────────────────────────────────────────────────────────
 
     private IEnumerator ExecutePattern(int index)
@@ -196,7 +197,7 @@ public class BossPhaseController : MonoBehaviour
         {
             case 0:
                 _currentPatternName = "SwingArm";
-                Debug.Log("[BossPhaseController] Menjalankan: SwingArm");
+                Debug.Log("[BossPhaseController] → SwingArm");
                 if (patternSwingArm != null)
                     yield return StartCoroutine(patternSwingArm.ExecutePattern());
                 else
@@ -205,7 +206,7 @@ public class BossPhaseController : MonoBehaviour
 
             case 1:
                 _currentPatternName = "Slam3x";
-                Debug.Log("[BossPhaseController] Menjalankan: Slam3x");
+                Debug.Log("[BossPhaseController] → Slam3x");
                 if (patternSlam != null)
                     yield return StartCoroutine(patternSlam.ExecutePattern());
                 else
@@ -214,7 +215,7 @@ public class BossPhaseController : MonoBehaviour
 
             case 2:
                 _currentPatternName = "NormalEnemy";
-                Debug.Log("[BossPhaseController] Menjalankan: NormalEnemy");
+                Debug.Log("[BossPhaseController] → NormalEnemy");
                 if (patternNormal != null)
                     yield return StartCoroutine(patternNormal.ExecutePattern());
                 else
@@ -223,7 +224,7 @@ public class BossPhaseController : MonoBehaviour
 
             case 3:
                 _currentPatternName = "MiniGunner";
-                Debug.Log("[BossPhaseController] Menjalankan: MiniGunner");
+                Debug.Log("[BossPhaseController] → MiniGunner");
                 if (patternMiniGunner != null)
                     yield return StartCoroutine(patternMiniGunner.RunMiniGunnerSequence());
                 else
@@ -232,7 +233,7 @@ public class BossPhaseController : MonoBehaviour
 
             case 4:
                 _currentPatternName = "ShootLaser";
-                Debug.Log("[BossPhaseController] Menjalankan: ShootLaser");
+                Debug.Log("[BossPhaseController] → ShootLaser");
                 if (patternShootLaser != null)
                     yield return StartCoroutine(patternShootLaser.ExecutePattern());
                 else
@@ -241,7 +242,7 @@ public class BossPhaseController : MonoBehaviour
 
             case 5:
                 _currentPatternName = "HorizSweep";
-                Debug.Log("[BossPhaseController] Menjalankan: HorizSweep");
+                Debug.Log("[BossPhaseController] → HorizSweep");
                 if (patternSweep != null)
                     yield return StartCoroutine(patternSweep.ExecutePattern());
                 else
@@ -249,13 +250,13 @@ public class BossPhaseController : MonoBehaviour
                 break;
 
             default:
-                Debug.LogWarning($"[BossPhaseController] Index pattern {index} tidak dikenal!");
+                Debug.LogWarning("[BossPhaseController] Index pattern tidak dikenal: " + index);
                 break;
         }
     }
 
     // ─────────────────────────────────────────────────────────
-    // DEATH HANDLER
+    // BOSS DEATH HANDLER
     // ─────────────────────────────────────────────────────────
 
     private void HandleBossDeath()
@@ -267,7 +268,6 @@ public class BossPhaseController : MonoBehaviour
 
         Debug.Log("[BossPhaseController] Boss kalah! Fight selesai.");
 
-        // TODO: Trigger animasi kematian, scene transition, atau reward di sini
-        // Contoh: GetComponent<Animator>().SetTrigger("Death");
+        // TODO: trigger animasi kematian, scene transition, reward
     }
 }
