@@ -47,8 +47,8 @@ MonoBehaviour:
   miniGunnerPrefab: {fileID: 1353838541646701828, guid: 533816945e11e49499ac15b9488ebad1, type: 3}
   spawnPositionLeft: {x: -10, y: 6}
   spawnPositionRight: {x: 10, y: 6}
-  targetPositionLeft: {x: -8, y: 4}
-  targetPositionRight: {x: 8, y: 4}
+  targetPositionLeft: {x: -7, y: 3}
+  targetPositionRight: {x: 7, y: 3}
   exitPositionLeft: {x: -10, y: 6}
   exitPositionRight: {x: 10, y: 6}
   bulletDamage: 10
