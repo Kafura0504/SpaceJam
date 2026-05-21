@@ -1,0 +1,559 @@
+fileFormatVersion: 2
+guid: f30028f29ff9ee542b1f247c76d8f851
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3927090197553934603
+    second: LOGO SJ_0
+  - first:
+      213: -8452994039696847348
+    second: LOGO SJ_1
+  - first:
+      213: 7561656493392699695
+    second: LOGO SJ_2
+  - first:
+      213: 695055416446862011
+    second: LOGO SJ_3
+  - first:
+      213: -4697571230498317018
+    second: LOGO SJ_4
+  - first:
+      213: 3106425956278130789
+    second: LOGO SJ_5
+  - first:
+      213: 99514751522796188
+    second: LOGO SJ_6
+  - first:
+      213: 474267786796635079
+    second: LOGO SJ_7
+  - first:
+      213: 1756564301251705606
+    second: LOGO SJ_8
+  - first:
+      213: 4686726702538081121
+    second: LOGO SJ_9
+  - first:
+      213: -5507756041357123846
+    second: LOGO SJ_10
+  - first:
+      213: 8041985626646072824
+    second: LOGO SJ_11
+  - first:
+      213: -8428179788823923569
+    second: LOGO SJ_12
+  - first:
+      213: 8357368690439018910
+    second: LOGO SJ_13
+  - first:
+      213: -985923518338781658
+    second: LOGO SJ_14
+  - first:
+      213: -8300954131576191117
+    second: LOGO SJ_15
+  - first:
+      213: 6643120681260596723
+    second: LOGO SJ_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 1448
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: LOGO SJ_0
+      rect:
+        serializedVersion: 2
+        x: 1082
+        y: 2036
+        width: 311
+        height: 326
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b01fe126ab3df7630800000000000000
+      internalID: 3927090197553934603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOGO SJ_1
+      rect:
+        serializedVersion: 2
+        x: 2370
+        y: 2322
+        width: 172
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0e006fe4bee0ba80800000000000000
+      internalID: -8452994039696847348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOGO SJ_2
+      rect:
+        serializedVersion: 2
+        x: 1411
+        y: 2032
+        width: 311
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f21a232748660f860800000000000000
+      internalID: 7561656493392699695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOGO SJ_3
+      rect:
+        serializedVersion: 2
+        x: 1762
+        y: 2036
+        width: 296
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb2c68cf73555a900800000000000000
+      internalID: 695055416446862011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOGO SJ_4
+      rect:
+        serializedVersion: 2
+        x: 2088
+        y: 2036
+        width: 286
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62d9d0bcadfdeceb0800000000000000
+      internalID: -4697571230498317018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOGO SJ_5
+      rect:
+        serializedVersion: 2
+        x: 2412
+        y: 2036
+        width: 86
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 568d20dd2fd3c1b20800000000000000
+      internalID: 3106425956278130789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOGO SJ_6
+      rect:
+        serializedVersion: 2
+        x: 2544
+        y: 2036
+        width: 297
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c927d66a32c816100800000000000000
+      internalID: 99514751522796188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOGO SJ_7
+      rect:
+        serializedVersion: 2
+        x: 2881
+        y: 2036
+        width: 297
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c39c601a00f49600800000000000000
+      internalID: 474267786796635079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOGO SJ_8
+      rect:
+        serializedVersion: 2
+        x: 3218
+        y: 2024
+        width: 266
+        height: 276
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60b7d31ece1906810800000000000000
+      internalID: 1756564301251705606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOGO SJ_9
+      rect:
+        serializedVersion: 2
+        x: 3524
+        y: 1961
+        width: 354
+        height: 327
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 163ce18ca199a0140800000000000000
+      internalID: 4686726702538081121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOGO SJ_10
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 1912
+        width: 1035
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afe956dcf058093b0800000000000000
+      internalID: -5507756041357123846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOGO SJ_11
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 1225
+        width: 679
+        height: 633
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fd4905b15fda9f60800000000000000
+      internalID: 8041985626646072824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOGO SJ_12
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 1067
+        width: 679
+        height: 791
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f84f500f227190b80800000000000000
+      internalID: -8428179788823923569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOGO SJ_13
+      rect:
+        serializedVersion: 2
+        x: 2128
+        y: 1069
+        width: 678
+        height: 789
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e99d6927b865bf370800000000000000
+      internalID: 8357368690439018910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOGO SJ_14
+      rect:
+        serializedVersion: 2
+        x: 2888
+        y: 1224
+        width: 678
+        height: 632
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62ea6b1a8cb4152f0800000000000000
+      internalID: -985923518338781658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOGO SJ_15
+      rect:
+        serializedVersion: 2
+        x: 3646
+        y: 1226
+        width: 678
+        height: 632
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 377079a92361dcc80800000000000000
+      internalID: -8300954131576191117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOGO SJ_16
+      rect:
+        serializedVersion: 2
+        x: 3374
+        y: 1156
+        width: 1118
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fdb696101b113c50800000000000000
+      internalID: 6643120681260596723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      LOGO SJ_0: 3927090197553934603
+      LOGO SJ_1: -8452994039696847348
+      LOGO SJ_10: -5507756041357123846
+      LOGO SJ_11: 8041985626646072824
+      LOGO SJ_12: -8428179788823923569
+      LOGO SJ_13: 8357368690439018910
+      LOGO SJ_14: -985923518338781658
+      LOGO SJ_15: -8300954131576191117
+      LOGO SJ_16: 6643120681260596723
+      LOGO SJ_2: 7561656493392699695
+      LOGO SJ_3: 695055416446862011
+      LOGO SJ_4: -4697571230498317018
+      LOGO SJ_5: 3106425956278130789
+      LOGO SJ_6: 99514751522796188
+      LOGO SJ_7: 474267786796635079
+      LOGO SJ_8: 1756564301251705606
+      LOGO SJ_9: 4686726702538081121
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

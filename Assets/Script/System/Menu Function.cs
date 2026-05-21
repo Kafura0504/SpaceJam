@@ -81,6 +81,11 @@ public class MenuFunction : MonoBehaviour
         highscore.SetActive(true);
     }
 
+    public void playBoss()
+    {
+        SceneManager.LoadScene(4);    
+    }
+
     public void quit()
     {
         Application.Quit();
