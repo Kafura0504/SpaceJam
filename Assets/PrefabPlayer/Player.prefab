@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4103835620400870595}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 5557927756677157015}
   - component: {fileID: 8667887108952835121}
   - component: {fileID: 7062740353200365349}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -379,7 +379,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6840629105274468935}
   - component: {fileID: 3978864713005909073}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -479,6 +479,10 @@ PrefabInstance:
     - target: {fileID: 3580814880062612027, guid: 004832319b0239747b52f210e659fa2c, type: 3}
       propertyPath: m_Name
       value: ExplosionVFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580814880062612027, guid: 004832319b0239747b52f210e659fa2c, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6798483240231252614, guid: 004832319b0239747b52f210e659fa2c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -586,6 +590,10 @@ PrefabInstance:
     - target: {fileID: 7845425167467837505, guid: dc66fd8087750f746bb470ad6c5fd644, type: 3}
       propertyPath: m_Name
       value: VFXDustShoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 7845425167467837505, guid: dc66fd8087750f746bb470ad6c5fd644, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8654657286554578368, guid: dc66fd8087750f746bb470ad6c5fd644, type: 3}
       propertyPath: m_InitialEventName

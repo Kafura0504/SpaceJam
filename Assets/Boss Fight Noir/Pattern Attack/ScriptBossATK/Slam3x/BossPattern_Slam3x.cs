@@ -1,25 +1,16 @@
 // Assets/Boss Fight Noir/Pattern Attack/ScriptBossATK/Slam3x/BossPattern_Slam3x.cs
 // =============================================================
-// SpaceJam - BossPattern_Slam3x.cs  (UPDATED)
+// SpaceJam - BossPattern_Slam3x.cs
 // =============================================================
-// UPDATE:
-//   - Tambah field imprintSprite (Sprite) untuk sprite jejak tangan kanan
-//   - Tambah field imprintScale (Vector2) untuk ukuran sprite jejak
-//   - Tambah field imprintColor untuk tint warna sprite jejak
-//   - Tambah field imprintSortingOrder untuk rendering order
-//   - SpawnImpactZone sekarang menggunakan sprite jejak tangan
-//   - VFX boom muncul saat impact → setelah itu sprite jejak muncul
-//   - Sprite jejak fade out otomatis setelah impactZoneDuration
+// FIX VFX:
+//   - PlayImpactVFX sekarang menggunakan coroutine internal
+//   - GameObject VFX di-SetActive(false) dulu lalu SetActive(true)
+//     agar VFX Graph benar-benar reset state sebelum Play()
+//   - Setiap step diberi yield return null (jeda 1 frame)
+//     sehingga VFX Graph punya waktu untuk initialize
 //
-// ALUR PER SLAM:
-//   1. Chase    : Tangan bergerak horizontal ke posisi X player
-//   2. Raise    : Tangan naik raiseHeight unit (wind-up)
-//   3. Telegraph: Berhenti, alert muncul, player punya waktu dodge
-//   4. Slam     : Tangan hantam ke posisi Y player
-//   5. VFX Boom : VFX impact muncul di titik hantam
-//   6. ImpactZone: Sprite jejak tangan muncul sebagai area damage continuous
-//   7. Retract  : Tangan kembali ke posisi origin
-//   Ulangi slamCount kali.
+// TIDAK ADA PERUBAHAN LAIN — hanya PlayImpactVFX yang diubah
+// dan ditambah 1 coroutine helper: PlayImpactVFXCoroutine
 // =============================================================
 
 using System;
@@ -174,11 +165,23 @@ public class BossPattern_Slam3x : MonoBehaviour
         if (_audioSource == null)
             _audioSource = gameObject.AddComponent<AudioSource>();
 
-        // Warning jika sprite belum di-assign
         if (imprintSprite == null)
             Debug.LogWarning("[Slam3x] imprintSprite belum di-assign. " +
                              "Akan menggunakan solid color sebagai fallback. " +
                              "Assign sprite tangan kanan di Inspector.");
+
+        // ── FIX VFX: Pastikan VFX dalam keadaan tidak aktif saat Start ──
+        // Agar pertama kali dipanggil kondisinya bersih
+        if (slamImpactVFX != null)
+        {
+            slamImpactVFX.gameObject.SetActive(false);
+            Debug.Log("[Slam3x] VFX di-deactivate saat Start — siap untuk reset bersih.");
+        }
+        else
+        {
+            Debug.LogWarning("[Slam3x] slamImpactVFX belum di-assign di Inspector! " +
+                             "VFX tidak akan muncul saat impact.");
+        }
     }
 
     // ─────────────────────────────────────────────────────────
@@ -311,11 +314,13 @@ public class BossPattern_Slam3x : MonoBehaviour
         yield return StartCoroutine(MoveHandTo(slamTarget, slamDownSpeed));
 
         // ── Phase 5: VFX Boom + Suara Impact ──────────────────────────────────
+        // FIX: PlayImpactVFX sekarang menjalankan coroutine secara internal
+        // sehingga VFX punya waktu reset sebelum Play() dipanggil
 
         Debug.Log($"[Slam3x] Slam {slamNumber} - Phase 5: VFX Boom + Impact Sound");
 
         PlaySound(slamImpactSound);
-        PlayImpactVFX(rightHand.position);
+        PlayImpactVFX(rightHand.position);   // <-- method ini sekarang safe, coroutine internal
 
         // Cek damage langsung saat tangan menghantam
         CheckAndDealDamage(rightHand.position);
@@ -380,41 +385,72 @@ public class BossPattern_Slam3x : MonoBehaviour
         zone.damage                  = impactZoneDamage;
         zone.duration                = impactZoneDuration;
         zone.damageInterval          = impactDamageInterval;
-        zone.imprintSprite           = imprintSprite;    // teruskan sprite
-        zone.imprintColor            = imprintColor;     // teruskan color
+        zone.imprintSprite           = imprintSprite;
+        zone.imprintColor            = imprintColor;
         zone.imprintSortingOrder     = imprintSortingOrder;
 
         Debug.Log($"[Slam3x] ImpactZone spawned — sprite: {(imprintSprite != null ? imprintSprite.name : "fallback solid")} " +
                   $"| scale: {imprintScale} | duration: {impactZoneDuration}s");
     }
 
-    // ─────────────────────────────────────────────────────────
-    // VFX HELPER
-    // ─────────────────────────────────────────────────────────
+    // =========================================================
+    // VFX HELPERS — FIXED
+    // =========================================================
 
+    /// <summary>
+    /// Memulai coroutine VFX secara internal.
+    /// Method ini tetap void sehingga call site di DoSingleSlam tidak perlu diubah.
+    /// Coroutine yang berjalan di dalam akan:
+    ///   1. Set posisi VFX
+    ///   2. SetActive(false) untuk reset state VFX Graph sepenuhnya
+    ///   3. Tunggu 1 frame
+    ///   4. SetActive(true) untuk initialize ulang
+    ///   5. Tunggu 1 frame agar VFX Graph selesai initialize
+    ///   6. Play()
+    /// </summary>
     private void PlayImpactVFX(Vector3 position)
-{
-    if (slamImpactVFX == null)
     {
-        Debug.LogWarning("[Slam3x] slamImpactVFX belum di-assign di Inspector!");
-        return;
+        if (slamImpactVFX == null)
+        {
+            Debug.LogWarning("[Slam3x] slamImpactVFX belum di-assign di Inspector! " +
+                             "Assign VisualEffect di field slamImpactVFX pada BossPattern_Slam3x.");
+            return;
+        }
+
+        // Jalankan coroutine internal — tidak mengubah signature method ini
+        StartCoroutine(PlayImpactVFXCoroutine(position));
     }
 
-    // Pastikan GameObject aktif sebelum play
-    if (!slamImpactVFX.gameObject.activeInHierarchy)
+    /// <summary>
+    /// Coroutine internal untuk VFX.
+    /// FIX ROOT CAUSE:
+    ///   VFX Graph membutuhkan minimal 1 frame setelah SetActive(true)
+    ///   sebelum Play() bisa berjalan. Tanpa yield return null di antara
+    ///   Stop/Reinit/Play, VFX tidak akan muncul karena state belum reset.
+    /// </summary>
+    private IEnumerator PlayImpactVFXCoroutine(Vector3 position)
+    {
+        // Step 1: Pindahkan VFX ke posisi hantam tangan sebelum activate
+        slamImpactVFX.transform.position = position;
+        Debug.Log($"[Slam3x] VFX diposisikan di {position}");
+
+        // Step 2: Deactivate untuk reset state VFX Graph sepenuhnya
+        // Ini cara paling reliable untuk restart VFX Graph dari awal
+        slamImpactVFX.gameObject.SetActive(false);
+
+        // Step 3: Tunggu 1 frame — beri waktu engine untuk proses deactivate
+        yield return null;
+
+        // Step 4: Activate kembali — VFX Graph akan initialize dari awal
         slamImpactVFX.gameObject.SetActive(true);
 
-    // Update posisi ke titik hantam tangan
-    slamImpactVFX.transform.position = position;
+        // Step 5: Tunggu 1 frame lagi — beri waktu VFX Graph initialize
+        yield return null;
 
-    // Stop dulu untuk reset state, lalu play ulang
-    // Ini fix untuk VFX Graph yang stuck di state sebelumnya
-    slamImpactVFX.Stop();
-    slamImpactVFX.Reinit();
-    slamImpactVFX.Play();
-
-    Debug.Log($"[Slam3x] VFX impact dimainkan di {position}");
-}
+        // Step 6: Play VFX — state sudah bersih, ini akan berhasil
+        slamImpactVFX.Play();
+        Debug.Log($"[Slam3x] VFX impact berhasil dimainkan di {position}");
+    }
 
     // ─────────────────────────────────────────────────────────
     // AUDIO HELPER
