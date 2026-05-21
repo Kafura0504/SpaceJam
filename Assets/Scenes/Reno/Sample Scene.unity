@@ -980,6 +980,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 469128242197421309, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
   m_PrefabInstance: {fileID: 1076330158}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1564380200 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1255021818254881125, guid: a09d20bb561809e46abd8729aa5cfb8c, type: 3}
+  m_PrefabInstance: {fileID: 1136727231}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1602307583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1419,7 +1424,8 @@ MonoBehaviour:
   impactZoneDuration: 3
   impactDamageInterval: 0.5
   delayAfterVFXBeforeImprint: 0.1
-  slamImpactVFX: {fileID: 4173206442376860199, guid: a09d20bb561809e46abd8729aa5cfb8c, type: 3}
+  slamImpactVFXPrefab: {fileID: 1564380200}
+  slamImpactVFXLifetime: 2
   slamWindupSound: {fileID: 0}
   slamImpactSound: {fileID: 0}
   slamChaseSound: {fileID: 0}

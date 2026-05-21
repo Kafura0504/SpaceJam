@@ -2,21 +2,31 @@
 // =============================================================
 // SpaceJam - BossPattern_Slam3x.cs
 // =============================================================
-// FIX VFX:
-//   - PlayImpactVFX sekarang menggunakan coroutine internal
-//   - GameObject VFX di-SetActive(false) dulu lalu SetActive(true)
-//     agar VFX Graph benar-benar reset state sebelum Play()
-//   - Setiap step diberi yield return null (jeda 1 frame)
-//     sehingga VFX Graph punya waktu untuk initialize
+// PERBAIKAN VFX:
+//   - Mengganti logika SetActive(false/true) dengan Instantiate + Destroy
+//   - Mengikuti logika yang sama dengan BossPattern_SwingArm.cs (SpawnHitVFX)
+//   - Lebih sederhana, lebih reliable, tidak ada masalah state VFX Graph
 //
-// TIDAK ADA PERUBAHAN LAIN — hanya PlayImpactVFX yang diubah
-// dan ditambah 1 coroutine helper: PlayImpactVFXCoroutine
+// CARA KERJA VFX BARU:
+//   1. Assign prefab VFX di field slamImpactVFXPrefab (bukan scene object)
+//   2. Saat slam terjadi, prefab di-Instantiate di posisi hantam
+//   3. VFX otomatis di-Destroy setelah slamImpactVFXLifetime detik
+//
+// SETUP DI INSPECTOR (BossHeadNoir > BossPattern_Slam3x):
+//   - rightHand         : Transform tangan kanan boss
+//   - playerTransform   : biarkan kosong, auto-find via tag "Player"
+//   - alertPrefab       : assign SlamAlert 1.prefab
+//   - imprintSprite     : assign sprite tangan kanan boss
+//   - slamImpactVFXPrefab : assign PREFAB VFX (bukan scene object!)
+//   - slamImpactVFXLifetime : durasi VFX sebelum dihapus (default 2f)
+//   - slamWindupSound   : AudioClip angin / charge sebelum slam
+//   - slamImpactSound   : AudioClip boom saat hantam
+//   - slamChaseSound    : AudioClip saat tangan mengejar posisi X player
 // =============================================================
 
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.VFX;
 
 public class BossPattern_Slam3x : MonoBehaviour
 {
@@ -39,9 +49,9 @@ public class BossPattern_Slam3x : MonoBehaviour
     // ─────────────────────────────────────────────────────────
 
     [Header("=== SLAM SETTINGS ===")]
-    public int   slamCount    = 3;
-    public float slamDamage   = 30f;
-    public float damageRadius = 2f;
+    public int       slamCount    = 3;
+    public float     slamDamage   = 30f;
+    public float     damageRadius = 2f;
     public LayerMask playerLayer;
 
     // ─────────────────────────────────────────────────────────
@@ -102,18 +112,21 @@ public class BossPattern_Slam3x : MonoBehaviour
     [Tooltip("Jeda antar damage tick di impact zone (detik)")]
     public float impactDamageInterval = 0.5f;
 
-    [Tooltip("Jeda kecil antara VFX boom muncul dan sprite jejak muncul (detik)\n" +
-             "Beri waktu VFX boom terlihat lebih dulu sebelum jejak muncul")]
+    [Tooltip("Jeda kecil antara VFX boom muncul dan sprite jejak muncul (detik)")]
     public float delayAfterVFXBeforeImprint = 0.1f;
 
     // ─────────────────────────────────────────────────────────
-    // VFX
+    // VFX — MENGGUNAKAN PREFAB (sama dengan SwingArm)
     // ─────────────────────────────────────────────────────────
 
     [Header("=== VFX ===")]
-    [Tooltip("VFX Graph boom yang diplay saat tangan menghantam.\n" +
-             "VFX ini muncul sesaat di titik hantam, lalu sprite jejak tangan muncul.")]
-    public VisualEffect slamImpactVFX;
+    [Tooltip("PREFAB VFX yang di-Instantiate saat tangan menghantam.\n" +
+             "PENTING: Ini adalah PREFAB, bukan scene object.\n" +
+             "Drag prefab dari Project window, bukan dari Hierarchy.")]
+    public GameObject slamImpactVFXPrefab;
+
+    [Tooltip("Berapa detik sebelum VFX di-Destroy (default 2 detik)")]
+    public float slamImpactVFXLifetime = 2f;
 
     // ─────────────────────────────────────────────────────────
     // AUDIO
@@ -165,23 +178,15 @@ public class BossPattern_Slam3x : MonoBehaviour
         if (_audioSource == null)
             _audioSource = gameObject.AddComponent<AudioSource>();
 
+        // Validasi prefab VFX
+        if (slamImpactVFXPrefab == null)
+            Debug.LogWarning("[Slam3x] slamImpactVFXPrefab belum di-assign di Inspector!\n" +
+                             "VFX tidak akan muncul saat slam menghantam.\n" +
+                             "Drag PREFAB VFX dari Project window ke field slamImpactVFXPrefab.");
+
         if (imprintSprite == null)
             Debug.LogWarning("[Slam3x] imprintSprite belum di-assign. " +
-                             "Akan menggunakan solid color sebagai fallback. " +
-                             "Assign sprite tangan kanan di Inspector.");
-
-        // ── FIX VFX: Pastikan VFX dalam keadaan tidak aktif saat Start ──
-        // Agar pertama kali dipanggil kondisinya bersih
-        if (slamImpactVFX != null)
-        {
-            slamImpactVFX.gameObject.SetActive(false);
-            Debug.Log("[Slam3x] VFX di-deactivate saat Start — siap untuk reset bersih.");
-        }
-        else
-        {
-            Debug.LogWarning("[Slam3x] slamImpactVFX belum di-assign di Inspector! " +
-                             "VFX tidak akan muncul saat impact.");
-        }
+                             "Akan menggunakan solid color sebagai fallback.");
     }
 
     // ─────────────────────────────────────────────────────────
@@ -297,6 +302,10 @@ public class BossPattern_Slam3x : MonoBehaviour
             ? alertObj.GetComponent<SpriteRenderer>()
             : null;
 
+        // Jika tidak ada di root, cari di children (untuk prefab alert kompleks)
+        if (alertSR == null && alertObj != null)
+            alertSR = alertObj.GetComponentInChildren<SpriteRenderer>();
+
         float waitBeforeFade = Mathf.Max(0f, telegraphDuration - alertFadeDuration);
         yield return new WaitForSeconds(waitBeforeFade);
 
@@ -314,18 +323,17 @@ public class BossPattern_Slam3x : MonoBehaviour
         yield return StartCoroutine(MoveHandTo(slamTarget, slamDownSpeed));
 
         // ── Phase 5: VFX Boom + Suara Impact ──────────────────────────────────
-        // FIX: PlayImpactVFX sekarang menjalankan coroutine secara internal
-        // sehingga VFX punya waktu reset sebelum Play() dipanggil
+        // Menggunakan logika Instantiate seperti BossPattern_SwingArm.SpawnHitVFX
 
         Debug.Log($"[Slam3x] Slam {slamNumber} - Phase 5: VFX Boom + Impact Sound");
 
         PlaySound(slamImpactSound);
-        PlayImpactVFX(rightHand.position);   // <-- method ini sekarang safe, coroutine internal
+        SpawnImpactVFX(rightHand.position);   // <-- Instantiate prefab, sama dengan SwingArm
 
         // Cek damage langsung saat tangan menghantam
         CheckAndDealDamage(rightHand.position);
 
-        // Jeda kecil agar VFX boom terlihat lebih dulu
+        // Jeda kecil agar VFX boom terlihat lebih dulu sebelum jejak muncul
         yield return new WaitForSeconds(delayAfterVFXBeforeImprint);
 
         // ── Phase 6: Spawn Jejak Tangan (Impact Zone) ─────────────────────────
@@ -343,113 +351,75 @@ public class BossPattern_Slam3x : MonoBehaviour
         yield return StartCoroutine(MoveHandTo(_handOriginPos, retractSpeed));
     }
 
+    // =========================================================
+    // VFX HELPER — LOGIKA SAMA DENGAN BOSSPATTERN_SWINGARM
+    // Menggunakan Instantiate + Destroy, bukan SetActive toggle
+    // =========================================================
+
+    /// <summary>
+    /// Spawn VFX di posisi hantam tangan dengan cara Instantiate prefab.
+    /// Logika identik dengan BossPattern_SwingArm.SpawnHitVFX().
+    /// VFX otomatis di-Destroy setelah slamImpactVFXLifetime detik.
+    /// </summary>
+    private void SpawnImpactVFX(Vector3 position)
+    {
+        // Validasi prefab sebelum instantiate
+        if (slamImpactVFXPrefab == null)
+        {
+            Debug.LogWarning("[Slam3x] slamImpactVFXPrefab belum di-assign! VFX tidak muncul.");
+            return;
+        }
+
+        // Instantiate prefab di posisi hantam, tanpa parent, tanpa rotasi khusus
+        GameObject vfxObj = Instantiate(
+            slamImpactVFXPrefab,
+            position,
+            Quaternion.identity
+        );
+
+        // Auto-destroy setelah durasi yang ditentukan
+        Destroy(vfxObj, slamImpactVFXLifetime);
+
+        Debug.Log($"[Slam3x] VFX spawned di {position}, akan di-Destroy setelah {slamImpactVFXLifetime}s");
+    }
+
     // ─────────────────────────────────────────────────────────
     // SPAWN IMPACT ZONE — Jejak Tangan
-    // Membuat GameObject dengan sprite tangan sebagai area damage
     // ─────────────────────────────────────────────────────────
 
     private void SpawnImpactZone(Vector3 position)
     {
         GameObject obj = new GameObject("SlamImpactZone_HandImprint");
 
-        // Posisi sama dengan titik hantam tangan
         obj.transform.position   = position;
         obj.transform.localScale = new Vector3(imprintScale.x, imprintScale.y, 1f);
 
-        // ── SpriteRenderer untuk visual jejak tangan ──────────────────────────
+        // SpriteRenderer untuk visual jejak tangan
         SpriteRenderer sr = obj.AddComponent<SpriteRenderer>();
 
         if (imprintSprite != null)
-        {
-            // Gunakan sprite tangan yang di-assign di Inspector
             sr.sprite = imprintSprite;
-        }
         else
-        {
-            // Fallback: solid color persegi jika sprite belum di-assign
             sr.sprite = CreateSolidSprite();
-        }
 
         sr.color        = imprintColor;
         sr.sortingOrder = imprintSortingOrder;
 
-        // ── BoxCollider2D untuk detect player ─────────────────────────────────
+        // BoxCollider2D untuk detect player
         BoxCollider2D col = obj.AddComponent<BoxCollider2D>();
         col.isTrigger     = true;
-
-        // Ukuran collider dalam local space (1,1) karena localScale sudah di-set
         col.size          = Vector2.one;
 
-        // ── SlamImpactZone untuk logic damage + lifecycle ──────────────────────
-        SlamImpactZone zone          = obj.AddComponent<SlamImpactZone>();
-        zone.damage                  = impactZoneDamage;
-        zone.duration                = impactZoneDuration;
-        zone.damageInterval          = impactDamageInterval;
-        zone.imprintSprite           = imprintSprite;
-        zone.imprintColor            = imprintColor;
-        zone.imprintSortingOrder     = imprintSortingOrder;
+        // SlamImpactZone untuk logic damage + lifecycle
+        SlamImpactZone zone      = obj.AddComponent<SlamImpactZone>();
+        zone.damage              = impactZoneDamage;
+        zone.duration            = impactZoneDuration;
+        zone.damageInterval      = impactDamageInterval;
+        zone.imprintSprite       = imprintSprite;
+        zone.imprintColor        = imprintColor;
+        zone.imprintSortingOrder = imprintSortingOrder;
 
-        Debug.Log($"[Slam3x] ImpactZone spawned — sprite: {(imprintSprite != null ? imprintSprite.name : "fallback solid")} " +
-                  $"| scale: {imprintScale} | duration: {impactZoneDuration}s");
-    }
-
-    // =========================================================
-    // VFX HELPERS — FIXED
-    // =========================================================
-
-    /// <summary>
-    /// Memulai coroutine VFX secara internal.
-    /// Method ini tetap void sehingga call site di DoSingleSlam tidak perlu diubah.
-    /// Coroutine yang berjalan di dalam akan:
-    ///   1. Set posisi VFX
-    ///   2. SetActive(false) untuk reset state VFX Graph sepenuhnya
-    ///   3. Tunggu 1 frame
-    ///   4. SetActive(true) untuk initialize ulang
-    ///   5. Tunggu 1 frame agar VFX Graph selesai initialize
-    ///   6. Play()
-    /// </summary>
-    private void PlayImpactVFX(Vector3 position)
-    {
-        if (slamImpactVFX == null)
-        {
-            Debug.LogWarning("[Slam3x] slamImpactVFX belum di-assign di Inspector! " +
-                             "Assign VisualEffect di field slamImpactVFX pada BossPattern_Slam3x.");
-            return;
-        }
-
-        // Jalankan coroutine internal — tidak mengubah signature method ini
-        StartCoroutine(PlayImpactVFXCoroutine(position));
-    }
-
-    /// <summary>
-    /// Coroutine internal untuk VFX.
-    /// FIX ROOT CAUSE:
-    ///   VFX Graph membutuhkan minimal 1 frame setelah SetActive(true)
-    ///   sebelum Play() bisa berjalan. Tanpa yield return null di antara
-    ///   Stop/Reinit/Play, VFX tidak akan muncul karena state belum reset.
-    /// </summary>
-    private IEnumerator PlayImpactVFXCoroutine(Vector3 position)
-    {
-        // Step 1: Pindahkan VFX ke posisi hantam tangan sebelum activate
-        slamImpactVFX.transform.position = position;
-        Debug.Log($"[Slam3x] VFX diposisikan di {position}");
-
-        // Step 2: Deactivate untuk reset state VFX Graph sepenuhnya
-        // Ini cara paling reliable untuk restart VFX Graph dari awal
-        slamImpactVFX.gameObject.SetActive(false);
-
-        // Step 3: Tunggu 1 frame — beri waktu engine untuk proses deactivate
-        yield return null;
-
-        // Step 4: Activate kembali — VFX Graph akan initialize dari awal
-        slamImpactVFX.gameObject.SetActive(true);
-
-        // Step 5: Tunggu 1 frame lagi — beri waktu VFX Graph initialize
-        yield return null;
-
-        // Step 6: Play VFX — state sudah bersih, ini akan berhasil
-        slamImpactVFX.Play();
-        Debug.Log($"[Slam3x] VFX impact berhasil dimainkan di {position}");
+        Debug.Log($"[Slam3x] ImpactZone spawned di {position}");
     }
 
     // ─────────────────────────────────────────────────────────
@@ -521,31 +491,17 @@ public class BossPattern_Slam3x : MonoBehaviour
             }
 
         tex.Apply();
-        return Sprite.Create(
-            tex,
-            new Rect(0, 0, texSize, texSize),
-            new Vector2(0.5f, 0.5f),
-            texSize
-        );
+        return Sprite.Create(tex, new Rect(0, 0, texSize, texSize), new Vector2(0.5f, 0.5f), texSize);
     }
 
     private Sprite CreateSolidSprite()
     {
         Texture2D tex    = new Texture2D(4, 4);
         Color[]   pixels = new Color[16];
-
-        for (int i = 0; i < pixels.Length; i++)
-            pixels[i] = Color.white;
-
+        for (int i = 0; i < pixels.Length; i++) pixels[i] = Color.white;
         tex.SetPixels(pixels);
         tex.Apply();
-
-        return Sprite.Create(
-            tex,
-            new Rect(0, 0, 4, 4),
-            new Vector2(0.5f, 0.5f),
-            4f
-        );
+        return Sprite.Create(tex, new Rect(0, 0, 4, 4), new Vector2(0.5f, 0.5f), 4f);
     }
 
     private IEnumerator FadeOutSprite(SpriteRenderer sr, float duration)
@@ -558,17 +514,13 @@ public class BossPattern_Slam3x : MonoBehaviour
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-
-            Color c = sr.color;
+            Color c  = sr.color;
             c.a      = Mathf.Lerp(startAlpha, 0f, elapsed / duration);
             sr.color = c;
-
             yield return null;
         }
 
-        Color final = sr.color;
-        final.a     = 0f;
-        sr.color    = final;
+        Color final = sr.color; final.a = 0f; sr.color = final;
     }
 
     // ─────────────────────────────────────────────────────────
@@ -589,11 +541,7 @@ public class BossPattern_Slam3x : MonoBehaviour
             HealthManager hm = hit.GetComponent<HealthManager>();
             if (hm != null)
             {
-                hm.SendMessage(
-                    "TakeDamage",
-                    slamDamage,
-                    SendMessageOptions.DontRequireReceiver
-                );
+                hm.SendMessage("TakeDamage", slamDamage, SendMessageOptions.DontRequireReceiver);
                 return;
             }
         }
@@ -607,23 +555,16 @@ public class BossPattern_Slam3x : MonoBehaviour
     {
         if (rightHand != null)
         {
-            // Area damage langsung saat slam
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(rightHand.position, damageRadius);
 
-            // Garis ke origin
             Gizmos.color = Color.cyan;
             Gizmos.DrawLine(rightHand.position, _handOriginPos);
 
-            // Visualisasi ukuran impact zone (jejak tangan)
             Gizmos.color = new Color(1f, 0.3f, 0f, 0.4f);
-            Gizmos.DrawWireCube(
-                rightHand.position,
-                new Vector3(imprintScale.x, imprintScale.y, 0f)
-            );
+            Gizmos.DrawWireCube(rightHand.position, new Vector3(imprintScale.x, imprintScale.y, 0f));
         }
 
-        // Posisi origin tangan
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(_handOriginPos, 0.3f);
     }
