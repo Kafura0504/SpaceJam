@@ -20,7 +20,7 @@ Material:
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
-  m_LockedProperties: 
+  m_LockedProperties: _Laser_spd
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -69,10 +69,11 @@ Material:
     - _SmokeSPd: -3.08
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
     - _LaserSpeed: {r: 2, g: 0, b: 0, a: 0}
-    - _MainColor: {r: 0.09505525, g: 1.660377, b: 0, a: 1}
+    - _MainColor: {r: 0, g: 4.2375493, b: 4.8627048, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _color2: {r: 2.216734, g: 2.216734, b: 2.216734, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &6162630739381995256
