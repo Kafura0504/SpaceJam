@@ -1,21 +1,24 @@
+// Assets/Boss Fight Noir/Pattern Attack/ScriptBossATK/Slam3x/BossPattern_Slam3x.cs
 // =============================================================
-// SpaceJam - BossPattern_Slam3x.cs
+// SpaceJam - BossPattern_Slam3x.cs  (UPDATED)
 // =============================================================
 // UPDATE:
-//   - Setelah tiap slam, spawn SlamImpactZone (continuous damage kecil)
-//   - Impact zone fade out otomatis setelah impactZoneDuration detik
-//   - Tambahan field Audio: slamWindupSound, slamImpactSound
-//   - Tambahan field VFX: slamImpactVFX (VisualEffect Graph)
-//   - Semua field lama DIPERTAHANKAN agar data scene tidak rusak
+//   - Tambah field imprintSprite (Sprite) untuk sprite jejak tangan kanan
+//   - Tambah field imprintScale (Vector2) untuk ukuran sprite jejak
+//   - Tambah field imprintColor untuk tint warna sprite jejak
+//   - Tambah field imprintSortingOrder untuk rendering order
+//   - SpawnImpactZone sekarang menggunakan sprite jejak tangan
+//   - VFX boom muncul saat impact → setelah itu sprite jejak muncul
+//   - Sprite jejak fade out otomatis setelah impactZoneDuration
 //
-// ALUR PER SLAM (tidak berubah):
+// ALUR PER SLAM:
 //   1. Chase    : Tangan bergerak horizontal ke posisi X player
 //   2. Raise    : Tangan naik raiseHeight unit (wind-up)
 //   3. Telegraph: Berhenti, alert muncul, player punya waktu dodge
 //   4. Slam     : Tangan hantam ke posisi Y player
-//   5. Damage   : Cek apakah player langsung kena
-//   6. Impact   : Spawn SlamImpactZone di titik hantam
-//   7. Retract  : Kembali ke posisi origin
+//   5. VFX Boom : VFX impact muncul di titik hantam
+//   6. ImpactZone: Sprite jejak tangan muncul sebagai area damage continuous
+//   7. Retract  : Tangan kembali ke posisi origin
 //   Ulangi slamCount kali.
 // =============================================================
 
@@ -80,54 +83,60 @@ public class BossPattern_Slam3x : MonoBehaviour
     public int   alertSortingOrder = 10;
 
     // ─────────────────────────────────────────────────────────
-    // IMPACT ZONE (NEW)
-    // Zona damage yang tertinggal setelah tangan menghantam
+    // IMPACT ZONE — JEJAK TANGAN
     // ─────────────────────────────────────────────────────────
 
-    [Header("=== IMPACT ZONE (Jejak Hantam) ===")]
+    [Header("=== IMPACT ZONE — JEJAK TANGAN ===")]
+
+    [Tooltip("Sprite jejak tangan kanan yang muncul sebagai area damage.\n" +
+             "Assign sprite tangan kanan boss di sini.\n" +
+             "Jika kosong, akan menggunakan solid color sebagai fallback.")]
+    public Sprite imprintSprite;
+
+    [Tooltip("Warna tint sprite jejak tangan (alpha mengontrol transparansi awal)")]
+    public Color imprintColor = new Color(1f, 0.3f, 0f, 0.7f);
+
+    [Tooltip("Ukuran sprite jejak tangan dalam world units (X = lebar, Y = tinggi)")]
+    public Vector2 imprintScale = new Vector2(3f, 4f);
+
+    [Tooltip("Sorting order sprite jejak tangan (biasanya di bawah player)")]
+    public int imprintSortingOrder = -1;
+
     [Tooltip("Damage berkelanjutan per tick saat player di area jejak")]
-    public float impactZoneDamage    = 5f;
+    public float impactZoneDamage = 5f;
 
-    [Tooltip("Berapa detik jejak hantam aktif sebelum hilang")]
-    public float impactZoneDuration  = 3f;
-
-    [Tooltip("Lebar area jejak hantam")]
-    public float impactZoneWidth     = 3f;
-
-    [Tooltip("Tinggi area jejak hantam")]
-    public float impactZoneHeight    = 1f;
+    [Tooltip("Berapa detik jejak tangan aktif sebelum fade out dan hilang")]
+    public float impactZoneDuration = 3f;
 
     [Tooltip("Jeda antar damage tick di impact zone (detik)")]
     public float impactDamageInterval = 0.5f;
 
-    [Tooltip("Warna area jejak hantam")]
-    public Color impactZoneColor     = new Color(1f, 0.3f, 0f, 0.45f);
-
-    [Tooltip("Sorting order sprite impact zone")]
-    public int   impactSortingOrder  = -1;
+    [Tooltip("Jeda kecil antara VFX boom muncul dan sprite jejak muncul (detik)\n" +
+             "Beri waktu VFX boom terlihat lebih dulu sebelum jejak muncul")]
+    public float delayAfterVFXBeforeImprint = 0.1f;
 
     // ─────────────────────────────────────────────────────────
-    // AUDIO (NEW)
-    // ─────────────────────────────────────────────────────────
-
-    [Header("=== AUDIO ===")]
-    [Tooltip("Suara saat tangan mulai mengangkat (wind-up)")]
-    public AudioClip slamWindupSound;
-
-    [Tooltip("Suara saat tangan menghantam ke bawah")]
-    public AudioClip slamImpactSound;
-
-    [Tooltip("Suara saat tangan mengchase posisi player (opsional)")]
-    public AudioClip slamChaseSound;
-
-    // ─────────────────────────────────────────────────────────
-    // VFX (NEW)
+    // VFX
     // ─────────────────────────────────────────────────────────
 
     [Header("=== VFX ===")]
-    [Tooltip("VFX Graph yang diplay saat tangan menghantam. " +
-             "Posisi otomatis disesuaikan ke titik hantam.")]
+    [Tooltip("VFX Graph boom yang diplay saat tangan menghantam.\n" +
+             "VFX ini muncul sesaat di titik hantam, lalu sprite jejak tangan muncul.")]
     public VisualEffect slamImpactVFX;
+
+    // ─────────────────────────────────────────────────────────
+    // AUDIO
+    // ─────────────────────────────────────────────────────────
+
+    [Header("=== AUDIO ===")]
+    [Tooltip("Suara saat tangan mulai mengangkat (wind-up sebelum slam)")]
+    public AudioClip slamWindupSound;
+
+    [Tooltip("Suara saat tangan menghantam ke bawah (boom)")]
+    public AudioClip slamImpactSound;
+
+    [Tooltip("Suara saat tangan sedang mengejar posisi X player (opsional)")]
+    public AudioClip slamChaseSound;
 
     // ─────────────────────────────────────────────────────────
     // PRIVATE STATE
@@ -142,7 +151,6 @@ public class BossPattern_Slam3x : MonoBehaviour
 
     void Start()
     {
-        // Simpan posisi awal tangan
         if (rightHand != null)
         {
             _handOriginPos = rightHand.position;
@@ -153,7 +161,6 @@ public class BossPattern_Slam3x : MonoBehaviour
             Debug.LogError("[Slam3x] rightHand BELUM di-assign di Inspector!");
         }
 
-        // Auto-find player
         if (playerTransform == null)
         {
             GameObject p = GameObject.FindGameObjectWithTag("Player");
@@ -163,14 +170,19 @@ public class BossPattern_Slam3x : MonoBehaviour
                 Debug.LogError("[Slam3x] Player tidak ditemukan!");
         }
 
-        // Setup AudioSource untuk suara slam
         _audioSource = GetComponent<AudioSource>();
         if (_audioSource == null)
             _audioSource = gameObject.AddComponent<AudioSource>();
+
+        // Warning jika sprite belum di-assign
+        if (imprintSprite == null)
+            Debug.LogWarning("[Slam3x] imprintSprite belum di-assign. " +
+                             "Akan menggunakan solid color sebagai fallback. " +
+                             "Assign sprite tangan kanan di Inspector.");
     }
 
     // ─────────────────────────────────────────────────────────
-    // PUBLIC API — dipanggil dari BossController
+    // PUBLIC API — dipanggil dari BossPhaseController
     // ─────────────────────────────────────────────────────────
 
     public IEnumerator ExecutePattern(Action onComplete = null)
@@ -211,10 +223,9 @@ public class BossPattern_Slam3x : MonoBehaviour
 
         Debug.Log($"[Slam3x] Slam {slamNumber} - Phase 1: Chase X player");
 
-        // Suara chase (opsional)
         PlaySound(slamChaseSound);
 
-        // Spawn alert dari awal mengikuti posisi X tangan
+        // Spawn alert mengikuti posisi X tangan selama chase
         GameObject alertObj = SpawnAlert(
             new Vector3(rightHand.position.x, playerTransform.position.y, 0f)
         );
@@ -246,9 +257,8 @@ public class BossPattern_Slam3x : MonoBehaviour
 
         // ── Phase 2: Raise — angkat tangan (wind-up) ──────────────────────────
 
-        Debug.Log($"[Slam3x] Slam {slamNumber} - Phase 2: Raise");
+        Debug.Log($"[Slam3x] Slam {slamNumber} - Phase 2: Raise (wind-up)");
 
-        // Suara wind-up ketika tangan mengangkat
         PlaySound(slamWindupSound);
 
         Vector3 raisedPos = new Vector3(
@@ -259,7 +269,7 @@ public class BossPattern_Slam3x : MonoBehaviour
 
         yield return StartCoroutine(MoveHandTo(raisedPos, retractSpeed));
 
-        // Target slam = posisi Y player saat ini
+        // Lock target slam = posisi Y player saat ini
         Vector3 slamTarget = new Vector3(
             rightHand.position.x,
             playerTransform.position.y,
@@ -284,10 +294,10 @@ public class BossPattern_Slam3x : MonoBehaviour
             ? alertObj.GetComponent<SpriteRenderer>()
             : null;
 
-        // Tunggu dulu, lalu fade alert sebelum slam
         float waitBeforeFade = Mathf.Max(0f, telegraphDuration - alertFadeDuration);
         yield return new WaitForSeconds(waitBeforeFade);
 
+        // Fade out alert sebelum slam
         if (alertSR != null)
             yield return StartCoroutine(FadeOutSprite(alertSR, alertFadeDuration));
 
@@ -300,23 +310,26 @@ public class BossPattern_Slam3x : MonoBehaviour
 
         yield return StartCoroutine(MoveHandTo(slamTarget, slamDownSpeed));
 
-        // Suara impact ketika tangan menghantam
-        PlaySound(slamImpactSound);
+        // ── Phase 5: VFX Boom + Suara Impact ──────────────────────────────────
 
-        // VFX impact di titik hantam
+        Debug.Log($"[Slam3x] Slam {slamNumber} - Phase 5: VFX Boom + Impact Sound");
+
+        PlaySound(slamImpactSound);
         PlayImpactVFX(rightHand.position);
 
-        // ── Phase 5: Cek damage langsung ──────────────────────────────────────
-
+        // Cek damage langsung saat tangan menghantam
         CheckAndDealDamage(rightHand.position);
-        yield return new WaitForSeconds(0.15f);
 
-        // ── Phase 6: Spawn Impact Zone (Jejak Hantam) ─────────────────────────
+        // Jeda kecil agar VFX boom terlihat lebih dulu
+        yield return new WaitForSeconds(delayAfterVFXBeforeImprint);
 
-        // Spawn impact zone — dia akan manage dirinya sendiri (fade & destroy)
+        // ── Phase 6: Spawn Jejak Tangan (Impact Zone) ─────────────────────────
+
+        Debug.Log($"[Slam3x] Slam {slamNumber} - Phase 6: Spawn jejak tangan di {rightHand.position}");
+
         SpawnImpactZone(rightHand.position);
 
-        Debug.Log($"[Slam3x] Slam {slamNumber} - Impact zone spawned di {rightHand.position}");
+        yield return new WaitForSeconds(0.1f);
 
         // ── Phase 7: Retract ke origin ────────────────────────────────────────
 
@@ -326,36 +339,57 @@ public class BossPattern_Slam3x : MonoBehaviour
     }
 
     // ─────────────────────────────────────────────────────────
-    // SPAWN IMPACT ZONE — Jejak Hantam
+    // SPAWN IMPACT ZONE — Jejak Tangan
+    // Membuat GameObject dengan sprite tangan sebagai area damage
     // ─────────────────────────────────────────────────────────
 
     private void SpawnImpactZone(Vector3 position)
     {
-        // Buat game object impact zone
-        GameObject obj = new GameObject("SlamImpactZone");
+        GameObject obj = new GameObject("SlamImpactZone_HandImprint");
+
+        // Posisi sama dengan titik hantam tangan
         obj.transform.position   = position;
-        obj.transform.localScale = new Vector3(impactZoneWidth, impactZoneHeight, 1f);
+        obj.transform.localScale = new Vector3(imprintScale.x, imprintScale.y, 1f);
 
-        // Visual
+        // ── SpriteRenderer untuk visual jejak tangan ──────────────────────────
         SpriteRenderer sr = obj.AddComponent<SpriteRenderer>();
-        sr.sprite       = CreateSolidSprite();
-        sr.color        = impactZoneColor;
-        sr.sortingOrder = alertSortingOrder - 1;
 
-        // Collider untuk detect player
+        if (imprintSprite != null)
+        {
+            // Gunakan sprite tangan yang di-assign di Inspector
+            sr.sprite = imprintSprite;
+        }
+        else
+        {
+            // Fallback: solid color persegi jika sprite belum di-assign
+            sr.sprite = CreateSolidSprite();
+        }
+
+        sr.color        = imprintColor;
+        sr.sortingOrder = imprintSortingOrder;
+
+        // ── BoxCollider2D untuk detect player ─────────────────────────────────
         BoxCollider2D col = obj.AddComponent<BoxCollider2D>();
-        col.isTrigger = true;
-        col.size      = Vector2.one; // localScale handle ukuran sebenarnya
+        col.isTrigger     = true;
 
-        // Komponen damage berkelanjutan
+        // Ukuran collider dalam local space (1,1) karena localScale sudah di-set
+        col.size          = Vector2.one;
+
+        // ── SlamImpactZone untuk logic damage + lifecycle ──────────────────────
         SlamImpactZone zone          = obj.AddComponent<SlamImpactZone>();
         zone.damage                  = impactZoneDamage;
         zone.duration                = impactZoneDuration;
         zone.damageInterval          = impactDamageInterval;
+        zone.imprintSprite           = imprintSprite;    // teruskan sprite
+        zone.imprintColor            = imprintColor;     // teruskan color
+        zone.imprintSortingOrder     = imprintSortingOrder;
+
+        Debug.Log($"[Slam3x] ImpactZone spawned — sprite: {(imprintSprite != null ? imprintSprite.name : "fallback solid")} " +
+                  $"| scale: {imprintScale} | duration: {impactZoneDuration}s");
     }
 
     // ─────────────────────────────────────────────────────────
-    // VFX HELPER — Play VFX di posisi slam
+    // VFX HELPER
     // ─────────────────────────────────────────────────────────
 
     private void PlayImpactVFX(Vector3 position)
@@ -365,7 +399,7 @@ public class BossPattern_Slam3x : MonoBehaviour
         slamImpactVFX.transform.position = position;
         slamImpactVFX.Play();
 
-        Debug.Log($"[Slam3x] VFX impact diplay di {position}");
+        Debug.Log($"[Slam3x] VFX impact dimainkan di {position}");
     }
 
     // ─────────────────────────────────────────────────────────
@@ -409,9 +443,9 @@ public class BossPattern_Slam3x : MonoBehaviour
             return Instantiate(alertPrefab, position, Quaternion.identity);
 
         // Auto-generate alert ring jika prefab kosong
-        GameObject obj            = new GameObject("SlamAlert_Auto");
-        obj.transform.position    = position;
-        obj.transform.localScale  = Vector3.one * alertSize;
+        GameObject obj           = new GameObject("SlamAlert_Auto");
+        obj.transform.position   = position;
+        obj.transform.localScale = Vector3.one * alertSize;
 
         SpriteRenderer sr = obj.AddComponent<SpriteRenderer>();
         sr.sprite         = CreateRingSprite(64);
@@ -437,7 +471,12 @@ public class BossPattern_Slam3x : MonoBehaviour
             }
 
         tex.Apply();
-        return Sprite.Create(tex, new Rect(0, 0, texSize, texSize), new Vector2(0.5f, 0.5f), texSize);
+        return Sprite.Create(
+            tex,
+            new Rect(0, 0, texSize, texSize),
+            new Vector2(0.5f, 0.5f),
+            texSize
+        );
     }
 
     private Sprite CreateSolidSprite()
@@ -451,7 +490,12 @@ public class BossPattern_Slam3x : MonoBehaviour
         tex.SetPixels(pixels);
         tex.Apply();
 
-        return Sprite.Create(tex, new Rect(0, 0, 4, 4), new Vector2(0.5f, 0.5f), 4f);
+        return Sprite.Create(
+            tex,
+            new Rect(0, 0, 4, 4),
+            new Vector2(0.5f, 0.5f),
+            4f
+        );
     }
 
     private IEnumerator FadeOutSprite(SpriteRenderer sr, float duration)
@@ -495,7 +539,11 @@ public class BossPattern_Slam3x : MonoBehaviour
             HealthManager hm = hit.GetComponent<HealthManager>();
             if (hm != null)
             {
-                hm.SendMessage("TakeDamage", slamDamage, SendMessageOptions.DontRequireReceiver);
+                hm.SendMessage(
+                    "TakeDamage",
+                    slamDamage,
+                    SendMessageOptions.DontRequireReceiver
+                );
                 return;
             }
         }
@@ -509,7 +557,7 @@ public class BossPattern_Slam3x : MonoBehaviour
     {
         if (rightHand != null)
         {
-            // Area damage langsung
+            // Area damage langsung saat slam
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(rightHand.position, damageRadius);
 
@@ -517,15 +565,15 @@ public class BossPattern_Slam3x : MonoBehaviour
             Gizmos.color = Color.cyan;
             Gizmos.DrawLine(rightHand.position, _handOriginPos);
 
-            // Visualisasi impact zone
+            // Visualisasi ukuran impact zone (jejak tangan)
             Gizmos.color = new Color(1f, 0.3f, 0f, 0.4f);
             Gizmos.DrawWireCube(
                 rightHand.position,
-                new Vector3(impactZoneWidth, impactZoneHeight, 0f)
+                new Vector3(imprintScale.x, imprintScale.y, 0f)
             );
         }
 
-        // Posisi origin
+        // Posisi origin tangan
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(_handOriginPos, 0.3f);
     }

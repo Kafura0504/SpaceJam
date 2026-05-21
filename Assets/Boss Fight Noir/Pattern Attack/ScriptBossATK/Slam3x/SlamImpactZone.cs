@@ -1,12 +1,15 @@
+// Assets/Boss Fight Noir/Pattern Attack/ScriptBossATK/Slam3x/SlamImpactZone.cs
 // =============================================================
-// SpaceJam - SlamImpactZone.cs
+// SpaceJam - SlamImpactZone.cs  (UPDATED)
 // -------------------------------------------------------------
-// Area damage yang tersisa setelah tangan boss menghantam.
-// Memberikan damage berkelanjutan kecil ke player.
-// Setelah durasi habis, area ini fade out dan destroy sendiri.
+// UPDATE:
+//   - Tambah field imprintSprite untuk assign sprite jejak tangan
+//   - Sprite jejak tangan muncul saat impact, fade out setelah durasi habis
+//   - Collider damage tetap aktif selama sprite masih terlihat
+//   - Smooth fade out sprite + collider non-aktif saat selesai
 //
 // Di-spawn otomatis oleh BossPattern_Slam3x setelah setiap slam.
-// Tidak perlu assign manual di Inspector.
+// BossPattern_Slam3x akan mengisi semua field via script.
 // =============================================================
 
 using System.Collections;
@@ -15,7 +18,7 @@ using UnityEngine;
 public class SlamImpactZone : MonoBehaviour
 {
     // ─────────────────────────────────────────────────────────
-    // SETTINGS — diisi otomatis dari BossPattern_Slam3x
+    // DAMAGE SETTINGS — diisi otomatis dari BossPattern_Slam3x
     // ─────────────────────────────────────────────────────────
 
     [Header("=== DAMAGE SETTINGS ===")]
@@ -29,11 +32,26 @@ public class SlamImpactZone : MonoBehaviour
     [HideInInspector] public float damageInterval = 0.5f;
 
     // ─────────────────────────────────────────────────────────
+    // SPRITE SETTINGS — diisi otomatis dari BossPattern_Slam3x
+    // ─────────────────────────────────────────────────────────
+
+    [Header("=== SPRITE JEJAK TANGAN ===")]
+    [Tooltip("Sprite jejak tangan kanan — diisi otomatis dari BossPattern_Slam3x")]
+    [HideInInspector] public Sprite imprintSprite;
+
+    [Tooltip("Warna tint sprite jejak tangan")]
+    [HideInInspector] public Color imprintColor = new Color(1f, 0.3f, 0f, 0.7f);
+
+    [Tooltip("Sorting order sprite jejak tangan")]
+    [HideInInspector] public int imprintSortingOrder = 0;
+
+    // ─────────────────────────────────────────────────────────
     // PRIVATE STATE
     // ─────────────────────────────────────────────────────────
 
     private float          _damageTimer  = 0f;
     private SpriteRenderer _sr;
+    private Collider2D     _col;
 
     // ─────────────────────────────────────────────────────────
     // UNITY LIFECYCLE
@@ -41,12 +59,40 @@ public class SlamImpactZone : MonoBehaviour
 
     void Awake()
     {
-        _sr = GetComponent<SpriteRenderer>();
+        _sr  = GetComponent<SpriteRenderer>();
+        _col = GetComponent<Collider2D>();
     }
 
     void Start()
     {
+        // Terapkan sprite jejak tangan jika tersedia
+        ApplyImprintSprite();
+
+        // Mulai lifecycle: aktif → fade out → destroy
         StartCoroutine(LifeCycle());
+    }
+
+    // ─────────────────────────────────────────────────────────
+    // TERAPKAN SPRITE JEJAK TANGAN
+    // ─────────────────────────────────────────────────────────
+
+    void ApplyImprintSprite()
+    {
+        if (_sr == null) return;
+
+        if (imprintSprite != null)
+        {
+            // Gunakan sprite jejak tangan yang di-assign
+            _sr.sprite       = imprintSprite;
+            _sr.color        = imprintColor;
+            _sr.sortingOrder = imprintSortingOrder;
+        }
+        else
+        {
+            // Fallback: pakai solid color jika tidak ada sprite
+            _sr.color        = imprintColor;
+            _sr.sortingOrder = imprintSortingOrder;
+        }
     }
 
     // ─────────────────────────────────────────────────────────
@@ -81,19 +127,24 @@ public class SlamImpactZone : MonoBehaviour
     }
 
     // ─────────────────────────────────────────────────────────
-    // LIFE CYCLE — Tampil lalu Fade Out lalu Destroy
+    // LIFE CYCLE
+    // Fase aktif (70% durasi) → fade out (30% durasi) → destroy
     // ─────────────────────────────────────────────────────────
 
     IEnumerator LifeCycle()
     {
-        // Fase aktif: 70% dari total durasi
+        // Fase aktif
         float activeTime = duration * 0.7f;
         yield return new WaitForSeconds(activeTime);
 
-        // Fase fade out: 30% dari total durasi
-        float fadeTime    = duration * 0.3f;
-        float elapsed     = 0f;
-        float startAlpha  = _sr != null ? _sr.color.a : 0.5f;
+        // Fase fade out
+        float fadeTime   = duration * 0.3f;
+        float elapsed    = 0f;
+        float startAlpha = _sr != null ? _sr.color.a : 0.5f;
+
+        // Non-aktifkan collider saat mulai fade out
+        // agar player tidak kena damage saat area hampir hilang
+        if (_col != null) _col.enabled = false;
 
         while (elapsed < fadeTime)
         {
@@ -118,7 +169,6 @@ public class SlamImpactZone : MonoBehaviour
 
     void DealDamage(Collider2D playerCol)
     {
-        // Coba PlayerHealth dulu, fallback ke HealthManager
         PlayerHealth ph = playerCol.GetComponent<PlayerHealth>();
         if (ph != null)
         {

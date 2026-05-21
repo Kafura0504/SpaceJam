@@ -6,11 +6,13 @@ using UnityEngine;
 /// SpaceJam - Boss Health System
 /// Mengelola HP boss. Event OnDeath dan OnHPChanged digunakan
 /// oleh BossPhaseController, BossHPBar, dan BossHitFlash.
+///
+/// PENTING: Pastikan maxHP di Inspector ter-set ke 1000
 /// </summary>
 public class BossHP : MonoBehaviour, IDamageable
 {
     [Header("=== HP SETTINGS ===")]
-    public float maxHP = 1000f;   // <-- FIX: diubah dari 500 menjadi 1000
+    public float maxHP = 1000f;
 
     [Header("=== STATUS (read-only di Inspector saat play) ===")]
     [SerializeField] private float _currentHP;
@@ -41,7 +43,7 @@ public class BossHP : MonoBehaviour, IDamageable
         _currentHP -= amount;
         _currentHP  = Mathf.Max(0f, _currentHP);
 
-        OnHit?.Invoke();                    // trigger visual flash
+        OnHit?.Invoke();
         OnHPChanged?.Invoke(HPRatio);
 
         Debug.Log($"[BossHP] HP: {_currentHP:F0}/{maxHP:F0}");

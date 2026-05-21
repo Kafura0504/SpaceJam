@@ -1,4 +1,4 @@
-// BossHPBar.cs
+// Assets/Boss Fight Noir/BossHPBar.cs
 // Script BARU — buat GameObject kosong "BossHPBar" di scene, attach script ini.
 // HP bar muncul otomatis di bagian bawah layar.
 
@@ -17,6 +17,11 @@ using TMPro;
 ///   1. Buat empty GameObject bernama "BossHPBar" di root scene
 ///   2. Attach script ini
 ///   3. Assign field BossHP di Inspector (atau biarkan — akan auto-find)
+///
+/// PERBAIKAN:
+///   - Menggunakan BossHP.maxHP yang benar (1000), bukan hardcode
+///   - HP text menampilkan nilai yang akurat
+///   - Phase 2 color threshold mengikuti maxHP yang sesungguhnya
 /// </summary>
 public class BossHPBar : MonoBehaviour
 {
@@ -36,16 +41,16 @@ public class BossHPBar : MonoBehaviour
     [Tooltip("Nama boss yang ditampilkan di atas bar")]
     public string bossName = "NOIR";
 
-    [Tooltip("Warna fill bar saat Phase 1 (HP penuh)")]
+    [Tooltip("Warna fill bar saat Phase 1 (HP > 50%)")]
     public Color phase1Color = new Color(0.2f, 0.75f, 1f, 1f);
 
-    [Tooltip("Warna fill bar saat Phase 2 (HP ≤ 50%)")]
+    [Tooltip("Warna fill bar saat Phase 2 (HP <= 50%)")]
     public Color phase2Color = new Color(1f, 0.25f, 0.1f, 1f);
 
     [Tooltip("Warna background bar")]
     public Color bgColor = new Color(0.05f, 0.05f, 0.1f, 0.92f);
 
-    [Tooltip("Normalized HP threshold untuk ubah warna bar (0.5 = 50% HP)")]
+    [Tooltip("Normalized HP threshold untuk ubah warna bar (0.5 = 50% HP dari maxHP)")]
     [Range(0.1f, 0.9f)]
     public float phase2ColorThreshold = 0.5f;
 
@@ -97,13 +102,24 @@ public class BossHPBar : MonoBehaviour
             }
         }
 
+        // Validasi maxHP — pastikan tidak nol
+        if (bossHP.maxHP <= 0f)
+        {
+            Debug.LogError("[BossHPBar] BossHP.maxHP adalah 0 atau negatif! " +
+                           "Set maxHP = 1000 di Inspector pada BossHeadNoir > BossHP.");
+        }
+
         // Subscribe ke events BossHP
         bossHP.OnHPChanged += HandleHPChanged;
         bossHP.OnDeath     += HandleBossDeath;
 
-        // Set tampilan awal
+        // Set tampilan awal berdasarkan maxHP yang sesungguhnya
         if (_nameText != null) _nameText.SetText(bossName);
+
+        // Tampilkan HP awal (1.0f normalized = full HP)
         HandleHPChanged(1f);
+
+        Debug.Log($"[BossHPBar] Initialized. BossHP.maxHP = {bossHP.maxHP}");
     }
 
     void OnDestroy()
@@ -144,7 +160,7 @@ public class BossHPBar : MonoBehaviour
         // 2. Container — diposisikan di tengah bawah layar
         float referenceWidth   = 1920f;
         float barWidthPx       = referenceWidth * barWidthPercent;
-        float containerHeight  = barHeightPx + 30f; // tinggi bar + ruang nama boss
+        float containerHeight  = barHeightPx + 30f;
 
         GameObject containerGO        = new GameObject("BossHP_Container");
         containerGO.transform.SetParent(canvasGO.transform, false);
@@ -207,7 +223,7 @@ public class BossHPBar : MonoBehaviour
         fillRect.offsetMin      = new Vector2(padding, padding);
         fillRect.offsetMax      = new Vector2(-padding, -padding);
 
-        // 6. HP Text di dalam bar (contoh: "1000 / 1000")
+        // 6. HP Text di dalam bar
         GameObject hpGO         = new GameObject("HPText");
         hpGO.transform.SetParent(bgGO.transform, false);
 
@@ -228,19 +244,27 @@ public class BossHPBar : MonoBehaviour
     // EVENT HANDLERS
     // ─────────────────────────────────────────────────────────
 
+    /// <summary>
+    /// Dipanggil setiap kali HP boss berubah.
+    /// normalizedHP = CurrentHP / maxHP (range 0..1)
+    /// </summary>
     void HandleHPChanged(float normalizedHP)
     {
-        // Update fill amount
+        if (bossHP == null) return;
+
+        // Update fill amount — normalizedHP sudah dalam range 0..1
         if (_fillImage != null)
         {
-            _fillImage.fillAmount = normalizedHP;
-            _fillImage.color      = normalizedHP > phase2ColorThreshold
-                                    ? phase1Color
-                                    : phase2Color;
+            _fillImage.fillAmount = Mathf.Clamp01(normalizedHP);
+
+            // Ganti warna berdasarkan threshold
+            _fillImage.color = normalizedHP > phase2ColorThreshold
+                ? phase1Color
+                : phase2Color;
         }
 
-        // Update HP text
-        if (_hpText != null && bossHP != null)
+        // Update HP text — tampilkan angka aktual dari BossHP
+        if (_hpText != null)
         {
             int current = Mathf.CeilToInt(bossHP.CurrentHP);
             int max     = Mathf.RoundToInt(bossHP.maxHP);

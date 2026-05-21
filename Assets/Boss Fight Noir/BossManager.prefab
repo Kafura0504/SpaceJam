@@ -1,0 +1,171 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7129070919454370135
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7670512243800637658}
+  - component: {fileID: 9157311851431149496}
+  - component: {fileID: 8148875485042496188}
+  - component: {fileID: 7596475350342500991}
+  - component: {fileID: 1695280980768695407}
+  m_Layer: 0
+  m_Name: BossManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7670512243800637658
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7129070919454370135}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.07086, y: 1.16955, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9157311851431149496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7129070919454370135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f975da119430d1a47be71a422e1acd1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossController
+  patternSwingArm: {fileID: 0}
+  patternSlam: {fileID: 0}
+  patternMiniGunner: {fileID: 287780166564798063, guid: d7d200df382660449a2b1b21ac507b25, type: 3}
+  patternSweep: {fileID: 8148875485042496188}
+  patternShootLaser: {fileID: 7596475350342500991}
+  patternNormal: {fileID: 1695280980768695407}
+  bossHP: {fileID: 0}
+  phase2HPThreshold: 500
+  delayBetweenPatterns: 1.5
+  introDelay: 2
+  phase2TransitionDelay: 3
+  phase2TransitionSound: {fileID: 0}
+  _currentPhase: 1
+  _currentPatternName: Idle
+  _isRunning: 0
+  _patternRunCount: 0
+--- !u!114 &8148875485042496188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7129070919454370135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10ad08374a59b954d9731fe5adc6741b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossPattern_HorizSweep
+  playerTransform: {fileID: 0}
+  sweepHeight: 3
+  sweepWidth: 18
+  sweepDamage: 25
+  chaseColor: {r: 1, g: 0.85, b: 0, a: 0.2}
+  lockColor: {r: 1, g: 0.4, b: 0, a: 0.35}
+  activeColor: {r: 1, g: 0.2, b: 0, a: 0.5}
+  sortingOrder: -1
+  chaseDuration: 2.5
+  chaseSpeed: 6
+  lockFlashDuration: 1.5
+  activeDuration: 2
+  fadeDuration: 0.4
+  endDelay: 0.5
+  OnSweepActivate:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSweepDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7596475350342500991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7129070919454370135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93e7f2a8ad1cfc141b62e74afc09bbd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossPattern_ShootLaser
+  leftHand: {fileID: 0}
+  playerTransform: {fileID: 0}
+  bossHP: {fileID: 0}
+  extraHandPrefab: {fileID: 7208403080623805311, guid: c303eae268fabcc43817903203bfe060, type: 3}
+  extraHandSpawnX: -13
+  extraHandSpawnY: -2
+  extraHandMoveTargetX: -8
+  extraHandMaxHP: 60
+  extraHandMoveRightSpeed: 8
+  extraHandExitSpeed: 8
+  leftHandExitY: 12
+  leftHandMoveSpeed: 8
+  alertPrefab: {fileID: 776410252353668593, guid: 0da2ce050ef4bec45b06039d62036bf6, type: 3}
+  alertSize: 1
+  alertSortingOrder: 10
+  alertColor: {r: 1, g: 0.15, b: 0.15, a: 0.9}
+  laserVFX: {fileID: 6392887584032835886, guid: 31d77fb70c1cd25458f8e9ad5d8a8d63, type: 3}
+  laserDamage: 20
+  dangerZoneDamage: 8
+  laserHeight: 1.8
+  laserWidth: 22
+  chaseDuration: 2
+  chaseSpeed: 5
+  alertXOffset: 2
+  telegraphDuration: 1.8
+  laserActiveDuration: 2
+  preExitDelay: 3
+  endDelay: 0.8
+  chargeSound: {fileID: 0}
+  fireSound: {fileID: 0}
+  humSound: {fileID: 0}
+  extraHandDestroySound: {fileID: 0}
+  handExitSound: {fileID: 0}
+  handReturnSound: {fileID: 0}
+--- !u!114 &1695280980768695407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7129070919454370135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48db85922acc2f94db7c55eefc1da53b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossPattern_NormalEnemy
+  enemyPrefabs:
+  - {fileID: 3133382959938176397, guid: bd3723db21efe7d4ea8be4cc06659202, type: 3}
+  - {fileID: 2405783094793541815, guid: df86588fc133d304980514e77d45453c, type: 3}
+  - {fileID: 7448969110107640193, guid: 8b643de4837b5954187e91cd45fee0ae, type: 3}
+  - {fileID: 4421734437653186328, guid: b446a231b947924438cbb96314e52ef0, type: 3}
+  - {fileID: 7066642467133076008, guid: 1d26fefbc5f51724e8d1b287a776faa2, type: 3}
+  spawnCount: 4
+  spawnDelay: 0.5
+  spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  maxWaitTime: 30
+  endDelay: 0.5
