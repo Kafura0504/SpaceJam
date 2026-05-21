@@ -393,14 +393,28 @@ public class BossPattern_Slam3x : MonoBehaviour
     // ─────────────────────────────────────────────────────────
 
     private void PlayImpactVFX(Vector3 position)
+{
+    if (slamImpactVFX == null)
     {
-        if (slamImpactVFX == null) return;
-
-        slamImpactVFX.transform.position = position;
-        slamImpactVFX.Play();
-
-        Debug.Log($"[Slam3x] VFX impact dimainkan di {position}");
+        Debug.LogWarning("[Slam3x] slamImpactVFX belum di-assign di Inspector!");
+        return;
     }
+
+    // Pastikan GameObject aktif sebelum play
+    if (!slamImpactVFX.gameObject.activeInHierarchy)
+        slamImpactVFX.gameObject.SetActive(true);
+
+    // Update posisi ke titik hantam tangan
+    slamImpactVFX.transform.position = position;
+
+    // Stop dulu untuk reset state, lalu play ulang
+    // Ini fix untuk VFX Graph yang stuck di state sebelumnya
+    slamImpactVFX.Stop();
+    slamImpactVFX.Reinit();
+    slamImpactVFX.Play();
+
+    Debug.Log($"[Slam3x] VFX impact dimainkan di {position}");
+}
 
     // ─────────────────────────────────────────────────────────
     // AUDIO HELPER
