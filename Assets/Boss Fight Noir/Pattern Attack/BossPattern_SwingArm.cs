@@ -1,20 +1,32 @@
 // =============================================================
-// SpaceJam - BossPattern_SwingArm.cs  (UPDATED)
+// SpaceJam - BossPattern_SwingArm.cs  (VFX FIX)
 // -------------------------------------------------------------
-// UPDATE:
-//   - Tambah alert prefab yang muncul di area target sebelum swing
-//   - Alert fade out smooth sebelum tangan menghantam
-//   - Tambah field VFX saat tangan menghantam area
-//   - Tambah field Sound: charge, swing, impact
+// FIX VFX:
+//   - SpawnHitVFX sekarang otomatis detect tipe VFX:
+//       1. UnityEngine.VFX.VisualEffect → panggil .Play()
+//       2. ParticleSystem                → panggil .Play() rekursif
+//       3. Animator                      → trigger "Play"
+//   - Tambah pauseAfterImpact (default 0.4f) agar VFX terlihat
+//     SEBELUM tangan ditarik kembali
+//   - VFX di-spawn TEPAT di posisi tangan saat menghantam (bukan
+//     posisi swingTarget yang sudah di-set, melainkan posisi aktual
+//     chosenHand.position saat frame impact)
+//   - Semua variabel lama dipertahankan — tidak ada yang dihapus
 //
-// ALUR:
+// ALUR (tidak berubah):
 //   Phase 1 : WINDUP   - Tangan bergerak mundur sedikit
 //   Phase 2 : ALERT    - Spawn alert di area target, play charge sound
 //   Phase 3 : TELEGRAPH- Player punya waktu menghindar
 //   Phase 4 : FADE ALERT- Alert fade out, siap hantam
 //   Phase 5 : SWING!   - Tangan hantam ke target, play swing sound
-//   Phase 6 : IMPACT   - Cek damage, spawn VFX, play impact sound
-//   Phase 7 : RETRACT  - Tangan kembali ke posisi asal
+//   Phase 6 : IMPACT   - VFX spawn + cek damage + play impact sound
+//   Phase 7 : PAUSE    - Jeda pendek agar VFX terlihat (BARU)
+//   Phase 8 : RETRACT  - Tangan kembali ke posisi asal
+//
+// SETUP VFX DI INSPECTOR:
+//   - hitVFXPrefab    : prefab yang berisi VisualEffect atau ParticleSystem
+//   - hitVFXLifetime  : detik sebelum VFX di-Destroy (default 2f)
+//   - pauseAfterImpact: detik tangan diam setelah hantam (default 0.4f)
 //
 // CARA PAKAI:
 //   yield return StartCoroutine(swingPattern.ExecutePattern());
@@ -23,6 +35,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class BossPattern_SwingArm : MonoBehaviour
 {
@@ -70,8 +83,7 @@ public class BossPattern_SwingArm : MonoBehaviour
     // ─────────────────────────────────────────────────────────
 
     [Header("=== ALERT VISUAL ===")]
-    [Tooltip("Prefab alert yang muncul di area target sebelum swing. " +
-             "Assign SpriteRenderer dengan sprite alert di sini.")]
+    [Tooltip("Prefab alert yang muncul di area target sebelum swing.")]
     public GameObject alertPrefab;
 
     [Tooltip("Ukuran alert (localScale)")]
@@ -92,12 +104,18 @@ public class BossPattern_SwingArm : MonoBehaviour
     // ─────────────────────────────────────────────────────────
 
     [Header("=== HIT VFX ===")]
-    [Tooltip("Prefab VFX yang di-spawn saat tangan menghantam. " +
-             "Bisa berupa particle system atau VisualEffect prefab.")]
+    [Tooltip("Prefab VFX yang di-spawn saat tangan menghantam.\n" +
+             "Bisa berupa VisualEffect (VFX Graph) ATAU ParticleSystem.\n" +
+             "Script otomatis detect tipe dan memanggil .Play() yang benar.")]
     public GameObject hitVFXPrefab;
 
-    [Tooltip("Durasi sebelum VFX di-destroy (detik)")]
+    [Tooltip("Durasi sebelum VFX di-destroy (detik). Default 2f.")]
     public float hitVFXLifetime = 2f;
+
+    [Tooltip("Jeda tangan DIAM setelah menghantam (detik).\n" +
+             "Ini waktu VFX terlihat sebelum tangan ditarik.\n" +
+             "Nilai 0.4 = VFX punya 0.4 detik tampil. Default 0.4f.")]
+    public float pauseAfterImpact = 0.4f;
 
 
     // ─────────────────────────────────────────────────────────
@@ -148,11 +166,9 @@ public class BossPattern_SwingArm : MonoBehaviour
 
     void Start()
     {
-        // Simpan posisi asal kedua tangan
         if (leftHand  != null) _leftOriginPos  = leftHand.position;
         if (rightHand != null) _rightOriginPos = rightHand.position;
 
-        // Siapkan AudioSource — tambah otomatis jika belum ada
         _audioSource = GetComponent<AudioSource>();
         if (_audioSource == null)
             _audioSource = gameObject.AddComponent<AudioSource>();
@@ -160,18 +176,17 @@ public class BossPattern_SwingArm : MonoBehaviour
 
 
     // ─────────────────────────────────────────────────────────
-    // PUBLIC API — panggil dari BossController
+    // PUBLIC API — panggil dari BossPhaseController
     // ─────────────────────────────────────────────────────────
 
     public IEnumerator ExecutePattern(Action onComplete = null)
     {
-        // Pilih tangan secara random
         bool useRight = (UnityEngine.Random.value > 0.5f);
 
-        Transform chosenHand  = useRight ? rightHand         : leftHand;
-        Vector3   handOrigin  = useRight ? _rightOriginPos   : _leftOriginPos;
+        Transform chosenHand  = useRight ? rightHand           : leftHand;
+        Vector3   handOrigin  = useRight ? _rightOriginPos     : _leftOriginPos;
         Vector3   swingTarget = useRight ? rightHandSwingTarget : leftHandSwingTarget;
-        string    handName    = useRight ? "KANAN"           : "KIRI";
+        string    handName    = useRight ? "KANAN"             : "KIRI";
 
         if (chosenHand == null)
         {
@@ -184,7 +199,6 @@ public class BossPattern_SwingArm : MonoBehaviour
 
 
         // ── Phase 1 : WINDUP ───────────────────────────────────────────────
-        // Tangan sedikit mundur sebagai gerakan ancang-ancang
         Debug.Log("[SwingArm] Phase 1: Windup...");
 
         Vector3 windupOffset = useRight ? Vector3.left  * 0.8f
@@ -195,7 +209,6 @@ public class BossPattern_SwingArm : MonoBehaviour
 
 
         // ── Phase 2 : ALERT ────────────────────────────────────────────────
-        // Spawn alert di posisi target, play charge sound
         Debug.Log("[SwingArm] Phase 2: Alert muncul di area target");
 
         GameObject alertObj = SpawnAlert(swingTarget);
@@ -203,8 +216,6 @@ public class BossPattern_SwingArm : MonoBehaviour
 
 
         // ── Phase 3 : TELEGRAPH ────────────────────────────────────────────
-        // Beri waktu player menghindar
-        // Kurangi alertFadeDuration agar fade selesai tepat saat menyerang
         float waitBeforeFade = Mathf.Max(0f, telegraphDuration - alertFadeDuration);
         Debug.Log($"[SwingArm] Phase 3: Jeda {telegraphDuration}s untuk player menghindar...");
 
@@ -212,12 +223,10 @@ public class BossPattern_SwingArm : MonoBehaviour
 
 
         // ── Phase 4 : FADE ALERT ───────────────────────────────────────────
-        // Alert fade out smooth sebelum hantam
         if (alertObj != null)
         {
             SpriteRenderer alertSR = alertObj.GetComponent<SpriteRenderer>();
 
-            // Coba cari di children jika tidak ada di root
             if (alertSR == null)
                 alertSR = alertObj.GetComponentInChildren<SpriteRenderer>();
 
@@ -229,40 +238,134 @@ public class BossPattern_SwingArm : MonoBehaviour
         }
         else
         {
-            // Tidak ada alert, tetap tunggu sisa waktu
             yield return new WaitForSeconds(alertFadeDuration);
         }
 
 
         // ── Phase 5 : SWING! ───────────────────────────────────────────────
-        Debug.Log($"[SwingArm] Phase 5: AYUN tangan {handName}!");
+        Debug.Log($"[SwingArm] Phase 5: AYUN tangan {handName} ke {swingTarget}!");
 
         PlaySound(swingSound);
         yield return StartCoroutine(MoveHandTo(chosenHand, swingTarget, swingSpeed));
 
 
         // ── Phase 6 : IMPACT ───────────────────────────────────────────────
-        // Cek damage, spawn VFX, play impact sound
-        Debug.Log("[SwingArm] Phase 6: Impact!");
+        // VFX di-spawn TEPAT saat tangan sudah di posisi impact
+        Debug.Log($"[SwingArm] Phase 6: Impact di posisi {chosenHand.position}!");
 
-        bool didHit = CheckAndDealDamage(chosenHand.position, swingDamage, damageRadius);
+        // Spawn VFX terlebih dahulu agar langsung terlihat
         SpawnHitVFX(chosenHand.position);
+
+        // Cek damage
+        bool didHit = CheckAndDealDamage(chosenHand.position, swingDamage, damageRadius);
+
+        // Impact sound
         PlaySound(impactSound);
 
         if (didHit)
             Debug.Log("[SwingArm] Player terkena swing!");
+        else
+            Debug.Log("[SwingArm] Swing meleset — player berhasil menghindar");
 
-        yield return new WaitForSeconds(0.3f);
+
+        // ── Phase 7 : PAUSE — tangan diam agar VFX terlihat ───────────────
+        // Ini kunci utama VFX fix:
+        // Tangan DIAM di posisi impact selama pauseAfterImpact detik
+        // sehingga VFX punya waktu untuk diputar dan terlihat player
+        Debug.Log($"[SwingArm] Phase 7: Pause {pauseAfterImpact}s agar VFX terlihat");
+
+        yield return new WaitForSeconds(pauseAfterImpact);
 
 
-        // ── Phase 7 : RETRACT ──────────────────────────────────────────────
-        Debug.Log("[SwingArm] Phase 7: Tangan kembali ke posisi asal");
+        // ── Phase 8 : RETRACT ──────────────────────────────────────────────
+        Debug.Log($"[SwingArm] Phase 8: Tangan {handName} kembali ke posisi asal");
 
         yield return StartCoroutine(MoveHandTo(chosenHand, handOrigin, retractSpeed));
         yield return new WaitForSeconds(endDelay);
 
         Debug.Log("[SwingArm] Pattern selesai");
         onComplete?.Invoke();
+    }
+
+
+    // ─────────────────────────────────────────────────────────
+    // VFX SPAWNER — FIX UTAMA
+    //
+    // Otomatis detect tipe komponen di prefab:
+    //   1. VisualEffect (VFX Graph) → Play()
+    //   2. ParticleSystem           → Play(true) rekursif ke children
+    //   3. Animator                 → SetTrigger("Play")
+    //   4. Fallback                 → hanya Instantiate (user handle sendiri)
+    // ─────────────────────────────────────────────────────────
+
+    private void SpawnHitVFX(Vector3 position)
+    {
+        if (hitVFXPrefab == null)
+        {
+            Debug.LogWarning("[SwingArm] hitVFXPrefab belum di-assign di Inspector! VFX tidak muncul.");
+            return;
+        }
+
+        // Spawn prefab di posisi impact tangan
+        GameObject vfxObj = Instantiate(hitVFXPrefab, position, Quaternion.identity);
+
+        bool played = false;
+
+        // ── Coba VFX Graph ───────────────────────────────────────────────
+        VisualEffect vfxGraph = vfxObj.GetComponent<VisualEffect>();
+        if (vfxGraph != null)
+        {
+            vfxGraph.Play();
+            played = true;
+            Debug.Log($"[SwingArm] VFX Graph spawned & Play() dipanggil di {position}");
+        }
+
+        // ── Coba ParticleSystem ──────────────────────────────────────────
+        if (!played)
+        {
+            ParticleSystem ps = vfxObj.GetComponent<ParticleSystem>();
+            if (ps != null)
+            {
+                // true = play rekursif ke semua children particle system
+                ps.Play(true);
+                played = true;
+                Debug.Log($"[SwingArm] ParticleSystem spawned & Play() dipanggil di {position}");
+            }
+        }
+
+        // ── Coba ParticleSystem di children ─────────────────────────────
+        if (!played)
+        {
+            ParticleSystem psChild = vfxObj.GetComponentInChildren<ParticleSystem>();
+            if (psChild != null)
+            {
+                psChild.Play(true);
+                played = true;
+                Debug.Log($"[SwingArm] ParticleSystem (children) spawned & Play() dipanggil di {position}");
+            }
+        }
+
+        // ── Coba Animator ────────────────────────────────────────────────
+        if (!played)
+        {
+            Animator anim = vfxObj.GetComponent<Animator>();
+            if (anim != null)
+            {
+                // Trigger parameter "Play" harus ada di Animator Controller
+                anim.SetTrigger("Play");
+                played = true;
+                Debug.Log($"[SwingArm] Animator spawned & SetTrigger(Play) dipanggil di {position}");
+            }
+        }
+
+        if (!played)
+        {
+            Debug.Log($"[SwingArm] VFX spawned di {position} " +
+                      "(tidak ada VisualEffect/ParticleSystem/Animator — handle manual di prefab)");
+        }
+
+        // Auto-destroy setelah hitVFXLifetime detik
+        Destroy(vfxObj, hitVFXLifetime);
     }
 
 
@@ -292,7 +395,6 @@ public class BossPattern_SwingArm : MonoBehaviour
 
     private GameObject SpawnAlert(Vector3 position)
     {
-        // Gunakan prefab jika sudah di-assign di Inspector
         if (alertPrefab != null)
         {
             GameObject obj = Instantiate(alertPrefab, position, Quaternion.identity);
@@ -300,22 +402,20 @@ public class BossPattern_SwingArm : MonoBehaviour
             return obj;
         }
 
-        // Fallback: buat sprite merah sederhana secara otomatis
         Debug.LogWarning("[SwingArm] alertPrefab belum di-assign, membuat alert otomatis.");
 
-        GameObject alertObj             = new GameObject("SwingAlert_Auto");
-        alertObj.transform.position     = position;
-        alertObj.transform.localScale   = Vector3.one * alertSize;
+        GameObject alertObj           = new GameObject("SwingAlert_Auto");
+        alertObj.transform.position   = position;
+        alertObj.transform.localScale = Vector3.one * alertSize;
 
-        SpriteRenderer sr  = alertObj.AddComponent<SpriteRenderer>();
-        sr.color           = alertColor;
-        sr.sortingOrder    = alertSortingOrder;
-        sr.sprite          = CreateCircleSprite(64);
+        SpriteRenderer sr = alertObj.AddComponent<SpriteRenderer>();
+        sr.color          = alertColor;
+        sr.sortingOrder   = alertSortingOrder;
+        sr.sprite         = CreateCircleSprite(64);
 
         return alertObj;
     }
 
-    // Buat sprite lingkaran sederhana untuk fallback alert
     private Sprite CreateCircleSprite(int texSize)
     {
         Texture2D tex    = new Texture2D(texSize, texSize);
@@ -343,20 +443,7 @@ public class BossPattern_SwingArm : MonoBehaviour
 
 
     // ─────────────────────────────────────────────────────────
-    // HIT VFX
-    // ─────────────────────────────────────────────────────────
-
-    private void SpawnHitVFX(Vector3 position)
-    {
-        if (hitVFXPrefab == null) return;
-
-        GameObject vfx = Instantiate(hitVFXPrefab, position, Quaternion.identity);
-        Destroy(vfx, hitVFXLifetime);
-    }
-
-
-    // ─────────────────────────────────────────────────────────
-    // DAMAGE
+    // DAMAGE CHECK
     // ─────────────────────────────────────────────────────────
 
     private bool CheckAndDealDamage(Vector3 pos, float damage, float radius)
@@ -367,7 +454,6 @@ public class BossPattern_SwingArm : MonoBehaviour
         {
             if (!hit.CompareTag("Player")) continue;
 
-            // Coba PlayerHealth dulu
             PlayerHealth ph = hit.GetComponent<PlayerHealth>();
             if (ph != null)
             {
@@ -375,7 +461,6 @@ public class BossPattern_SwingArm : MonoBehaviour
                 return true;
             }
 
-            // Fallback ke HealthManager
             HealthManager hm = hit.GetComponent<HealthManager>();
             if (hm != null)
             {
@@ -417,7 +502,6 @@ public class BossPattern_SwingArm : MonoBehaviour
             yield return null;
         }
 
-        // Pastikan alpha benar-benar 0
         Color final = sr.color;
         final.a     = 0f;
         sr.color    = final;
@@ -430,8 +514,8 @@ public class BossPattern_SwingArm : MonoBehaviour
 
     private void PlaySound(AudioClip clip)
     {
-        if (clip == null)          return;
-        if (_audioSource == null)  return;
+        if (clip == null)         return;
+        if (_audioSource == null) return;
 
         _audioSource.PlayOneShot(clip);
     }
@@ -443,15 +527,12 @@ public class BossPattern_SwingArm : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-        // Area damage tangan kanan
         Gizmos.color = new Color(1f, 0.3f, 0f, 0.5f);
         Gizmos.DrawWireSphere(rightHandSwingTarget, damageRadius);
 
-        // Area damage tangan kiri
         Gizmos.color = new Color(1f, 0.3f, 0f, 0.5f);
         Gizmos.DrawWireSphere(leftHandSwingTarget, damageRadius);
 
-        // Posisi origin tangan (editor only)
         if (rightHand != null)
         {
             Gizmos.color = Color.cyan;
