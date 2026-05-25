@@ -1,28 +1,21 @@
 // =============================================================
 // SpaceJam - BossPattern_ShootLaser.cs
 // -------------------------------------------------------------
-// PERBAIKAN v2:
-//   FIX 1 : Tangan kiri asli sekarang keluar scene ke ATAS (sumbu Y positif),
-//           bukan ke kiri (sumbu X). Field baru: leftHandExitY.
+// FIX v3 — perubahan dari versi sebelumnya:
 //
-//   FIX 2 : Extra hand kini memiliki field rotasi yang bisa di-assign
-//           di Inspector. Field baru: extraHandRotationZ.
-//           Default = 0f, sesuaikan di Inspector hingga tangan menghadap
-//           arah yang benar (coba nilai 90, -90, atau 180).
+//   FIX VFX  : laserVFX.Reinit() + yield return null sebelum Play()
+//              agar VFX Graph terinisialisasi 1 frame sebelum diputar
 //
-//   FIX 3 : Ditambahkan field alertPrefab dan alertSize agar bisa
-//           menggunakan prefab peringatan (SlamAlert) yang sama seperti
-//           pada BossPattern_Slam3x. Alert muncul saat phase telegraph.
+//   FIX ALERT TIMING : alert sekarang FADE OUT di akhir Phase_Telegraph
+//              (SEBELUM laser tembak), bukan saat laser sedang aktif
 //
-// ALUR PATTERN (tidak berubah):
-//   Phase 1 : EXIT      — Tangan kiri asli naik ke atas keluar layar
-//   Phase 2 : SPAWN     — Extra hand masuk dari kiri ke dalam scene
-//   Phase 3 : CHASE Y   — Extra hand mengikuti posisi Y player
-//   Phase 4 : TELEGRAPH — Extra hand berhenti + alert prefab + berkedip
-//   Phase 5 : FIRE      — Laser VFX aktif + damage zone penuh
-//   Phase 6 : DANGER    — Laser memudar, extra hand BISA DISERANG
-//   Phase 7 : HAND EXIT — Extra hand keluar ke kiri
-//   Phase 8 : RETURN    — Tangan kiri asli turun kembali ke posisi awal
+//   FIX ALERT POSISI : alert di-spawn di X=0 (tengah layar) agar
+//              mencakup seluruh lebar layar horizontal
+//
+//   FIX PHASE_FIRELASER : tidak lagi menangani alert (sudah selesai
+//              di Phase_Telegraph), hanya fokus VFX + damage
+//
+// Semua field, event, dan variable lama dipertahankan utuh.
 // =============================================================
 
 using System;
@@ -52,7 +45,7 @@ public class BossPattern_ShootLaser : MonoBehaviour
     // ─────────────────────────────────────────────────────────
 
     [Header("=== EXTRA HAND (Ghost) ===")]
-    [Tooltip("Prefab tangan ghost — tampilan sama seperti tangan kiri boss")]
+    [Tooltip("Prefab tangan ghost")]
     public GameObject extraHandPrefab;
 
     [Tooltip("Posisi X awal spawn extra hand")]
@@ -75,12 +68,11 @@ public class BossPattern_ShootLaser : MonoBehaviour
 
 
     // ─────────────────────────────────────────────────────────
-    // FIX 1 : ARAH KELUAR TANGAN KIRI ASLI
-    // Tangan kiri sekarang keluar ke ATAS (Y positif), bukan ke kiri.
+    // ARAH KELUAR TANGAN KIRI ASLI
     // ─────────────────────────────────────────────────────────
 
     [Header("=== LEFT HAND MOVEMENT ===")]
-    [Tooltip("Posisi Y keluar scene — lebih tinggi dari atas layar (camera ortho size ~5, jadi nilai 12-15 aman)")]
+    [Tooltip("Posisi Y keluar scene — lebih tinggi dari atas layar")]
     public float leftHandExitY = 12f;
 
     [Tooltip("Kecepatan tangan kiri asli bergerak keluar / kembali")]
@@ -88,24 +80,25 @@ public class BossPattern_ShootLaser : MonoBehaviour
 
 
     // ─────────────────────────────────────────────────────────
-    // FIX 3 : ALERT PREFAB
-    // Assign prefab peringatan di Inspector (bisa gunakan SlamAlert.prefab).
-    // Jika kosong, dibuat otomatis sebagai kotak merah berkedip.
+    // ALERT VISUAL
     // ─────────────────────────────────────────────────────────
 
-    [Header("=== ALERT VISUAL (FIX 3) ===")]
-    [Tooltip("Prefab alert peringatan. Bisa gunakan SlamAlert.prefab yang sudah ada. " +
-             "Jika kosong, dibuat otomatis sebagai kotak/garis merah berkedip.")]
+    [Header("=== ALERT VISUAL ===")]
+    [Tooltip("Prefab alert peringatan. Jika kosong dibuat otomatis.")]
     public GameObject alertPrefab;
 
     [Tooltip("Ukuran alert prefab saat di-spawn")]
-    public float alertSize = 3f;
+    public float alertSize = 1f;
 
     [Tooltip("Sorting order alert sprite")]
     public int alertSortingOrder = 10;
 
-    [Tooltip("Warna alert ketika dibuat otomatis (bukan dari prefab)")]
+    [Tooltip("Warna alert ketika dibuat otomatis")]
     public Color alertColor = new Color(1f, 0.15f, 0.15f, 0.9f);
+
+    // FIX: berapa detik fade out alert di akhir telegraph
+    [Tooltip("Durasi fade out alert sebelum laser tembak (detik)")]
+    public float alertFadeOutDuration = 0.5f;
 
 
     // ─────────────────────────────────────────────────────────
@@ -126,7 +119,7 @@ public class BossPattern_ShootLaser : MonoBehaviour
     [Tooltip("Tinggi area damage laser (world units)")]
     public float laserHeight = 1.8f;
 
-    [Tooltip("Lebar area damage laser (world units) — tutup seluruh layar")]
+    [Tooltip("Lebar area damage laser (world units)")]
     public float laserWidth = 22f;
 
 
@@ -134,13 +127,14 @@ public class BossPattern_ShootLaser : MonoBehaviour
     // TIMING
     // ─────────────────────────────────────────────────────────
 
+    [Header("=== TIMING (detik) ===")]
     [Tooltip("Durasi extra hand chase Y player")]
     public float chaseDuration = 2f;
 
     [Tooltip("Kecepatan extra hand mengikuti Y player")]
     public float chaseSpeed = 5f;
 
-    [Tooltip("Offset X alert di depan extra hand")]
+    [Tooltip("Offset X alert di depan extra hand — tidak dipakai lagi, alert sekarang di X=0")]
     public float alertXOffset = 2f;
 
     [Tooltip("Durasi charge sebelum laser tembak")]
@@ -173,10 +167,10 @@ public class BossPattern_ShootLaser : MonoBehaviour
     [Tooltip("Suara ketika extra hand hancur dikalahkan player")]
     public AudioClip extraHandDestroySound;
 
-    [Tooltip("Suara ketika tangan kiri keluar scene (opsional)")]
+    [Tooltip("Suara ketika tangan kiri keluar scene")]
     public AudioClip handExitSound;
 
-    [Tooltip("Suara ketika tangan kiri kembali ke posisi awal (opsional)")]
+    [Tooltip("Suara ketika tangan kiri kembali ke posisi awal")]
     public AudioClip handReturnSound;
 
 
@@ -251,24 +245,18 @@ public class BossPattern_ShootLaser : MonoBehaviour
 
 
     // ─────────────────────────────────────────────────────────
-    // FIX 1 — PHASE 1 : TANGAN KIRI ASLI KELUAR KE ATAS
-    //
-    // Perubahan: exitPos sekarang menggunakan leftHandExitY pada sumbu Y,
-    // bukan leftHandExitX pada sumbu X.
-    // Tangan bergerak NAIK ke atas layar hingga tidak terlihat.
+    // PHASE 1 : TANGAN KIRI ASLI KELUAR KE ATAS
     // ─────────────────────────────────────────────────────────
 
     IEnumerator Phase_LeftHandExit()
     {
-        Debug.Log("[ShootLaser] Phase 1 : Tangan kiri naik keluar scene (ke atas)");
+        Debug.Log("[ShootLaser] Phase 1 : Tangan kiri naik keluar scene");
 
         PlaySound(handExitSound);
 
-        // Posisi keluar: X tetap (tidak bergeser kiri/kanan),
-        // Y naik hingga di atas batas layar.
         Vector3 exitPos = new Vector3(
-            _leftHandOrigin.x,      // X tidak berubah
-            leftHandExitY,          // Y naik ke atas layar
+            _leftHandOrigin.x,
+            leftHandExitY,
             _leftHandOrigin.z
         );
 
@@ -283,18 +271,12 @@ public class BossPattern_ShootLaser : MonoBehaviour
         }
 
         leftHand.position = exitPos;
-
-        // Nonaktifkan agar tidak terlihat saat tangan ghost aktif
         leftHand.gameObject.SetActive(false);
-
-        Debug.Log("[ShootLaser] Tangan kiri asli sudah naik keluar dan dinonaktifkan");
     }
 
 
     // ─────────────────────────────────────────────────────────
     // PHASE 2 : EXTRA HAND MASUK DARI KIRI
-    // Spawn di X = -15, rotasi Z = -90 (menghadap kanan).
-    // Bergerak smooth ke kanan menuju extraHandTargetX.
     // ─────────────────────────────────────────────────────────
 
     IEnumerator Phase_ExtraHandEnter()
@@ -307,17 +289,12 @@ public class BossPattern_ShootLaser : MonoBehaviour
             yield break;
         }
 
-        // Spawn di X = -12, Y = -2, Z = 0
-        // Rotasi Z = 90 (fixed)
         Vector3    spawnPos      = new Vector3(extraHandSpawnX, extraHandSpawnY, 0f);
         Quaternion spawnRotation = Quaternion.Euler(0f, 0f, 90f);
 
         _extraHandObj   = Instantiate(extraHandPrefab, spawnPos, spawnRotation);
         _extraHandAlive = true;
 
-        Debug.Log($"[ShootLaser] Extra hand spawn di {spawnPos}, rotasi Z = 90");
-
-        // Setup hitbox agar damage diteruskan ke BossHP
         ExtraHandHitbox hitbox = _extraHandObj.GetComponent<ExtraHandHitbox>();
         if (hitbox == null)
             hitbox = _extraHandObj.AddComponent<ExtraHandHitbox>();
@@ -327,8 +304,6 @@ public class BossPattern_ShootLaser : MonoBehaviour
         hitbox.currentHP    = extraHandMaxHP;
         hitbox.destroySound = extraHandDestroySound;
 
-        // Bergerak smooth ke kanan (dari -12 ke -5)
-        Debug.Log($"[ShootLaser] Extra hand bergerak ke kanan: X = {extraHandSpawnX} → {extraHandMoveTargetX}");
         Vector3 moveTargetPos = new Vector3(extraHandMoveTargetX, extraHandSpawnY, 0f);
 
         while (_extraHandObj != null &&
@@ -344,24 +319,22 @@ public class BossPattern_ShootLaser : MonoBehaviour
 
         if (_extraHandObj != null)
             _extraHandObj.transform.position = moveTargetPos;
-
-        Debug.Log("[ShootLaser] Extra hand selesai bergerak ke kanan");
     }
 
 
     // ─────────────────────────────────────────────────────────
-    // PHASE 3 : CHASE POSISI Y PLAYER (tidak berubah)
+    // PHASE 3 : CHASE POSISI Y PLAYER
+    // FIX: alert posisi di X=0 (tengah layar) untuk coverage penuh
     // ─────────────────────────────────────────────────────────
 
     IEnumerator Phase_ChaseY()
     {
-        Debug.Log("[ShootLaser] Phase 3 : Aktifkan alert horizontal dan chase Y player");
+        Debug.Log("[ShootLaser] Phase 3 : Alert horizontal aktif, chase Y player");
 
         if (_extraHandObj == null) yield break;
 
-        // Aktifkan alert horizontal di posisi awal Y
+        // FIX: spawn alert di tengah layar (X=0), bukan di posisi tangan
         _alertObj = SpawnLaserAlert(_extraHandObj.transform.position.y);
-        Debug.Log("[ShootLaser] Alert horizontal aktif");
 
         float elapsed = 0f;
 
@@ -369,39 +342,29 @@ public class BossPattern_ShootLaser : MonoBehaviour
         {
             elapsed += Time.deltaTime;
 
-            if (_extraHandObj == null)
-            {
-                Debug.Log("[ShootLaser] Extra hand hancur saat chase");
-                _lockedY = playerTransform.position.y;
-                if (_alertObj != null) Destroy(_alertObj);
-                _alertObj = null;
-                yield break;
-            }
-
-            // Chase player Y realtime
-            float targetY = playerTransform.position.y;
+            float targetY  = playerTransform.position.y;
             float currentY = _extraHandObj.transform.position.y;
-            float newY = Mathf.MoveTowards(currentY, targetY, chaseSpeed * Time.deltaTime);
+            float newY     = Mathf.MoveTowards(currentY, targetY, chaseSpeed * Time.deltaTime);
 
             Vector3 newPos = _extraHandObj.transform.position;
             newPos.y = newY;
             _extraHandObj.transform.position = newPos;
 
-            // Alert mengikuti Y extra hand secara realtime
+            // FIX: alert juga ikut Y, tapi tetap di X=0
             if (_alertObj != null)
-            {
                 _alertObj.transform.position = new Vector3(0f, newY, 0f);
-            }
 
             yield return null;
         }
 
-        // Lock Y position setelah chase selesai
         if (_extraHandObj != null)
         {
             _lockedY = _extraHandObj.transform.position.y;
-            Debug.Log($"[ShootLaser] Chase selesai. Posisi Y dikunci: {_lockedY:F2}");
-            // Alert tetap aktif untuk phase berikutnya
+            Debug.Log($"[ShootLaser] Posisi Y dikunci: {_lockedY:F2}");
+
+            // Pastikan alert juga terkunci di posisi final
+            if (_alertObj != null)
+                _alertObj.transform.position = new Vector3(0f, _lockedY, 0f);
         }
         else
         {
@@ -411,25 +374,51 @@ public class BossPattern_ShootLaser : MonoBehaviour
 
 
     // ─────────────────────────────────────────────────────────
-    // PHASE 4 : JEDA SEBELUM LASER TEMBAK
+    // PHASE 4 : TELEGRAPH — jeda sebelum laser
+    // FIX: alert FADE OUT di akhir phase ini, sebelum laser tembak
     // ─────────────────────────────────────────────────────────
 
     IEnumerator Phase_Telegraph()
     {
         if (_extraHandObj == null) yield break;
 
-        Debug.Log($"[ShootLaser] Phase 4 : Jeda charge sebelum laser tembak");
-        
+        Debug.Log("[ShootLaser] Phase 4 : Telegraph — player punya waktu menghindar");
+
         PlaySound(chargeSound);
 
-        yield return new WaitForSeconds(telegraphDuration);
+        // Tunggu sebagian besar waktu telegraph sebelum fade alert
+        float waitBeforeFade = Mathf.Max(0f, telegraphDuration - alertFadeOutDuration);
+        yield return new WaitForSeconds(waitBeforeFade);
 
-        Debug.Log("[ShootLaser] Charge selesai — siap tembak laser");
+        // FIX: fade out alert di sini — SEBELUM laser tembak
+        if (_alertObj != null)
+        {
+            SpriteRenderer alertSR = _alertObj.GetComponent<SpriteRenderer>();
+            if (alertSR == null)
+                alertSR = _alertObj.GetComponentInChildren<SpriteRenderer>();
+
+            if (alertSR != null)
+                yield return StartCoroutine(FadeOutAlert(alertSR, alertFadeOutDuration));
+
+            if (_alertObj != null)
+            {
+                Destroy(_alertObj);
+                _alertObj = null;
+            }
+
+            Debug.Log("[ShootLaser] Alert sudah fade out — siap tembak laser");
+        }
+        else
+        {
+            yield return new WaitForSeconds(alertFadeOutDuration);
+        }
     }
 
 
     // ─────────────────────────────────────────────────────────
-    // PHASE 5 : EXTRA HAND TEMBAK LASER
+    // PHASE 5 : TEMBAK LASER
+    // FIX: VFX — yield return null + Reinit() sebelum Play()
+    // FIX: alert tidak lagi ditangani di sini (sudah di Phase_Telegraph)
     // ─────────────────────────────────────────────────────────
 
     IEnumerator Phase_FireLaser()
@@ -440,21 +429,25 @@ public class BossPattern_ShootLaser : MonoBehaviour
 
         PlaySound(fireSound);
 
-        // Setup laser VFX di posisi extra hand
         Vector3 laserFirePos = _extraHandObj.transform.position;
         laserFirePos.y = _lockedY;
 
+        // FIX: aktifkan VFX dengan urutan yang benar
         if (laserVFX != null)
         {
             laserVFX.transform.position = laserFirePos;
             laserVFX.gameObject.SetActive(true);
+            yield return null;       // tunggu 1 frame agar VFX Graph terinisialisasi
+            laserVFX.Reinit();       // reset state VFX agar bersih
             laserVFX.Play();
+            Debug.Log("[ShootLaser] VFX laser diputar");
         }
         else
         {
-            Debug.LogWarning("[ShootLaser] laserVFX belum di-assign!");
+            Debug.LogWarning("[ShootLaser] laserVFX belum di-assign di Inspector!");
         }
 
+        // Mulai hum sound looping
         if (humSound != null && _audioSource != null)
         {
             _audioSource.clip = humSound;
@@ -462,18 +455,16 @@ public class BossPattern_ShootLaser : MonoBehaviour
             _audioSource.Play();
         }
 
-        // Laser aktif - apply continuous damage ke player
+        // Laser aktif — apply damage ke player selama durasi
         float elapsed = 0f;
         while (elapsed < laserActiveDuration && _extraHandObj != null)
         {
             elapsed += Time.deltaTime;
-
-            // Cek apakah player dalam area laser
             ApplyContinuousLaserDamage();
-
             yield return null;
         }
 
+        // Matikan VFX dan hum
         if (laserVFX != null)
         {
             laserVFX.Stop();
@@ -483,68 +474,43 @@ public class BossPattern_ShootLaser : MonoBehaviour
         if (_audioSource != null)
             _audioSource.Stop();
 
-        // Alert fade out smooth
-        Debug.Log("[ShootLaser] Alert fade out");
-        if (_alertObj != null)
-        {
-            SpriteRenderer alertSR = _alertObj.GetComponent<SpriteRenderer>();
-            if (alertSR != null)
-            {
-                yield return StartCoroutine(FadeOutAlert(alertSR, 0.5f));
-            }
-            if (_alertObj != null)
-                Destroy(_alertObj);
-            _alertObj = null;
-        }
-
-        Debug.Log("[ShootLaser] Laser tembak selesai");
+        Debug.Log("[ShootLaser] Laser selesai tembak");
     }
 
 
     // ─────────────────────────────────────────────────────────
-    // PHASE 6 : EXTRA HAND DIAM - PLAYER BISA ATTACK & LASER DAMAGE
+    // PHASE 6 : EXTRA HAND DIAM — PLAYER BISA SERANG
     // ─────────────────────────────────────────────────────────
 
     IEnumerator Phase_DangerZone()
     {
-        Debug.Log($"[ShootLaser] Phase 6 : Extra hand diam {preExitDelay}s — player bisa attack & laser damage!");
+        Debug.Log($"[ShootLaser] Phase 6 : Extra hand diam {preExitDelay}s — player bisa serang!");
 
         if (_extraHandObj == null) yield break;
 
-        // Extra hand diam di posisi saat ini, tidak bergerak
         float elapsed = 0f;
 
         while (elapsed < preExitDelay && _extraHandObj != null)
         {
             elapsed += Time.deltaTime;
-
-            if (_extraHandObj == null)
-            {
-                Debug.Log("[ShootLaser] Extra hand sudah dikalahkan!");
-                break;
-            }
-
-            // Apply continuous laser damage ke player
             ApplyContinuousLaserDamage();
-
             yield return null;
         }
 
-        Debug.Log("[ShootLaser] Cooldown selesai — extra hand siap exit");
+        Debug.Log("[ShootLaser] DangerZone selesai");
     }
 
 
     // ─────────────────────────────────────────────────────────
-    // PHASE 7 : EXTRA HAND EXIT SCENE (GERAK KE KIRI)
+    // PHASE 7 : EXTRA HAND EXIT KE KIRI
     // ─────────────────────────────────────────────────────────
 
     IEnumerator Phase_ExtraHandExit()
     {
         if (_extraHandObj == null) yield break;
 
-        Debug.Log("[ShootLaser] Phase 7 : Extra hand exit scene ke kiri");
+        Debug.Log("[ShootLaser] Phase 7 : Extra hand exit ke kiri");
 
-        // Target exit: X = -13, Y = -2
         Vector3 exitPos = new Vector3(-13f, extraHandSpawnY, 0f);
 
         while (_extraHandObj != null &&
@@ -560,29 +526,22 @@ public class BossPattern_ShootLaser : MonoBehaviour
 
         if (_extraHandObj != null)
         {
-            _extraHandObj.transform.position = exitPos;
             Destroy(_extraHandObj);
             _extraHandObj = null;
         }
-
-        Debug.Log("[ShootLaser] Extra hand destroy dan hilang");
     }
 
 
     // ─────────────────────────────────────────────────────────
-    // FIX 1 — PHASE 8 : TANGAN KIRI ASLI TURUN KEMBALI
-    //
-    // Perubahan: tangan aktif kembali dari posisi atas layar,
-    // lalu turun smooth kembali ke posisi asal.
+    // PHASE 8 : TANGAN KIRI ASLI TURUN KEMBALI
     // ─────────────────────────────────────────────────────────
 
     IEnumerator Phase_LeftHandReturn()
     {
-        Debug.Log("[ShootLaser] Phase 8 : Tangan kiri asli turun kembali ke posisi awal");
+        Debug.Log("[ShootLaser] Phase 8 : Tangan kiri kembali ke posisi awal");
 
         PlaySound(handReturnSound);
 
-        // Aktifkan kembali dan taruh di posisi atas layar (sesuai leftHandExitY)
         leftHand.gameObject.SetActive(true);
         leftHand.position = new Vector3(
             _leftHandOrigin.x,
@@ -590,7 +549,6 @@ public class BossPattern_ShootLaser : MonoBehaviour
             _leftHandOrigin.z
         );
 
-        // Turun smooth kembali ke posisi asal
         while (Vector3.Distance(leftHand.position, _leftHandOrigin) > 0.05f)
         {
             leftHand.position = Vector3.MoveTowards(
@@ -602,37 +560,33 @@ public class BossPattern_ShootLaser : MonoBehaviour
         }
 
         leftHand.position = _leftHandOrigin;
-        Debug.Log("[ShootLaser] Tangan kiri sudah kembali ke posisi awal");
     }
 
 
     // ─────────────────────────────────────────────────────────
-    // FIX 3 — SPAWN LASER ALERT
-    //
-    // Jika alertPrefab di-assign: gunakan prefab tersebut.
-    // Jika tidak: buat garis merah otomatis sebagai penanda area laser.
+    // SPAWN LASER ALERT
+    // FIX: posisi di X=0 (tengah layar) bukan di posisi hand
     // ─────────────────────────────────────────────────────────
 
     GameObject SpawnLaserAlert(float centerY)
     {
-        // Gunakan prefab jika sudah di-assign
         if (alertPrefab != null)
         {
-            // Posisi alert sedikit di depan extra hand (X lebih besar)
-            Vector3 spawnPos = new Vector3(extraHandMoveTargetX + alertXOffset, centerY, 0f);
-            GameObject obj  = Instantiate(alertPrefab, spawnPos, Quaternion.identity);
+            // FIX: spawn di tengah layar (X=0) agar coverage penuh horizontal
+            Vector3 spawnPos = new Vector3(0f, centerY, 0f);
+            GameObject obj   = Instantiate(alertPrefab, spawnPos, Quaternion.identity);
             obj.transform.localScale = Vector3.one * alertSize;
             return obj;
         }
 
-        // Fallback: buat garis horizontal simple sebagai penanda area laser
-        GameObject alertObj     = new GameObject("LaserAlert_Auto");
+        // Fallback: buat garis horizontal otomatis
+        GameObject alertObj           = new GameObject("LaserAlert_Auto");
         alertObj.transform.position   = new Vector3(0f, centerY, 0f);
         alertObj.transform.localScale = new Vector3(laserWidth, 0.15f, 1f);
 
         SpriteRenderer sr = alertObj.AddComponent<SpriteRenderer>();
         sr.sprite         = CreateSolidSprite();
-        sr.color          = new Color(1f, 1f, 1f, 0.3f);
+        sr.color          = alertColor;
         sr.sortingOrder   = alertSortingOrder;
 
         return alertObj;
@@ -640,7 +594,7 @@ public class BossPattern_ShootLaser : MonoBehaviour
 
 
     // ─────────────────────────────────────────────────────────
-    // HELPERS — tidak berubah dari versi asli
+    // HELPERS
     // ─────────────────────────────────────────────────────────
 
     IEnumerator FadeOutAlert(SpriteRenderer sr, float duration)
@@ -648,33 +602,28 @@ public class BossPattern_ShootLaser : MonoBehaviour
         if (sr == null || duration <= 0f) yield break;
 
         float startAlpha = sr.color.a;
-        float elapsed = 0f;
+        float elapsed    = 0f;
 
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-
-            float t = Mathf.SmoothStep(0f, 1f, elapsed / duration);
-            float currentAlpha = Mathf.Lerp(startAlpha, 0f, t);
-
-            Color c = sr.color;
-            c.a = currentAlpha;
-            sr.color = c;
-
+            float t     = Mathf.SmoothStep(0f, 1f, elapsed / duration);
+            Color c     = sr.color;
+            c.a         = Mathf.Lerp(startAlpha, 0f, t);
+            sr.color    = c;
             yield return null;
         }
 
-        Color finalColor = sr.color;
-        finalColor.a = 0f;
-        sr.color = finalColor;
+        Color final = sr.color;
+        final.a     = 0f;
+        sr.color    = final;
     }
 
     Sprite CreateSolidSprite()
     {
         Texture2D tex    = new Texture2D(4, 4);
         Color[]   pixels = new Color[16];
-        for (int i = 0; i < 16; i++)
-            pixels[i] = Color.white;
+        for (int i = 0; i < 16; i++) pixels[i] = Color.white;
         tex.SetPixels(pixels);
         tex.Apply();
         return Sprite.Create(tex, new Rect(0, 0, 4, 4), new Vector2(0.5f, 0.5f), 4f);
@@ -683,43 +632,27 @@ public class BossPattern_ShootLaser : MonoBehaviour
     void PlaySound(AudioClip clip)
     {
         if (clip == null) return;
-
         if (_audioSource != null)
             _audioSource.PlayOneShot(clip);
         else
             AudioSource.PlayClipAtPoint(clip, transform.position);
     }
 
-
-    // ─────────────────────────────────────────────────────────
-    // CONTINUOUS LASER DAMAGE
-    // ─────────────────────────────────────────────────────────
-
     void ApplyContinuousLaserDamage()
     {
-        // Cek apakah player dalam area laser (area horizontal di _lockedY)
         if (playerTransform == null) return;
 
-        // Toleransi vertikal untuk area laser
         float laserTolerance = laserHeight * 0.5f;
-        float playerY = playerTransform.position.y;
+        float playerY        = playerTransform.position.y;
 
-        // Check if player dalam area laser (Y axis)
         if (Mathf.Abs(playerY - _lockedY) > laserTolerance)
-        {
-            return; // Player tidak dalam area laser
-        }
+            return;
 
-        // Player dalam area laser - apply damage
-        // Damage setiap 0.5 detik agar tidak terlalu overwhelming
         if (Time.time - _lastLaserDamageTime < 0.5f)
             return;
 
         _lastLaserDamageTime = Time.time;
 
-        Debug.Log($"[ShootLaser] Laser damage ke player: -{laserDamage} HP");
-
-        // Try PlayerHealth
         PlayerHealth playerHealth = playerTransform.GetComponent<PlayerHealth>();
         if (playerHealth != null)
         {
@@ -727,7 +660,6 @@ public class BossPattern_ShootLaser : MonoBehaviour
             return;
         }
 
-        // Try HealthManager
         HealthManager healthManager = playerTransform.GetComponent<HealthManager>();
         if (healthManager != null)
         {
@@ -741,36 +673,26 @@ public class BossPattern_ShootLaser : MonoBehaviour
 
 
     // ─────────────────────────────────────────────────────────
-    // GIZMOS (Editor Debug)
+    // GIZMOS
     // ─────────────────────────────────────────────────────────
 
     void OnDrawGizmosSelected()
     {
-        // Garis horizontal laser
         Gizmos.color = new Color(0.2f, 0.9f, 1f, 0.5f);
         Gizmos.DrawLine(
             new Vector3(-11f, Application.isPlaying ? _lockedY : 0f, 0f),
             new Vector3( 11f, Application.isPlaying ? _lockedY : 0f, 0f)
         );
 
-        // Posisi spawn extra hand
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(new Vector3(extraHandSpawnX, extraHandSpawnY, 0f), 0.4f);
 
-        // Posisi target move right
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(new Vector3(extraHandMoveTargetX, extraHandSpawnY, 0f), 0.4f);
 
-        // Posisi exit extra hand
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(new Vector3(-13f, extraHandSpawnY, 0f), 0.4f);
 
-        // Line dari spawn ke move target
-        Gizmos.color = new Color(1f, 1f, 0f, 0.5f);
-        Gizmos.DrawLine(new Vector3(extraHandSpawnX, extraHandSpawnY, 0f),
-                        new Vector3(extraHandMoveTargetX, extraHandSpawnY, 0f));
-
-        // FIX 1 Gizmos: tunjukkan posisi exit tangan kiri (ke atas)
         if (leftHand != null)
         {
             Gizmos.color = Color.magenta;
