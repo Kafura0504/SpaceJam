@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!2083052967 &13836293 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 6392887584032835886, guid: 31d77fb70c1cd25458f8e9ad5d8a8d63, type: 3}
+  m_PrefabInstance: {fileID: 900861103}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &365503919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -323,17 +328,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
---- !u!114 &378130944 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8840986342246847773, guid: 2e3c26196d4e2fb44b4bbabe481deb23, type: 3}
-  m_PrefabInstance: {fileID: 378130940}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!114 &378130945 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 831261779824297737, guid: 2e3c26196d4e2fb44b4bbabe481deb23, type: 3}
@@ -503,6 +497,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &644741403 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 856536011662596886, guid: 2e3c26196d4e2fb44b4bbabe481deb23, type: 3}
+  m_PrefabInstance: {fileID: 378130940}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!1 &715792535
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,13 +653,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserShoot
       objectReference: {fileID: 0}
+    - target: {fileID: 3445966490714879063, guid: 31d77fb70c1cd25458f8e9ad5d8a8d63, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8619924357425343980, guid: 31d77fb70c1cd25458f8e9ad5d8a8d63, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.1116257
+      value: -5.86
       objectReference: {fileID: 0}
     - target: {fileID: 8619924357425343980, guid: 31d77fb70c1cd25458f8e9ad5d8a8d63, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.6970079
+      value: -9.49
       objectReference: {fileID: 0}
     - target: {fileID: 8619924357425343980, guid: 31d77fb70c1cd25458f8e9ad5d8a8d63, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1658,6 +1667,8 @@ MonoBehaviour:
   delayAfterVFXBeforeImprint: 0.1
   slamImpactVFXPrefab: {fileID: 1564380200}
   slamImpactVFXLifetime: 2
+  impactShakeDuration: 0.35
+  impactShakeMagnitude: 0.18
   slamWindupSound: {fileID: 0}
   slamImpactSound: {fileID: 0}
   slamChaseSound: {fileID: 0}
@@ -1896,6 +1907,8 @@ MonoBehaviour:
   hitVFXPrefab: {fileID: 1255021818254881125, guid: a09d20bb561809e46abd8729aa5cfb8c, type: 3}
   hitVFXLifetime: 2
   pauseAfterImpact: 0.4
+  impactShakeDuration: 0.3
+  impactShakeMagnitude: 0.15
   chargeSound: {fileID: 0}
   swingSound: {fileID: 0}
   impactSound: {fileID: 0}
@@ -2030,6 +2043,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f975da119430d1a47be71a422e1acd1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossController
+  phase1Order: 0100000000000000
+  phase2Order: 0100000004000000030000000200000005000000
   patternSwingArm: {fileID: 3996374213491073978}
   patternSlam: {fileID: 1947084893277065557}
   patternMiniGunner: {fileID: 287780166564798063, guid: d7d200df382660449a2b1b21ac507b25, type: 3}
@@ -2047,6 +2062,7 @@ MonoBehaviour:
   _currentPatternName: Idle
   _isRunning: 0
   _patternRunCount: 0
+  _currentOrderIndex: 0
 --- !u!212 &5197421682143212344
 SpriteRenderer:
   serializedVersion: 2
@@ -2218,7 +2234,8 @@ MonoBehaviour:
   alertSortingOrder: 10
   alertColor: {r: 1, g: 0.15, b: 0.15, a: 0.9}
   alertFadeOutDuration: 0.5
-  laserVFX: {fileID: 6392887584032835886, guid: 31d77fb70c1cd25458f8e9ad5d8a8d63, type: 3}
+  laserVFX: {fileID: 13836293}
+  laserVFXOffset: {x: 4, y: 0}
   laserDamage: 20
   dangerZoneDamage: 8
   laserHeight: 1.8
@@ -2300,7 +2317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossPatternTester
   bossHP: {fileID: 3683270783752484881}
   barCanvasGroup: {fileID: 378130948}
-  barFill: {fileID: 378130944}
+  barSlider: {fileID: 644741403}
   hpText: {fileID: 378130943}
   nameTextBar: {fileID: 378130945}
   nameIntroGroup: {fileID: 378130947}
@@ -2308,6 +2325,7 @@ MonoBehaviour:
   phase1Color: {r: 0.2, g: 0.75, b: 1, a: 1}
   phase2Color: {r: 1, g: 0.25, b: 0.1, a: 1}
   phase2ColorThreshold: 0.5
+  smoothSpeed: 3
   introDelay: 1.5
   barFadeInDuration: 0.6
   nameFadeInDuration: 0.5
