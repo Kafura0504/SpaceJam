@@ -55,14 +55,20 @@ public class HealthManager : MonoBehaviour
         if (collision.CompareTag("EnemyBullet"))
         {
             Bullet bullet = collision.GetComponent<Bullet>();
+             if (bullet != null)
+        {
             TakeDamage(bullet.damage);
             Destroy(collision.gameObject);
+        }
         }
         else if (collision.CompareTag("Enemy"))
         {
             EnemyStat stat = collision.GetComponent<EnemyStat>();
+            if (stat != null) 
+        {
             TakeDamage(stat.dmg);
             Destroy(collision.gameObject);
+        }
         }
     }
 

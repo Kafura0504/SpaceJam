@@ -1,73 +1,120 @@
-// Assets/Script/Boss/MiniGunnerSpawner.cs
+// Assets/Boss Fight Noir/Pattern Attack/ScriptBossATK/5Bullet/MiniGunnerSpawner.cs
+// =============================================================
+// FIX: TrackEnemy sebelumnya menggunakan StartCoroutine pada dirinya sendiri.
+//      Jika object tidak aktif, coroutine gagal start dan _activeEnemyCount
+//      tidak pernah berkurang → RunMiniGunnerSequence stuck selamanya.
+//
+// SOLUSI: Ganti coroutine tracking dengan Update-based tracking.
+//         Update() akan scan daftar enemy yang di-track, jika sudah
+//         null (destroyed) maka kurangi _activeEnemyCount.
+//
+// Semua field dan signature public dipertahankan agar tidak merusak
+// referensi dari BossPhaseController atau script lain.
+// =============================================================
+
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// SpaceJam - Mini Gunner Spawner
-/// Dipanggil oleh BossController untuk spawn 2 enemy kecil
-/// dari pojok kiri atas dan kanan atas secara bersamaan.
-/// </summary>
 public class MiniGunnerSpawner : MonoBehaviour
 {
-    // ── References ────────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────
+    // REFERENCES
+    // ─────────────────────────────────────────────────────────
+
     [Header("Prefabs")]
     public GameObject miniGunnerPrefab;
 
-    // ── Spawn Positions ───────────────────────────────────────────────────────
-    [Header("Spawn Positions (di luar layar)")]
-    [Tooltip("Posisi awal enemy dari pojok KIRI atas (luar layar)")]
-    public Vector2 spawnPositionLeft  = new Vector2(-12f, 5f);
+    // ─────────────────────────────────────────────────────────
+    // SPAWN POSITIONS
+    // ─────────────────────────────────────────────────────────
 
-    [Tooltip("Posisi awal enemy dari pojok KANAN atas (luar layar)")]
+    [Header("Spawn Positions (di luar layar)")]
+    public Vector2 spawnPositionLeft  = new Vector2(-12f, 5f);
     public Vector2 spawnPositionRight = new Vector2(12f, 5f);
 
-    // ── Target Positions (dalam scene) ───────────────────────────────────────
-    [Header("Target Positions (dalam scene, enemy berhenti di sini)")]
-    [Tooltip("Posisi berhenti enemy KIRI di dalam scene")]
-    public Vector2 targetPositionLeft  = new Vector2(-5f, 3f);
+    // ─────────────────────────────────────────────────────────
+    // TARGET POSITIONS
+    // ─────────────────────────────────────────────────────────
 
-    [Tooltip("Posisi berhenti enemy KANAN di dalam scene")]
+    [Header("Target Positions (dalam scene, enemy berhenti di sini)")]
+    public Vector2 targetPositionLeft  = new Vector2(-5f, 3f);
     public Vector2 targetPositionRight = new Vector2(5f, 3f);
 
-    // ── Exit Positions (luar layar) ───────────────────────────────────────────
-    [Header("Exit Positions (enemy keluar ke sini)")]
-    [Tooltip("Posisi keluar enemy KIRI (kembali ke luar layar)")]
-    public Vector2 exitPositionLeft  = new Vector2(-12f, 5f);
+    // ─────────────────────────────────────────────────────────
+    // EXIT POSITIONS
+    // ─────────────────────────────────────────────────────────
 
-    [Tooltip("Posisi keluar enemy KANAN (kembali ke luar layar)")]
+    [Header("Exit Positions (enemy keluar ke sini)")]
+    public Vector2 exitPositionLeft  = new Vector2(-12f, 5f);
     public Vector2 exitPositionRight = new Vector2(12f, 5f);
 
-    // ── Damage ────────────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────
+    // DAMAGE
+    // ─────────────────────────────────────────────────────────
+
     [Header("Damage")]
     public float bulletDamage = 5f;
 
-    // ── Tracking ──────────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────
+    // TRACKING — FIX: pakai List + Update, bukan coroutine
+    // ─────────────────────────────────────────────────────────
+
     private int _activeEnemyCount = 0;
-    private bool _sequenceDone    = false;
 
-    // ── Public API ────────────────────────────────────────────────────────────
+    // FIX: List untuk track enemy yang di-spawn
+    // Update() yang akan cek null dan kurangi counter
+    private List<GameObject> _trackedEnemies = new List<GameObject>();
 
-    /// <summary>
-    /// Mulai sequence spawn 2 mini gunner.
-    /// Panggil dari BossController.
-    /// Gunakan OnSequenceDone callback untuk tahu kapan selesai.
-    /// </summary>
+    // ─────────────────────────────────────────────────────────
+    // FIX: Update-based tracking — tidak butuh coroutine
+    // ─────────────────────────────────────────────────────────
+
+    void Update()
+    {
+        // Scan dari belakang agar aman saat remove
+        for (int i = _trackedEnemies.Count - 1; i >= 0; i--)
+        {
+            // Jika enemy sudah di-Destroy (null) → kurangi counter
+            if (_trackedEnemies[i] == null)
+            {
+                _trackedEnemies.RemoveAt(i);
+                _activeEnemyCount--;
+
+                // Pastikan tidak negatif
+                if (_activeEnemyCount < 0)
+                    _activeEnemyCount = 0;
+            }
+        }
+    }
+
+    // ─────────────────────────────────────────────────────────
+    // PUBLIC API — dipanggil dari BossPhaseController
+    // Signature sama persis agar tidak merusak referensi
+    // ─────────────────────────────────────────────────────────
+
     public IEnumerator RunMiniGunnerSequence(System.Action onDone = null)
     {
+        // Reset state setiap kali sequence dijalankan
         _activeEnemyCount = 0;
-        _sequenceDone     = false;
+        _trackedEnemies.Clear();
 
         // Spawn enemy kiri dan kanan bersamaan
         SpawnLeft();
         SpawnRight();
 
-        // Tunggu sampai kedua enemy selesai (keluar dari scene)
+        Debug.Log("[MiniGunnerSpawner] Menunggu kedua enemy selesai...");
+
+        // Tunggu sampai kedua enemy destroyed (counter kembali ke 0)
         yield return new WaitUntil(() => _activeEnemyCount <= 0);
 
+        Debug.Log("[MiniGunnerSpawner] Sequence selesai.");
         onDone?.Invoke();
     }
 
-    // ── Spawn Helpers ─────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────
+    // SPAWN HELPERS
+    // ─────────────────────────────────────────────────────────
 
     void SpawnLeft()
     {
@@ -81,13 +128,14 @@ public class MiniGunnerSpawner : MonoBehaviour
             obj,
             targetPosition : targetPositionLeft,
             exitPosition   : exitPositionLeft,
-            shootRight     : true  // Enemy kiri menembak ke kanan
+            shootRight     : true
         );
 
+        // FIX: Track pakai List, bukan coroutine
         _activeEnemyCount++;
+        _trackedEnemies.Add(obj);
 
-        // Dengarkan event destroy
-        TrackEnemy(obj);
+        Debug.Log("[MiniGunnerSpawner] MiniGunner KIRI di-spawn.");
     }
 
     void SpawnRight()
@@ -102,13 +150,14 @@ public class MiniGunnerSpawner : MonoBehaviour
             obj,
             targetPosition : targetPositionRight,
             exitPosition   : exitPositionRight,
-            shootRight     : false  // Enemy kanan menembak ke kiri
+            shootRight     : false
         );
 
+        // FIX: Track pakai List, bukan coroutine
         _activeEnemyCount++;
+        _trackedEnemies.Add(obj);
 
-        // Dengarkan event destroy
-        TrackEnemy(obj);
+        Debug.Log("[MiniGunnerSpawner] MiniGunner KANAN di-spawn.");
     }
 
     void SetupMiniGunner(
@@ -118,6 +167,7 @@ public class MiniGunnerSpawner : MonoBehaviour
         bool shootRight)
     {
         MiniGunnerEnemy gunner = obj.GetComponent<MiniGunnerEnemy>();
+
         if (gunner == null)
         {
             Debug.LogError("[MiniGunnerSpawner] Prefab tidak punya MiniGunnerEnemy!");
@@ -128,20 +178,5 @@ public class MiniGunnerSpawner : MonoBehaviour
         gunner.exitPosition         = exitPosition;
         gunner.shootRight           = shootRight;
         gunner.SetDamage(bulletDamage);
-    }
-
-    void TrackEnemy(GameObject obj)
-    {
-        StartCoroutine(WaitForDestroy(obj));
-    }
-
-    IEnumerator WaitForDestroy(GameObject obj)
-    {
-        // Tunggu sampai object di-destroy
-        while (obj != null)
-        {
-            yield return null;
-        }
-        _activeEnemyCount--;
     }
 }
