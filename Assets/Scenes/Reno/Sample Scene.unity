@@ -173,7 +173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4344585218541881050, guid: 41a7a94b93fbc26429711b9ddc4d86ec, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -193,10 +193,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1227161267988594167, guid: 2e3c26196d4e2fb44b4bbabe481deb23, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4221093783337903725, guid: 2e3c26196d4e2fb44b4bbabe481deb23, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -277,6 +273,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8515090413696399973, guid: 2e3c26196d4e2fb44b4bbabe481deb23, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8515090413696399973, guid: 2e3c26196d4e2fb44b4bbabe481deb23, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8589270565100405907, guid: 2e3c26196d4e2fb44b4bbabe481deb23, type: 3}
       propertyPath: m_Name
       value: Player UI
@@ -284,8 +288,92 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7252113280088495030, guid: 2e3c26196d4e2fb44b4bbabe481deb23, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 378130948}
+    - targetCorrespondingSourceObject: {fileID: 4293165248149943106, guid: 2e3c26196d4e2fb44b4bbabe481deb23, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 378130947}
   m_SourcePrefab: {fileID: 100100000, guid: 2e3c26196d4e2fb44b4bbabe481deb23, type: 3}
+--- !u!114 &378130941 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6985378140223926383, guid: 2e3c26196d4e2fb44b4bbabe481deb23, type: 3}
+  m_PrefabInstance: {fileID: 378130940}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &378130942 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4293165248149943106, guid: 2e3c26196d4e2fb44b4bbabe481deb23, type: 3}
+  m_PrefabInstance: {fileID: 378130940}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &378130943 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 762087337511935214, guid: 2e3c26196d4e2fb44b4bbabe481deb23, type: 3}
+  m_PrefabInstance: {fileID: 378130940}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &378130944 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8840986342246847773, guid: 2e3c26196d4e2fb44b4bbabe481deb23, type: 3}
+  m_PrefabInstance: {fileID: 378130940}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!114 &378130945 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 831261779824297737, guid: 2e3c26196d4e2fb44b4bbabe481deb23, type: 3}
+  m_PrefabInstance: {fileID: 378130940}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &378130946 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7252113280088495030, guid: 2e3c26196d4e2fb44b4bbabe481deb23, type: 3}
+  m_PrefabInstance: {fileID: 378130940}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &378130947
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378130942}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
+--- !u!225 &378130948
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378130946}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &491440533
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,7 +747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4344585218541881050, guid: 41a7a94b93fbc26429711b9ddc4d86ec, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -996,7 +1084,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4344585218541881050, guid: 41a7a94b93fbc26429711b9ddc4d86ec, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1685,7 +1773,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6543542511251204927}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48db85922acc2f94db7c55eefc1da53b, type: 3}
   m_Name: 
@@ -1805,7 +1893,7 @@ MonoBehaviour:
   alertFadeDuration: 0.3
   alertSortingOrder: 10
   alertColor: {r: 1, g: 0.2, b: 0.1, a: 0.65}
-  hitVFXPrefab: {fileID: 7567168477552503988, guid: 80515b1e3b5591846905eeb0f9a86f95, type: 3}
+  hitVFXPrefab: {fileID: 1255021818254881125, guid: a09d20bb561809e46abd8729aa5cfb8c, type: 3}
   hitVFXLifetime: 2
   pauseAfterImpact: 0.4
   chargeSound: {fileID: 0}
@@ -1953,6 +2041,7 @@ MonoBehaviour:
   delayBetweenPatterns: 1.5
   introDelay: 2
   phase2TransitionDelay: 3
+  patternTimeout: 90
   phase2TransitionSound: {fileID: 0}
   _currentPhase: 1
   _currentPatternName: Idle
@@ -2128,6 +2217,7 @@ MonoBehaviour:
   alertSize: 1
   alertSortingOrder: 10
   alertColor: {r: 1, g: 0.15, b: 0.15, a: 0.9}
+  alertFadeOutDuration: 0.5
   laserVFX: {fileID: 6392887584032835886, guid: 31d77fb70c1cd25458f8e9ad5d8a8d63, type: 3}
   laserDamage: 20
   dangerZoneDamage: 8
@@ -2209,14 +2299,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossPatternTester
   bossHP: {fileID: 3683270783752484881}
-  bossName: NOIR
+  barCanvasGroup: {fileID: 378130948}
+  barFill: {fileID: 378130944}
+  hpText: {fileID: 378130943}
+  nameTextBar: {fileID: 378130945}
+  nameIntroGroup: {fileID: 378130947}
+  nameBigText: {fileID: 378130941}
   phase1Color: {r: 0.2, g: 0.75, b: 1, a: 1}
   phase2Color: {r: 1, g: 0.25, b: 0.1, a: 1}
-  bgColor: {r: 0.05, g: 0.05, b: 0.1, a: 0.92}
   phase2ColorThreshold: 0.5
-  barWidthPercent: 0.7
-  barHeightPx: 26
-  bottomOffsetPx: 44
+  introDelay: 1.5
+  barFadeInDuration: 0.6
+  nameFadeInDuration: 0.5
+  nameCenterDuration: 2.5
+  nameFadeOutDuration: 0.5
+  nameBarFadeInDuration: 0.35
 --- !u!95 &7290501916464539725
 Animator:
   serializedVersion: 7
