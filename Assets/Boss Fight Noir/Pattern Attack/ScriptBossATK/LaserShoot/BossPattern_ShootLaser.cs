@@ -1,21 +1,12 @@
 // =============================================================
-// SpaceJam - BossPattern_ShootLaser.cs
+// SpaceJam - BossPattern_ShootLaser.cs  (FIX v4)
 // -------------------------------------------------------------
-// FIX v3 — perubahan dari versi sebelumnya:
-//
-//   FIX VFX  : laserVFX.Reinit() + yield return null sebelum Play()
-//              agar VFX Graph terinisialisasi 1 frame sebelum diputar
-//
-//   FIX ALERT TIMING : alert sekarang FADE OUT di akhir Phase_Telegraph
-//              (SEBELUM laser tembak), bukan saat laser sedang aktif
-//
-//   FIX ALERT POSISI : alert di-spawn di X=0 (tengah layar) agar
-//              mencakup seluruh lebar layar horizontal
-//
-//   FIX PHASE_FIRELASER : tidak lagi menangani alert (sudah selesai
-//              di Phase_Telegraph), hanya fokus VFX + damage
-//
-// Semua field, event, dan variable lama dipertahankan utuh.
+// FIX v4 (Issue 1):
+//   - Tambah field laserVFXOffset (Vector2) di bagian LASER VFX
+//   - SpawnLaserVFX() menggunakan offset tersebut agar VFX muncul
+//     sedikit di depan ExtraHand (ke kanan, arah laser tembak)
+//   - Default offset: (2f, 0f) — bisa disesuaikan di Inspector
+//   - Semua field dan logic lain TIDAK DIUBAH
 // =============================================================
 
 using System;
@@ -96,7 +87,6 @@ public class BossPattern_ShootLaser : MonoBehaviour
     [Tooltip("Warna alert ketika dibuat otomatis")]
     public Color alertColor = new Color(1f, 0.15f, 0.15f, 0.9f);
 
-    // FIX: berapa detik fade out alert di akhir telegraph
     [Tooltip("Durasi fade out alert sebelum laser tembak (detik)")]
     public float alertFadeOutDuration = 0.5f;
 
@@ -108,6 +98,13 @@ public class BossPattern_ShootLaser : MonoBehaviour
     [Header("=== LASER VFX ===")]
     [Tooltip("VFX Graph laser — assign VisualEffect dari scene/prefab")]
     public VisualEffect laserVFX;
+
+    // ── FIX Issue 1 ──────────────────────────────────────────
+    [Tooltip("Offset posisi VFX relatif dari ExtraHand saat laser tembak.\n" +
+             "Default (2, 0) = 2 unit di depan (kanan) ExtraHand.\n" +
+             "Sesuaikan X untuk mundur/majukan, Y untuk atas/bawah.")]
+    public Vector2 laserVFXOffset = new Vector2(2f, 0f);
+    // ─────────────────────────────────────────────────────────
 
     [Header("=== LASER DAMAGE ===")]
     [Tooltip("Damage laser saat aktif penuh (Phase 5)")]
@@ -134,7 +131,7 @@ public class BossPattern_ShootLaser : MonoBehaviour
     [Tooltip("Kecepatan extra hand mengikuti Y player")]
     public float chaseSpeed = 5f;
 
-    [Tooltip("Offset X alert di depan extra hand — tidak dipakai lagi, alert sekarang di X=0")]
+    [Tooltip("Offset X alert di depan extra hand (tidak dipakai, alert di X=0)")]
     public float alertXOffset = 2f;
 
     [Tooltip("Durasi charge sebelum laser tembak")]
@@ -214,7 +211,7 @@ public class BossPattern_ShootLaser : MonoBehaviour
 
 
     // ─────────────────────────────────────────────────────────
-    // PUBLIC API — dipanggil dari BossController
+    // PUBLIC API
     // ─────────────────────────────────────────────────────────
 
     public IEnumerator ExecutePattern(Action onComplete = null)
@@ -324,7 +321,6 @@ public class BossPattern_ShootLaser : MonoBehaviour
 
     // ─────────────────────────────────────────────────────────
     // PHASE 3 : CHASE POSISI Y PLAYER
-    // FIX: alert posisi di X=0 (tengah layar) untuk coverage penuh
     // ─────────────────────────────────────────────────────────
 
     IEnumerator Phase_ChaseY()
@@ -333,7 +329,6 @@ public class BossPattern_ShootLaser : MonoBehaviour
 
         if (_extraHandObj == null) yield break;
 
-        // FIX: spawn alert di tengah layar (X=0), bukan di posisi tangan
         _alertObj = SpawnLaserAlert(_extraHandObj.transform.position.y);
 
         float elapsed = 0f;
@@ -350,7 +345,6 @@ public class BossPattern_ShootLaser : MonoBehaviour
             newPos.y = newY;
             _extraHandObj.transform.position = newPos;
 
-            // FIX: alert juga ikut Y, tapi tetap di X=0
             if (_alertObj != null)
                 _alertObj.transform.position = new Vector3(0f, newY, 0f);
 
@@ -362,7 +356,6 @@ public class BossPattern_ShootLaser : MonoBehaviour
             _lockedY = _extraHandObj.transform.position.y;
             Debug.Log($"[ShootLaser] Posisi Y dikunci: {_lockedY:F2}");
 
-            // Pastikan alert juga terkunci di posisi final
             if (_alertObj != null)
                 _alertObj.transform.position = new Vector3(0f, _lockedY, 0f);
         }
@@ -374,8 +367,7 @@ public class BossPattern_ShootLaser : MonoBehaviour
 
 
     // ─────────────────────────────────────────────────────────
-    // PHASE 4 : TELEGRAPH — jeda sebelum laser
-    // FIX: alert FADE OUT di akhir phase ini, sebelum laser tembak
+    // PHASE 4 : TELEGRAPH
     // ─────────────────────────────────────────────────────────
 
     IEnumerator Phase_Telegraph()
@@ -386,11 +378,9 @@ public class BossPattern_ShootLaser : MonoBehaviour
 
         PlaySound(chargeSound);
 
-        // Tunggu sebagian besar waktu telegraph sebelum fade alert
         float waitBeforeFade = Mathf.Max(0f, telegraphDuration - alertFadeOutDuration);
         yield return new WaitForSeconds(waitBeforeFade);
 
-        // FIX: fade out alert di sini — SEBELUM laser tembak
         if (_alertObj != null)
         {
             SpriteRenderer alertSR = _alertObj.GetComponent<SpriteRenderer>();
@@ -417,8 +407,7 @@ public class BossPattern_ShootLaser : MonoBehaviour
 
     // ─────────────────────────────────────────────────────────
     // PHASE 5 : TEMBAK LASER
-    // FIX: VFX — yield return null + Reinit() sebelum Play()
-    // FIX: alert tidak lagi ditangani di sini (sudah di Phase_Telegraph)
+    // FIX Issue 1: VFX di-spawn dengan offset di depan ExtraHand
     // ─────────────────────────────────────────────────────────
 
     IEnumerator Phase_FireLaser()
@@ -429,18 +418,23 @@ public class BossPattern_ShootLaser : MonoBehaviour
 
         PlaySound(fireSound);
 
-        Vector3 laserFirePos = _extraHandObj.transform.position;
-        laserFirePos.y = _lockedY;
+        // FIX: hitung posisi VFX = posisi ExtraHand + offset
+        // laserVFXOffset.x positif = ke kanan (arah laser tembak)
+        Vector3 handPos    = _extraHandObj.transform.position;
+        Vector3 vfxSpawnPos = new Vector3(
+            handPos.x + laserVFXOffset.x,
+            _lockedY  + laserVFXOffset.y,
+            0f
+        );
 
-        // FIX: aktifkan VFX dengan urutan yang benar
         if (laserVFX != null)
         {
-            laserVFX.transform.position = laserFirePos;
+            laserVFX.transform.position = vfxSpawnPos;
             laserVFX.gameObject.SetActive(true);
-            yield return null;       // tunggu 1 frame agar VFX Graph terinisialisasi
-            laserVFX.Reinit();       // reset state VFX agar bersih
+            yield return null;
+            laserVFX.Reinit();
             laserVFX.Play();
-            Debug.Log("[ShootLaser] VFX laser diputar");
+            Debug.Log($"[ShootLaser] VFX laser diputar di posisi {vfxSpawnPos}");
         }
         else
         {
@@ -455,7 +449,6 @@ public class BossPattern_ShootLaser : MonoBehaviour
             _audioSource.Play();
         }
 
-        // Laser aktif — apply damage ke player selama durasi
         float elapsed = 0f;
         while (elapsed < laserActiveDuration && _extraHandObj != null)
         {
@@ -464,7 +457,6 @@ public class BossPattern_ShootLaser : MonoBehaviour
             yield return null;
         }
 
-        // Matikan VFX dan hum
         if (laserVFX != null)
         {
             laserVFX.Stop();
@@ -564,22 +556,19 @@ public class BossPattern_ShootLaser : MonoBehaviour
 
 
     // ─────────────────────────────────────────────────────────
-    // SPAWN LASER ALERT
-    // FIX: posisi di X=0 (tengah layar) bukan di posisi hand
+    // HELPERS
     // ─────────────────────────────────────────────────────────
 
     GameObject SpawnLaserAlert(float centerY)
     {
         if (alertPrefab != null)
         {
-            // FIX: spawn di tengah layar (X=0) agar coverage penuh horizontal
             Vector3 spawnPos = new Vector3(0f, centerY, 0f);
             GameObject obj   = Instantiate(alertPrefab, spawnPos, Quaternion.identity);
             obj.transform.localScale = Vector3.one * alertSize;
             return obj;
         }
 
-        // Fallback: buat garis horizontal otomatis
         GameObject alertObj           = new GameObject("LaserAlert_Auto");
         alertObj.transform.position   = new Vector3(0f, centerY, 0f);
         alertObj.transform.localScale = new Vector3(laserWidth, 0.15f, 1f);
@@ -591,11 +580,6 @@ public class BossPattern_ShootLaser : MonoBehaviour
 
         return alertObj;
     }
-
-
-    // ─────────────────────────────────────────────────────────
-    // HELPERS
-    // ─────────────────────────────────────────────────────────
 
     IEnumerator FadeOutAlert(SpriteRenderer sr, float duration)
     {
@@ -678,6 +662,16 @@ public class BossPattern_ShootLaser : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
+        // Tampilkan preview posisi VFX di editor
+        Gizmos.color = new Color(1f, 0.8f, 0f, 0.8f);
+        Vector3 vfxPreview = new Vector3(
+            extraHandMoveTargetX + laserVFXOffset.x,
+            0f + laserVFXOffset.y,
+            0f
+        );
+        Gizmos.DrawWireSphere(vfxPreview, 0.3f);
+        Gizmos.DrawIcon(vfxPreview, "LightIcon", true);
+
         Gizmos.color = new Color(0.2f, 0.9f, 1f, 0.5f);
         Gizmos.DrawLine(
             new Vector3(-11f, Application.isPlaying ? _lockedY : 0f, 0f),

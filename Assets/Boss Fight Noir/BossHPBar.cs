@@ -1,6 +1,29 @@
-// Assets/Boss Fight Noir/BossHPBar.cs
-// Versi Canvas UI — semua elemen di-assign dari Inspector
-// Script ini HANYA mengontrol logika, tidak membuat UI
+// =============================================================
+// SpaceJam - BossHPBar.cs  (FIX v2)
+// -------------------------------------------------------------
+// FIX v2 (Issue 3):
+//   - Ganti Image barFill menjadi Slider barSlider
+//   - HP bar berkurang secara smooth dari kanan ke kiri
+//     menggunakan SmoothDamp saat boss terkena damage
+//   - Tambah field smoothSpeed untuk mengatur kecepatan animasi
+//   - Text HP otomatis update mengikuti nilai slider yang sedang
+//     bergerak (bukan nilai target), sehingga terlihat smooth
+//   - Field lama seperti hpText, nameTextBar, nameIntroGroup,
+//     intro timing, warna phase, dll TIDAK DIUBAH
+//   - Hanya barFill (Image) diganti barSlider (Slider)
+//
+// SETUP UNITY (perubahan dari versi lama):
+//   - Hapus assign barFill (Image) di Inspector
+//   - Buat Slider di Canvas:
+//       GameObject > UI > Slider
+//       - Set Direction: Left To Right
+//       - Min Value: 0, Max Value: 1
+//       - Interactable: OFF (centang hilangkan)
+//       - Hapus Handle Slide Area jika tidak ingin handle terlihat
+//   - Assign Slider tersebut ke field barSlider di Inspector
+//   - barCanvasGroup, hpText, nameTextBar, nameIntroGroup, nameBigText
+//     tetap di-assign seperti biasa
+// =============================================================
 
 using System.Collections;
 using UnityEngine;
@@ -21,10 +44,12 @@ public class BossHPBar : MonoBehaviour
     [Tooltip("Canvas Group pada BarContainer (untuk fade in bar)")]
     public CanvasGroup barCanvasGroup;
 
-    [Tooltip("Image BarFill — yang fill amount-nya berubah")]
-    public Image barFill;
+    // FIX Issue 3: ganti Image barFill menjadi Slider barSlider
+    [Tooltip("Slider untuk HP bar. Direction = Left To Right.\n" +
+             "Min = 0, Max = 1. Interactable = OFF.")]
+    public Slider barSlider;
 
-    [Tooltip("TextMeshPro angka HP dalam bar")]
+    [Tooltip("TextMeshPro angka HP dalam bar (contoh: '850 / 1000')")]
     public TextMeshProUGUI hpText;
 
     [Tooltip("TextMeshPro nama boss kecil di atas bar")]
@@ -41,7 +66,10 @@ public class BossHPBar : MonoBehaviour
     // ─────────────────────────────────────────────────────────
 
     [Header("=== WARNA BAR ===")]
+    [Tooltip("Warna bar saat HP penuh (Phase 1)")]
     public Color phase1Color = new Color(0.2f, 0.75f, 1f, 1f);
+
+    [Tooltip("Warna bar saat HP di bawah threshold (Phase 2)")]
     public Color phase2Color = new Color(1f, 0.25f, 0.1f, 1f);
 
     [Range(0.1f, 0.9f)]
@@ -49,11 +77,20 @@ public class BossHPBar : MonoBehaviour
     public float phase2ColorThreshold = 0.5f;
 
     // ─────────────────────────────────────────────────────────
+    // SMOOTH ANIMATION (baru — Issue 3)
+    // ─────────────────────────────────────────────────────────
+
+    [Header("=== SMOOTH HP BAR ===")]
+    [Tooltip("Kecepatan animasi slider saat HP berkurang.\n" +
+             "Lebih besar = lebih cepat. Default 3.")]
+    public float smoothSpeed = 3f;
+
+    // ─────────────────────────────────────────────────────────
     // INTRO TIMING
     // ─────────────────────────────────────────────────────────
 
     [Header("=== INTRO TIMING ===")]
-    [Tooltip("Jeda setelah Start sebelum intro mulai (sesuaikan animasi boss masuk)")]
+    [Tooltip("Jeda setelah Start sebelum intro mulai")]
     public float introDelay = 1.5f;
 
     [Tooltip("Durasi fade in health bar")]
@@ -75,7 +112,13 @@ public class BossHPBar : MonoBehaviour
     // PRIVATE STATE
     // ─────────────────────────────────────────────────────────
 
-    private bool _isSubscribed = false;
+    private bool  _isSubscribed  = false;
+
+    // Nilai target HP (0..1) — slider bergerak smooth menuju ini
+    private float _targetNormHP  = 1f;
+
+    // Kecepatan smooth damp
+    private float _smoothVelocity = 0f;
 
     // ─────────────────────────────────────────────────────────
     // UNITY LIFECYCLE
@@ -96,6 +139,10 @@ public class BossHPBar : MonoBehaviour
             }
         }
 
+        // Validasi Slider
+        if (barSlider == null)
+            Debug.LogWarning("[BossHPBar] barSlider belum di-assign! HP bar tidak akan bergerak.");
+
         // Sembunyikan semua UI di awal
         SetAlphaImmediate(barCanvasGroup, 0f);
         SetAlphaImmediate(nameIntroGroup, 0f);
@@ -103,14 +150,43 @@ public class BossHPBar : MonoBehaviour
         if (nameTextBar != null)
             nameTextBar.alpha = 0f;
 
-        // Tampilkan HP penuh di awal
-        UpdateBar(1f);
+        // Set slider ke penuh di awal
+        if (barSlider != null)
+        {
+            barSlider.minValue = 0f;
+            barSlider.maxValue = 1f;
+            barSlider.value    = 1f;
+        }
+
+        _targetNormHP = 1f;
+        UpdateHPText(1f);
 
         // Subscribe ke events BossHP
         Subscribe();
 
         // Mulai intro
         StartCoroutine(IntroSequence());
+    }
+
+    void Update()
+    {
+        // Animasikan slider bergerak smooth menuju _targetNormHP
+        if (barSlider == null) return;
+
+        if (Mathf.Approximately(barSlider.value, _targetNormHP)) return;
+
+        barSlider.value = Mathf.SmoothDamp(
+            barSlider.value,
+            _targetNormHP,
+            ref _smoothVelocity,
+            1f / smoothSpeed
+        );
+
+        // Update teks mengikuti posisi slider yang sedang bergerak
+        UpdateHPText(barSlider.value);
+
+        // Update warna berdasarkan nilai slider saat ini
+        UpdateBarColor(barSlider.value);
     }
 
     void OnDestroy()
@@ -142,10 +218,6 @@ public class BossHPBar : MonoBehaviour
     // PUBLIC API
     // ─────────────────────────────────────────────────────────
 
-    /// <summary>
-    /// Panggil dari script lain untuk trigger intro secara manual.
-    /// Contoh: GetComponent&lt;BossHPBar&gt;().TriggerIntro();
-    /// </summary>
     public void TriggerIntro()
     {
         StopAllCoroutines();
@@ -158,22 +230,16 @@ public class BossHPBar : MonoBehaviour
 
     private IEnumerator IntroSequence()
     {
-        // Step 1 — Tunggu sebelum mulai
         yield return new WaitForSeconds(introDelay);
 
-        // Step 2 — Fade in health bar di bawah
         yield return StartCoroutine(FadeCanvasGroup(barCanvasGroup, 0f, 1f, barFadeInDuration));
 
-        // Step 3 — Nama besar muncul di tengah layar
         yield return StartCoroutine(FadeCanvasGroup(nameIntroGroup, 0f, 1f, nameFadeInDuration));
 
-        // Step 4 — Tahan
         yield return new WaitForSeconds(nameCenterDuration);
 
-        // Step 5 — Nama besar fade out
         yield return StartCoroutine(FadeCanvasGroup(nameIntroGroup, 1f, 0f, nameFadeOutDuration));
 
-        // Step 6 — Nama kecil muncul di atas bar
         yield return StartCoroutine(FadeText(nameTextBar, 0f, 1f, nameBarFadeInDuration));
 
         Debug.Log("[BossHPBar] Intro selesai.");
@@ -185,38 +251,49 @@ public class BossHPBar : MonoBehaviour
 
     private void HandleHPChanged(float normalizedHP)
     {
-        UpdateBar(normalizedHP);
+        // Simpan nilai target — slider bergerak smooth di Update()
+        _targetNormHP = Mathf.Clamp01(normalizedHP);
     }
 
     private void HandleBossDeath()
     {
+        _targetNormHP = 0f;
         StartCoroutine(HideOnDeath());
     }
 
     // ─────────────────────────────────────────────────────────
-    // UPDATE BAR
+    // UPDATE TEKS HP
+    // FIX Issue 3: teks menampilkan angka HP aktual (bukan normalized)
     // ─────────────────────────────────────────────────────────
 
-    private void UpdateBar(float normalizedHP)
+    private void UpdateHPText(float normalizedHP)
     {
-        if (bossHP == null) return;
+        if (hpText == null || bossHP == null) return;
 
-        float clamped = Mathf.Clamp01(normalizedHP);
+        int current = Mathf.CeilToInt(normalizedHP * bossHP.maxHP);
+        int max     = Mathf.RoundToInt(bossHP.maxHP);
 
-        if (barFill != null)
-        {
-            barFill.fillAmount = clamped;
-            barFill.color = clamped > phase2ColorThreshold
-                ? phase1Color
-                : phase2Color;
-        }
+        hpText.SetText($"{current} / {max}");
+    }
 
-        if (hpText != null)
-        {
-            int current = Mathf.CeilToInt(bossHP.CurrentHP);
-            int max     = Mathf.RoundToInt(bossHP.maxHP);
-            hpText.SetText($"{current} / {max}");
-        }
+    // ─────────────────────────────────────────────────────────
+    // UPDATE WARNA BAR (berdasarkan nilai slider saat ini)
+    // ─────────────────────────────────────────────────────────
+
+    private void UpdateBarColor(float normalizedHP)
+    {
+        if (barSlider == null) return;
+
+        // Cari Image komponen fill area di dalam Slider
+        Image fillImage = barSlider.fillRect != null
+            ? barSlider.fillRect.GetComponent<Image>()
+            : null;
+
+        if (fillImage == null) return;
+
+        fillImage.color = normalizedHP > phase2ColorThreshold
+            ? phase1Color
+            : phase2Color;
     }
 
     // ─────────────────────────────────────────────────────────
