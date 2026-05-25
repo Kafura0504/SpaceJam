@@ -117,8 +117,13 @@ public class BossPattern_SwingArm : MonoBehaviour
              "Nilai 0.4 = VFX punya 0.4 detik tampil. Default 0.4f.")]
     public float pauseAfterImpact = 0.4f;
 
+    
+    // ────────────────[Header("=== CAMERA SHAKE (Impact) ===")]
+    [Tooltip("Durasi camera shake saat tangan menghantam (detik)")]
+    public float impactShakeDuration  = 0.3f;
 
-    // ─────────────────────────────────────────────────────────
+    [Tooltip("Intensitas camera shake saat tangan menghantam")]
+    public float impactShakeMagnitude = 0.15f;
     // SOUND
     // ─────────────────────────────────────────────────────────
 
@@ -255,6 +260,8 @@ public class BossPattern_SwingArm : MonoBehaviour
 
         // Spawn VFX terlebih dahulu agar langsung terlihat
         SpawnHitVFX(chosenHand.position);
+
+        CameraShake.Instance?.Shake(impactShakeDuration, impactShakeMagnitude);
 
         // Cek damage
         bool didHit = CheckAndDealDamage(chosenHand.position, swingDamage, damageRadius);

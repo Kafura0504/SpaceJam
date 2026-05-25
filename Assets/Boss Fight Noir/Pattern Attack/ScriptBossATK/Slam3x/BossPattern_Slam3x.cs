@@ -128,6 +128,13 @@ public class BossPattern_Slam3x : MonoBehaviour
     [Tooltip("Berapa detik sebelum VFX di-Destroy (default 2 detik)")]
     public float slamImpactVFXLifetime = 2f;
 
+    [Header("=== CAMERA SHAKE (Impact) ===")]
+    [Tooltip("Durasi camera shake saat tangan menghantam (detik)")]
+    public float impactShakeDuration  = 0.35f;
+
+    [Tooltip("Intensitas camera shake saat tangan menghantam")]
+    public float impactShakeMagnitude = 0.18f;
+
     // ─────────────────────────────────────────────────────────
     // AUDIO
     // ─────────────────────────────────────────────────────────
@@ -329,6 +336,8 @@ public class BossPattern_Slam3x : MonoBehaviour
 
         PlaySound(slamImpactSound);
         SpawnImpactVFX(rightHand.position);   // <-- Instantiate prefab, sama dengan SwingArm
+
+        CameraShake.Instance?.Shake(impactShakeDuration, impactShakeMagnitude);
 
         // Cek damage langsung saat tangan menghantam
         CheckAndDealDamage(rightHand.position);
