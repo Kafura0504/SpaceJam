@@ -1920,16 +1920,22 @@ MonoBehaviour:
   alertSortingOrder: 10
   alertColor: {r: 1, g: 0.2, b: 0.1, a: 0.65}
   hitVFXPrefab: {fileID: 3082054467742464902, guid: 1dd7605d87ebf264c91f59fb55c03998, type: 3}
-  hitVFXLifetime: 2
-  pauseAfterImpact: 0.4
+  hitVFXLifetime: 3
+  movingDamageStartDelay: 0.5
+  movingVFXSpeed: -8
+  movingVFXDamage: 20
+  movingVFXDamageInterval: 0.4
+  movingVFXDestroyAtX: -12
   impactShakeDuration: 0.3
   impactShakeMagnitude: 0.15
   chargeSound: {fileID: 0}
   swingSound: {fileID: 0}
   impactSound: {fileID: 0}
+  movingVFXSound: {fileID: 0}
   telegraphDuration: 1.2
   swingSpeed: 18
   retractSpeed: 6
+  pauseAfterImpact: 0.4
   endDelay: 0.5
 --- !u!1 &4119854015645127322
 GameObject:
