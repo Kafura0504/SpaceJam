@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
@@ -8,8 +9,8 @@ public class MenuFunction : MonoBehaviour
     public GameObject menubtn;
     public GameObject credit;
     public GameObject highscore;
-    public VideoClip FirstLoad;
-    public VideoClip secondLoad;
+    public string FirstVideoName;
+    public string secondLoadVideoName;
     public VideoPlayer Vidplayer;
     public GameObject ImagePlayer;
     
@@ -44,18 +45,23 @@ public class MenuFunction : MonoBehaviour
 
         if (GameManager.Instance.isfirstLoad)
         {
-            Vidplayer.clip = FirstLoad;
+            string videopath = System.IO.Path.Combine(Application.streamingAssetsPath,FirstVideoName);
+            Vidplayer.url = videopath;
             GameManager.Instance.isfirstLoad = false;
         }
         else
         {
-            Vidplayer.clip = secondLoad;
+            string videopath = System.IO.Path.Combine(Application.streamingAssetsPath,secondLoadVideoName);
+            Vidplayer.url = videopath;
         }
 
+        double videoLength = Vidplayer.length;
         ImagePlayer.SetActive(true);
         Vidplayer.Play();
 
-        yield return new WaitForSeconds((float)Vidplayer.clip.length);
+        
+
+        yield return new WaitForSeconds((float)videoLength);
 
         LoadAsync.allowSceneActivation = true;
         
