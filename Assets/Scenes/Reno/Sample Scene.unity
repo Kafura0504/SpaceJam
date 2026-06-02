@@ -2838,7 +2838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7bdc5a7c0d58e446b917e09d17cab64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossHP
-  maxHP: 1000
+  maxHP: 500
   _currentHP: 0
 --- !u!114 &3996374213491073978
 MonoBehaviour:
@@ -3103,9 +3103,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossPattern_HorizSweep
   playerTransform: {fileID: 1561857918}
+  rightHandAnimator: {fileID: 7943598995660000750}
   sweepHeight: 3
   sweepWidth: 18
   sweepDamage: 25
+  vfxClawPrefab: {fileID: 955885517297567212, guid: cf371bb4df7940740a2d59be6a9db8c6, type: 3}
+  vfxLifetime: 3
+  vfxOffset: {x: 0, y: 0}
+  animChargeTrigger: Charge
+  animSwingTrigger: Swing
+  animIdleTrigger: Idle
   chaseColor: {r: 1, g: 0.85, b: 0, a: 0.2}
   lockColor: {r: 1, g: 0.4, b: 0, a: 0.35}
   activeColor: {r: 1, g: 0.2, b: 0, a: 0.5}
@@ -3116,36 +3123,15 @@ MonoBehaviour:
   activeDuration: 2
   fadeDuration: 0.4
   endDelay: 0.5
+  chargeSound: {fileID: 0}
+  sweepSound: {fileID: 0}
+  sweepEndSound: {fileID: 0}
   OnSweepActivate:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4477941238478122201, guid: cf371bb4df7940740a2d59be6a9db8c6, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.VFX.VisualEffect, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnSweepDeactivate:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4477941238478122201, guid: cf371bb4df7940740a2d59be6a9db8c6, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.VFX.VisualEffect, UnityEngine
-        m_MethodName: Stop
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!4 &5408962098039139149
 Transform:
   m_ObjectHideFlags: 0
