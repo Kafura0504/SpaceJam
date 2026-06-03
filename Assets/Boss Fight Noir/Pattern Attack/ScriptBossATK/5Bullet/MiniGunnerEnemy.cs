@@ -1,13 +1,18 @@
+// Assets/Boss Fight Noir/Pattern Attack/ScriptBossATK/5Bullet/MiniGunnerEnemy.cs
 // =============================================================
-// SpaceJam - MiniGunnerEnemy.cs  (PORTAL VERSION)
+// SpaceJam - MiniGunnerEnemy  (FIX v2)
 // -------------------------------------------------------------
-// ALUR ROTASI:
-//   PortalOpen  → zoom in + rotasi CEPAT
-//   Selama hidup → idle spin TERUS MENERUS (tidak pernah berhenti)
-//   ShootSweep  → portal tetap spin, langsung tembak tanpa aiming
-//   PortalClose → zoom out + rotasi CEPAT berlawanan arah
+// PERUBAHAN DARI VERSI SEBELUMNYA:
+//   - Tambah field _onFinishedCallback (Action) dan SetFinishedCallback()
+//   - Callback dipanggil di akhir RunSequence(), satu kali saja
+//     (guard _callbackInvoked agar tidak double-call)
+//   - Semua field dan logic lama TIDAK DIUBAH
+//   - Field yang ada di prefab tapi tidak di script sebelumnya
+//     (openRotateCounterClockwise, rotateRatio, portalVFX)
+//     TIDAK ditambahkan karena tidak ada di prefab yang digunakan
 // =============================================================
 
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -21,17 +26,14 @@ public class MiniGunnerEnemy : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform  firePoint;
 
-
     // ─────────────────────────────────────────────────────────
     // POSITION
-    // Dipertahankan agar MiniGunnerSpawner tidak error
     // ─────────────────────────────────────────────────────────
 
     [Header("Position")]
     public Vector2 targetInsidePosition;
     public Vector2 exitPosition;
     public float   moveSpeed = 4f;
-
 
     // ─────────────────────────────────────────────────────────
     // PORTAL ANIMATION
@@ -46,7 +48,6 @@ public class MiniGunnerEnemy : MonoBehaviour
 
     [Tooltip("Durasi portal zoom out (detik)")]
     public float closeDuration = 0.4f;
-
 
     // ─────────────────────────────────────────────────────────
     // ROTASI PORTAL
@@ -65,22 +66,20 @@ public class MiniGunnerEnemy : MonoBehaviour
     [Tooltip("true = berlawanan jarum jam | false = searah jarum jam")]
     public bool rotateCounterClockwise = true;
 
-
     // ─────────────────────────────────────────────────────────
     // SHOOTING
     // ─────────────────────────────────────────────────────────
 
     [Header("Shooting")]
-    public int   bulletCount       = 5;
+    public int   bulletCount        = 5;
     public float timeBetweenBullets = 0.25f;
-    public float waitBeforeShoot   = 0.8f;
-    public bool  shootRight        = true;
+    public float waitBeforeShoot    = 0.8f;
+    public bool  shootRight         = true;
 
     public float sweepAngleStart     = -30f;
     public float sweepAngleEnd       = -80f;
     public float sweepAngleLeftStart = -150f;
     public float sweepAngleLeftEnd   = -100f;
-
 
     // ─────────────────────────────────────────────────────────
     // EXIT
@@ -89,14 +88,17 @@ public class MiniGunnerEnemy : MonoBehaviour
     [Header("Exit")]
     public float waitAfterShoot = 0.3f;
 
-
     // ─────────────────────────────────────────────────────────
     // PRIVATE
     // ─────────────────────────────────────────────────────────
 
-    private float     _bulletDamage     = 5f;
-    private Coroutine _idleRotCoroutine = null;
+    private float     _bulletDamage      = 5f;
+    private Coroutine _idleRotCoroutine  = null;
 
+    // FIX v2: callback untuk memberi tahu MiniGunnerSpawner bahwa
+    // sequence sudah selesai (baik normal maupun karena error)
+    private Action _onFinishedCallback = null;
+    private bool   _callbackInvoked    = false;
 
     // ─────────────────────────────────────────────────────────
     // PUBLIC API
@@ -107,6 +109,15 @@ public class MiniGunnerEnemy : MonoBehaviour
         _bulletDamage = damage;
     }
 
+    /// <summary>
+    /// Dipanggil oleh MiniGunnerSpawner setelah Instantiate.
+    /// Callback akan dipanggil satu kali saat sequence selesai.
+    /// </summary>
+    public void SetFinishedCallback(Action callback)
+    {
+        _onFinishedCallback = callback;
+        _callbackInvoked    = false;
+    }
 
     // ─────────────────────────────────────────────────────────
     // UNITY LIFECYCLE
@@ -123,12 +134,29 @@ public class MiniGunnerEnemy : MonoBehaviour
         StartCoroutine(RunSequence());
     }
 
+    void OnDestroy()
+    {
+        // Pastikan callback terpanggil walau object di-destroy paksa
+        // (misalnya oleh failsafe timer di spawner)
+        InvokeCallback();
+    }
+
+    // ─────────────────────────────────────────────────────────
+    // CALLBACK HELPER — guard agar tidak double-call
+    // ─────────────────────────────────────────────────────────
+
+    private void InvokeCallback()
+    {
+        if (_callbackInvoked) return;
+        _callbackInvoked = true;
+        _onFinishedCallback?.Invoke();
+    }
 
     // ─────────────────────────────────────────────────────────
     // MAIN SEQUENCE
     // ─────────────────────────────────────────────────────────
 
-    IEnumerator RunSequence()
+    private IEnumerator RunSequence()
     {
         // 1. Portal membuka — zoom in + rotasi cepat
         yield return StartCoroutine(PortalOpen());
@@ -151,16 +179,17 @@ public class MiniGunnerEnemy : MonoBehaviour
         // 7. Portal menutup — zoom out + rotasi cepat berlawanan
         yield return StartCoroutine(PortalClose());
 
+        // 8. Beritahu spawner bahwa sequence selesai SEBELUM Destroy
+        InvokeCallback();
+
         Destroy(gameObject);
     }
 
-
     // ─────────────────────────────────────────────────────────
     // IDLE ROTATION
-    // Berjalan terus menerus selama dipanggil StartIdleRotation
     // ─────────────────────────────────────────────────────────
 
-    void StartIdleRotation()
+    private void StartIdleRotation()
     {
         if (!enableRotation) return;
 
@@ -168,7 +197,7 @@ public class MiniGunnerEnemy : MonoBehaviour
         _idleRotCoroutine = StartCoroutine(IdleRotateLoop());
     }
 
-    void StopIdleRotation()
+    private void StopIdleRotation()
     {
         if (_idleRotCoroutine == null) return;
 
@@ -176,11 +205,10 @@ public class MiniGunnerEnemy : MonoBehaviour
         _idleRotCoroutine = null;
     }
 
-    IEnumerator IdleRotateLoop()
+    private IEnumerator IdleRotateLoop()
     {
         float rotDir = rotateCounterClockwise ? 1f : -1f;
 
-        // Loop tanpa henti — hanya berhenti saat StopIdleRotation dipanggil
         while (true)
         {
             transform.Rotate(0f, 0f, rotDir * idleRotationSpeed * Time.deltaTime);
@@ -188,12 +216,11 @@ public class MiniGunnerEnemy : MonoBehaviour
         }
     }
 
-
     // ─────────────────────────────────────────────────────────
-    // PORTAL OPEN — scale 0 → maxScale + rotasi cepat
+    // PORTAL OPEN
     // ─────────────────────────────────────────────────────────
 
-    IEnumerator PortalOpen()
+    private IEnumerator PortalOpen()
     {
         float   elapsed     = 0f;
         Vector3 targetScale = Vector3.one * maxScale;
@@ -215,12 +242,11 @@ public class MiniGunnerEnemy : MonoBehaviour
         transform.localScale = targetScale;
     }
 
-
     // ─────────────────────────────────────────────────────────
-    // PORTAL CLOSE — scale maxScale → 0 + rotasi cepat berlawanan
+    // PORTAL CLOSE
     // ─────────────────────────────────────────────────────────
 
-    IEnumerator PortalClose()
+    private IEnumerator PortalClose()
     {
         float   elapsed    = 0f;
         Vector3 startScale = transform.localScale;
@@ -244,13 +270,11 @@ public class MiniGunnerEnemy : MonoBehaviour
         transform.localScale = Vector3.zero;
     }
 
-
     // ─────────────────────────────────────────────────────────
     // SHOOT SWEEP
-    // Portal terus spin, langsung tembak tanpa aiming
     // ─────────────────────────────────────────────────────────
 
-    IEnumerator ShootSweep()
+    private IEnumerator ShootSweep()
     {
         float startAngle = shootRight ? sweepAngleStart     : sweepAngleLeftStart;
         float endAngle   = shootRight ? sweepAngleEnd       : sweepAngleLeftEnd;
@@ -269,12 +293,11 @@ public class MiniGunnerEnemy : MonoBehaviour
         }
     }
 
-
     // ─────────────────────────────────────────────────────────
-    // BULLET SPAWN — logic tidak diubah
+    // BULLET SPAWN
     // ─────────────────────────────────────────────────────────
 
-    void SpawnBullet(float angleDeg)
+    private void SpawnBullet(float angleDeg)
     {
         if (bulletPrefab == null)
         {
@@ -302,7 +325,6 @@ public class MiniGunnerEnemy : MonoBehaviour
             bullet.SetDirection(direction);
         }
     }
-
 
     // ─────────────────────────────────────────────────────────
     // GIZMOS

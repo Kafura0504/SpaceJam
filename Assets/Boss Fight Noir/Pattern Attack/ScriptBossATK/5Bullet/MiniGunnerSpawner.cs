@@ -1,19 +1,26 @@
 // Assets/Boss Fight Noir/Pattern Attack/ScriptBossATK/5Bullet/MiniGunnerSpawner.cs
 // =============================================================
-// FIX: TrackEnemy sebelumnya menggunakan StartCoroutine pada dirinya sendiri.
-//      Jika object tidak aktif, coroutine gagal start dan _activeEnemyCount
-//      tidak pernah berkurang → RunMiniGunnerSequence stuck selamanya.
+// SpaceJam - MiniGunnerSpawner  (FIX v2)
+// -------------------------------------------------------------
+// ROOT CAUSE FIX:
+//   Versi lama mengandalkan Update() untuk mendeteksi null pada
+//   List<GameObject>. Masalahnya: jika MiniGunnerEnemy mengalami
+//   error di tengah sequence, Destroy() tidak pernah dipanggil,
+//   sehingga counter tidak pernah turun ke 0 → WaitUntil stuck
+//   → BossPhaseController timeout 90s.
 //
-// SOLUSI: Ganti coroutine tracking dengan Update-based tracking.
-//         Update() akan scan daftar enemy yang di-track, jika sudah
-//         null (destroyed) maka kurangi _activeEnemyCount.
-//
-// Semua field dan signature public dipertahankan agar tidak merusak
-// referensi dari BossPhaseController atau script lain.
+// SOLUSI:
+//   - MiniGunnerEnemy memanggil callback Action onFinished saat
+//     sequence-nya selesai (baik normal maupun via fallback timer).
+//   - MiniGunnerSpawner menerima callback tersebut dan langsung
+//     mengurangi counter — tidak lagi bergantung pada null check.
+//   - Tambah failsafe maxWaitPerEnemy: jika enemy tidak selesai
+//     dalam batas waktu, spawner tidak stuck (counter tetap turun).
+//   - Semua public field dan signature dipertahankan.
 // =============================================================
 
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MiniGunnerSpawner : MonoBehaviour
@@ -57,58 +64,60 @@ public class MiniGunnerSpawner : MonoBehaviour
     public float bulletDamage = 5f;
 
     // ─────────────────────────────────────────────────────────
-    // TRACKING — FIX: pakai List + Update, bukan coroutine
+    // FAILSAFE
+    // ─────────────────────────────────────────────────────────
+
+    [Header("Failsafe")]
+    [Tooltip("Waktu maksimum (detik) menunggu satu enemy selesai.\n" +
+             "Jika melewati batas ini, counter tetap diturunkan agar tidak stuck.")]
+    public float maxWaitPerEnemy = 15f;
+
+    // ─────────────────────────────────────────────────────────
+    // PRIVATE STATE
     // ─────────────────────────────────────────────────────────
 
     private int _activeEnemyCount = 0;
-
-    // FIX: List untuk track enemy yang di-spawn
-    // Update() yang akan cek null dan kurangi counter
-    private List<GameObject> _trackedEnemies = new List<GameObject>();
-
-    // ─────────────────────────────────────────────────────────
-    // FIX: Update-based tracking — tidak butuh coroutine
-    // ─────────────────────────────────────────────────────────
-
-    void Update()
-    {
-        // Scan dari belakang agar aman saat remove
-        for (int i = _trackedEnemies.Count - 1; i >= 0; i--)
-        {
-            // Jika enemy sudah di-Destroy (null) → kurangi counter
-            if (_trackedEnemies[i] == null)
-            {
-                _trackedEnemies.RemoveAt(i);
-                _activeEnemyCount--;
-
-                // Pastikan tidak negatif
-                if (_activeEnemyCount < 0)
-                    _activeEnemyCount = 0;
-            }
-        }
-    }
 
     // ─────────────────────────────────────────────────────────
     // PUBLIC API — dipanggil dari BossPhaseController
     // Signature sama persis agar tidak merusak referensi
     // ─────────────────────────────────────────────────────────
 
-    public IEnumerator RunMiniGunnerSequence(System.Action onDone = null)
+    public IEnumerator RunMiniGunnerSequence(Action onDone = null)
     {
         // Reset state setiap kali sequence dijalankan
         _activeEnemyCount = 0;
-        _trackedEnemies.Clear();
 
-        // Spawn enemy kiri dan kanan bersamaan
+        Debug.Log("[MiniGunnerSpawner] RunMiniGunnerSequence dimulai.");
+
+        // Spawn enemy kiri dan kanan — keduanya mendaftarkan callback
         SpawnLeft();
         SpawnRight();
 
-        Debug.Log("[MiniGunnerSpawner] Menunggu kedua enemy selesai...");
+        Debug.Log($"[MiniGunnerSpawner] Menunggu {_activeEnemyCount} enemy selesai...");
 
-        // Tunggu sampai kedua enemy destroyed (counter kembali ke 0)
-        yield return new WaitUntil(() => _activeEnemyCount <= 0);
+        // Tunggu sampai semua enemy selesai via callback
+        // Tambah timeout failsafe: 2 enemy × maxWaitPerEnemy
+        float timeout = maxWaitPerEnemy * 2f;
+        float elapsed = 0f;
 
-        Debug.Log("[MiniGunnerSpawner] Sequence selesai.");
+        while (_activeEnemyCount > 0 && elapsed < timeout)
+        {
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        if (elapsed >= timeout)
+        {
+            Debug.LogWarning($"[MiniGunnerSpawner] Timeout {timeout}s — paksa selesai. " +
+                             $"Sisa enemy: {_activeEnemyCount}");
+            _activeEnemyCount = 0;
+        }
+        else
+        {
+            Debug.Log("[MiniGunnerSpawner] Semua enemy selesai.");
+        }
+
         onDone?.Invoke();
     }
 
@@ -116,7 +125,7 @@ public class MiniGunnerSpawner : MonoBehaviour
     // SPAWN HELPERS
     // ─────────────────────────────────────────────────────────
 
-    void SpawnLeft()
+    private void SpawnLeft()
     {
         GameObject obj = Instantiate(
             miniGunnerPrefab,
@@ -124,21 +133,21 @@ public class MiniGunnerSpawner : MonoBehaviour
             Quaternion.identity
         );
 
+        // Naikkan counter SEBELUM setup agar tidak race condition
+        _activeEnemyCount++;
+
         SetupMiniGunner(
             obj,
             targetPosition : targetPositionLeft,
             exitPosition   : exitPositionLeft,
-            shootRight     : true
+            shootRight     : true,
+            onFinished     : () => OnEnemyFinished("KIRI")
         );
-
-        // FIX: Track pakai List, bukan coroutine
-        _activeEnemyCount++;
-        _trackedEnemies.Add(obj);
 
         Debug.Log("[MiniGunnerSpawner] MiniGunner KIRI di-spawn.");
     }
 
-    void SpawnRight()
+    private void SpawnRight()
     {
         GameObject obj = Instantiate(
             miniGunnerPrefab,
@@ -146,31 +155,40 @@ public class MiniGunnerSpawner : MonoBehaviour
             Quaternion.identity
         );
 
+        // Naikkan counter SEBELUM setup
+        _activeEnemyCount++;
+
         SetupMiniGunner(
             obj,
             targetPosition : targetPositionRight,
             exitPosition   : exitPositionRight,
-            shootRight     : false
+            shootRight     : false,
+            onFinished     : () => OnEnemyFinished("KANAN")
         );
-
-        // FIX: Track pakai List, bukan coroutine
-        _activeEnemyCount++;
-        _trackedEnemies.Add(obj);
 
         Debug.Log("[MiniGunnerSpawner] MiniGunner KANAN di-spawn.");
     }
 
-    void SetupMiniGunner(
+    // ─────────────────────────────────────────────────────────
+    // SETUP — kirim callback ke MiniGunnerEnemy
+    // ─────────────────────────────────────────────────────────
+
+    private void SetupMiniGunner(
         GameObject obj,
         Vector2 targetPosition,
         Vector2 exitPosition,
-        bool shootRight)
+        bool shootRight,
+        Action onFinished)
     {
         MiniGunnerEnemy gunner = obj.GetComponent<MiniGunnerEnemy>();
 
         if (gunner == null)
         {
-            Debug.LogError("[MiniGunnerSpawner] Prefab tidak punya MiniGunnerEnemy!");
+            Debug.LogError("[MiniGunnerSpawner] Prefab tidak punya MiniGunnerEnemy! " +
+                           "Counter diturunkan sekarang.");
+            // Jika prefab rusak, langsung kurangi counter
+            onFinished?.Invoke();
+            Destroy(obj);
             return;
         }
 
@@ -178,5 +196,53 @@ public class MiniGunnerSpawner : MonoBehaviour
         gunner.exitPosition         = exitPosition;
         gunner.shootRight           = shootRight;
         gunner.SetDamage(bulletDamage);
+
+        // KUNCI: berikan callback ke enemy agar spawner tahu saat selesai
+        gunner.SetFinishedCallback(onFinished);
+
+        // Failsafe per-enemy: jika enemy tidak memanggil callback
+        // dalam maxWaitPerEnemy detik, spawner tetap melanjutkan
+        StartCoroutine(EnemyFailsafeTimer(obj, onFinished));
+    }
+
+    // ─────────────────────────────────────────────────────────
+    // CALLBACK — dipanggil oleh MiniGunnerEnemy saat selesai
+    // ─────────────────────────────────────────────────────────
+
+    private void OnEnemyFinished(string side)
+    {
+        _activeEnemyCount = Mathf.Max(0, _activeEnemyCount - 1);
+        Debug.Log($"[MiniGunnerSpawner] Enemy {side} selesai. Sisa: {_activeEnemyCount}");
+    }
+
+    // ─────────────────────────────────────────────────────────
+    // FAILSAFE TIMER — per enemy
+    // ─────────────────────────────────────────────────────────
+
+    private IEnumerator EnemyFailsafeTimer(GameObject enemyObj, Action onFinished)
+    {
+        float elapsed = 0f;
+
+        while (elapsed < maxWaitPerEnemy)
+        {
+            // Jika enemy sudah dihancurkan (null), hentikan timer
+            if (enemyObj == null)
+                yield break;
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Jika sampai di sini, enemy belum selesai → paksa
+        if (enemyObj != null)
+        {
+            Debug.LogWarning($"[MiniGunnerSpawner] Failsafe: enemy {enemyObj.name} " +
+                             $"tidak selesai dalam {maxWaitPerEnemy}s. Paksa destroy.");
+            Destroy(enemyObj);
+        }
+
+        // Panggil callback agar counter turun
+        // (callback sudah di-guard agar tidak double-call di MiniGunnerEnemy)
+        onFinished?.Invoke();
     }
 }
