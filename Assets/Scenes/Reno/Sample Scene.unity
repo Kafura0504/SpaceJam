@@ -2900,6 +2900,8 @@ GameObject:
   - component: {fileID: 7290501916464539725}
   - component: {fileID: 1123560074804746816}
   - component: {fileID: 7665530323831116528}
+  - component: {fileID: 7665530323831116529}
+  - component: {fileID: 7665530323831116530}
   m_Layer: 0
   m_Name: BossHeadNoir
   m_TagString: Enemy
@@ -3382,7 +3384,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4119854015645127322}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6cea93b192b062946b43ab26ffb07656, type: 3}
   m_Name: 
@@ -3418,6 +3420,50 @@ MonoBehaviour:
   deathShakeLoopDuration: 2.5
   deathShakeLoopStartMagnitude: 0.25
   deathShakeLoopEndMagnitude: 0.05
+--- !u!114 &7665530323831116529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4119854015645127322}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32eb39fe310a27343b2fa56161e0f99c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossHandSafetyGuard
+  leftHand: {fileID: 9134569851962801505}
+  rightHand: {fileID: 9096417432877054730}
+  bossHP: {fileID: 3683270783752484881}
+  checkInterval: 2
+  enableDebugLog: 1
+--- !u!114 &7665530323831116530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4119854015645127322}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b638d1fd7245dc246a10730048f8c5d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossAnimationController
+  headAnimator: {fileID: 7290501916464539725}
+  leftHandAnimator: {fileID: 5724555208147771458}
+  rightHandAnimator: {fileID: 7943598995660000750}
+  neckAnimator: {fileID: 7453098606799444433}
+  headIdleState: Idle
+  headAttackTrigger: Attack
+  headDeathTrigger: Death
+  leftHandIdleState: Idle
+  leftHandAttackTrigger: Attack
+  leftHandExitTrigger: Exit
+  rightHandIdleState: RightHandIdle
+  rightHandChargeTrigger: Charge
+  rightHandSwingTrigger: Swing
+  rightHandSlamTrigger: Slam
+  neckIdleState: Idle
 --- !u!95 &7943598995660000750
 Animator:
   serializedVersion: 7
