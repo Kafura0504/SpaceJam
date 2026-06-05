@@ -1,16 +1,19 @@
-// Assets/Boss Fight Noir/BossDeathHandler.cs
 // =============================================================
-// SpaceJam - BossDeathHandler
-// -------------------------------------------------------------
-// Script ini menangani animasi dan efek ketika boss mati.
-// Subscribe ke event OnDeath dari BossHP.cs.
-// TIDAK mengubah script lain yang sudah ada.
+// SpaceJam - BossDeathHandler.cs  (DEATH FIX v2)
+// =============================================================
 //
-// CARA SETUP:
-//   1. Attach script ini ke BossHeadNoir (atau BossManager)
-//   2. Assign semua reference di Inspector
-//   3. Buat Trigger "Death" di Animator boss
-//   4. Buat animation clip "BossDeath"
+// FIX: BossDeathHandler sekarang TIDAK lagi memanggil
+//      phaseController.StopAllCoroutines() secara langsung.
+//      Karena BossPhaseController sudah punya DeathSequence()
+//      sendiri yang lebih graceful.
+//
+// PERUBAHAN:
+//   - StopAllBossPatterns() tidak lagi stop coroutine PhaseController
+//     — itu sudah ditangani BossPhaseController.HandleBossDeath()
+//   - Tambah delay sebelum death sequence agar PhaseController
+//     sempat menyelesaikan cleanup-nya
+//   - Field lama TIDAK DIUBAH agar referensi tim tidak rusak
+//
 // =============================================================
 
 using System.Collections;
@@ -30,7 +33,7 @@ public class BossDeathHandler : MonoBehaviour
     [Tooltip("Animator utama boss (BossHeadNoir)")]
     public Animator bossAnimator;
 
-    [Tooltip("BossPhaseController — untuk stop semua pattern")]
+    [Tooltip("BossPhaseController — untuk koordinasi death")]
     public BossPhaseController phaseController;
 
     [Header("=== GAME OBJECTS BOSS ===")]
@@ -55,6 +58,16 @@ public class BossDeathHandler : MonoBehaviour
     public float deathAnimationDuration = 3f;
 
     // ─────────────────────────────────────────────────────────
+    // TIMING DEATH FIX
+    // ─────────────────────────────────────────────────────────
+
+    [Header("=== DEATH TIMING ===")]
+    [Tooltip("Jeda menunggu BossPhaseController selesai interrupt pattern\n" +
+             "sebelum BossDeathHandler mulai sequence-nya.\n" +
+             "Set sama dengan BossPhaseController.deathInterruptTimeout + 0.5")]
+    public float waitForPatternCleanup = 3.5f;
+
+    // ─────────────────────────────────────────────────────────
     // VFX & EFEK
     // ─────────────────────────────────────────────────────────
 
@@ -74,10 +87,6 @@ public class BossDeathHandler : MonoBehaviour
     [Header("=== FADE OUT ===")]
     [Tooltip("Durasi boss sprite fade out setelah animasi death")]
     public float fadeOutDuration = 1.5f;
-
-
-
-
 
     // ─────────────────────────────────────────────────────────
     // AUDIO
@@ -124,13 +133,13 @@ public class BossDeathHandler : MonoBehaviour
     public float deathShakeMagnitude = 0.3f;
 
     [Tooltip("Durasi total camera shake terus-menerus selama animasi death (detik)")]
-public float deathShakeLoopDuration = 2.5f;
+    public float deathShakeLoopDuration = 2.5f;
 
-[Tooltip("Intensitas awal shake loop saat animasi death dimulai")]
-public float deathShakeLoopStartMagnitude = 0.25f;
+    [Tooltip("Intensitas awal shake loop saat animasi death dimulai")]
+    public float deathShakeLoopStartMagnitude = 0.25f;
 
-[Tooltip("Intensitas akhir shake loop — set 0 agar berhenti total di akhir")]
-public float deathShakeLoopEndMagnitude = 0.05f;
+    [Tooltip("Intensitas akhir shake loop — set 0 agar berhenti total di akhir")]
+    public float deathShakeLoopEndMagnitude = 0.05f;
 
     // ─────────────────────────────────────────────────────────
     // PRIVATE STATE
@@ -149,7 +158,6 @@ public float deathShakeLoopEndMagnitude = 0.05f;
         if (bossHP == null)
         {
             bossHP = GetComponent<BossHP>();
-
             if (bossHP == null)
                 bossHP = FindFirstObjectByType<BossHP>();
 
@@ -160,20 +168,16 @@ public float deathShakeLoopEndMagnitude = 0.05f;
             }
         }
 
-        // Auto-find Animator jika belum di-assign
         if (bossAnimator == null)
             bossAnimator = GetComponent<Animator>();
 
-        // Auto-find PhaseController jika belum di-assign
         if (phaseController == null)
             phaseController = FindFirstObjectByType<BossPhaseController>();
 
-        // Setup AudioSource
         _audioSource = GetComponent<AudioSource>();
         if (_audioSource == null)
             _audioSource = gameObject.AddComponent<AudioSource>();
 
-        // Subscribe ke event OnDeath dari BossHP
         bossHP.OnDeath += HandleDeath;
 
         Debug.Log("[BossDeathHandler] Siap, subscribe ke BossHP.OnDeath");
@@ -181,44 +185,47 @@ public float deathShakeLoopEndMagnitude = 0.05f;
 
     void OnDestroy()
     {
-        // Unsubscribe untuk mencegah memory leak
         if (bossHP != null)
             bossHP.OnDeath -= HandleDeath;
     }
 
     // ─────────────────────────────────────────────────────────
-    // EVENT HANDLER — dipanggil oleh BossHP saat HP habis
+    // EVENT HANDLER
     // ─────────────────────────────────────────────────────────
 
     private void HandleDeath()
     {
-        // Pastikan hanya dijalankan sekali
         if (_isDead) return;
         _isDead = true;
 
         Debug.Log("[BossDeathHandler] Boss mati! Memulai sequence death...");
-
         StartCoroutine(DeathSequence());
     }
 
     // ─────────────────────────────────────────────────────────
     // DEATH SEQUENCE
+    // FIX: Tunggu dulu sebelum mulai agar PhaseController
+    //      sempat melakukan interrupt dan cleanup
     // ─────────────────────────────────────────────────────────
 
     private IEnumerator DeathSequence()
     {
-        // ── Step 1: Stop semua pattern yang sedang berjalan ──────────────────
-        StopAllBossPatterns();
+        // ── FIX Step 0: Tunggu BossPhaseController selesai interrupt ─────────
+        // BossPhaseController.HandleBossDeath() sudah dipanggil via BossHP.OnDeath
+        // Kita hanya perlu tunggu sebentar agar ia sempat stop pattern
+        Debug.Log($"[BossDeathHandler] Menunggu {waitForPatternCleanup}s untuk pattern cleanup...");
+        yield return new WaitForSeconds(waitForPatternCleanup);
 
-        // ── Step 2: Camera shake pertama ─────────────────────────────────────
+        // ── Step 1: Camera shake pertama ─────────────────────────────────────
         CameraShake.Instance?.Shake(deathShakeDuration, deathShakeMagnitude);
 
-        // ── Step 3: Play suara roar / death ──────────────────────────────────
+        // ── Step 2: Play suara roar ───────────────────────────────────────────
         PlayDeathRoar();
 
-        // ── Step 4: Trigger animasi Death di Animator ────────────────────────
+        // ── Step 3: Trigger animasi Death ────────────────────────────────────
         PlayDeathAnimation();
 
+        // ── Step 4: Camera shake loop selama animasi ─────────────────────────
         StartCoroutine(ShakeDuringDeathAnimation());
 
         // ── Step 5: Tunggu sebagian durasi animasi lalu mulai explosion ──────
@@ -231,13 +238,13 @@ public float deathShakeLoopEndMagnitude = 0.05f;
         // ── Step 7: Fade out semua sprite boss ───────────────────────────────
         yield return StartCoroutine(FadeOutBossSprites());
 
-        // ── Step 8: Camera shake terakhir (boss hancur) ───────────────────────
+        // ── Step 8: Camera shake terakhir ────────────────────────────────────
         CameraShake.Instance?.Shake(deathShakeDuration * 1.5f, deathShakeMagnitude * 1.5f);
 
         // ── Step 9: Play victory sound ────────────────────────────────────────
         PlayVictorySound();
 
-        // ── Step 10: Jeda sebentar lalu tampilkan UI / load scene ────────────
+        // ── Step 10: Jeda sebentar ────────────────────────────────────────────
         float remainingDelay = totalDeathDelay - deathAnimationDuration;
         if (remainingDelay > 0f)
             yield return new WaitForSeconds(remainingDelay);
@@ -249,68 +256,9 @@ public float deathShakeLoopEndMagnitude = 0.05f;
     }
 
     // ─────────────────────────────────────────────────────────
-    // STEP HELPERS
+    // HELPERS
     // ─────────────────────────────────────────────────────────
 
-    // Stop semua pattern boss yang sedang berjalan
-    private void StopAllBossPatterns()
-    {
-        // PhaseController sudah punya HandleBossDeath() yang subscribe ke OnDeath
-        // Kita hanya perlu stop coroutine di BossPhaseController jika perlu tambahan
-        if (phaseController != null)
-        {
-            phaseController.StopAllCoroutines();
-            Debug.Log("[BossDeathHandler] Semua coroutine BossPhaseController dihentikan.");
-        }
-
-        // Nonaktifkan spawner yang masih ada di scene
-        GameObject[] spawners = GameObject.FindGameObjectsWithTag("Spawner");
-        foreach (GameObject spawner in spawners)
-        {
-            spawner.SetActive(false);
-        }
-
-        // Destroy semua enemy bullet yang masih ada di scene
-        GameObject[] enemyBullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
-        foreach (GameObject bullet in enemyBullets)
-        {
-            Destroy(bullet);
-        }
-
-        Debug.Log("[BossDeathHandler] Semua spawner dan EnemyBullet dibersihkan.");
-    }
-
-    // Camera shake bertahap selama animasi death berlangsung
-// Berjalan bersamaan dengan DeathSequence — tidak perlu di-yield
-private IEnumerator ShakeDuringDeathAnimation()
-{
-    float elapsed = 0f;
-
-    while (elapsed < deathShakeLoopDuration)
-    {
-        elapsed += Time.deltaTime;
-
-        // Hitung intensitas shake yang mengecil dari start ke end
-        float t         = elapsed / deathShakeLoopDuration;
-        float magnitude = Mathf.Lerp(
-            deathShakeLoopStartMagnitude,
-            deathShakeLoopEndMagnitude,
-            t
-        );
-
-        // Interval antar shake makin panjang seiring waktu
-        // Awal rapat (0.08s), akhir lebih jarang (0.18s)
-        float interval = Mathf.Lerp(0.08f, 0.18f, t);
-
-        CameraShake.Instance?.Shake(interval, magnitude);
-
-        yield return new WaitForSeconds(interval);
-    }
-
-    Debug.Log("[BossDeathHandler] Shake loop animasi death selesai.");
-}
-
-    // Play trigger animasi Death
     private void PlayDeathAnimation()
     {
         if (bossAnimator == null)
@@ -319,33 +267,21 @@ private IEnumerator ShakeDuringDeathAnimation()
             return;
         }
 
-        if (string.IsNullOrEmpty(deathTriggerName))
-        {
-            Debug.LogWarning("[BossDeathHandler] deathTriggerName kosong!");
-            return;
-        }
+        if (string.IsNullOrEmpty(deathTriggerName)) return;
 
         bossAnimator.SetTrigger(deathTriggerName);
         Debug.Log($"[BossDeathHandler] Animator.SetTrigger(\"{deathTriggerName}\") dipanggil.");
     }
 
-    // Play suara roar / death boss
     private void PlayDeathRoar()
     {
         if (deathRoarSound == null) return;
-
-        AudioSource.PlayClipAtPoint(
-            deathRoarSound,
-            transform.position,
-            deathSoundVolume
-        );
+        AudioSource.PlayClipAtPoint(deathRoarSound, transform.position, deathSoundVolume);
     }
 
-    // Play victory sound setelah boss mati
     private void PlayVictorySound()
     {
         if (victorySound == null) return;
-
         AudioSource.PlayClipAtPoint(
             victorySound,
             Camera.main != null ? Camera.main.transform.position : Vector3.zero,
@@ -353,70 +289,69 @@ private IEnumerator ShakeDuringDeathAnimation()
         );
     }
 
-    // Spawn beberapa explosion VFX secara bertahap
+    private IEnumerator ShakeDuringDeathAnimation()
+    {
+        float elapsed = 0f;
+        while (elapsed < deathShakeLoopDuration)
+        {
+            elapsed += Time.deltaTime;
+            float t         = elapsed / deathShakeLoopDuration;
+            float magnitude = Mathf.Lerp(deathShakeLoopStartMagnitude, deathShakeLoopEndMagnitude, t);
+            float interval  = Mathf.Lerp(0.08f, 0.18f, t);
+            CameraShake.Instance?.Shake(interval, magnitude);
+            yield return new WaitForSeconds(interval);
+        }
+    }
+
     private IEnumerator SpawnExplosionSequence()
     {
         for (int i = 0; i < explosionCount; i++)
         {
             SpawnSingleExplosion();
-
             yield return new WaitForSeconds(explosionInterval);
         }
     }
 
-    // Spawn satu explosion VFX di posisi random dekat boss
     private void SpawnSingleExplosion()
     {
-        // Camera shake kecil tiap explosion
         CameraShake.Instance?.Shake(0.2f, 0.1f);
 
-        // Play suara explosion
         if (explosionSound != null)
         {
-            Vector3 randomPos = transform.position + (Vector3)Random.insideUnitCircle * explosionRadius;
-            AudioSource.PlayClipAtPoint(explosionSound, randomPos, deathSoundVolume * 0.8f);
+            Vector3 rPos = transform.position + (Vector3)Random.insideUnitCircle * explosionRadius;
+            AudioSource.PlayClipAtPoint(explosionSound, rPos, deathSoundVolume * 0.8f);
         }
 
-        // Spawn VFX jika ada
         if (deathVFXPrefab == null) return;
 
-        Vector3 spawnPos = transform.position
-            + (Vector3)(Random.insideUnitCircle * explosionRadius);
-
-        GameObject vfxObj = Instantiate(deathVFXPrefab, spawnPos, Quaternion.identity);
-
-        // Auto-destroy VFX setelah 3 detik
-        Destroy(vfxObj, 3f);
+        Vector3 spawnPos = transform.position + (Vector3)(Random.insideUnitCircle * explosionRadius);
+        GameObject vfx   = Instantiate(deathVFXPrefab, spawnPos, Quaternion.identity);
+        Destroy(vfx, 3f);
     }
 
-    // Fade out semua sprite boss secara smooth
     private IEnumerator FadeOutBossSprites()
     {
         if (bossSprites == null || bossSprites.Length == 0)
         {
-            Debug.LogWarning("[BossDeathHandler] bossSprites kosong — boss tidak akan fade out.");
+            Debug.LogWarning("[BossDeathHandler] bossSprites kosong.");
             yield break;
         }
 
-        float elapsed    = 0f;
+        float elapsed       = 0f;
         float[] startAlphas = new float[bossSprites.Length];
 
-        // Simpan alpha awal tiap sprite
         for (int i = 0; i < bossSprites.Length; i++)
-        {
             if (bossSprites[i] != null)
                 startAlphas[i] = bossSprites[i].color.a;
-        }
 
         while (elapsed < fadeOutDuration)
         {
             elapsed += Time.deltaTime;
-            float t = Mathf.SmoothStep(0f, 1f, elapsed / fadeOutDuration);
+            float t  = Mathf.SmoothStep(0f, 1f, elapsed / fadeOutDuration);
 
             for (int i = 0; i < bossSprites.Length; i++)
             {
                 if (bossSprites[i] == null) continue;
-
                 Color c = bossSprites[i].color;
                 c.a = Mathf.Lerp(startAlphas[i], 0f, t);
                 bossSprites[i].color = c;
@@ -425,31 +360,25 @@ private IEnumerator ShakeDuringDeathAnimation()
             yield return null;
         }
 
-        // Pastikan alpha = 0 di akhir
+        // Pastikan alpha 0
         for (int i = 0; i < bossSprites.Length; i++)
         {
             if (bossSprites[i] == null) continue;
-
             Color c = bossSprites[i].color;
             c.a = 0f;
             bossSprites[i].color = c;
         }
 
-        // Nonaktifkan collider dan renderer boss
         DisableBossColliders();
     }
 
-    // Nonaktifkan semua collider boss agar tidak bisa diserang lagi
     private void DisableBossColliders()
     {
         Collider2D[] cols = GetComponentsInChildren<Collider2D>();
         foreach (Collider2D col in cols)
-        {
             col.enabled = false;
-        }
     }
 
-    // Tampilkan victory UI atau load scene
     private void HandleAfterDeath()
     {
         if (showVictoryUI && victoryUIObject != null)
@@ -462,18 +391,13 @@ private IEnumerator ShakeDuringDeathAnimation()
         {
             Time.timeScale = 1f;
             SceneManager.LoadScene(sceneToLoad);
-            Debug.Log($"[BossDeathHandler] Load scene: {sceneToLoad}");
         }
     }
 
     // ─────────────────────────────────────────────────────────
-    // PUBLIC API — bisa dipanggil dari script lain jika perlu
+    // PUBLIC API
     // ─────────────────────────────────────────────────────────
 
-    /// <summary>
-    /// Force trigger death tanpa mengurangi HP.
-    /// Berguna untuk testing atau cutscene.
-    /// </summary>
     [ContextMenu("Force Boss Death (Testing)")]
     public void ForceDeath()
     {

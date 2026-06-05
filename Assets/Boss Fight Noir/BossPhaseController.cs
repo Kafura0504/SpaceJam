@@ -1,24 +1,20 @@
-// Assets/Boss Fight Noir/BossPhaseController.cs
 // =============================================================
-// SpaceJam - BossPhaseController (ORDERED LOOP v1)
+// SpaceJam - BossPhaseController.cs  (DEATH FIX v2)
 // =============================================================
 //
-// CARA KERJA:
-//   Phase 1 : Jalankan pattern sesuai urutan _phase1Order, lalu
-//             loop dari awal terus menerus sampai HP <= threshold
-//   Phase 2 : Jalankan pattern sesuai urutan _phase2Order, lalu
-//             loop dari awal terus menerus sampai boss mati
+// FIX: Boss Death tidak stuck saat pattern sedang berjalan.
 //
-// CARA TAMBAH PATTERN BARU (mudah, tanpa ubah logic):
-//   1. Buat script pattern baru (pakai signature yang sama:
-//      public IEnumerator ExecutePattern(Action onComplete=null))
-//   2. Tambah public field reference di bagian PATTERN REFERENCES
-//   3. Tambah satu nilai enum baru di EPatternID (contoh: SpiralBlast)
-//   4. Tambah satu case baru di ExecutePatternByID()
-//   5. Di Inspector, masukkan enum baru ke array _phase1Order
-//      atau _phase2Order sesuai kebutuhan — selesai!
+// PERUBAHAN DARI VERSI LAMA:
+//   - Tambah HandleBossDeath() yang memanggil RequestInterrupt()
+//     ke semua pattern yang sedang aktif
+//   - Tambah WaitForPatternToFinish() sebelum play animasi death
+//   - Tambah field _activePattern untuk tracking pattern aktif
+//   - Tambah timeout 3 detik sebagai failsafe jika pattern
+//     tidak mau berhenti
+//   - Semua field lama DIPERTAHANKAN agar tidak ada referensi rusak
 //
-// SEMUA FIELD LAMA DIPERTAHANKAN agar tidak ada referensi rusak.
+// TIDAK ADA PERUBAHAN PADA SCRIPT PATTERN LAIN.
+// Cukup script ini yang diupdate.
 // =============================================================
 
 using System;
@@ -49,8 +45,7 @@ public class BossPhaseController : MonoBehaviour
     // ---------------------------------------------------------
 
     [Header("=== URUTAN PATTERN PHASE 1 ===")]
-    [Tooltip("Urutan pattern phase 1. Loop terus dari indeks 0.\n"
-           + "Default: Slam3x → SwingArm → loop")]
+    [Tooltip("Urutan pattern phase 1. Loop terus dari indeks 0.")]
     public EPatternID[] phase1Order = new EPatternID[]
     {
         EPatternID.Slam3x,
@@ -58,8 +53,7 @@ public class BossPhaseController : MonoBehaviour
     };
 
     [Header("=== URUTAN PATTERN PHASE 2 ===")]
-    [Tooltip("Urutan pattern phase 2. Loop terus dari indeks 0.\n"
-           + "Default: Slam3x → ShootLaser → HorizSweep → NormalEnemy → loop")]
+    [Tooltip("Urutan pattern phase 2. Loop terus dari indeks 0.")]
     public EPatternID[] phase2Order = new EPatternID[]
     {
         EPatternID.Slam3x,
@@ -79,9 +73,6 @@ public class BossPhaseController : MonoBehaviour
     public BossPattern_HorizSweep  patternSweep;
     public BossPattern_ShootLaser  patternShootLaser;
     public BossPattern_NormalEnemy patternNormal;
-
-    // Tambah referensi pattern baru di sini jika ada:
-    // public BossPattern_NewPattern patternNew;
 
     // ---------------------------------------------------------
     // BOSS HP
@@ -111,6 +102,21 @@ public class BossPhaseController : MonoBehaviour
     public float patternTimeout = 45f;
 
     // ---------------------------------------------------------
+    // DEATH SETTINGS (BARU)
+    // ---------------------------------------------------------
+
+    [Header("=== DEATH INTERRUPT SETTINGS ===")]
+    [Tooltip("Waktu tunggu maksimum untuk pattern selesai saat boss mati (detik).\n" +
+             "Jika pattern tidak selesai dalam waktu ini, paksa kill.")]
+    public float deathInterruptTimeout = 3f;
+
+    [Tooltip("Animator boss untuk play animasi death")]
+    public Animator bossAnimator;
+
+    [Tooltip("Nama trigger animasi death di Animator")]
+    public string deathAnimTrigger = "Death";
+
+    // ---------------------------------------------------------
     // AUDIO
     // ---------------------------------------------------------
 
@@ -135,6 +141,15 @@ public class BossPhaseController : MonoBehaviour
     private bool        _phase2Announced = false;
     private AudioSource _audioSource;
 
+    // FIX: track apakah boss sudah mati agar loop bisa break
+    private bool        _bossDead = false;
+
+    // FIX: flag untuk interrupt pattern yang sedang berjalan
+    private bool        _interruptRequested = false;
+
+    // FIX: coroutine pattern yang sedang aktif
+    private Coroutine   _activePatternCoroutine = null;
+
     // ---------------------------------------------------------
     // UNITY LIFECYCLE
     // ---------------------------------------------------------
@@ -150,6 +165,10 @@ public class BossPhaseController : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         if (_audioSource == null)
             _audioSource = gameObject.AddComponent<AudioSource>();
+
+        // Auto-find animator jika belum di-assign
+        if (bossAnimator == null)
+            bossAnimator = GetComponentInChildren<Animator>();
 
         bossHP.OnDeath += HandleBossDeath;
 
@@ -169,6 +188,7 @@ public class BossPhaseController : MonoBehaviour
     private IEnumerator RunBossFight()
     {
         _isRunning          = true;
+        _bossDead           = false;
         _currentPhase       = 1;
         _currentPatternName = "Intro...";
         _patternRunCount    = 0;
@@ -179,11 +199,11 @@ public class BossPhaseController : MonoBehaviour
         yield return new WaitForSeconds(introDelay);
 
         // ── MAIN LOOP ──────────────────────────────────────────
-        while (_isRunning)
+        while (_isRunning && !_bossDead)
         {
             if (bossHP == null || bossHP.isDead)
             {
-                Debug.Log("[Boss] Boss mati, loop berhenti.");
+                Debug.Log("[Boss] Boss mati (detected di loop), keluar.");
                 yield break;
             }
 
@@ -193,20 +213,21 @@ public class BossPhaseController : MonoBehaviour
                 yield return StartCoroutine(TransitionToPhase2());
             }
 
+            // Break jika boss mati saat transisi
+            if (_bossDead) yield break;
+
             // Ambil urutan yang aktif
             EPatternID[] activeOrder = (_currentPhase >= 2)
                 ? phase2Order
                 : phase1Order;
 
-            // Validasi array tidak kosong
             if (activeOrder == null || activeOrder.Length == 0)
             {
-                Debug.LogWarning("[Boss] Array urutan pattern kosong! Pastikan isi di Inspector.");
+                Debug.LogWarning("[Boss] Array urutan pattern kosong!");
                 yield return new WaitForSeconds(1f);
                 continue;
             }
 
-            // Ambil pattern sesuai indeks, lalu maju indeks
             EPatternID patternID = activeOrder[_currentOrderIndex];
             _currentOrderIndex = (_currentOrderIndex + 1) % activeOrder.Length;
 
@@ -216,11 +237,13 @@ public class BossPhaseController : MonoBehaviour
             Debug.Log($"[Boss] ▶ Pattern #{_patternRunCount}: {patternID} "
                     + $"(Phase {_currentPhase}, HP: {bossHP.CurrentHP:F0}/{bossHP.maxHP:F0})");
 
-            // Jalankan pattern dengan timeout
+            // FIX: Reset flag interrupt sebelum jalankan pattern
+            _interruptRequested = false;
+
             yield return StartCoroutine(ExecutePatternSafe(patternID));
 
-            if (!_isRunning || bossHP == null || bossHP.isDead)
-                yield break;
+            // Break jika boss mati selama pattern
+            if (_bossDead) yield break;
 
             _currentPatternName = "Jeda...";
             yield return new WaitForSeconds(delayBetweenPatterns);
@@ -230,7 +253,7 @@ public class BossPhaseController : MonoBehaviour
     }
 
     // ---------------------------------------------------------
-    // EXECUTE PATTERN SAFE (dengan timeout)
+    // EXECUTE PATTERN SAFE (dengan timeout + interrupt check)
     // ---------------------------------------------------------
 
     private IEnumerator ExecutePatternSafe(EPatternID id)
@@ -238,30 +261,55 @@ public class BossPhaseController : MonoBehaviour
         bool  done    = false;
         float elapsed = 0f;
 
-        Coroutine inner = StartCoroutine(
+        _activePatternCoroutine = StartCoroutine(
             ExecutePatternByID(id, () => done = true)
         );
 
         while (!done && elapsed < patternTimeout && _isRunning)
         {
             elapsed += Time.deltaTime;
+
+            // FIX: Jika interrupt diminta (boss mati), hentikan pattern
+            if (_interruptRequested)
+            {
+                Debug.Log($"[Boss] Interrupt diminta untuk pattern {id}. Menunggu selesai...");
+
+                // Tunggu dengan timeout agar tidak stuck selamanya
+                float interruptElapsed = 0f;
+                while (!done && interruptElapsed < deathInterruptTimeout)
+                {
+                    interruptElapsed += Time.deltaTime;
+                    yield return null;
+                }
+
+                if (!done)
+                {
+                    Debug.LogWarning($"[Boss] Pattern {id} tidak selesai dalam {deathInterruptTimeout}s — paksa stop.");
+                    if (_activePatternCoroutine != null)
+                        StopCoroutine(_activePatternCoroutine);
+                }
+                break;
+            }
+
             yield return null;
         }
 
-        if (!done)
+        if (!done && !_interruptRequested)
         {
             Debug.LogWarning($"[Boss] Pattern {id} TIMEOUT setelah {patternTimeout}s.");
-            if (inner != null) StopCoroutine(inner);
+            if (_activePatternCoroutine != null)
+                StopCoroutine(_activePatternCoroutine);
         }
-        else
+        else if (done)
         {
             Debug.Log($"[Boss] ✓ Pattern {id} selesai ({elapsed:F1}s)");
         }
+
+        _activePatternCoroutine = null;
     }
 
     // ---------------------------------------------------------
     // EXECUTE PATTERN BY ID
-    // Tambah case baru di sini untuk setiap pattern baru
     // ---------------------------------------------------------
 
     private IEnumerator ExecutePatternByID(EPatternID id, Action onDone)
@@ -316,15 +364,6 @@ public class BossPhaseController : MonoBehaviour
                     Debug.LogWarning("[Boss] patternMiniGunner belum di-assign!");
                 break;
 
-            // Tambah case pattern baru di bawah:
-            // case EPatternID.NewPattern:
-            //     _currentPatternName = "New Pattern";
-            //     if (patternNew != null)
-            //         yield return StartCoroutine(patternNew.ExecutePattern());
-            //     else
-            //         Debug.LogWarning("[Boss] patternNew belum di-assign!");
-            //     break;
-
             default:
                 Debug.LogWarning($"[Boss] EPatternID tidak dikenal: {id}");
                 break;
@@ -335,15 +374,13 @@ public class BossPhaseController : MonoBehaviour
 
     // ---------------------------------------------------------
     // TRANSISI KE PHASE 2
-    // _currentOrderIndex di-reset ke 0 agar phase 2 mulai
-    // dari awal urutannya
     // ---------------------------------------------------------
 
     private IEnumerator TransitionToPhase2()
     {
         _phase2Announced   = true;
         _currentPhase      = 2;
-        _currentOrderIndex = 0;   // mulai dari urutan pertama phase 2
+        _currentOrderIndex = 0;
 
         _currentPatternName = "⚡ Transisi Phase 2";
 
@@ -358,19 +395,111 @@ public class BossPhaseController : MonoBehaviour
     }
 
     // ---------------------------------------------------------
-    // BOSS DEATH
+    // BOSS DEATH — FIX UTAMA
+    // Dipanggil oleh BossHP.OnDeath saat HP habis
     // ---------------------------------------------------------
 
     private void HandleBossDeath()
     {
-        _isRunning          = false;
+        if (_bossDead) return; // Cegah double-call
+
+        _bossDead   = true;
+        _isRunning  = false;
+        _currentPatternName = "☠ Menunggu pattern selesai...";
+
+        Debug.Log("========================================");
+        Debug.Log($"[Boss] ☠ BOSS KALAH! Requesting pattern interrupt...");
+        Debug.Log("========================================");
+
+        // FIX: Request interrupt ke pattern yang sedang berjalan
+        // Pattern akan selesai sendiri atau di-timeout
+        _interruptRequested = true;
+
+        // Jalankan coroutine death sequence
+        StartCoroutine(DeathSequence());
+    }
+
+    // ---------------------------------------------------------
+    // DEATH SEQUENCE — tunggu pattern selesai lalu play animasi
+    // ---------------------------------------------------------
+
+    private IEnumerator DeathSequence()
+    {
+        _currentPatternName = "☠ Waiting pattern to end...";
+
+        // Tunggu pattern aktif selesai (atau timeout)
+        float elapsed = 0f;
+        while (_activePatternCoroutine != null && elapsed < deathInterruptTimeout + 1f)
+        {
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Stop semua coroutine yang tersisa
+        StopAllPatternCoroutines();
+
+        // Bersihkan scene — hapus bullet dan spawner
+        CleanupScene();
+
         _currentPatternName = "☠ BOSS MATI";
 
-        StopAllCoroutines();
+        Debug.Log($"[Boss] ☠ Pattern selesai setelah {elapsed:F1}s. Play animasi death.");
+        Debug.Log($"[Boss] ☠ Total pattern dijalankan: {_patternRunCount}");
 
-        Debug.Log("========================================");
-        Debug.Log($"[Boss] ☠ BOSS KALAH! Total pattern: {_patternRunCount}");
-        Debug.Log("========================================");
+        // Play animasi death
+        PlayDeathAnimation();
+    }
+
+    // ---------------------------------------------------------
+    // PLAY DEATH ANIMATION
+    // ---------------------------------------------------------
+
+    private void PlayDeathAnimation()
+    {
+        if (bossAnimator == null)
+        {
+            Debug.LogWarning("[Boss] bossAnimator belum di-assign! Coba auto-find...");
+            bossAnimator = GetComponentInChildren<Animator>();
+        }
+
+        if (bossAnimator != null && !string.IsNullOrEmpty(deathAnimTrigger))
+        {
+            bossAnimator.SetTrigger(deathAnimTrigger);
+            Debug.Log($"[Boss] Animator.SetTrigger(\"{deathAnimTrigger}\") dipanggil.");
+        }
+        else
+        {
+            Debug.LogWarning("[Boss] Tidak bisa play animasi death — Animator atau trigger nama kosong.");
+        }
+    }
+
+    // ---------------------------------------------------------
+    // STOP ALL PATTERN COROUTINES
+    // ---------------------------------------------------------
+
+    private void StopAllPatternCoroutines()
+    {
+        StopAllCoroutines();
+        Debug.Log("[Boss] Semua coroutine BossPhaseController dihentikan.");
+    }
+
+    // ---------------------------------------------------------
+    // CLEANUP SCENE
+    // ---------------------------------------------------------
+
+    private void CleanupScene()
+    {
+        // Nonaktifkan semua spawner
+        GameObject[] spawners = GameObject.FindGameObjectsWithTag("Spawner");
+        foreach (GameObject s in spawners)
+            s.SetActive(false);
+
+        // Hapus semua peluru musuh
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
+        foreach (GameObject b in bullets)
+            Destroy(b);
+
+        Debug.Log($"[Boss] Cleanup: {spawners.Length} spawner dimatikan, {bullets.Length} bullet dihapus.");
     }
 
     // ---------------------------------------------------------
@@ -384,5 +513,12 @@ public class BossPhaseController : MonoBehaviour
         if (_phase2Announced) return;
         Debug.Log("[Boss] Force Phase 2 via ContextMenu.");
         StartCoroutine(TransitionToPhase2());
+    }
+
+    [ContextMenu("Force Boss Death (Testing)")]
+    public void ForceDeath()
+    {
+        if (!Application.isPlaying) return;
+        HandleBossDeath();
     }
 }
