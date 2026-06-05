@@ -75,6 +75,10 @@ public class BossDeathHandler : MonoBehaviour
     [Tooltip("Durasi boss sprite fade out setelah animasi death")]
     public float fadeOutDuration = 1.5f;
 
+
+
+
+
     // ─────────────────────────────────────────────────────────
     // AUDIO
     // ─────────────────────────────────────────────────────────
@@ -119,6 +123,15 @@ public class BossDeathHandler : MonoBehaviour
     [Tooltip("Intensitas camera shake saat boss mati")]
     public float deathShakeMagnitude = 0.3f;
 
+    [Tooltip("Durasi total camera shake terus-menerus selama animasi death (detik)")]
+public float deathShakeLoopDuration = 2.5f;
+
+[Tooltip("Intensitas awal shake loop saat animasi death dimulai")]
+public float deathShakeLoopStartMagnitude = 0.25f;
+
+[Tooltip("Intensitas akhir shake loop — set 0 agar berhenti total di akhir")]
+public float deathShakeLoopEndMagnitude = 0.05f;
+
     // ─────────────────────────────────────────────────────────
     // PRIVATE STATE
     // ─────────────────────────────────────────────────────────
@@ -138,7 +151,7 @@ public class BossDeathHandler : MonoBehaviour
             bossHP = GetComponent<BossHP>();
 
             if (bossHP == null)
-                bossHP = FindObjectOfType<BossHP>();
+                bossHP = FindFirstObjectByType<BossHP>();
 
             if (bossHP == null)
             {
@@ -153,7 +166,7 @@ public class BossDeathHandler : MonoBehaviour
 
         // Auto-find PhaseController jika belum di-assign
         if (phaseController == null)
-            phaseController = FindObjectOfType<BossPhaseController>();
+            phaseController = FindFirstObjectByType<BossPhaseController>();
 
         // Setup AudioSource
         _audioSource = GetComponent<AudioSource>();
@@ -205,6 +218,8 @@ public class BossDeathHandler : MonoBehaviour
 
         // ── Step 4: Trigger animasi Death di Animator ────────────────────────
         PlayDeathAnimation();
+
+        StartCoroutine(ShakeDuringDeathAnimation());
 
         // ── Step 5: Tunggu sebagian durasi animasi lalu mulai explosion ──────
         float waitBeforeExplosion = deathAnimationDuration * 0.3f;
@@ -264,6 +279,36 @@ public class BossDeathHandler : MonoBehaviour
 
         Debug.Log("[BossDeathHandler] Semua spawner dan EnemyBullet dibersihkan.");
     }
+
+    // Camera shake bertahap selama animasi death berlangsung
+// Berjalan bersamaan dengan DeathSequence — tidak perlu di-yield
+private IEnumerator ShakeDuringDeathAnimation()
+{
+    float elapsed = 0f;
+
+    while (elapsed < deathShakeLoopDuration)
+    {
+        elapsed += Time.deltaTime;
+
+        // Hitung intensitas shake yang mengecil dari start ke end
+        float t         = elapsed / deathShakeLoopDuration;
+        float magnitude = Mathf.Lerp(
+            deathShakeLoopStartMagnitude,
+            deathShakeLoopEndMagnitude,
+            t
+        );
+
+        // Interval antar shake makin panjang seiring waktu
+        // Awal rapat (0.08s), akhir lebih jarang (0.18s)
+        float interval = Mathf.Lerp(0.08f, 0.18f, t);
+
+        CameraShake.Instance?.Shake(interval, magnitude);
+
+        yield return new WaitForSeconds(interval);
+    }
+
+    Debug.Log("[BossDeathHandler] Shake loop animasi death selesai.");
+}
 
     // Play trigger animasi Death
     private void PlayDeathAnimation()

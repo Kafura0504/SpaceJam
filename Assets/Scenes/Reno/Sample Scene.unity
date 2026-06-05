@@ -2838,7 +2838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7bdc5a7c0d58e446b917e09d17cab64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossHP
-  maxHP: 500
+  maxHP: 50
   _currentHP: 0
 --- !u!114 &3996374213491073978
 MonoBehaviour:
@@ -2899,6 +2899,7 @@ GameObject:
   - component: {fileID: 3996374213491073978}
   - component: {fileID: 7290501916464539725}
   - component: {fileID: 1123560074804746816}
+  - component: {fileID: 7665530323831116528}
   m_Layer: 0
   m_Name: BossHeadNoir
   m_TagString: Enemy
@@ -3112,7 +3113,8 @@ MonoBehaviour:
   vfxOffset: {x: 0, y: 0}
   animChargeTrigger: Charge
   animSwingTrigger: Swing
-  animIdleTrigger: Idle
+  animIdleStateName: RightHandIdle
+  swingAnticipationDelay: 0.3
   chaseColor: {r: 1, g: 0.85, b: 0, a: 0.2}
   lockColor: {r: 1, g: 0.4, b: 0, a: 0.35}
   activeColor: {r: 1, g: 0.2, b: 0, a: 0.5}
@@ -3373,6 +3375,49 @@ Transform:
   - {fileID: 5996745935874830899}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7665530323831116528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4119854015645127322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cea93b192b062946b43ab26ffb07656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossDeathHandler
+  bossHP: {fileID: 3683270783752484881}
+  bossAnimator: {fileID: 7290501916464539725}
+  phaseController: {fileID: 5131174033800936912}
+  bossSprites:
+  - {fileID: 3482498007707111226}
+  - {fileID: 5197421682143212344}
+  - {fileID: 192969723607571920}
+  - {fileID: 2053794756303342115}
+  leftHand: {fileID: 9134569851962801505}
+  rightHand: {fileID: 9096417432877054730}
+  deathTriggerName: Death
+  deathAnimationDuration: 6
+  deathVFXPrefab: {fileID: 0}
+  explosionCount: 5
+  explosionInterval: 0.4
+  explosionRadius: 1.5
+  fadeOutDuration: 1.5
+  deathRoarSound: {fileID: 0}
+  explosionSound: {fileID: 0}
+  victorySound: {fileID: 0}
+  deathSoundVolume: 1
+  totalDeathDelay: 8
+  loadSceneAfterDeath: 0
+  sceneToLoad: 
+  showVictoryUI: 1
+  victoryUIObject: {fileID: 0}
+  deathShakeDuration: 0.8
+  deathShakeMagnitude: 0.3
+  deathShakeLoopDuration: 2.5
+  deathShakeLoopStartMagnitude: 0.25
+  deathShakeLoopEndMagnitude: 0.05
 --- !u!95 &7943598995660000750
 Animator:
   serializedVersion: 7
