@@ -1315,7 +1315,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -1703,7 +1703,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1308626656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1942,7 +1942,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1602307584
 SpriteRenderer:
   serializedVersion: 2
@@ -2767,6 +2767,7 @@ MonoBehaviour:
   - {fileID: 917388683}
   maxWaitTime: 30
   endDelay: 0.5
+  enemyFadeOutDuration: 0.8
 --- !u!212 &3482498007707111226
 SpriteRenderer:
   serializedVersion: 2
@@ -3028,6 +3029,9 @@ MonoBehaviour:
   introDelay: 2
   phase2TransitionDelay: 3
   patternTimeout: 90
+  deathInterruptTimeout: 3
+  bossAnimator: {fileID: 0}
+  deathAnimTrigger: Death
   phase2TransitionSound: {fileID: 0}
   _currentPhase: 1
   _currentPatternName: Idle
@@ -3401,6 +3405,7 @@ MonoBehaviour:
   rightHand: {fileID: 9096417432877054730}
   deathTriggerName: Death
   deathAnimationDuration: 6
+  waitForPatternCleanup: 3.5
   deathVFXPrefab: {fileID: 0}
   explosionCount: 5
   explosionInterval: 0.4
@@ -3432,11 +3437,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32eb39fe310a27343b2fa56161e0f99c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossHandSafetyGuard
-  leftHand: {fileID: 9134569851962801505}
-  rightHand: {fileID: 9096417432877054730}
-  bossHP: {fileID: 3683270783752484881}
-  checkInterval: 2
-  enableDebugLog: 1
 --- !u!114 &7665530323831116530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3449,21 +3449,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b638d1fd7245dc246a10730048f8c5d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossAnimationController
-  headAnimator: {fileID: 7290501916464539725}
-  leftHandAnimator: {fileID: 5724555208147771458}
-  rightHandAnimator: {fileID: 7943598995660000750}
-  neckAnimator: {fileID: 7453098606799444433}
-  headIdleState: Idle
-  headAttackTrigger: Attack
-  headDeathTrigger: Death
-  leftHandIdleState: Idle
-  leftHandAttackTrigger: Attack
-  leftHandExitTrigger: Exit
-  rightHandIdleState: RightHandIdle
-  rightHandChargeTrigger: Charge
-  rightHandSwingTrigger: Swing
-  rightHandSlamTrigger: Slam
-  neckIdleState: Idle
 --- !u!95 &7943598995660000750
 Animator:
   serializedVersion: 7
