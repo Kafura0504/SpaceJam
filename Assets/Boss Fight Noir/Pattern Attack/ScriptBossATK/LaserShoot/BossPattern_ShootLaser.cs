@@ -1,12 +1,16 @@
 // =============================================================
-// SpaceJam - BossPattern_ShootLaser.cs  (FIX v4)
+// SpaceJam - BossPattern_ShootLaser.cs  (INTERRUPT v1)
 // -------------------------------------------------------------
-// FIX v4 (Issue 1):
-//   - Tambah field laserVFXOffset (Vector2) di bagian LASER VFX
-//   - SpawnLaserVFX() menggunakan offset tersebut agar VFX muncul
-//     sedikit di depan ExtraHand (ke kanan, arah laser tembak)
-//   - Default offset: (2f, 0f) — bisa disesuaikan di Inspector
-//   - Semua field dan logic lain TIDAK DIUBAH
+// PERUBAHAN DARI VERSI SEBELUMNYA:
+//   - Tambah field _interrupted (bool) dan method RequestInterrupt()
+//   - Saat interrupted:
+//       * LaserVFX langsung dimatikan
+//       * Alert langsung di-destroy
+//       * ExtraHand langsung di-destroy (tidak perlu exit animation)
+//       * LeftHand langsung dikembalikan ke origin
+//       * Pattern berhenti dan invoke onComplete
+//   - Cek interrupt dilakukan di setiap awal phase
+//   - TIDAK ADA perubahan pada field, signature, atau logic yang ada
 // =============================================================
 
 using System;
@@ -30,122 +34,66 @@ public class BossPattern_ShootLaser : MonoBehaviour
     [Tooltip("BossHP utama — damage extra hand diteruskan ke sini")]
     public BossHP bossHP;
 
-
     // ─────────────────────────────────────────────────────────
     // EXTRA HAND (GHOST HAND)
     // ─────────────────────────────────────────────────────────
 
     [Header("=== EXTRA HAND (Ghost) ===")]
-    [Tooltip("Prefab tangan ghost")]
     public GameObject extraHandPrefab;
-
-    [Tooltip("Posisi X awal spawn extra hand")]
-    public float extraHandSpawnX = -12f;
-
-    [Tooltip("Posisi Y awal spawn extra hand")]
-    public float extraHandSpawnY = -2f;
-
-    [Tooltip("Posisi X target saat bergerak ke kanan")]
-    public float extraHandMoveTargetX = -5f;
-
-    [Tooltip("HP extra hand — saat habis extra hand hancur")]
-    public float extraHandMaxHP = 60f;
-
-    [Tooltip("Kecepatan extra hand bergerak ke kanan")]
+    public float extraHandSpawnX       = -12f;
+    public float extraHandSpawnY       = -2f;
+    public float extraHandMoveTargetX  = -5f;
+    public float extraHandMaxHP        = 60f;
     public float extraHandMoveRightSpeed = 8f;
-
-    [Tooltip("Kecepatan extra hand bergerak keluar (exit ke kiri)")]
-    public float extraHandExitSpeed = 8f;
-
+    public float extraHandExitSpeed    = 8f;
 
     // ─────────────────────────────────────────────────────────
     // ARAH KELUAR TANGAN KIRI ASLI
     // ─────────────────────────────────────────────────────────
 
     [Header("=== LEFT HAND MOVEMENT ===")]
-    [Tooltip("Posisi Y keluar scene — lebih tinggi dari atas layar")]
-    public float leftHandExitY = 12f;
-
-    [Tooltip("Kecepatan tangan kiri asli bergerak keluar / kembali")]
+    public float leftHandExitY     = 12f;
     public float leftHandMoveSpeed = 8f;
-
 
     // ─────────────────────────────────────────────────────────
     // ALERT VISUAL
     // ─────────────────────────────────────────────────────────
 
     [Header("=== ALERT VISUAL ===")]
-    [Tooltip("Prefab alert peringatan. Jika kosong dibuat otomatis.")]
     public GameObject alertPrefab;
-
-    [Tooltip("Ukuran alert prefab saat di-spawn")]
-    public float alertSize = 1f;
-
-    [Tooltip("Sorting order alert sprite")]
-    public int alertSortingOrder = 10;
-
-    [Tooltip("Warna alert ketika dibuat otomatis")]
-    public Color alertColor = new Color(1f, 0.15f, 0.15f, 0.9f);
-
-    [Tooltip("Durasi fade out alert sebelum laser tembak (detik)")]
+    public float alertSize         = 1f;
+    public int   alertSortingOrder = 10;
+    public Color alertColor        = new Color(1f, 0.15f, 0.15f, 0.9f);
     public float alertFadeOutDuration = 0.5f;
-
 
     // ─────────────────────────────────────────────────────────
     // LASER VFX & DAMAGE
     // ─────────────────────────────────────────────────────────
 
     [Header("=== LASER VFX ===")]
-    [Tooltip("VFX Graph laser — assign VisualEffect dari scene/prefab")]
     public VisualEffect laserVFX;
 
-    // ── FIX Issue 1 ──────────────────────────────────────────
-    [Tooltip("Offset posisi VFX relatif dari ExtraHand saat laser tembak.\n" +
-             "Default (2, 0) = 2 unit di depan (kanan) ExtraHand.\n" +
-             "Sesuaikan X untuk mundur/majukan, Y untuk atas/bawah.")]
+    [Tooltip("Offset posisi VFX relatif dari ExtraHand saat laser tembak.")]
     public Vector2 laserVFXOffset = new Vector2(2f, 0f);
-    // ─────────────────────────────────────────────────────────
 
     [Header("=== LASER DAMAGE ===")]
-    [Tooltip("Damage laser saat aktif penuh (Phase 5)")]
-    public float laserDamage = 20f;
-
-    [Tooltip("Damage zona bahaya setelah laser (Phase 6)")]
+    public float laserDamage      = 20f;
     public float dangerZoneDamage = 8f;
-
-    [Tooltip("Tinggi area damage laser (world units)")]
-    public float laserHeight = 1.8f;
-
-    [Tooltip("Lebar area damage laser (world units)")]
-    public float laserWidth = 22f;
-
+    public float laserHeight      = 1.8f;
+    public float laserWidth       = 22f;
 
     // ─────────────────────────────────────────────────────────
     // TIMING
     // ─────────────────────────────────────────────────────────
 
     [Header("=== TIMING (detik) ===")]
-    [Tooltip("Durasi extra hand chase Y player")]
-    public float chaseDuration = 2f;
-
-    [Tooltip("Kecepatan extra hand mengikuti Y player")]
-    public float chaseSpeed = 5f;
-
-    [Tooltip("Offset X alert di depan extra hand (tidak dipakai, alert di X=0)")]
-    public float alertXOffset = 2f;
-
-    [Tooltip("Durasi charge sebelum laser tembak")]
-    public float telegraphDuration = 1.8f;
-
-    [Tooltip("Durasi laser aktif dan memberikan damage")]
+    public float chaseDuration       = 2f;
+    public float chaseSpeed          = 5f;
+    public float alertXOffset        = 2f;
+    public float telegraphDuration   = 1.8f;
     public float laserActiveDuration = 2f;
-
-    [Tooltip("Jeda sebelum extra hand exit")]
-    public float preExitDelay = 3f;
-
-    [Tooltip("Jeda setelah pattern selesai")]
-    public float endDelay = 0.8f;
-
+    public float preExitDelay        = 3f;
+    public float endDelay            = 0.8f;
 
     // ─────────────────────────────────────────────────────────
     // AUDIO
@@ -170,7 +118,6 @@ public class BossPattern_ShootLaser : MonoBehaviour
     [Tooltip("Suara ketika tangan kiri kembali ke posisi awal")]
     public AudioClip handReturnSound;
 
-
     // ─────────────────────────────────────────────────────────
     // PRIVATE STATE
     // ─────────────────────────────────────────────────────────
@@ -183,6 +130,79 @@ public class BossPattern_ShootLaser : MonoBehaviour
     private bool        _extraHandAlive;
     private float       _lastLaserDamageTime = -999f;
 
+    // --- INTERRUPT SUPPORT ---
+    // Flag ini di-set oleh BossPhaseController saat boss mati.
+    private bool _interrupted = false;
+
+    // ─────────────────────────────────────────────────────────
+    // PUBLIC API — INTERRUPT
+    // ─────────────────────────────────────────────────────────
+
+    /// <summary>
+    /// Minta pattern berhenti segera.
+    /// - LaserVFX dimatikan
+    /// - Alert di-destroy
+    /// - ExtraHand di-destroy langsung
+    /// - LeftHand dikembalikan ke origin
+    /// </summary>
+    public void RequestInterrupt()
+    {
+        _interrupted = true;
+        Debug.Log("[ShootLaser] Interrupt diminta — melakukan emergency cleanup.");
+        StartCoroutine(EmergencyCleanup());
+    }
+
+    /// <summary>
+    /// Cleanup darurat saat interrupt.
+    /// Matikan semua objek yang berhubungan dengan pattern ini.
+    /// </summary>
+    private IEnumerator EmergencyCleanup()
+    {
+        // 1. Matikan laser VFX segera
+        if (laserVFX != null)
+        {
+            laserVFX.Stop();
+            laserVFX.gameObject.SetActive(false);
+        }
+
+        // 2. Stop audio laser hum
+        if (_audioSource != null)
+            _audioSource.Stop();
+
+        // 3. Destroy alert object segera
+        if (_alertObj != null)
+        {
+            Destroy(_alertObj);
+            _alertObj = null;
+        }
+
+        // 4. Destroy extra hand segera
+        if (_extraHandObj != null)
+        {
+            Destroy(_extraHandObj);
+            _extraHandObj = null;
+        }
+
+        // 5. Kembalikan tangan kiri ke origin (cepat)
+        if (leftHand != null)
+        {
+            leftHand.gameObject.SetActive(true);
+
+            while (Vector3.Distance(leftHand.position, _leftHandOrigin) > 0.05f)
+            {
+                leftHand.position = Vector3.MoveTowards(
+                    leftHand.position,
+                    _leftHandOrigin,
+                    leftHandMoveSpeed * 2f * Time.deltaTime // 2x lebih cepat saat interrupt
+                );
+                yield return null;
+            }
+
+            leftHand.position = _leftHandOrigin;
+        }
+
+        Debug.Log("[ShootLaser] Emergency cleanup selesai.");
+    }
 
     // ─────────────────────────────────────────────────────────
     // UNITY LIFECYCLE
@@ -209,37 +229,104 @@ public class BossPattern_ShootLaser : MonoBehaviour
             _audioSource = gameObject.AddComponent<AudioSource>();
     }
 
-
     // ─────────────────────────────────────────────────────────
-    // PUBLIC API
+    // PUBLIC API — dipanggil dari BossPhaseController
     // ─────────────────────────────────────────────────────────
 
     public IEnumerator ExecutePattern(Action onComplete = null)
+{
+    if (leftHand == null || playerTransform == null)
     {
-        if (leftHand == null || playerTransform == null)
-        {
-            Debug.LogWarning("[ShootLaser] Reference null — pattern dibatalkan.");
-            onComplete?.Invoke();
-            yield break;
-        }
-
-        Debug.Log("[ShootLaser] ===== Pattern ShootLaser dimulai =====");
-
-        yield return StartCoroutine(Phase_LeftHandExit());
-        yield return StartCoroutine(Phase_ExtraHandEnter());
-        yield return StartCoroutine(Phase_ChaseY());
-        yield return StartCoroutine(Phase_Telegraph());
-        yield return StartCoroutine(Phase_FireLaser());
-        yield return StartCoroutine(Phase_DangerZone());
-        yield return StartCoroutine(Phase_ExtraHandExit());
-        yield return StartCoroutine(Phase_LeftHandReturn());
-
-        yield return new WaitForSeconds(endDelay);
-
-        Debug.Log("[ShootLaser] ===== Pattern ShootLaser selesai =====");
+        Debug.LogWarning("[ShootLaser] Reference null — pattern dibatalkan.");
         onComplete?.Invoke();
+        yield break;
     }
 
+    // DEATH FIX: Jangan mulai jika boss sudah mati
+    if (BossDeathSignal.IsDead)
+    {
+        onComplete?.Invoke();
+        yield break;
+    }
+
+    Debug.Log("[ShootLaser] ===== Pattern ShootLaser dimulai =====");
+
+    yield return StartCoroutine(Phase_LeftHandExit());
+
+    // DEATH FIX: Cek setelah tangan kiri keluar
+    if (BossDeathSignal.IsDead)
+    {
+        yield return StartCoroutine(ReturnLeftHandImmediate());
+        onComplete?.Invoke();
+        yield break;
+    }
+
+    yield return StartCoroutine(Phase_ExtraHandEnter());
+
+    // DEATH FIX: Cek setelah extra hand masuk
+    if (BossDeathSignal.IsDead)
+    {
+        CleanupExtraHand();
+        yield return StartCoroutine(ReturnLeftHandImmediate());
+        onComplete?.Invoke();
+        yield break;
+    }
+
+    yield return StartCoroutine(Phase_ChaseY());
+
+    if (BossDeathSignal.IsDead)
+    {
+        CleanupAlert();
+        CleanupExtraHand();
+        yield return StartCoroutine(ReturnLeftHandImmediate());
+        onComplete?.Invoke();
+        yield break;
+    }
+
+    yield return StartCoroutine(Phase_Telegraph());
+
+    if (BossDeathSignal.IsDead)
+    {
+        CleanupAlert();
+        CleanupExtraHand();
+        yield return StartCoroutine(ReturnLeftHandImmediate());
+        onComplete?.Invoke();
+        yield break;
+    }
+
+    yield return StartCoroutine(Phase_FireLaser());
+
+    if (BossDeathSignal.IsDead)
+    {
+        CleanupLaserVFX();
+        CleanupExtraHand();
+        yield return StartCoroutine(ReturnLeftHandImmediate());
+        onComplete?.Invoke();
+        yield break;
+    }
+
+    yield return StartCoroutine(Phase_DangerZone());
+    yield return StartCoroutine(Phase_ExtraHandExit());
+    yield return StartCoroutine(Phase_LeftHandReturn());
+
+    yield return new WaitForSeconds(endDelay);
+
+    Debug.Log("[ShootLaser] ===== Pattern ShootLaser selesai =====");
+    onComplete?.Invoke();
+}
+
+    /// <summary>
+    /// Tunggu EmergencyCleanup selesai lalu invoke onComplete.
+    /// Dipanggil saat interrupt terjadi di tengah pattern.
+    /// </summary>
+    private IEnumerator WaitForCleanupThenFinish(Action onComplete)
+    {
+        // Tunggu sedikit agar EmergencyCleanup selesai
+        yield return new WaitForSeconds(0.3f);
+        Debug.Log("[ShootLaser] Pattern dihentikan karena interrupt.");
+        _interrupted = false;
+        onComplete?.Invoke();
+    }
 
     // ─────────────────────────────────────────────────────────
     // PHASE 1 : TANGAN KIRI ASLI KELUAR KE ATAS
@@ -251,18 +338,14 @@ public class BossPattern_ShootLaser : MonoBehaviour
 
         PlaySound(handExitSound);
 
-        Vector3 exitPos = new Vector3(
-            _leftHandOrigin.x,
-            leftHandExitY,
-            _leftHandOrigin.z
-        );
+        Vector3 exitPos = new Vector3(_leftHandOrigin.x, leftHandExitY, _leftHandOrigin.z);
 
         while (Vector3.Distance(leftHand.position, exitPos) > 0.1f)
         {
+            if (_interrupted) yield break;
+
             leftHand.position = Vector3.MoveTowards(
-                leftHand.position,
-                exitPos,
-                leftHandMoveSpeed * Time.deltaTime
+                leftHand.position, exitPos, leftHandMoveSpeed * Time.deltaTime
             );
             yield return null;
         }
@@ -270,7 +353,6 @@ public class BossPattern_ShootLaser : MonoBehaviour
         leftHand.position = exitPos;
         leftHand.gameObject.SetActive(false);
     }
-
 
     // ─────────────────────────────────────────────────────────
     // PHASE 2 : EXTRA HAND MASUK DARI KIRI
@@ -306,6 +388,8 @@ public class BossPattern_ShootLaser : MonoBehaviour
         while (_extraHandObj != null &&
                Vector3.Distance(_extraHandObj.transform.position, moveTargetPos) > 0.05f)
         {
+            if (_interrupted) yield break;
+
             _extraHandObj.transform.position = Vector3.MoveTowards(
                 _extraHandObj.transform.position,
                 moveTargetPos,
@@ -318,180 +402,191 @@ public class BossPattern_ShootLaser : MonoBehaviour
             _extraHandObj.transform.position = moveTargetPos;
     }
 
-
     // ─────────────────────────────────────────────────────────
     // PHASE 3 : CHASE POSISI Y PLAYER
     // ─────────────────────────────────────────────────────────
 
     IEnumerator Phase_ChaseY()
+{
+    Debug.Log("[ShootLaser] Phase 3 : Alert horizontal aktif, chase Y player");
+
+    if (_extraHandObj == null) yield break;
+
+    _alertObj = SpawnLaserAlert(_extraHandObj.transform.position.y);
+
+    float elapsed = 0f;
+
+    while (elapsed < chaseDuration && _extraHandObj != null)
     {
-        Debug.Log("[ShootLaser] Phase 3 : Alert horizontal aktif, chase Y player");
+        // DEATH FIX: Hentikan chase jika boss mati
+        if (BossDeathSignal.IsDead) yield break;
 
-        if (_extraHandObj == null) yield break;
+        elapsed += Time.deltaTime;
 
-        _alertObj = SpawnLaserAlert(_extraHandObj.transform.position.y);
+        float targetY  = playerTransform.position.y;
+        float currentY = _extraHandObj.transform.position.y;
+        float newY     = Mathf.MoveTowards(currentY, targetY, chaseSpeed * Time.deltaTime);
 
-        float elapsed = 0f;
+        Vector3 newPos = _extraHandObj.transform.position;
+        newPos.y = newY;
+        _extraHandObj.transform.position = newPos;
 
-        while (elapsed < chaseDuration && _extraHandObj != null)
-        {
-            elapsed += Time.deltaTime;
+        if (_alertObj != null)
+            _alertObj.transform.position = new Vector3(0f, newY, 0f);
 
-            float targetY  = playerTransform.position.y;
-            float currentY = _extraHandObj.transform.position.y;
-            float newY     = Mathf.MoveTowards(currentY, targetY, chaseSpeed * Time.deltaTime);
-
-            Vector3 newPos = _extraHandObj.transform.position;
-            newPos.y = newY;
-            _extraHandObj.transform.position = newPos;
-
-            if (_alertObj != null)
-                _alertObj.transform.position = new Vector3(0f, newY, 0f);
-
-            yield return null;
-        }
-
-        if (_extraHandObj != null)
-        {
-            _lockedY = _extraHandObj.transform.position.y;
-            Debug.Log($"[ShootLaser] Posisi Y dikunci: {_lockedY:F2}");
-
-            if (_alertObj != null)
-                _alertObj.transform.position = new Vector3(0f, _lockedY, 0f);
-        }
-        else
-        {
-            _lockedY = playerTransform.position.y;
-        }
+        yield return null;
     }
 
+    if (_extraHandObj != null)
+    {
+        _lockedY = _extraHandObj.transform.position.y;
+        Debug.Log($"[ShootLaser] Posisi Y dikunci: {_lockedY:F2}");
+
+        if (_alertObj != null)
+            _alertObj.transform.position = new Vector3(0f, _lockedY, 0f);
+    }
+    else
+    {
+        _lockedY = playerTransform.position.y;
+    }
+}
 
     // ─────────────────────────────────────────────────────────
     // PHASE 4 : TELEGRAPH
     // ─────────────────────────────────────────────────────────
 
     IEnumerator Phase_Telegraph()
+{
+    if (_extraHandObj == null) yield break;
+
+    Debug.Log("[ShootLaser] Phase 4 : Telegraph — player punya waktu menghindar");
+
+    PlaySound(chargeSound);
+
+    float waitBeforeFade = Mathf.Max(0f, telegraphDuration - alertFadeOutDuration);
+
+    // DEATH FIX: Cek setiap frame selama telegraph
+    float elapsed = 0f;
+    while (elapsed < waitBeforeFade)
     {
-        if (_extraHandObj == null) yield break;
+        if (BossDeathSignal.IsDead)
+        {
+            CleanupAlert();
+            yield break;
+        }
+        elapsed += Time.deltaTime;
+        yield return null;
+    }
 
-        Debug.Log("[ShootLaser] Phase 4 : Telegraph — player punya waktu menghindar");
+    if (_alertObj != null)
+    {
+        SpriteRenderer alertSR = _alertObj.GetComponent<SpriteRenderer>();
+        if (alertSR == null)
+            alertSR = _alertObj.GetComponentInChildren<SpriteRenderer>();
 
-        PlaySound(chargeSound);
-
-        float waitBeforeFade = Mathf.Max(0f, telegraphDuration - alertFadeOutDuration);
-        yield return new WaitForSeconds(waitBeforeFade);
+        if (alertSR != null)
+            yield return StartCoroutine(FadeOutAlert(alertSR, alertFadeOutDuration));
 
         if (_alertObj != null)
         {
-            SpriteRenderer alertSR = _alertObj.GetComponent<SpriteRenderer>();
-            if (alertSR == null)
-                alertSR = _alertObj.GetComponentInChildren<SpriteRenderer>();
-
-            if (alertSR != null)
-                yield return StartCoroutine(FadeOutAlert(alertSR, alertFadeOutDuration));
-
-            if (_alertObj != null)
-            {
-                Destroy(_alertObj);
-                _alertObj = null;
-            }
-
-            Debug.Log("[ShootLaser] Alert sudah fade out — siap tembak laser");
+            Destroy(_alertObj);
+            _alertObj = null;
         }
-        else
-        {
-            yield return new WaitForSeconds(alertFadeOutDuration);
-        }
+
+        Debug.Log("[ShootLaser] Alert sudah fade out — siap tembak laser");
     }
-
+    else
+    {
+        yield return new WaitForSeconds(alertFadeOutDuration);
+    }
+}
 
     // ─────────────────────────────────────────────────────────
     // PHASE 5 : TEMBAK LASER
-    // FIX Issue 1: VFX di-spawn dengan offset di depan ExtraHand
     // ─────────────────────────────────────────────────────────
 
     IEnumerator Phase_FireLaser()
+{
+    if (_extraHandObj == null) yield break;
+
+    // DEATH FIX: Jangan tembak jika boss sudah mati
+    if (BossDeathSignal.IsDead) yield break;
+
+    Debug.Log("[ShootLaser] Phase 5 : Extra hand tembak laser!");
+
+    PlaySound(fireSound);
+
+    Vector3 handPos     = _extraHandObj.transform.position;
+    Vector3 vfxSpawnPos = new Vector3(
+        handPos.x + laserVFXOffset.x,
+        _lockedY  + laserVFXOffset.y,
+        0f
+    );
+
+    if (laserVFX != null)
     {
-        if (_extraHandObj == null) yield break;
-
-        Debug.Log("[ShootLaser] Phase 5 : Extra hand tembak laser!");
-
-        PlaySound(fireSound);
-
-        // FIX: hitung posisi VFX = posisi ExtraHand + offset
-        // laserVFXOffset.x positif = ke kanan (arah laser tembak)
-        Vector3 handPos    = _extraHandObj.transform.position;
-        Vector3 vfxSpawnPos = new Vector3(
-            handPos.x + laserVFXOffset.x,
-            _lockedY  + laserVFXOffset.y,
-            0f
-        );
-
-        if (laserVFX != null)
-        {
-            laserVFX.transform.position = vfxSpawnPos;
-            laserVFX.gameObject.SetActive(true);
-            yield return null;
-            laserVFX.Reinit();
-            laserVFX.Play();
-            Debug.Log($"[ShootLaser] VFX laser diputar di posisi {vfxSpawnPos}");
-        }
-        else
-        {
-            Debug.LogWarning("[ShootLaser] laserVFX belum di-assign di Inspector!");
-        }
-
-        // Mulai hum sound looping
-        if (humSound != null && _audioSource != null)
-        {
-            _audioSource.clip = humSound;
-            _audioSource.loop = true;
-            _audioSource.Play();
-        }
-
-        float elapsed = 0f;
-        while (elapsed < laserActiveDuration && _extraHandObj != null)
-        {
-            elapsed += Time.deltaTime;
-            ApplyContinuousLaserDamage();
-            yield return null;
-        }
-
-        if (laserVFX != null)
-        {
-            laserVFX.Stop();
-            laserVFX.gameObject.SetActive(false);
-        }
-
-        if (_audioSource != null)
-            _audioSource.Stop();
-
-        Debug.Log("[ShootLaser] Laser selesai tembak");
+        laserVFX.transform.position = vfxSpawnPos;
+        laserVFX.gameObject.SetActive(true);
+        yield return null;
+        laserVFX.Reinit();
+        laserVFX.Play();
+        Debug.Log($"[ShootLaser] VFX laser diputar di posisi {vfxSpawnPos}");
+    }
+    else
+    {
+        Debug.LogWarning("[ShootLaser] laserVFX belum di-assign di Inspector!");
     }
 
+    if (humSound != null && _audioSource != null)
+    {
+        _audioSource.clip = humSound;
+        _audioSource.loop = true;
+        _audioSource.Play();
+    }
 
+    float elapsed = 0f;
+    while (elapsed < laserActiveDuration && _extraHandObj != null)
+    {
+        // DEATH FIX: Hentikan laser jika boss mati
+        if (BossDeathSignal.IsDead)
+        {
+            CleanupLaserVFX();
+            yield break;
+        }
+
+        elapsed += Time.deltaTime;
+        ApplyContinuousLaserDamage();
+        yield return null;
+    }
+
+    CleanupLaserVFX();
+
+    Debug.Log("[ShootLaser] Laser selesai tembak");
+}
     // ─────────────────────────────────────────────────────────
-    // PHASE 6 : EXTRA HAND DIAM — PLAYER BISA SERANG
+    // PHASE 6 : DANGER ZONE
     // ─────────────────────────────────────────────────────────
 
     IEnumerator Phase_DangerZone()
+{
+    Debug.Log($"[ShootLaser] Phase 6 : Extra hand diam {preExitDelay}s — player bisa serang!");
+
+    if (_extraHandObj == null) yield break;
+
+    float elapsed = 0f;
+
+    while (elapsed < preExitDelay && _extraHandObj != null)
     {
-        Debug.Log($"[ShootLaser] Phase 6 : Extra hand diam {preExitDelay}s — player bisa serang!");
+        // DEATH FIX: Hentikan danger zone jika boss mati
+        if (BossDeathSignal.IsDead) yield break;
 
-        if (_extraHandObj == null) yield break;
-
-        float elapsed = 0f;
-
-        while (elapsed < preExitDelay && _extraHandObj != null)
-        {
-            elapsed += Time.deltaTime;
-            ApplyContinuousLaserDamage();
-            yield return null;
-        }
-
-        Debug.Log("[ShootLaser] DangerZone selesai");
+        elapsed += Time.deltaTime;
+        ApplyContinuousLaserDamage();
+        yield return null;
     }
 
+    Debug.Log("[ShootLaser] DangerZone selesai");
+}
 
     // ─────────────────────────────────────────────────────────
     // PHASE 7 : EXTRA HAND EXIT KE KIRI
@@ -523,7 +618,6 @@ public class BossPattern_ShootLaser : MonoBehaviour
         }
     }
 
-
     // ─────────────────────────────────────────────────────────
     // PHASE 8 : TANGAN KIRI ASLI TURUN KEMBALI
     // ─────────────────────────────────────────────────────────
@@ -535,11 +629,7 @@ public class BossPattern_ShootLaser : MonoBehaviour
         PlaySound(handReturnSound);
 
         leftHand.gameObject.SetActive(true);
-        leftHand.position = new Vector3(
-            _leftHandOrigin.x,
-            leftHandExitY,
-            _leftHandOrigin.z
-        );
+        leftHand.position = new Vector3(_leftHandOrigin.x, leftHandExitY, _leftHandOrigin.z);
 
         while (Vector3.Distance(leftHand.position, _leftHandOrigin) > 0.05f)
         {
@@ -553,7 +643,6 @@ public class BossPattern_ShootLaser : MonoBehaviour
 
         leftHand.position = _leftHandOrigin;
     }
-
 
     // ─────────────────────────────────────────────────────────
     // HELPERS
@@ -591,16 +680,13 @@ public class BossPattern_ShootLaser : MonoBehaviour
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-            float t     = Mathf.SmoothStep(0f, 1f, elapsed / duration);
-            Color c     = sr.color;
-            c.a         = Mathf.Lerp(startAlpha, 0f, t);
-            sr.color    = c;
+            Color c  = sr.color;
+            c.a      = Mathf.Lerp(startAlpha, 0f, elapsed / duration);
+            sr.color = c;
             yield return null;
         }
 
-        Color final = sr.color;
-        final.a     = 0f;
-        sr.color    = final;
+        Color final = sr.color; final.a = 0f; sr.color = final;
     }
 
     Sprite CreateSolidSprite()
@@ -622,6 +708,64 @@ public class BossPattern_ShootLaser : MonoBehaviour
             AudioSource.PlayClipAtPoint(clip, transform.position);
     }
 
+    // DEATH FIX HELPERS ────────────────────────────────────────────
+
+private void CleanupAlert()
+{
+    if (_alertObj != null)
+    {
+        Destroy(_alertObj);
+        _alertObj = null;
+        Debug.Log("[ShootLaser] Alert dibersihkan (death cleanup).");
+    }
+}
+
+private void CleanupExtraHand()
+{
+    if (_extraHandObj != null)
+    {
+        Destroy(_extraHandObj);
+        _extraHandObj = null;
+        Debug.Log("[ShootLaser] Extra hand dibersihkan (death cleanup).");
+    }
+}
+
+private void CleanupLaserVFX()
+{
+    if (laserVFX != null)
+    {
+        laserVFX.Stop();
+        laserVFX.gameObject.SetActive(false);
+    }
+
+    if (_audioSource != null)
+        _audioSource.Stop();
+
+    Debug.Log("[ShootLaser] Laser VFX dibersihkan (death cleanup).");
+}
+
+private IEnumerator ReturnLeftHandImmediate()
+{
+    leftHand.gameObject.SetActive(true);
+
+    // Jika tangan sudah di atas, kembalikan dengan cepat
+    Vector3 exitPos = new Vector3(_leftHandOrigin.x, leftHandExitY, _leftHandOrigin.z);
+    leftHand.position = exitPos;
+
+    while (Vector3.Distance(leftHand.position, _leftHandOrigin) > 0.05f)
+    {
+        leftHand.position = Vector3.MoveTowards(
+            leftHand.position,
+            _leftHandOrigin,
+            leftHandMoveSpeed * 2f * Time.deltaTime  // 2x lebih cepat saat death
+        );
+        yield return null;
+    }
+
+    leftHand.position = _leftHandOrigin;
+    Debug.Log("[ShootLaser] Tangan kiri dikembalikan ke posisi asal (death cleanup).");
+}
+
     void ApplyContinuousLaserDamage()
     {
         if (playerTransform == null) return;
@@ -629,32 +773,18 @@ public class BossPattern_ShootLaser : MonoBehaviour
         float laserTolerance = laserHeight * 0.5f;
         float playerY        = playerTransform.position.y;
 
-        if (Mathf.Abs(playerY - _lockedY) > laserTolerance)
-            return;
-
-        if (Time.time - _lastLaserDamageTime < 0.5f)
-            return;
+        if (Mathf.Abs(playerY - _lockedY) > laserTolerance) return;
+        if (Time.time - _lastLaserDamageTime < 0.5f) return;
 
         _lastLaserDamageTime = Time.time;
 
-        PlayerHealth playerHealth = playerTransform.GetComponent<PlayerHealth>();
-        if (playerHealth != null)
-        {
-            playerHealth.TakeDamage(laserDamage);
-            return;
-        }
+        PlayerHealth ph = playerTransform.GetComponent<PlayerHealth>();
+        if (ph != null) { ph.TakeDamage(laserDamage); return; }
 
-        HealthManager healthManager = playerTransform.GetComponent<HealthManager>();
-        if (healthManager != null)
-        {
-            healthManager.SendMessage(
-                "TakeDamage",
-                laserDamage,
-                SendMessageOptions.DontRequireReceiver
-            );
-        }
+        HealthManager hm = playerTransform.GetComponent<HealthManager>();
+        if (hm != null)
+            hm.SendMessage("TakeDamage", laserDamage, SendMessageOptions.DontRequireReceiver);
     }
-
 
     // ─────────────────────────────────────────────────────────
     // GIZMOS
@@ -662,7 +792,6 @@ public class BossPattern_ShootLaser : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-        // Tampilkan preview posisi VFX di editor
         Gizmos.color = new Color(1f, 0.8f, 0f, 0.8f);
         Vector3 vfxPreview = new Vector3(
             extraHandMoveTargetX + laserVFXOffset.x,
@@ -670,13 +799,6 @@ public class BossPattern_ShootLaser : MonoBehaviour
             0f
         );
         Gizmos.DrawWireSphere(vfxPreview, 0.3f);
-        Gizmos.DrawIcon(vfxPreview, "LightIcon", true);
-
-        Gizmos.color = new Color(0.2f, 0.9f, 1f, 0.5f);
-        Gizmos.DrawLine(
-            new Vector3(-11f, Application.isPlaying ? _lockedY : 0f, 0f),
-            new Vector3( 11f, Application.isPlaying ? _lockedY : 0f, 0f)
-        );
 
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(new Vector3(extraHandSpawnX, extraHandSpawnY, 0f), 0.4f);

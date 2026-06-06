@@ -1,18 +1,9 @@
-// Assets/Boss Fight Noir/Pattern Attack/ScriptBossATK/BossPattern_NormalEnemy.cs
+// Assets/Boss Fight Noir/Pattern Attack/BossPattern_NormalEnemy.cs
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// SpaceJam - Boss Pattern : Spawn Normal Enemy
-///
-/// Spawn beberapa enemy biasa. Pattern baru dianggap selesai
-/// setelah semua enemy yang di-spawn habis dikalahkan.
-/// Gunakan spawnPoints agar posisi spawn bisa dikontrol.
-///
-/// CARA PAKAI:
-///   yield return StartCoroutine(normalEnemyPattern.ExecutePattern());
-/// </summary>
 public class BossPattern_NormalEnemy : MonoBehaviour
 {
     [Header("=== ENEMY PREFABS ===")]
@@ -30,20 +21,28 @@ public class BossPattern_NormalEnemy : MonoBehaviour
     public Transform[] spawnPoints;
 
     [Header("=== TIMING ===")]
-    [Tooltip("Batas waktu maksimum menunggu enemy mati (detik). Setelah ini pattern lanjut.")]
+    [Tooltip("Batas waktu maksimum menunggu enemy mati (detik).")]
     public float maxWaitTime = 30f;
 
     public float endDelay = 0.5f;
 
-    // Tag enemy yang dipakai untuk tracking
+    [Header("=== DEATH CLEANUP ===")]
+    [Tooltip("Durasi fadeout enemy saat boss mati (detik)")]
+    public float enemyFadeOutDuration = 0.8f;
+
     private const string ENEMY_TAG = "Enemy";
 
-    // ─────────────────────────────────────────────────────────────────────────
+    // Simpan referensi enemy yang di-spawn oleh pattern ini
+    private List<GameObject> _spawnedEnemies = new List<GameObject>();
+
+    // ─────────────────────────────────────────────────────────
     // PUBLIC API
-    // ─────────────────────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────
 
     public IEnumerator ExecutePattern(Action onComplete = null)
     {
+        _spawnedEnemies.Clear();
+
         if (enemyPrefabs == null || enemyPrefabs.Length == 0)
         {
             Debug.LogWarning("[NormalEnemy] enemyPrefabs kosong!");
@@ -51,29 +50,55 @@ public class BossPattern_NormalEnemy : MonoBehaviour
             yield break;
         }
 
+        // DEATH FIX: Jangan spawn jika boss sudah mati
+        if (BossDeathSignal.IsDead)
+        {
+            onComplete?.Invoke();
+            yield break;
+        }
+
         Debug.Log($"[NormalEnemy] Spawn {spawnCount} enemy biasa");
 
-        // Catat jumlah enemy sebelum spawn sebagai baseline
         int baselineCount = GameObject.FindGameObjectsWithTag(ENEMY_TAG).Length;
 
         // Spawn enemy satu per satu
         for (int i = 0; i < spawnCount; i++)
         {
-            int     randIdx   = UnityEngine.Random.Range(0, enemyPrefabs.Length);
-            Vector3 spawnPos  = GetSpawnPosition(i);
+            // DEATH FIX: Berhenti spawn jika boss mati di tengah jalan
+            if (BossDeathSignal.IsDead)
+            {
+                Debug.Log("[NormalEnemy] Boss mati saat spawn — hentikan spawn.");
+                yield return StartCoroutine(FadeOutAndDestroyAll());
+                onComplete?.Invoke();
+                yield break;
+            }
 
-            Instantiate(enemyPrefabs[randIdx], spawnPos, Quaternion.identity);
+            int     randIdx  = UnityEngine.Random.Range(0, enemyPrefabs.Length);
+            Vector3 spawnPos = GetSpawnPosition(i);
+
+            GameObject enemy = Instantiate(enemyPrefabs[randIdx], spawnPos, Quaternion.identity);
+            _spawnedEnemies.Add(enemy);
+
             Debug.Log($"[NormalEnemy] Spawn enemy {i + 1}/{spawnCount} di {spawnPos}");
 
             yield return new WaitForSeconds(spawnDelay);
         }
 
-        // Tunggu sampai jumlah enemy kembali ke baseline (semua enemy baru mati)
+        // Tunggu sampai semua enemy mati
         Debug.Log("[NormalEnemy] Menunggu semua enemy habis...");
 
         float elapsed = 0f;
         while (elapsed < maxWaitTime)
         {
+            // DEATH FIX: Jika boss mati, fadeout semua enemy lalu selesai
+            if (BossDeathSignal.IsDead)
+            {
+                Debug.Log("[NormalEnemy] Boss mati — fadeout semua enemy.");
+                yield return StartCoroutine(FadeOutAndDestroyAll());
+                onComplete?.Invoke();
+                yield break;
+            }
+
             elapsed += Time.deltaTime;
 
             int currentCount = GameObject.FindGameObjectsWithTag(ENEMY_TAG).Length;
@@ -88,17 +113,87 @@ public class BossPattern_NormalEnemy : MonoBehaviour
         onComplete?.Invoke();
     }
 
-    // ─────────────────────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────
+    // DEATH CLEANUP — Fadeout semua enemy yang di-spawn
+    // ─────────────────────────────────────────────────────────
+
+    private IEnumerator FadeOutAndDestroyAll()
+    {
+        // Bersihkan list dari referensi yang sudah null
+        _spawnedEnemies.RemoveAll(e => e == null);
+
+        if (_spawnedEnemies.Count == 0)
+        {
+            Debug.Log("[NormalEnemy] Tidak ada enemy untuk di-fadeout.");
+            yield break;
+        }
+
+        Debug.Log($"[NormalEnemy] Fadeout {_spawnedEnemies.Count} enemy...");
+
+        // Kumpulkan semua SpriteRenderer dari enemy yang masih hidup
+        List<SpriteRenderer> renderers = new List<SpriteRenderer>();
+        List<float>          startAlphas = new List<float>();
+
+        foreach (GameObject enemy in _spawnedEnemies)
+        {
+            if (enemy == null) continue;
+
+            // Nonaktifkan collider agar tidak damage player saat fadeout
+            Collider2D col = enemy.GetComponent<Collider2D>();
+            if (col != null) col.enabled = false;
+
+            // Nonaktifkan rigidbody agar tidak bergerak saat fadeout
+            Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
+            if (rb != null) rb.linearVelocity = Vector2.zero;
+
+            // Kumpulkan semua sprite renderer di enemy dan children-nya
+            SpriteRenderer[] srs = enemy.GetComponentsInChildren<SpriteRenderer>();
+            foreach (SpriteRenderer sr in srs)
+            {
+                renderers.Add(sr);
+                startAlphas.Add(sr.color.a);
+            }
+        }
+
+        // Fadeout semua sprite secara bersamaan
+        float elapsed = 0f;
+        while (elapsed < enemyFadeOutDuration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.SmoothStep(0f, 1f, elapsed / enemyFadeOutDuration);
+
+            for (int i = 0; i < renderers.Count; i++)
+            {
+                if (renderers[i] == null) continue;
+                Color c = renderers[i].color;
+                c.a = Mathf.Lerp(startAlphas[i], 0f, t);
+                renderers[i].color = c;
+            }
+
+            yield return null;
+        }
+
+        // Destroy semua enemy setelah fadeout selesai
+        foreach (GameObject enemy in _spawnedEnemies)
+        {
+            if (enemy != null)
+                Destroy(enemy);
+        }
+
+        _spawnedEnemies.Clear();
+
+        Debug.Log("[NormalEnemy] Semua enemy sudah di-fadeout dan dihancurkan.");
+    }
+
+    // ─────────────────────────────────────────────────────────
     // HELPERS
-    // ─────────────────────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────
 
     private Vector3 GetSpawnPosition(int index)
     {
-        // Gunakan spawnPoints jika tersedia
         if (spawnPoints != null && index < spawnPoints.Length && spawnPoints[index] != null)
             return spawnPoints[index].position;
 
-        // Fallback: posisi random di pinggir layar
         float[] edgeX = { -9f, 9f, -9f, 9f };
         float[] edgeY = { -4f, -4f, 4f, 4f };
         int side = index % 4;

@@ -400,24 +400,23 @@ public class BossPhaseController : MonoBehaviour
     // ---------------------------------------------------------
 
     private void HandleBossDeath()
-    {
-        if (_bossDead) return; // Cegah double-call
+{
+    if (_bossDead) return;
 
-        _bossDead   = true;
-        _isRunning  = false;
-        _currentPatternName = "☠ Menunggu pattern selesai...";
+    _bossDead   = true;
+    _isRunning  = false;
+    _currentPatternName = "☠ Menunggu pattern selesai...";
 
-        Debug.Log("========================================");
-        Debug.Log($"[Boss] ☠ BOSS KALAH! Requesting pattern interrupt...");
-        Debug.Log("========================================");
+    // DEATH FIX: Aktifkan sinyal global agar semua pattern tahu
+    BossDeathSignal.SetDead();
 
-        // FIX: Request interrupt ke pattern yang sedang berjalan
-        // Pattern akan selesai sendiri atau di-timeout
-        _interruptRequested = true;
+    Debug.Log("========================================");
+    Debug.Log($"[Boss] ☠ BOSS KALAH! Requesting pattern interrupt...");
+    Debug.Log("========================================");
 
-        // Jalankan coroutine death sequence
-        StartCoroutine(DeathSequence());
-    }
+    _interruptRequested = true;
+    StartCoroutine(DeathSequence());
+}
 
     // ---------------------------------------------------------
     // DEATH SEQUENCE — tunggu pattern selesai lalu play animasi

@@ -157,33 +157,55 @@ public class MiniGunnerEnemy : MonoBehaviour
     // ─────────────────────────────────────────────────────────
 
     private IEnumerator RunSequence()
+{
+    // 1. Portal membuka
+    yield return StartCoroutine(PortalOpen());
+
+    // 2. Idle rotation
+    StartIdleRotation();
+
+    // 3. Jeda sebelum tembak
+    // DEATH FIX: Cek kematian boss setiap frame selama menunggu
+    float waitElapsed = 0f;
+    while (waitElapsed < waitBeforeShoot)
     {
-        // 1. Portal membuka — zoom in + rotasi cepat
-        yield return StartCoroutine(PortalOpen());
-
-        // 2. Mulai idle rotation — berjalan terus sampai portal menutup
-        StartIdleRotation();
-
-        // 3. Jeda sebelum tembak (portal tetap spin)
-        yield return new WaitForSeconds(waitBeforeShoot);
-
-        // 4. Tembak (portal tetap spin selama menembak)
-        yield return StartCoroutine(ShootSweep());
-
-        // 5. Jeda setelah tembak (portal tetap spin)
-        yield return new WaitForSeconds(waitAfterShoot);
-
-        // 6. Stop idle rotation sebelum portal menutup
-        StopIdleRotation();
-
-        // 7. Portal menutup — zoom out + rotasi cepat berlawanan
-        yield return StartCoroutine(PortalClose());
-
-        // 8. Beritahu spawner bahwa sequence selesai SEBELUM Destroy
-        InvokeCallback();
-
-        Destroy(gameObject);
+        if (BossDeathSignal.IsDead)
+        {
+            Debug.Log("[MiniGunnerEnemy] Boss mati — skip shoot, langsung tutup portal.");
+            StopIdleRotation();
+            yield return StartCoroutine(PortalClose());
+            InvokeCallback();
+            Destroy(gameObject);
+            yield break;
+        }
+        waitElapsed += Time.deltaTime;
+        yield return null;
     }
+
+    // 4. Tembak — hanya jika boss masih hidup
+    if (!BossDeathSignal.IsDead)
+    {
+        yield return StartCoroutine(ShootSweep());
+    }
+
+    // 5. Jeda setelah tembak — skip jika boss sudah mati
+    if (!BossDeathSignal.IsDead)
+    {
+        yield return new WaitForSeconds(waitAfterShoot);
+    }
+
+    // 6. Stop idle rotation
+    StopIdleRotation();
+
+    // 7. Portal menutup
+    yield return StartCoroutine(PortalClose());
+
+    // 8. Beritahu spawner selesai
+    InvokeCallback();
+
+    Destroy(gameObject);
+}
+
 
     // ─────────────────────────────────────────────────────────
     // IDLE ROTATION
