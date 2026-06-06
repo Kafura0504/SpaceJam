@@ -32,21 +32,25 @@ public class NormalSpawner : MonoBehaviour
 
     void resetTimer()
     {
-        if (playerlevel.level <= 5)
+        if (playerlevel.level <= 3)
         {
-            spawnCD = UnityEngine.Random.Range(15,25);
+            spawnCD = UnityEngine.Random.Range(10,25);
         }
-        else if (playerlevel.level <= 10 && playerlevel.level>5)
+        else if (playerlevel.level <= 6 && playerlevel.level>3)
         {
             spawnCD = UnityEngine.Random.Range(10,20);
         }
-        else if (playerlevel.level <= 15 && playerlevel.level>10)
+        else if (playerlevel.level <= 9 && playerlevel.level>6)
         {
-            spawnCD = UnityEngine.Random.Range(10,15);
+            spawnCD = UnityEngine.Random.Range(7,15);
         }
-        else if (playerlevel.level <= 20 && playerlevel.level>15)
+        else if (playerlevel.level <= 12 && playerlevel.level>9)
         {
             spawnCD = UnityEngine.Random.Range(7,10);
+        }
+        else if (playerlevel.level <= 15 && playerlevel.level>12)
+        {
+            spawnCD = UnityEngine.Random.Range(5,7);
         }
     }
     IEnumerator spawn()

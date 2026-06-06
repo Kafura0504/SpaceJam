@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Magazine
   m_EditorClassIdentifier: Assembly-CSharp::BuffData
   buffName: Mag Up
-  description: Mag +5
+  description: Mag +3
   Image: {fileID: 21300000, guid: 8aef8cfc843dc074da14be0fbcb90aa3, type: 3}
   type: 3
-  value: 5
+  value: 3
