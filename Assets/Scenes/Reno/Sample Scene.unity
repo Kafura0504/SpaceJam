@@ -1495,6 +1495,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 314035162971027185, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 409155905879734336, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 469128242197421309, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1539,10 +1547,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4319359955902519903, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557927756677157015, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666361832295060847, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7062740353200365349, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7162475426521053785, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
       propertyPath: UI
       value: 
       objectReference: {fileID: 1664651584}
+    - target: {fileID: 7162475426521053785, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501904812885801784, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8497289103263878494, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8604311978451133758, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
       propertyPath: damage
       value: 50
@@ -1556,12 +1592,20 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8604311978451133758, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8604311978451133758, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
       propertyPath: bulletVelocity
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8604311978451133758, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
       propertyPath: iframeDuration
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8853495760746230940, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3440,30 +3484,6 @@ MonoBehaviour:
   deathShakeLoopDuration: 2.5
   deathShakeLoopStartMagnitude: 0.25
   deathShakeLoopEndMagnitude: 0.05
---- !u!114 &7665530323831116529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4119854015645127322}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32eb39fe310a27343b2fa56161e0f99c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BossHandSafetyGuard
---- !u!114 &7665530323831116530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4119854015645127322}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b638d1fd7245dc246a10730048f8c5d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BossAnimationController
 --- !u!95 &7943598995660000750
 Animator:
   serializedVersion: 7
