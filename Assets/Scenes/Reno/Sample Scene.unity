@@ -1544,6 +1544,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1664651584}
     - target: {fileID: 8604311978451133758, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
+      propertyPath: damage
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8604311978451133758, guid: a3bbdd8811702854f9c59fa142d0fce8, type: 3}
       propertyPath: fireRate
       value: 8
       objectReference: {fileID: 0}
@@ -2442,7 +2446,7 @@ MonoBehaviour:
   enableShake: 1
   shakeMagnitude: 0.06
   shakeDuration: 0.12
-  hitSound: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: 4bbedd7cb1e19c847bfbbcfd5328645f, type: 3}
   hitSoundVolume: 0.6
 --- !u!114 &1257401215911296502
 MonoBehaviour:
@@ -2631,8 +2635,8 @@ MonoBehaviour:
   slamImpactVFXLifetime: 2
   impactShakeDuration: 0.35
   impactShakeMagnitude: 0.18
-  slamWindupSound: {fileID: 0}
-  slamImpactSound: {fileID: 0}
+  slamWindupSound: {fileID: 8300000, guid: 0c3504f63e7fea443a906c66b5fae26b, type: 3}
+  slamImpactSound: {fileID: 8300000, guid: 9573adc76140cb443a08c3673210f465, type: 3}
   slamChaseSound: {fileID: 0}
 --- !u!1 &1975915326413329886
 GameObject:
@@ -2767,6 +2771,7 @@ MonoBehaviour:
   - {fileID: 917388683}
   maxWaitTime: 30
   endDelay: 0.5
+  enemyFadeOutDuration: 0.5
 --- !u!212 &3482498007707111226
 SpriteRenderer:
   serializedVersion: 2
@@ -2875,9 +2880,9 @@ MonoBehaviour:
   movingVFXDestroyAtX: -12
   impactShakeDuration: 0.3
   impactShakeMagnitude: 0.15
-  chargeSound: {fileID: 0}
+  chargeSound: {fileID: 8300000, guid: 0c3504f63e7fea443a906c66b5fae26b, type: 3}
   swingSound: {fileID: 0}
-  impactSound: {fileID: 0}
+  impactSound: {fileID: 8300000, guid: 9573adc76140cb443a08c3673210f465, type: 3}
   movingVFXSound: {fileID: 0}
   telegraphDuration: 1.2
   swingSpeed: 18
@@ -2900,8 +2905,6 @@ GameObject:
   - component: {fileID: 7290501916464539725}
   - component: {fileID: 1123560074804746816}
   - component: {fileID: 7665530323831116528}
-  - component: {fileID: 7665530323831116529}
-  - component: {fileID: 7665530323831116530}
   m_Layer: 0
   m_Name: BossHeadNoir
   m_TagString: Enemy
@@ -3028,7 +3031,10 @@ MonoBehaviour:
   introDelay: 2
   phase2TransitionDelay: 3
   patternTimeout: 90
-  phase2TransitionSound: {fileID: 0}
+  deathInterruptTimeout: 3
+  bossAnimator: {fileID: 7290501916464539725}
+  deathAnimTrigger: Death
+  phase2TransitionSound: {fileID: 8300000, guid: 8505870a7fb15e14d834242ea3d5d419, type: 3}
   _currentPhase: 1
   _currentPatternName: Idle
   _isRunning: 0
@@ -3127,8 +3133,8 @@ MonoBehaviour:
   activeDuration: 2
   fadeDuration: 0.4
   endDelay: 0.5
-  chargeSound: {fileID: 0}
-  sweepSound: {fileID: 0}
+  chargeSound: {fileID: 8300000, guid: 4d4b9d823f0f096448bcca7194f1f60a, type: 3}
+  sweepSound: {fileID: 8300000, guid: 2ed961f35fdb8664da3ac78a91d21edb, type: 3}
   sweepEndSound: {fileID: 0}
   OnSweepActivate:
     m_PersistentCalls:
@@ -3229,9 +3235,9 @@ MonoBehaviour:
   laserActiveDuration: 2
   preExitDelay: 3
   endDelay: 0.8
-  chargeSound: {fileID: 0}
-  fireSound: {fileID: 0}
-  humSound: {fileID: 0}
+  chargeSound: {fileID: 8300000, guid: 493a0b73d3040a1478e4fd0b67b30576, type: 3}
+  fireSound: {fileID: 8300000, guid: 2e645a34e88fd0e439ef067ee9ede448, type: 3}
+  humSound: {fileID: 8300000, guid: 562f91bb6b77d7a40aabf7088056b73a, type: 3}
   extraHandDestroySound: {fileID: 0}
   handExitSound: {fileID: 0}
   handReturnSound: {fileID: 0}
@@ -3278,6 +3284,7 @@ GameObject:
   - component: {fileID: 5275481049180557524}
   - component: {fileID: 5858271693843431447}
   - component: {fileID: 3433431858566604295}
+  - component: {fileID: 6543542511251204928}
   m_Layer: 0
   m_Name: BossManager
   m_TagString: Untagged
@@ -3285,6 +3292,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6543542511251204928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6543542511251204927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 701502f657ed335498d251c905ef1728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossDeathSignal
 --- !u!114 &7166830858191188205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3384,7 +3403,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4119854015645127322}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6cea93b192b062946b43ab26ffb07656, type: 3}
   m_Name: 
@@ -3401,12 +3420,13 @@ MonoBehaviour:
   rightHand: {fileID: 9096417432877054730}
   deathTriggerName: Death
   deathAnimationDuration: 6
+  waitForPatternCleanup: 3.5
   deathVFXPrefab: {fileID: 0}
   explosionCount: 5
   explosionInterval: 0.4
   explosionRadius: 1.5
   fadeOutDuration: 1.5
-  deathRoarSound: {fileID: 0}
+  deathRoarSound: {fileID: 8300000, guid: 19c23d419aecf8e4b8f3bba6d62741f3, type: 3}
   explosionSound: {fileID: 0}
   victorySound: {fileID: 0}
   deathSoundVolume: 1
@@ -3420,50 +3440,6 @@ MonoBehaviour:
   deathShakeLoopDuration: 2.5
   deathShakeLoopStartMagnitude: 0.25
   deathShakeLoopEndMagnitude: 0.05
---- !u!114 &7665530323831116529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4119854015645127322}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32eb39fe310a27343b2fa56161e0f99c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BossHandSafetyGuard
-  leftHand: {fileID: 9134569851962801505}
-  rightHand: {fileID: 9096417432877054730}
-  bossHP: {fileID: 3683270783752484881}
-  checkInterval: 2
-  enableDebugLog: 1
---- !u!114 &7665530323831116530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4119854015645127322}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b638d1fd7245dc246a10730048f8c5d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BossAnimationController
-  headAnimator: {fileID: 7290501916464539725}
-  leftHandAnimator: {fileID: 5724555208147771458}
-  rightHandAnimator: {fileID: 7943598995660000750}
-  neckAnimator: {fileID: 7453098606799444433}
-  headIdleState: Idle
-  headAttackTrigger: Attack
-  headDeathTrigger: Death
-  leftHandIdleState: Idle
-  leftHandAttackTrigger: Attack
-  leftHandExitTrigger: Exit
-  rightHandIdleState: RightHandIdle
-  rightHandChargeTrigger: Charge
-  rightHandSwingTrigger: Swing
-  rightHandSlamTrigger: Slam
-  neckIdleState: Idle
 --- !u!95 &7943598995660000750
 Animator:
   serializedVersion: 7
