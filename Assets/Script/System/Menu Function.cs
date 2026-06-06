@@ -13,58 +13,61 @@ public class MenuFunction : MonoBehaviour
     public string secondLoadVideoName;
     public VideoPlayer Vidplayer;
     public GameObject ImagePlayer;
-    
 
-    public void pickRandomLevel (){
+
+    public void pickRandomLevel()
+    {
         StartCoroutine(PlayLevel());
     }
 
     IEnumerator PlayLevel()
     {
-        int rand = UnityEngine.Random.Range(0,3);
-        string scenename ="";
+        int rand = UnityEngine.Random.Range(0, 3);
+        string scenename = "";
         AsyncOperation LoadAsync;
-        
+
         switch (rand)
         {
             case 0:
-            scenename = "cryogla";
-            break;
+                scenename = "cryogla";
+                break;
 
             case 1:
-            scenename="noir331";
-            break;
+                scenename = "noir331";
+                break;
 
             case 2:
-            scenename="turmos";
-            break;
+                scenename = "turmos";
+                break;
         }
         LoadAsync = SceneManager.LoadSceneAsync(scenename);
         LoadAsync.allowSceneActivation = false;
-        
+
 
         if (GameManager.Instance.isfirstLoad)
         {
-            string videopath = System.IO.Path.Combine(Application.streamingAssetsPath,FirstVideoName);
+            string videopath = System.IO.Path.Combine(Application.streamingAssetsPath, FirstVideoName);
             Vidplayer.url = videopath;
             GameManager.Instance.isfirstLoad = false;
         }
         else
         {
-            string videopath = System.IO.Path.Combine(Application.streamingAssetsPath,secondLoadVideoName);
+            string videopath = System.IO.Path.Combine(Application.streamingAssetsPath, secondLoadVideoName);
             Vidplayer.url = videopath;
         }
 
-        double videoLength = Vidplayer.length;
+        bool videoFinished = false;
+
+        Vidplayer.loopPointReached += (vp) => videoFinished = true;
         ImagePlayer.SetActive(true);
+
         Vidplayer.Play();
 
-        
+        yield return new WaitUntil(() => videoFinished);
 
-        yield return new WaitForSeconds((float)videoLength);
 
         LoadAsync.allowSceneActivation = true;
-        
+
     }
 
     public void backtomenu()
@@ -89,7 +92,7 @@ public class MenuFunction : MonoBehaviour
 
     public void playBoss()
     {
-        SceneManager.LoadScene(4);    
+        SceneManager.LoadScene(4);
     }
 
     public void quit()
